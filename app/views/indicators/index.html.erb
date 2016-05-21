@@ -1,0 +1,26 @@
+<h1>Listing Indicators</h1>
+
+<table border="1">
+  <tr>
+    <th width="5%">id1</th>
+    <th width="20%">name</th>
+    <th width="30%">note</th>
+    <th width="5%">language</th>
+    <th width="20%">source</th>
+    <th width="20%">topic</th>
+  </tr>
+
+<% for indicator in @indicator %>
+  <tr>
+    <td><%=h indicator.id1 %></td>
+    <td><%=h indicator.name %></td>
+    <td><%=h indicator.note[0..90] %></td>
+    <td><%=h indicator.language %></td>
+    <td><%=h indicator.source %></td>
+    <td><%=h indicator.topic %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

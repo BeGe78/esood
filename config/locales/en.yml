@@ -1,0 +1,69 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  help: "Help"
+  lang: "Language"
+  french: "French"
+  english: "English"
+  home: "Home"
+  login: "Log in/Register"
+  about: "About"
+  about_comment: "This site is developped only with Open Source software and Open data"
+  contact: "Contact"
+  news: "News"
+  news_comment: "Developments and modifications history"
+  author: "Bruno Gardin"
+  longtitle: "Economic Statistics On Open Data"
+  indicator: "Indicator"
+  country: "Country"
+  indicator_list: "Indicators list"
+  country_list: "Countries list"
+  country1: "Country1"
+  country2: "Country2"
+  period: "Year1:Year2"
+  charttitle: "Country Statistics"
+  display: "Display"
+  site_summary: "Site summary in english"
+  indicator_summary: "Indicators summary in english"
+  mean: "Mean"
+  coeflm1: "Slope "
+  coeflm2: "Intercept "
+  coeflm3: "Determination "
+  meanrate: "Mean rate"
+  lm: "(linear regression)"
+  correlation: "Correlation"
+  compare: "Compare"
+  for_indicator: "for indicator"
+  with_scale: "with scale"
+  name: "name"
+  topic: "topic"
+  indicator_help: "Indicator Id, source: World Bank Open Data"
+  country_help: "Country Name, source: World Bank Open Data"
+  period_help: "year begin:year end"
+  slope_help: "annual variation as given by a simple linear regression"
+  determination_help: "simple linear regression correlation coefficient. Values above 0.8 shows a good approximation of the linear regression."
+  meanrate_help: "mean growing rate (percentage)"
+  correlation_help: "Correlation coefficient between the 2 curves"
+  number:
+     format:
+        delimiter: ","
+  

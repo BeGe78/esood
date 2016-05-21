@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= Gon::Base.render_data({}) %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "RGraph.pie" %>
+  <%= javascript_include_tag "RGraph.common.dynamic" %>
+  <%= javascript_include_tag "RGraph.common.tooltips" %>
+  <%= javascript_include_tag "RGraph.common.key" %>
+  <%= javascript_include_tag "RGraph.common.effects" %>
+  <%= javascript_include_tag "RGraph.common.core" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <%= yield %>
+      <%= render 'layouts/footer' %>      
+<script type="text/javascript">
+$(document).ready(function() {
+  $('.has-tooltip').tooltip();
+});
+</script>
+</body>
+</html>

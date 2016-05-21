@@ -1,0 +1,14 @@
+<h1>Administration Country</h1>
+<div id="mainform" style="float: left; width:14%; border: thin solid black;">
+<%= form_for @country do |f| %>
+  <p>
+    <%= f.label t('country1') %><br>
+    <%= f.text_field :id1 %>
+  </p>
+  
+ 
+  <p>
+    <%= f.submit t('display')%>
+  </p>
+<% end %>
+</div>

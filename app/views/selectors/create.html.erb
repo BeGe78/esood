@@ -1,0 +1,93 @@
+<%= render 'form' %>
+<div id="title" style="float: left;  margin-left: 0%; width: 84%; ">
+<h2><%= @title %></h2>
+</div>
+<div id="chart" style="float: left;  margin-left: 0%; margin-top: -26px; width: 84%; height: 80%; border: thin solid black;">
+<canvas width="800" height="350" id="line" style="margin-left: 20px; margin-top: 23px; cursor: default;" class="animated rotateIn"></canvas>
+</div>
+<div id="stats" style="margin-top: 35%;">  
+<td>
+  <span style="font-weight: bold;"><%= @indicator_local.name %></span>
+  <span class="has-tooltip" data-toggle="tooltip" title="<%= @indicator_local.note %>">
+    <%= image_tag "question_mark.png" %>
+  </span>
+</td>
+<table border="1">
+  <thead>
+    <tr>
+        <th width="20%"><%= t('country')%></th>
+	<th width="10%"><%= t('mean')%></th>
+        <th width="20%">
+          <span><%= t('coeflm1')%></span>
+          <span class="has-tooltip" data-toggle="tooltip" data-container="body" data-placement="top" title="<%= t('slope_help') %>"><%= image_tag "question_mark.png" %></span>
+          <span style="font-size:10px;"><%= t('lm')%></span>
+        </th>
+	<th width="20%">
+	  <span><%= t('coeflm3')%></span>
+	  <span class="has-tooltip" data-toggle="tooltip" data-container="body" data-placement="top" title="<%= t('determination_help') %>"><%= image_tag "question_mark.png" %></span>
+          <span style="font-size:10px;"><%= t('lm')%></span>	  
+        </th>
+	<th width="20%">
+	  <span><%= t('meanrate')%></span>
+	  <span class="has-tooltip" data-toggle="tooltip" data-container="body" data-placement="top" title="<%= t('meanrate_help') %>"><%= image_tag "question_mark.png" %></span>
+	</th>
+	<th width="10%">
+	  <span><%= t('correlation')%></span>
+	  <span class="has-tooltip" data-toggle="tooltip" data-container="body" data-placement="top" title="<%= t('correlation_help') %>"><%= image_tag "question_mark.png" %></span>
+        </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @country1_name %></td>
+      <td><%= number_with_precision(@mean1.to_ruby, precision: @precision) %></td>	
+      <td><%= number_with_precision(@coeflm1[1], precision: @precision) %></td>
+      <td><%= number_with_precision(@coeflm3_1.to_ruby, precision: 2) %></td>
+      <td><%= number_to_percentage(@meanrate1, precision: 2) %></td>
+      <td><%= number_with_precision(@cor.to_ruby, precision: 2) %></td>
+     </tr>
+     <tr>
+      <td><%= @country2_name %></td>
+      <td><%= number_with_precision(@mean2.to_ruby, precision: @precision) %></td>	
+      <td><%= number_with_precision(@coeflm2[1], precision: @precision) %></td>
+      <td><%= number_with_precision(@coeflm3_2.to_ruby, precision: 2) %></td>
+      <td><%= number_to_percentage(@meanrate2, precision: 2) %></td>
+     </tr>
+  </tbody>
+</table>
+</div>
+<script type="text/javascript">
+  var key = [];
+  var datachar = [];                            //convert data in String for the chart tooltips
+  var datachar1 = [];
+  var datachar2 = [];
+  key[0] = gon.country1;
+  key[1] = gon.country2;
+  for (var i=0; i<gon.data1.length; ++i) { 
+     datachar1[i] = String(gon.data1[i]);
+     datachar2[i] = String(gon.data2[i]);     
+  }
+  datachar = datachar1.concat(datachar2)
+  xaxispos = gon.xaxispos;
+//  alert(datachar)
+var line = new RGraph.Line({
+ id: 'line', 
+ data: gon.data,
+ options: {
+   colors: ['rgb(255,0,0)', 'rgb(0,0,255)', 'rgb(0,100,0)'],
+   linewidth: 3,
+   key: key,
+   keyInteractive: true,
+   backgroundGridVlines: false,
+   labels: gon.year,
+   xaxispos: xaxispos,
+   ylabelsInside: true,
+   textSize: 8,
+   spline: true, 
+   tooltipsCoordsPage: true,
+   tooltips: datachar,
+//   tooltips.event: 'onmousemove',
+   }
+})   
+   line.Draw(); 
+</script>

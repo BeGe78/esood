@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  indicator: MyString
+  country1: MyString
+  country2: MyString
+  period: MyString
+
+two:
+  indicator: MyString
+  country1: MyString
+  country2: MyString
+  period: MyString

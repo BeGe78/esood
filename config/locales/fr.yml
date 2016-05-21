@@ -1,0 +1,68 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+fr:
+  help: "Aide"
+  lang: "Langue"
+  french: "Français"
+  english: "Anglais"
+  home: "Accueil"
+  login: "Connection/Inscription"
+  about: "A propos"
+  about_comment: "Ce site est développé uniquement à base de logiciel Open Source et des données ouvertes."
+  contact: "Contact"
+  news: "Nouveautés"
+  news_comment: "Historique des développements et nouveautés"
+  author: "Bruno Gardin"
+  longtitle: "Economic Statistics On Open Data"
+  indicator: "Indicateur"
+  country: "Pays"
+  indicator_list: "Liste d'indicateurs"
+  country_list: "Liste des pays"
+  country1: "Pays1"
+  country2: "Pays2"
+  period: "Année1:Année2"
+  charttitle: "Statistiques Pays"
+  display: "Affiche"
+  site_summary: "Sommaire du site en Français"
+  indicator_summary: "Sommaire des indicateurs en Français"
+  mean: "Moyenne"
+  coeflm1: "Pente "
+  coeflm2: "Intercept "
+  coeflm3: "Détermination "
+  meanrate: "Variation moyenne"
+  lm: "(regression linéaire)"
+  correlation: "Correlation"
+  compare: "Comparaison"
+  for_indicator: "indicateur"
+  with_scale: "echelle"
+  name: "nom"
+  topic: "sujet"
+  indicator_help: "Indicateur Id, source: Données Ouvertes de la Banque Mondiale"
+  country_help: "Nom de pays, source: Données Ouvertes de la Banque Mondiale"
+  period_help: "année début:année fin"
+  slope_help: "variation annuelle donnée par la regression linéaire simple"
+  determination_help: "Coefficient de correlation de la regression linéaire simple. Des valeurs au dessus de  0.8 montre que la régression linéaire donne une bonne approximation."
+  meanrate_help: "Croissance moyenne (pourcentage)"
+  correlation_help: "Coefficient de correlation entre les 2 courbes"
+  number:
+     format:
+        delimiter: " "

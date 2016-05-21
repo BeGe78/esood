@@ -1,0 +1,24 @@
+<h1>Listing Countries</h1>
+
+<table border="1">
+  <tr>
+    <th width="5%">id1</th>
+    <th width="20%">iso2code</th>
+    <th width="30%">code</th>
+    <th width="5%">name</th>
+    <th width="20%">type</th>
+  </tr>
+
+<% for country in @country %>
+  <tr>
+    <td><%=h country.id1 %></td>
+    <td><%=h country.iso2code %></td>
+    <td><%=h country.code %></td>
+    <td><%=h country.name %></td>
+    <td><%=h country.type %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

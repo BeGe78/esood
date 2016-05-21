@@ -1,0 +1,29 @@
+<%= render 'form' %>
+<div id="site_summary" style="float: left; width:40%; border: thin solid black; margin-left:1%;">
+<h1>Contenu</h1>
+Ce portail fournit des éléments de comparaison de données économiques entre deux pays ou zones géographiques. Les données sont extraites de la base des Données Ouvertes de la Banque Mondiale. Les informations affichées sont constituées d'un graphique permettant de visualiser ce comparatif et de résultats statistiques (moyennes, corrélations, tendances) permettant de mieux les appréhender et de faire des prédictions. <br>
+<%= image_tag "fr_site.png" %>
+</div>
+<div id="indicator_summary" style="float: left; width:40%; border: thin solid black; margin-left:1%;">
+<h1>Utilisation</h1>
+Pour lancer une analyse, il suffit de sélectionner un indicateur, deux pays ou zones à comparer, la période puis de cliquer sur le bouton [Affiche].<br>
+<span>Les champs Indicateur et Pays1 disposent d'une aide </span>
+<%= image_tag "question_mark.png" %>
+<span> et d'un affichage de la liste des choix disponibles </span>
+<%= image_tag "view-list.png" %>
+<span>. Ces champs se remplissent automatiquement (autocomplete) dès que vous tapez deux caractères. </span>
+<ul>
+   <li><span style="font-style:italic;">Indicateur:</span> il s'agit de l'identifiant de  l'indicateur tel que défini par la banque mondiale. La liste proposée est triée par sujet puis par identifiant</li>
+   <li><span style="font-style:italic;">Pays1,Pays2:</span> il s'agit de pays ou zones tel que défini par la banque mondiale. La liste proposée est triée par type (pays puis zones) et ensuite par ordre alphabétique</li>
+   <li><span style="font-style:italic;">Année1:année2:</span> constituée de l'année de départ et de l'année de fin séparées par ":" (ex: 2000:2014).</li>
+</ul>
+Conseils d'utilisation:<br>
+  <li>Certains indicateurs économiques sont disponibles en monnaie locale et en dollar. Pour les pays de la zone euro on peut utiliser la monnaie locale sinon il faut utiliser le dollar mais les résultats intègrent l'effet des taux de change.</li>
+  <li>Les données de la banque mondiale ne sont pas disponibles pour tous les pays/zones et toutes les périodes. Si des valeurs nulles sont affichées, il est préferable de réduire la période.</li>
+  <li>
+  <span>Le sigle </span>
+  <%= image_tag "question_mark.png" %>
+  <span>permet d'afficher une aide en ligne.</span>
+  </li>
+  <li>Tout problème, commentaire ou demande d'évolution peut être envoyé via le bouton [Contact] en bas à droite de l'écran.</li>
+</div>

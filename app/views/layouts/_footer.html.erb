@@ -1,0 +1,23 @@
+<footer class="footer">
+  <small>
+    <a><%= t('longtitle') %></a>
+    <a> - </a>
+    <a><%= t('author') %></a>
+  </small>
+  <nav>
+    <ul>
+      <li>
+      <a  data-toggle="modal" href="#about">
+         <%= t('about') %>
+      </a>
+      </li>
+      <li>
+      <a  data-toggle="modal" href="#news">
+         <%= t('news') %>
+      </a>
+      </li>
+      <li><%= mail_to "bgardin@gmail.com", t('contact'), subject: "ESOoD mail" %></li>
+    </ul>
+  </nav>
+</footer>
+
