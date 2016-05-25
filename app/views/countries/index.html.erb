@@ -1,5 +1,7 @@
 <h1>Listing Countries</h1>
 
+<p><%= link_to "print PDF", controller: "countries", action: "create", format: "pdf" , method: :post, remote: true %></p>
+
 <table border="1">
   <tr>
     <th width="5%">id1</th>
@@ -19,6 +21,5 @@
   </tr>
 <% end %>
 </table>
-
 <br />
 

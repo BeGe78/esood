@@ -39,10 +39,7 @@
     <span class="has-tooltip" data-toggle="tooltip" data-container="body" data-placement="right" title="<%= t('period_help') %>"><%= image_tag "question_mark.png" %></span><br>
     <%= f.text_field :period %>
   </p>
-
-  <p>
-    <%= f.submit t('display')%>
-  </p>
+  <%= f.submit t('display')%>
 <% end %>
 </div>
 <div class="modal fade" id="indicator_list" tabindex="-1">

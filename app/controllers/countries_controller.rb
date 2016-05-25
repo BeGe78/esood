@@ -17,7 +17,7 @@ class CountriesController < ApplicationController
         render plain: @country.inspect        
     end
     def index
-        @country = Country.all
+        @country = Country.all    
     end    
     private
     def country_params

@@ -84,6 +84,7 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
                  << " - " << t('with_scale') << ": 1/" << number_with_delimiter(@scale, locale: :fr)
 # send data in js format        
         gon.push({                                       
+                  :title => @title,
                   :data => v,
                   :data1 => v1,
                   :data2 => v2,
@@ -94,6 +95,7 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
                   :scale => @scale,
                   :xaxispos => @xaxispos
                  })
+        
 #__________Statistics______________
         c = Rserve::Connection.new
         c.assign("year", y_to_i)

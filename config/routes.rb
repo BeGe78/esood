@@ -5,9 +5,9 @@ Rails.application.routes.draw do
     resources :countries  
     get 'welcome/index'
     scope "(:locale)", locale: /fr|en/ do
-        get 'selectors/autocomplete_country_name'
-        get 'selectors/autocomplete_indicator_id1'
-        resources :selectors
+    get 'selectors/autocomplete_country_name'
+    get 'selectors/autocomplete_indicator_id1'
+    resources :selectors
     end
     resources :selectors do
         get :autocomplete_indicator_id1, :on => :collection
