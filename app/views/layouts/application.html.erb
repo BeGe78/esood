@@ -12,6 +12,7 @@
   <%= javascript_include_tag "RGraph.common.key" %>
   <%= javascript_include_tag "RGraph.common.effects" %>
   <%= javascript_include_tag "RGraph.common.core" %>
+  <%= analytics_init if Rails.env.production? %>
   <%= csrf_meta_tags %>
 </head>
 <body>
