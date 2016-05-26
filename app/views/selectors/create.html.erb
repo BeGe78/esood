@@ -1,21 +1,9 @@
 <%= render 'form' %>
-<!-- This CSS positions the link over the top right of the canvas -->
-<style>
-    span#print_link {
-        position: absolute;
-        left: 1215px;
-        top: 57px;
-        border: 1px black solid;
-        padding: 1px;
-        background-color: #eee;
-        cursor: pointer;
-    }
-</style>
 <div id="title" style="float: left;  margin-left: 0%; width: 84%; ">
 <h2><%= @title %></h2>
+<span id="print_link" onclick="displayPDF()"><%= image_tag "printer.png" %></span>
 </div>
 <div id="chart" style="float: left;  margin-left: 0%; margin-top: -26px; width: 84%; height: 380px; border: thin solid black;">
-<span id="print_link" onclick="displayPDF()"><%= image_tag "printer.png" %></span>
 <canvas  width="850" height="350" id="line" style=" margin-left: 20px; margin-top: 23px; cursor: default;" class="animated rotateIn"></canvas>
 </div>
 <div id="stats" style="margin-top: 35%;">  

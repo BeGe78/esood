@@ -68,3 +68,12 @@ footer {  margin-top: 100px;
     list-style: none;
     li {      float: left;
       margin-left: 15px;    }  }}
+span#print_link {
+        position: absolute;
+        left: 1215px;
+        top: 57px;
+        border: 1px black solid;
+        padding: 1px;
+        background-color: #eee;
+        cursor: pointer;
+    }      
