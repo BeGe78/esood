@@ -1,0 +1,15 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container-fluid">
+    <%= link_to "ESoOD", '#', id: "logo" %>
+    <nav>
+      <ul style="font-weight: bold;" class="nav navbar-nav navbar-right">
+        <li><%= link_to t('home'), controller: "selectors", action: "new"  %></li>
+        <li><%= link_to t('english'), locale: :en, controller: "selectors", action: "new" %></li>
+        <li><%= link_to t('french'), locale: :fr, controller: "selectors", action: "new" %></li>
+        <% if Rails.env.development? %>
+        <li><%= link_to t('login'), controller: "selectors", action: "new" %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+devise_for :users
+get 'selectors', to: 'selectors#new', as: :selectorsnew
+get 'en/selectors/new', to: 'selectors#new', as: :enselectorsnew
+get 'fr/selectors/new', to: 'selectors#new', as: :frselectorsnew
+
     resources :customers
     resources :rcharts
     resources :indicators
