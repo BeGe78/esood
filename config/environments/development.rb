@@ -12,8 +12,8 @@ config.action_mailer.file_settings = {
 config.action_mailer.smtp_settings = {
 address: "smtp.gmail.com",
 port: 587,
-domain: "gmail.com",
-user_name: "bgardin@gmail.com",
+domain: ENV["GMAIL_DOMAIN"],
+user_name: ENV["GMAIL_USER"],
 password: ENV["GMAIL_PASSWORD"],
 :authentication=>"login",
 :enable_starttls_auto=>true,

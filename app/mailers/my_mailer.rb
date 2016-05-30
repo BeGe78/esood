@@ -8,7 +8,7 @@ class MyMailer < Devise::Mailer
     opts[:from] = 'bgardin@gmail.com'
     opts[:reply_to] = 'bgardin@gmail.com'
     puts(MyMailer.delivery_method)
-    #puts(MyMailer.smtp_settings)
+    puts(MyMailer.smtp_settings)
     super   
   end
 
