@@ -9,15 +9,15 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
     def get_autocomplete_items(parameters)
         if (parameters[:model] == Indicator or parameters[:model] == Country)
             items = active_record_get_autocomplete_items(parameters)        
-            items = items.where(:language => I18n.locale)
+            items = items.accessible_by(current_ability).where(:language => I18n.locale)
         else
             items = active_record_get_autocomplete_items(parameters)
         end    
     end
 
     def new
-        @indicator_base = Indicator.where(language: I18n.locale).order(:topic , :id1).all
-        @country_base = Country.where(language: I18n.locale).order(:type , :name).all
+        @indicator_base = Indicator.accessible_by(current_ability).where(language: I18n.locale).order(:topic , :id1).all
+        @country_base = Country.accessible_by(current_ability).accessible_by(current_ability).where(language: I18n.locale).order(:type , :name).all
         @selector = Selector.new
     end
     def create

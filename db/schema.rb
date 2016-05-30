@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530145838) do
+ActiveRecord::Schema.define(version: 20160530184304) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "id1"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160530145838) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text     "language"
+    t.string   "visible"
   end
 
   create_table "indicators", force: :cascade do |t|
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 20160530145838) do
     t.text     "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "visible"
   end
 
   create_table "rcharts", force: :cascade do |t|
