@@ -66,6 +66,30 @@ GA.tracker = "UA-78195871-1"
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
+config.action_mailer.default_url_options = { host: 'localhost', port: 80 }
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.perform_deliveries = true
+config.action_mailer.delivery_method = :smtp
+
+config.action_mailer.file_settings = {
+    location: "/root/Documents/perso/"
+    }
+
+config.action_mailer.smtp_settings = {
+address: "smtp.gmail.com",
+port: 587,
+domain: ENV["GMAIL_DOMAIN"],
+user_name: ENV["GMAIL_USER"],
+password: ENV["GMAIL_PASSWORD"],
+:authentication=>"login",
+:enable_starttls_auto=>true,
+:openssl_verify_mode=>nil,
+:ssl=>nil,
+:tls=>nil  
+}  
+config.action_mailer.sendmail_settings = {
+    arguments: "-i -v"
+}  
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
