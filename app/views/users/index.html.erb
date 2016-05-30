@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th width="10%">Name</th>
+      <th width="5%">Role</th>
+      <th width="10%">Email</th>
+      <th width="10%">Sign in count</th>
+      <th width="10%">Last log in</th>
+      <th width="10%">Creation date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td width="10%"><%= user.name %></td>
+        <td width="5%"><%= user.role.name %></td>
+        <td width="10%"><%= user.email %></td>
+        <td width="10%"><%= user.sign_in_count %></td>
+        <td width="10%"><%= @last_login %></td>
+        <td width="10%"><%= @joined_on %></td>        
+        <td width="5%"><%= link_to 'Show', user %></td>
+        <td width="5%"><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td width="5%"><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>

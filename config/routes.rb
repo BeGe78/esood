@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  resources :roles
 devise_for :users
+scope "/admin" do
+  resources :users
+end
 get 'selectors', to: 'selectors#new', as: :selectorsnew
 get 'en/selectors/new', to: 'selectors#new', as: :enselectorsnew
 get 'fr/selectors/new', to: 'selectors#new', as: :frselectorsnew
