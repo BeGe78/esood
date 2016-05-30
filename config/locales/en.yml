@@ -20,12 +20,52 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+#header
   help: "Help"
   lang: "Language"
   french: "French"
   english: "English"
   home: "Home"
-  login: "Log in/Register"
+  login: "Log in"
+  logout: "Log out"
+  profile: "Profile"
+  register: "Register"
+  back: "Back"
+  
+#devise registration
+  Name: "Name"
+  Email: "Email"
+  Password: "Password"
+  Password_confirmation: "Password confirmation"
+  current_password: "current password"
+  current_password_comment: "(we need your current password to confirm your changes)"
+  new_password_comment: "(leave blank if you don't want to change it)"
+  remember_me: "remember_me"
+  characters_minimum: "characters minimum"
+  Forgot_your_password: "Forgot your password?"
+  did_not_receive_confirmation_instructions: "Didn't receive confirmation instructions?"
+  Resend_confirmation_instructions: "Resend confirmation instructions"
+  Resend_password_instructions: "Resend password modifications instructions"
+  Currently_waiting_confirmation_for: "Currently waiting confirmation for:"
+  did_not_receive_unlock_instructions: "Didn't receive unlock instructions?"
+  Resend_unlock_instructions: "Resend unlock instructions"
+  Cancel_my_account: "Cancel my account"
+  Change_my_passord: "Change my password"
+  Unlock_my_account: "Unlock my account"
+  Unhappy: "Unhappy?"
+
+  #email  
+  Welcome: "Welcome on ESoOD "
+  confirm_comment: "You can confirm your account email through the link below:"
+  confirm_link: "Confirm my account"
+  password_change_comment: "We're contacting you to notify you that your password has been changed."
+  password_reset_comment1: "Someone has requested a link to change your password. You can do this through the link below."
+  password_reset_comment2: "If you didn't request this, please ignore this email."
+  password_reset_comment3: "Your password won't change until you access the link above and create a new one."
+  account_lock_comment1: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+  account_lock_comment2: "Click the link below to unlock your account:"
+
+#footer  
   about: "About"
   about_comment: "This site is developped only with Open Source software and Open data"
   contact: "Contact"

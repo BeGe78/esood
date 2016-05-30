@@ -1,15 +1,15 @@
-<h2>Forgot your password?</h2>
+<h1><%= t('Forgot_your_password') %></h1>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
+  <div class="form-group" style="width: 50%;">
+    <%= f.label t('Email') %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+    <%= f.submit t('Resend_password_instructions') %>
   </div>
 <% end %>
 

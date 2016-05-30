@@ -20,12 +20,52 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 fr:
+#header
   help: "Aide"
   lang: "Langue"
   french: "Français"
   english: "Anglais"
   home: "Accueil"
-  login: "Connection/Inscription"
+  login: "Connection"
+  logout: "Deconnection"
+  profile: "Profil"
+  register: "Enregistrement"
+  back: "Retour"
+  
+#devise registration
+  Name: "Nom"
+  Email: "Email"
+  Password: "Mot de passe"
+  Password_confirmation: "Confirmation Mot de passe"
+  current_password: "mot de passe actuel"
+  current_password_comment: "(pour confirmer vos changements, entrez votre mot de passe atuel)"
+  new_password_comment: "(Ne mettez rien si vous ne voulez pas changer de mot de passe)"
+  remember_me: "se souvenir de moi"
+  characters_minimum: "caractères au minimum"
+  Forgot_your_password: "Mot de passe oublié?"
+  did_not_receive_confirmation_instructions: "Instructions de confirmation non reçues?"
+  Resend_confirmation_instructions: "Renvoyer les instructions de confirmation"
+  Resend_password_instructions: "Renvoyer les instructions de changement de mot de passe"
+  Currently_waiting_confirmation_for: "En attente de confirmation pour:"
+  did_not_receive_unlock_instructions: "Instructions de déblocage non reçues?"
+  Resend_unlock_instructions: "Renvoyer les instructions de débloquage"
+  Cancel_my_account: "Supprimer mon compte"
+  Change_my_passord: "Changer mon mot de passe"
+  Unlock_my_account: "Débloquer mon compte"
+  Unhappy: "Pas satisfait?"
+  
+#email  
+  Welcome: "Bienvenu sur ESoOD "
+  confirm_comment: "Vous pouvez confirmer votre compte avec le lien suivant:"
+  confirm_link: "Confirmer mon compte"
+  password_change_comment: "Nous vous confirmons que votre mot de passe a été changé."
+  password_reset_comment1: "Quelqu'un a demandé un lien pour changer votre mot de passe. Vous pouvez le faire avec le lien ci-dessous."
+  password_reset_comment2: "Si vous ne l'avez pas demandé,merci d'ignorer ce mail."
+  password_reset_comment3: "Votre mot de passe ne changera pas tant que vous n'aurez pas accédé au lien ci-dessus."
+  account_lock_comment1: "Votre compte est bloqué à cause d'un trop grand nombre de tentative de connection."
+  account_lock_comment2: "Ckiquez sur le lien ci-dessous pour le débloquer:"
+  
+#footer  
   about: "A propos"
   about_comment: "Ce site est développé uniquement à base de logiciel Open Source et des données ouvertes."
   contact: "Contact"
