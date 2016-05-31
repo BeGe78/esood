@@ -11,6 +11,7 @@
       <th width="10%">Sign in count</th>
       <th width="10%">Last log in</th>
       <th width="10%">Creation date</th>
+      <th width="10%">Confirmed date</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,8 +23,9 @@
         <td width="5%"><%= user.role.name %></td>
         <td width="10%"><%= user.email %></td>
         <td width="10%"><%= user.sign_in_count %></td>
-        <td width="10%"><%= @last_login %></td>
-        <td width="10%"><%= @joined_on %></td>        
+        <td width="10%"><%= user.current_sign_in_at.to_formatted_s(:short) %></td>
+        <td width="10%"><%= user.created_at.to_formatted_s(:short) %></td>
+        <td width="10%"><%= user.confirmed_at %></td>
         <td width="5%"><%= link_to 'Show', user %></td>
         <td width="5%"><%= link_to 'Edit', edit_user_path(user) %></td>
         <td width="5%"><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,5 +1,5 @@
 <%= render 'form' %>
-<div id="title" style="float: left;  margin-left: 0%; width: 84%; ">
+<div id="title" style="float: left;  margin-left: 0%; width: 70%; ">
 <h2><%= @title %></h2>
 <% if can? :print_chart, @selector %>
 <span id="print_link" onclick="displayPDF()"><%= image_tag "printer.png" %></span>
@@ -8,7 +8,7 @@
 <div id="chart" style="float: left;  margin-left: 0%; margin-top: -26px; width: 84%; height: 380px; border: thin solid black;">
 <canvas  width="850" height="350" id="line" style=" margin-left: 20px; margin-top: 23px; cursor: default;" class="animated rotateIn"></canvas>
 </div>
-<div id="stats" style="margin-top: 35%;">  
+<div id="stats" style="margin-top: 30%;">  
 <td>
   <span style="font-weight: bold;"><%= @indicator_local.name %></span>
   <span class="has-tooltip" data-toggle="tooltip" title="<%= @indicator_local.note %>">
