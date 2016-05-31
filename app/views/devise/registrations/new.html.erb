@@ -28,3 +28,22 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    var intputElements = document.getElementsByTagName("INPUT");
+    for (var i = 0; i < intputElements.length; i++) {
+        intputElements[i].oninvalid = function (e) {
+            e.target.setCustomValidity("");
+            if (!e.target.validity.valid) {
+                if (e.target.id == "user_name") {
+                    e.target.setCustomValidity("<%= t('name_field_warning') %>");
+                }
+                else {
+                    e.target.setCustomValidity("This field cannot be left blank");
+                }
+            }
+        };
+    }
+})
+</script>

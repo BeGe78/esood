@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   before_save :assign_role
 
 def assign_role
-  self.role = Role.find_by name: "customer" if self.role.nil?
+  self.role = Role.find_by name: "Customer" if self.role.nil?
 end
 def admin?
   self.role.name == "Admin"

@@ -64,6 +64,7 @@ fr:
   password_reset_comment3: "Votre mot de passe ne changera pas tant que vous n'aurez pas accédé au lien ci-dessus."
   account_lock_comment1: "Votre compte est bloqué à cause d'un trop grand nombre de tentative de connection."
   account_lock_comment2: "Ckiquez sur le lien ci-dessous pour le débloquer:"
+  name_field_warning: "Vous devez saisir un nom dans ce champs!"
   
 #footer  
   about: "A propos"
@@ -73,6 +74,7 @@ fr:
   news_comment: "Historique des développements et nouveautés"
   author: "Bruno Gardin"
   longtitle: "Economic Statistics On Open Data"
+#chart
   indicator: "Indicateur"
   country: "Pays"
   indicator_list: "Liste d'indicateurs"

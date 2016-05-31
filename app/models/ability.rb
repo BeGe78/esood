@@ -20,6 +20,7 @@ class Ability
        end
        can :print_chart, Selector if (user.admin? or user.customer?)
        can :full_list  , Selector if (user.admin? or user.customer?)
+       can :show_registration  , Selector unless user.customer?
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.

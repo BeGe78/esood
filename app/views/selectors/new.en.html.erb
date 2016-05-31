@@ -3,6 +3,11 @@
 <h1>Summary</h1>
 This site provides comparison information of economic data between two countries or areas. Data are extracted from World Bank open data set. The portal displays a chart to visualize the comparison and statistical data (means, correlations, trends) in order to better understand the data and make predictions.<br>
 <%= image_tag "en_site.png" %>
+<br><br>
+<% if can? :show_registration, @selector %>
+<h1>Registration</h1>
+Unregistered users have access to a limited list of indicators and countries. If you want more choices and be able to print the statistic screen in pdf, please register on the top right of the screen.<br>
+<% end %>
 </div>
 <div id="indicator_summary" style="float: left; width:40%; border: thin solid black; margin-left:1%;">
 <h1>Usage</h1>

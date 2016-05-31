@@ -64,6 +64,7 @@ en:
   password_reset_comment3: "Your password won't change until you access the link above and create a new one."
   account_lock_comment1: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
   account_lock_comment2: "Click the link below to unlock your account:"
+  name_field_warning: "You must enter a name in this field!"
 
 #footer  
   about: "About"
@@ -73,6 +74,7 @@ en:
   news_comment: "Developments and modifications history"
   author: "Bruno Gardin"
   longtitle: "Economic Statistics On Open Data"
+#chart  
   indicator: "Indicator"
   country: "Country"
   indicator_list: "Indicators list"
