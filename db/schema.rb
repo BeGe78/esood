@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160602131856) do
+ActiveRecord::Schema.define(version: 20160603153441) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "id1"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20160602131856) do
     t.integer  "role_id"
     t.string   "stripe_card_token"
     t.string   "plan_id"
+    t.string   "customer_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
