@@ -8,10 +8,10 @@ class ApplicationController < ActionController::Base
 protected
 def configure_permitted_parameters
   devise_parameter_sanitizer.permit(:sign_up) do |u|
-     u.permit({ roles: [] }, :email, :password, :password_confirmation, :name)
+     u.permit({ roles: [] }, :email, :password, :password_confirmation, :name, :stripe_card_token, :plan_id )
   end
   devise_parameter_sanitizer.permit(:account_update) do |u|
-     u.permit({ roles: [] }, :email, :password, :password_confirmation, :name)
+     u.permit({ roles: [] }, :email, :password, :password_confirmation, :name, :stripe_card_token, :plan_id )
   end
 end
 
@@ -22,6 +22,10 @@ end
 
 def default_url_options(options={})
   { :locale => I18n.locale == I18n.default_locale ? nil : I18n.locale  }
+end
+
+def payola_can_modify_subscription?(subscription)
+  subscription.owner == current_user
 end
 
 rescue_from CanCan::AccessDenied do |exception|

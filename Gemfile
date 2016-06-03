@@ -41,6 +41,8 @@ gem 'ua-google-analytics-rails'
 gem 'devise'
 gem 'figaro'
 gem 'cancancan'
+gem 'stripe'
+gem 'payola-payments'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

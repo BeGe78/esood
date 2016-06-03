@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :roles
-  devise_for :users
+  #modification to use the customize registrations controller
+  devise_for :users, :controllers => {:registrations => "registrations"}
   scope "/admin" do
     resources :users
   end
@@ -11,7 +12,9 @@ Rails.application.routes.draw do
     resources :customers
     resources :rcharts
     resources :indicators
-    resources :countries  
+    resources :countries
+    resources :subscriptions
+    resources :charges
     get 'welcome/index'
     scope "(:locale)", locale: /fr|en/ do
     get 'selectors/autocomplete_country_name'

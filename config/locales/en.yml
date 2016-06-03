@@ -53,6 +53,8 @@ en:
   Change_my_passord: "Change my password"
   Unlock_my_account: "Unlock my account"
   Unhappy: "Unhappy?"
+  monthly_subscription: "Monthly subscription: 40€"
+  yearly_subscription:  "Yearly subscription: 400€"
 
   #email  
   Welcome: "Welcome on ESoOD "

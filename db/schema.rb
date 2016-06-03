@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530184304) do
+ActiveRecord::Schema.define(version: 20160602131856) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "id1"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 20160530184304) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "visible"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string   "stripe_id"
+    t.string   "name"
+    t.integer  "amount"
+    t.string   "interval"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "rcharts", force: :cascade do |t|
@@ -83,6 +92,8 @@ ActiveRecord::Schema.define(version: 20160530184304) do
     t.datetime "updated_at",                          null: false
     t.string   "name"
     t.integer  "role_id"
+    t.string   "stripe_card_token"
+    t.string   "plan_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

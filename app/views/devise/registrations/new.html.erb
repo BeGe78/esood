@@ -2,15 +2,12 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
+  <%= f.hidden_field :stripe_card_token %>
+  <%= f.hidden_field :plan_id  %>
+ 
   <div class="form-group" style="width: 20%;">
     <%= f.label t('Name') %>
     <%= f.text_field :name, class: 'form-control', :required => true %>
-  </div>
-  
-  <div class="form-group"  style="width: 20%;">
-    <%= f.label t('Email') %>
-    <%= f.email_field :email, class: 'form-control' %>
   </div>
 
   <div class="form-group"  style="width: 20%;">
@@ -23,9 +20,45 @@
     <%= f.label t('Password_confirmation') %>
     <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
   </div>
+<br>
+<script
+  src="https://checkout.stripe.com/checkout.js" class="stripe-button" id="button-month"
+  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+  data-name="ESoOD"
+  data-description="<%= t('monthly_subscription') %>"
+  data-panel-label="<%= t('monthly_subscription') %>"
+  data-label="<%= t('monthly_subscription') %>"
+  data-currency = "eur"
+  data-locale ="<%= I18n.locale%>"
+  data-amount="4000"
+  data-allow-remember-me="false">
+</script>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<script
+  src="https://checkout.stripe.com/checkout.js" class="stripe-button" id="button-year1"
+  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+  data-name="ESoOD"
+  data-description="<%= t('yearly_subscription') %>"
+  data-panel-label="<%= t('monthly_subscription') %>"
+  data-label="<%= t('yearly_subscription') %>"
+  data-currency = "eur"
+  data-locale ="<%= I18n.locale%>"
+  data-amount="40000"
+  data-allow-remember-me="false">
+</script>
+<script>
+$('.stripe-button-el:first').click(function() {
+  console.log( "month_plan" );
+  $('#user_plan_id').val("month-plan");
+});
+$('.stripe-button-el:last').click(function() {
+  console.log( "year_plan" );
+  $('#user_plan_id').val("year-plan");
+});
+</script>
 
-  <%= f.submit t('register'), class: 'btn btn-secondary' %>
 <% end %>
+<br><br>
 
 <%= render "devise/shared/links" %>
 

@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+      
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -38,6 +39,10 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  rescue Stripe::CardError => e
+  flash[:error] = e.message
+  redirect_to new_charge_path
+  end
   end
 
   # PATCH/PUT /users/1
