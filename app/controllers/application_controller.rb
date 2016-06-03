@@ -24,10 +24,6 @@ def default_url_options(options={})
   { :locale => I18n.locale == I18n.default_locale ? nil : I18n.locale  }
 end
 
-def payola_can_modify_subscription?(subscription)
-  subscription.owner == current_user
-end
-
 rescue_from CanCan::AccessDenied do |exception|
   flash[:error] = "Access denied!"
   redirect_to root_url

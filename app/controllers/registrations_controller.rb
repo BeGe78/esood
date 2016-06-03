@@ -8,12 +8,16 @@ class RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
     puts(params[:stripeEmail])
     puts(resource.plan_id)
-    
-     customer= Stripe::Customer.create(
+# check that this email has not yet been created in user table
+ if User.exists?(email: params[:stripeEmail])
+     redirect_to_back_or_default(alert: t('email_allready_used'))
+
+ else     
+    customer= Stripe::Customer.create(
       :email => params[:stripeEmail],         
       :source  => params[:stripeToken],
       :plan => resource.plan_id
-    )
+      )
     
     resource.email = params[:stripeEmail]
     resource.stripe_card_token = params[:stripeToken]
@@ -35,6 +39,7 @@ class RegistrationsController < Devise::RegistrationsController
       set_minimum_password_length
       respond_with resource
     end
+  end  
   end
 
   def update
@@ -60,6 +65,13 @@ def webhook
     return
   end
   render :json => {:status => 200}
+end
+def redirect_to_back_or_default(*args)
+  if request.env['HTTP_REFERER'].present? && request.env['HTTP_REFERER'] != request.env['REQUEST_URI']
+    redirect_to :back, *args
+  else
+    redirect_to root_url, *args
+  end
 end
 
 end 

@@ -55,6 +55,7 @@ en:
   Unhappy: "Unhappy?"
   monthly_subscription: "Monthly subscription: 30€"
   yearly_subscription:  "Yearly subscription: 300€"
+  email_allready_used: "Email allready used"
 
   #email  
   Welcome: "Welcome on ESoOD "
