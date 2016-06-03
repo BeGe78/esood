@@ -24,6 +24,14 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
+    <%= f.label :plan_id %><br>
+    <%= f.text_field :plan_id %>
+  </div>
+  <div class="field">
+    <%= f.label :stripe_card_token %><br>
+    <%= f.text_field :stripe_card_token %>
+  </div>
+  <div class="field">
     <%= f.label :password %><br>
     <%= f.password_field :password, placeholder: "Leave blank if unchanged" %>
   </div>
