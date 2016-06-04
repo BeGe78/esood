@@ -46,16 +46,7 @@
   data-amount="30000"
   data-allow-remember-me="false">
 </script>
-<script>
-$('.stripe-button-el:first').click(function() {
-  console.log( "month_plan" );
-  $('#user_plan_id').val("month-plan");
-});
-$('.stripe-button-el:last').click(function() {
-  console.log( "year_plan" );
-  $('#user_plan_id').val("year-plan");
-});
-</script>
+
 
 <% end %>
 <br><br>
@@ -78,5 +69,15 @@ $(document).ready(function () {
             }
         };
     }
+    setTimeout(function() {
+    $('.stripe-button-el:first').click(function() {
+    console.log( "month_plan" );
+    $('#user_plan_id').val("month-plan");
+    });
+    $('.stripe-button-el:last').click(function() {
+    console.log( "year_plan" );
+    $('#user_plan_id').val("year-plan");
+    });
+    }, 3000);
 })
 </script>
