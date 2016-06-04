@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'stripe/webhook'
+
   resources :roles
   #modification to use the customize registrations controller
   devise_for :users, :controllers => {:registrations => "registrations"}
