@@ -11,8 +11,6 @@ Rails.application.routes.draw do
   get 'en/selectors/new', to: 'selectors#new', as: :enselectorsnew
   get 'fr/selectors/new', to: 'selectors#new', as: :frselectorsnew
 
-    resources :customers
-    resources :rcharts
     resources :indicators
     resources :countries
     resources :subscriptions
