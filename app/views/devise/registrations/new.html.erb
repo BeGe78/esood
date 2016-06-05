@@ -21,6 +21,11 @@
     <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
   </div>
 <br>
+  <div class="form-group" style="width: 20%;">
+      <%= f.check_box :remember_me %>
+      <%= f.label t('remember_me') %>
+  </div>
+<br>
 <script
   src="https://checkout.stripe.com/checkout.js" class="stripe-button" id="button-month"
   data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
@@ -47,11 +52,10 @@
   data-allow-remember-me="false">
 </script>
 
+<br><br>
 
 <% end %>
 <br><br>
-
-<%= render "devise/shared/links" %>
 
 <script type="text/javascript">
 $(document).ready(function () {
@@ -70,14 +74,14 @@ $(document).ready(function () {
         };
     }
     setTimeout(function() {
-    $('.stripe-button-el:first').click(function() {
-    console.log( "month_plan" );
-    $('#user_plan_id').val("month-plan");
-    });
-    $('.stripe-button-el:last').click(function() {
-    console.log( "year_plan" );
-    $('#user_plan_id').val("year-plan");
-    });
+      $('.stripe-button-el:first').click(function() {
+      console.log( "month_plan" );
+      $('#user_plan_id').val("month-plan");
+      });
+      $('.stripe-button-el:last').click(function() {
+      console.log( "year_plan" );
+      $('#user_plan_id').val("day-plan");
+      });
     }, 3000);
 })
 </script>

@@ -7,17 +7,24 @@ class StripeController < ApplicationController
     
     case event.type
       when 'customer.created'
-        # nedd to update user with customer_id for further retrieval
+        # need to update user with customer_id for further retrieval
         user = User.where(email: event.data.object.email).first
         user.update(customer_id: event.data.object.id)
+      when 'customer.source.created'
+        # need to update card expiration date
+        user = User.where(email: event.data.object.name).first
+        user.update(exp_month: event.data.object.exp_month)
+        user.update(exp_year: event.data.object.exp_year)
       when 'invoice.payment_succeeded'
-        puts("handle_success_invoice event_object")
+        # need to increment invoice_count
+        user = User.where(customer_id: event.data.object.customer).first
+        user.update(invoice_count: (user.invoice_count + 1))
       when 'invoice.payment_failed'
+        # need to send email for manual handling  
         puts("handle_failure_invoice event_object")
       when 'charge.failed'
+        # need to send email for manual handling
         puts("handle_failure_charge event_object")
-      when 'customer.subscription.deleted'
-      when 'customer.subscription.updated'
       else     puts("other event type")
     end
         

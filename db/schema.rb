@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603153441) do
+ActiveRecord::Schema.define(version: 20160605063246) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "id1"
@@ -42,14 +42,6 @@ ActiveRecord::Schema.define(version: 20160603153441) do
     t.string   "name"
     t.integer  "amount"
     t.string   "interval"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "rcharts", force: :cascade do |t|
-    t.string   "country"
-    t.string   "yearstart"
-    t.string   "yearend"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -95,6 +87,9 @@ ActiveRecord::Schema.define(version: 20160603153441) do
     t.string   "stripe_card_token"
     t.string   "plan_id"
     t.string   "customer_id"
+    t.string   "exp_month"
+    t.string   "exp_year"
+    t.integer  "invoice_count"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
