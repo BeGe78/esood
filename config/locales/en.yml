@@ -76,7 +76,8 @@ en:
   name_field_warning: "You must enter a name in this field!"
   cgu_field_warning: "You must validate these conditions!"
   other_field_warning: "You must enter this field!"
-
+  wrong_parameter: "One of your parameters is wrong.Please check in the available lists."
+  wrong_worldbank_fetch: "The WorldBank interface does not return result"
 #cgu
   cgu_title: "Terms and Conditions"
   

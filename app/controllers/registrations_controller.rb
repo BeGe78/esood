@@ -43,6 +43,9 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def update
+    cu = Stripe::Customer.retrieve(resource.customer_id)
+    cu.email = params[:user][:email]   #we need to update the email in case it has been modified
+    cu.save
     super
   end
   def destroy
@@ -51,13 +54,6 @@ class RegistrationsController < Devise::RegistrationsController
     cu.delete
 # then delete user with Devise 
     super
-=begin      
-    resource.destroy
-    Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
-    set_flash_message! :notice, :destroyed
-    yield resource if block_given?
-    respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
-=end
   end
 
 def redirect_to_back_or_default(*args)

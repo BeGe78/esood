@@ -76,6 +76,8 @@ fr:
   name_field_warning: "Vous devez saisir un nom dans ce champs!"
   cgu_field_warning: "Vous devez valider ces conditions!"
   other_field_warning: "Vous devez saisir ce champs!"
+  wrong_parameter: "Un de vos paramètres est incorrect. Merci de vérifier dans les listes disponibles."
+  wrong_worldbank_fetch: "L'interface de la Banque Mondiale ne retourne pas de donnée"
   
 #cgu
   cgu_title: "Conditions d'utilisation"

@@ -21,6 +21,7 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
         @selector = Selector.new
     end
     def create
+        begin
         @indicator_base = Indicator.where(language: I18n.locale).order(:topic , :id1).all
         @country_base = Country.where(language: I18n.locale).order(:type , :name).all
         @selector = Selector.new(selector_params)
@@ -31,10 +32,19 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
         id_country2 = params[:selector].values[2]
         @country2 = Country.find(id_country2).iso2code
         @country2_name = Country.find(id_country2).name
+        rescue ActiveRecord::RecordNotFound => e
+           flash[:notice] = t('wrong_parameter')
+           redirect_to new_selector_path and return
+        end
         @period = params[:selector].values[3]
 #        render plain: params[:selector].inspect
+        begin
         @results1 = WorldBank::Data.country(@country1).indicator(@indicator).dates(@period).fetch # on peut rajouter .language('fr') mais il faut le mettre avant le fetch mais il y a un bug
-        @results2 = WorldBank::Data.country(@country2).indicator(@indicator).dates(@period).fetch 
+        @results2 = WorldBank::Data.country(@country2).indicator(@indicator).dates(@period).fetch
+        rescue Exception => e
+           flash[:notice] = t('wrong_worldbank_fetch')
+           redirect_to new_selector_path and return
+        end
         v = Array.new
         v1 = Array.new
         v2 = Array.new
