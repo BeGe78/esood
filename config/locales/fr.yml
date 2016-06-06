@@ -56,6 +56,8 @@ fr:
   monthly_subscription: "Souscription mensuel: 30€"
   yearly_subscription:  "Souscription annuel: 300€"
   email_allready_used: "Email déjà utilisé"
+  usage_condition_prefix: "merci de confirmé que vous avez vérifié les conditions d'usage"
+  usage_condition: "conditions d'usage"
   
 #email  
   Welcome: "Bienvenu sur ESoOD "
@@ -68,6 +70,8 @@ fr:
   account_lock_comment1: "Votre compte est bloqué à cause d'un trop grand nombre de tentative de connection."
   account_lock_comment2: "Ckiquez sur le lien ci-dessous pour le débloquer:"
   name_field_warning: "Vous devez saisir un nom dans ce champs!"
+  cgu_field_warning: "Vous devez valider ces conditions!"
+  other_field_warning: "Vous devez saisir ce champs!"
   
 #footer  
   about: "A propos"

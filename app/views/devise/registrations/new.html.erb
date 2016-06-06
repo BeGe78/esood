@@ -1,13 +1,13 @@
 <h1><%= t('register') %> </h1>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for resource, as: resource_name, url: registration_path(resource_name) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :stripe_card_token %>
   <%= f.hidden_field :plan_id  %>
  
   <div class="form-group" style="width: 20%;">
     <%= f.label t('Name') %>
-    <%= f.text_field :name, class: 'form-control', :required => true %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
 
   <div class="form-group"  style="width: 20%;">
@@ -21,11 +21,38 @@
     <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
   </div>
 <br>
-  <div class="form-group" style="width: 20%;">
-      <%= f.check_box :remember_me %>
-      <%= f.label t('remember_me') %>
+  <div class="form-group" style="width: 60%;">
+      <%= f.check_box :remember_me, :required => true, onclick: "show_stripe_button()" %>
+      <%= f.label t('usage_condition_prefix') %>
+      <button type="button" class="btn btn-secondary-outline btn-sm" data-toggle="modal" data-target="#cgu">
+          <%= image_tag "view-list.png" %>
+       </button>
   </div>
+  <div class="modal fade" id="cgu" tabindex="-1">
+   <div class="modal-dialog" role="document">
+      <div style="font-size: 11px;" class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title"><%= t('about')%></h4>
+         </div>
+   <div class="modal-body">
+   <h1><%= t('longtitle') %></h1>
+   <h2><%= t('about_comment') %></h2>
+   <ul>
+     <li>World Bank Open Data</li>
+     <li>Ruby On Rails</li>
+     <li>Ruby gem: world_bank, rserve</li>
+     <li>R Package</li>
+   </ul>
+      </div> 
+      </div> 
+      </div>
+   </div>
+ 
 <br>
+<div name="stripe_button" id="stripe_button" style="display:none">
 <script
   src="https://checkout.stripe.com/checkout.js" class="stripe-button" id="button-month"
   data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
@@ -51,28 +78,18 @@
   data-amount="30000"
   data-allow-remember-me="false">
 </script>
-
-<br><br>
+</div>
 
 <% end %>
-<br><br>
 
 <script type="text/javascript">
-$(document).ready(function () {
-    var intputElements = document.getElementsByTagName("INPUT");
-    for (var i = 0; i < intputElements.length; i++) {
-        intputElements[i].oninvalid = function (e) {
-            e.target.setCustomValidity("");
-            if (!e.target.validity.valid) {
-                if (e.target.id == "user_name") {
-                    e.target.setCustomValidity("<%= t('name_field_warning') %>");
-                }
-                else {
-                    e.target.setCustomValidity("This field cannot be left blank");
-                }
-            }
-        };
-    }
+   function show_stripe_button() {
+      console.log( "#stripe_button show" );
+      $("#stripe_button").show();   
+ }
+</script>
+
+<script type="text/javascript">
     setTimeout(function() {
       $('.stripe-button-el:first').click(function() {
       console.log( "month_plan" );
@@ -83,5 +100,4 @@ $(document).ready(function () {
       $('#user_plan_id').val("day-plan");
       });
     }, 3000);
-})
 </script>
