@@ -107,6 +107,7 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
                  })
         
 #__________Statistics______________
+        begin
         c = Rserve::Connection.new
         c.assign("year", y_to_i)
         c.assign("vect1", v1)        
@@ -120,6 +121,10 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
         @coeflm3_2 = c.eval("summary(lm(vect2 ~ year))$r.squared ")
         @meanrate1 = (@coeflm1[1]/@mean1.to_ruby) * 100
         @meanrate2 = (@coeflm2[1]/@mean2.to_ruby) * 100
+        rescue Exception => e
+           flash[:notice] = t('rserve_problem')
+           redirect_to new_selector_path and return
+        end
  #       render plain: @coeflm1.inspect
  #       puts(@mean1.to_ruby, @mean2.to_ruby, @cor.to_ruby, @coeflm1[1],@coeflm1[0], @coeflm2[1],@coeflm2[0],@coeflm3_1.to_ruby,@coeflm3_2.to_ruby)       
  #       plot = c.eval("plot(year,vect)")

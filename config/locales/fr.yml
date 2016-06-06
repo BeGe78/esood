@@ -78,6 +78,7 @@ fr:
   other_field_warning: "Vous devez saisir ce champs!"
   wrong_parameter: "Un de vos paramètres est incorrect. Merci de vérifier dans les listes disponibles."
   wrong_worldbank_fetch: "L'interface de la Banque Mondiale ne retourne pas de donnée"
+  rserve_problem: "Problème du moteur de statistique Rserve. Re-essayez plus tard et si le problème persiste, contactez l'administrateur."
   
 #cgu
   cgu_title: "Conditions d'utilisation"

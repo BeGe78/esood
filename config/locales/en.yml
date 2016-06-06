@@ -78,6 +78,7 @@ en:
   other_field_warning: "You must enter this field!"
   wrong_parameter: "One of your parameters is wrong.Please check in the available lists."
   wrong_worldbank_fetch: "The WorldBank interface does not return result"
+  rserve_problem: "Problem with Rserve statistics engine. Please retry later and if the problem persists, contact the administrator."
 #cgu
   cgu_title: "Terms and Conditions"
   
