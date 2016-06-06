@@ -58,6 +58,10 @@ en:
   email_allready_used: "Email allready used"
   usage_condition_prefix: "Subscription and confirmation that you have checked the terms and conditions"
   usage_condition: "usage conditions"
+  are_you_sure: "Are you sure?"
+  confirm_title: "Confirm your action"
+  confirm_commit: "Continue"
+  confirm_cancel: "Cancel"
 
   #email  
   Welcome: "Welcome on ESoOD "

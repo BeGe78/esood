@@ -42,6 +42,7 @@ gem 'devise'
 gem 'figaro'
 gem 'cancancan'
 gem 'stripe'
+gem 'data-confirm-modal'
 
 
 # Use ActiveModel has_secure_password
