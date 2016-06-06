@@ -35,8 +35,8 @@ en:
 #devise registration
   Name: "Name"
   Email: "Email"
-  Password: "Password"
-  Password_confirmation: "Password confirmation"
+  Password: "Password*"
+  Password_confirmation: "Password confirmation*"
   current_password: "current password"
   current_password_comment: "(we need your current password to confirm your changes)"
   new_password_comment: "(leave blank if you don't want to change it)"
@@ -56,7 +56,7 @@ en:
   monthly_subscription: "Monthly subscription: 30€"
   yearly_subscription:  "Yearly subscription: 300€"
   email_allready_used: "Email allready used"
-  usage_condition_prefix: "please confirm that you have checked the usage conditions"
+  usage_condition_prefix: "Subscription and confirmation that you have checked the terms and conditions"
   usage_condition: "usage conditions"
 
   #email  

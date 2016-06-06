@@ -19,6 +19,7 @@
   <div class="form-group"  style="width: 20%;">
     <%= f.label t('Password_confirmation') %>
     <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+    <span class="help-block"><%= @minimum_password_length %> <%= t('characters_minimum') %></span>
   </div>
 <br>
   <div class="form-group" style="width: 60%;">

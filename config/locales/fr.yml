@@ -35,8 +35,8 @@ fr:
 #devise registration
   Name: "Nom"
   Email: "Email"
-  Password: "Mot de passe"
-  Password_confirmation: "Confirmation Mot de passe"
+  Password: "Mot de passe*"
+  Password_confirmation: "Confirmation Mot de passe*"
   current_password: "mot de passe actuel"
   current_password_comment: "(pour confirmer vos changements, entrez votre mot de passe atuel)"
   new_password_comment: "(Ne mettez rien si vous ne voulez pas changer de mot de passe)"
@@ -56,7 +56,7 @@ fr:
   monthly_subscription: "Souscription mensuel: 30€"
   yearly_subscription:  "Souscription annuel: 300€"
   email_allready_used: "Email déjà utilisé"
-  usage_condition_prefix: "merci de confirmé que vous avez vérifié les conditions d'usage"
+  usage_condition_prefix: "Souscription et confirmation que vous avez vérifié les conditions d'usage"
   usage_condition: "conditions d'usage"
   
 #email  
