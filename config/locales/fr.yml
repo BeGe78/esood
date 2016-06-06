@@ -73,6 +73,9 @@ fr:
   cgu_field_warning: "Vous devez valider ces conditions!"
   other_field_warning: "Vous devez saisir ce champs!"
   
+#cgu
+  cgu_title: "Conditions d'utilisation"
+  
 #footer  
   about: "A propos"
   about_comment: "Ce site est développé uniquement à base de logiciel Open Source et des données ouvertes."
