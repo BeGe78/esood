@@ -56,13 +56,17 @@ en:
   monthly_subscription: "Monthly subscription: 30€"
   yearly_subscription:  "Yearly subscription: 300€"
   email_allready_used: "Email allready used"
+  password_confirmation_error: "Passwords do not match. Please check and retry."
+  password_blanck_error: "Passwords cannot be blanck. Please check and retry."
+  name_blanck_error: "Name cannot be blanck. Please check and retry."
+  user_parameter_error: "One of your input is wrong. Please check and retry."
   usage_condition_prefix: "Subscription and confirmation that you have checked the terms and conditions"
   usage_condition: "usage conditions"
   are_you_sure: "Are you sure?"
   confirm_title: "Confirm your action"
   confirm_commit: "Continue"
   confirm_cancel: "Cancel"
-
+  
   #email  
   Welcome: "Welcome on ESoOD "
   confirm_comment: "You can confirm your account email through the link below:"
@@ -79,6 +83,9 @@ en:
   wrong_parameter: "One of your parameters is wrong.Please check in the available lists."
   wrong_worldbank_fetch: "The WorldBank interface does not return result"
   rserve_problem: "Problem with Rserve statistics engine. Please retry later and if the problem persists, contact the administrator."
+  stripe_error: "Problem with User administration. Please retry later and if the problem persists, contact the administrator."
+  stripe_card_error: "Your credit card is refused. Please check your card and register again."
+  
 #cgu
   cgu_title: "Terms and Conditions"
   

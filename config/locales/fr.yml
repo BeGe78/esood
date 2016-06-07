@@ -55,7 +55,11 @@ fr:
   Unhappy: "Pas satisfait?"
   monthly_subscription: "Souscription mensuel: 30€"
   yearly_subscription:  "Souscription annuel: 300€"
-  email_allready_used: "Email déjà utilisé"
+  email_allready_used: "Email déjà utilisée"
+  password_confirmation_error: "Les mots de passe ne concordent pas. Merci de vérifier et de réessayer."
+  password_blanck_error: "Les mots de passe ne peuvent être vide. Merci de vérifier et de réessayer."
+  name_blanck_error: "Le nom ne peut être vide. Merci de vérifier et de réessayer."
+  user_parameter_error: "Une de vos saisies est erronée. Merci de vérifier et de réessayer."
   usage_condition_prefix: "Souscription et confirmation que vous avez vérifié les conditions d'usage"
   usage_condition: "conditions d'usage"
   are_you_sure: "Etes vous sûr?"
@@ -79,6 +83,8 @@ fr:
   wrong_parameter: "Un de vos paramètres est incorrect. Merci de vérifier dans les listes disponibles."
   wrong_worldbank_fetch: "L'interface de la Banque Mondiale ne retourne pas de donnée"
   rserve_problem: "Problème du moteur de statistique Rserve. Re-essayez plus tard et si le problème persiste, contactez l'administrateur."
+  stripe_error: "Problème avec la gestion utilisateurs. Re-essayez plus tard et si le problème persiste, contactez l'administrateur."
+  stripe_card_error: "Votre carte est refusée. Merci de vérifier vos numéros."
   
 #cgu
   cgu_title: "Conditions d'utilisation"
