@@ -29,11 +29,11 @@ en:
   login: "Log in"
   logout: "Log out"
   profile: "Profile"
-  register: "Register"
+  register: "Suscribe"
   back: "Back"
   
 #devise registration
-  Name: "Name"
+  Name: "Name*"
   Email: "Email"
   Password: "Password*"
   Password_confirmation: "Password confirmation*"
@@ -41,7 +41,7 @@ en:
   current_password_comment: "(we need your current password to confirm your changes)"
   new_password_comment: "(leave blank if you don't want to change it)"
   remember_me: "remember_me"
-  characters_minimum: "characters minimum"
+  characters_minimum: "characters/numbers minimum"
   Forgot_your_password: "Forgot your password?"
   did_not_receive_confirmation_instructions: "Didn't receive confirmation instructions?"
   Resend_confirmation_instructions: "Resend confirmation instructions"
@@ -84,10 +84,21 @@ en:
   wrong_worldbank_fetch: "The WorldBank interface does not return result"
   rserve_problem: "Problem with Rserve statistics engine. Please retry later and if the problem persists, contact the administrator."
   stripe_error: "Problem with User administration. Please retry later and if the problem persists, contact the administrator."
-  stripe_card_error: "Your credit card is refused. Please check your card and register again."
+  stripe_card_error: "Your credit card is refused. Please check your card and suscribe again."
   
 #cgu
   cgu_title: "Terms and Conditions"
+  
+#subscription comments
+  subscription: "Subscriptions"
+  subscription_comment: "This site proposes two types of subscription:"
+  condition: "Conditions"
+  condition_comment1: "The fee is charged at the beginning of each period but you can cancel your subscription at any moment."
+  condition_comment2: "Please fill the form, verify the terms and conditions and click to access to the subscription buttons."
+  subscription_month: "Monthly subscription:"
+  subscription_year: "Yearly  subscription:"
+  subscription_month_rate: " 30€"
+  subscription_year_rate: " 300€"
   
 #footer  
   about: "About"

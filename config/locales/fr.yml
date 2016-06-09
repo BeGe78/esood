@@ -29,11 +29,11 @@ fr:
   login: "Connection"
   logout: "Deconnection"
   profile: "Profil"
-  register: "Enregistrement"
+  register: "Abonnement"
   back: "Retour"
   
 #devise registration
-  Name: "Nom"
+  Name: "Nom*"
   Email: "Email"
   Password: "Mot de passe*"
   Password_confirmation: "Confirmation Mot de passe*"
@@ -41,7 +41,7 @@ fr:
   current_password_comment: "(pour confirmer vos changements, entrez votre mot de passe atuel)"
   new_password_comment: "(Ne mettez rien si vous ne voulez pas changer de mot de passe)"
   remember_me: "se souvenir de moi"
-  characters_minimum: "caractères au minimum"
+  characters_minimum: "caractères/chiffres au minimum"
   Forgot_your_password: "Mot de passe oublié?"
   did_not_receive_confirmation_instructions: "Instructions de confirmation non reçues?"
   Resend_confirmation_instructions: "Renvoyer les instructions de confirmation"
@@ -53,15 +53,15 @@ fr:
   Change_my_passord: "Changer mon mot de passe"
   Unlock_my_account: "Débloquer mon compte"
   Unhappy: "Pas satisfait?"
-  monthly_subscription: "Souscription mensuel: 30€"
-  yearly_subscription:  "Souscription annuel: 300€"
+  monthly_subscription: "Abonnement mensuel: 30€"
+  yearly_subscription:  "Abonnement annuel: 300€"
   email_allready_used: "Email déjà utilisée"
   password_confirmation_error: "Les mots de passe ne concordent pas. Merci de vérifier et de réessayer."
   password_blanck_error: "Les mots de passe ne peuvent être vide. Merci de vérifier et de réessayer."
   name_blanck_error: "Le nom ne peut être vide. Merci de vérifier et de réessayer."
   user_parameter_error: "Une de vos saisies est erronée. Merci de vérifier et de réessayer."
-  usage_condition_prefix: "Souscription et confirmation que vous avez vérifié les conditions d'usage"
-  usage_condition: "conditions d'usage"
+  usage_condition_prefix: "Abonnement et confirmation que vous avez vérifié les conditions d'utilisation"
+  usage_condition: "conditions d'utilisation"
   are_you_sure: "Etes vous sûr?"
   confirm_title: "Confirmez votre action"
   confirm_commit: "Continuez"
@@ -87,7 +87,18 @@ fr:
   stripe_card_error: "Votre carte est refusée. Merci de vérifier vos numéros."
   
 #cgu
-  cgu_title: "Conditions d'utilisation"
+  cgu_title: "Conditions générales d'utilisation"
+  
+#subscription comments
+  subscription: "Abonnements"
+  subscription_comment: "Ce site propose deux types d'abonnement:"
+  condition: "Conditions"
+  condition_comment1: "L'abonnement est facturé en début de chaque période mais vous pouvez stopper votre abonnement à tout moment."
+  condition_comment2: "Remplissez la grille, vérifier les conditions d'utilisation et cliquez pour accéder aux boutons d'abonnement."
+  subscription_month: "Abonnement mensuel:"
+  subscription_year: "Abonnement annuel:"
+  subscription_month_rate: " 30€"
+  subscription_year_rate: " 300€"
   
 #footer  
   about: "A propos"
