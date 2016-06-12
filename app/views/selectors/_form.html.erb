@@ -7,10 +7,10 @@
        <button type="button" class="btn btn-secondary-outline btn-sm" data-toggle="modal" data-target="#indicator_list">
           <%= image_tag "view-list.png" %>
        </button><br> 
-    <%= f.hidden_field :indicator, :id => "real_indicator" %>
+    <%= f.hidden_field :indicator, :id => "real_indicator"%>
     <%= autocomplete_field_tag 'fake_indicator', '',
         autocomplete_indicator_id1_selectors_path, 'data-auto-focus' => true,
-        :size => 20, :id_element => "#real_indicator", :value => @indicator %>
+        id_element: "#real_indicator", value: @indicator, class: 'form-control'  %>
   </p>
   
   <p>
@@ -22,7 +22,7 @@
     <%= f.hidden_field :country1, :id => "real_country1" %>
     <%= autocomplete_field_tag 'fake_country1', '',
         autocomplete_country_name_selectors_path, 'data-auto-focus' => true,
-        :size => 20, :id_element => "#real_country1", :value => @country1_name%>
+        id_element: "#real_country1", value: @country1_name, class: 'form-control'%>
   </p>
   
   <p>
@@ -31,13 +31,13 @@
     <%= f.hidden_field :country2, :id => "real_country2" %>
     <%= autocomplete_field_tag 'fake_country2', '',
         autocomplete_country_name_selectors_path, 'data-auto-focus' => true,
-        :size => 20, :id_element => "#real_country2", :value => @country2_name%>
+        id_element: "#real_country2", value: @country2_name, class: 'form-control'%>
   </p>
  
   <p>
     <%= f.label t('period') %>
     <span class="has-tooltip" data-toggle="tooltip" data-container="body" data-placement="right" title="<%= t('period_help') %>"><%= image_tag "question_mark.png" %></span><br>
-    <%= f.text_field :period %>
+    <%= f.text_field :period, class: 'form-control' %>
   </p>
   <%= f.submit t('display')%>
 <% end %>
