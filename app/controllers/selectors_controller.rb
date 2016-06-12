@@ -16,6 +16,9 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
     end
 
     def new
+#retrieve language from path in case of error redirection
+        I18n.locale = "en" if request.path[1..2] = "en"
+        I18n.locale = "fr" if request.path[1..2] = "fr"
         @indicator_base = Indicator.accessible_by(current_ability).where(language: I18n.locale).order(:topic , :id1).all
         @country_base = Country.accessible_by(current_ability).accessible_by(current_ability).where(language: I18n.locale).order(:type , :name).all
         @selector = Selector.new
@@ -34,7 +37,7 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
         @country2_name = Country.find(id_country2).name
         rescue ActiveRecord::RecordNotFound => e
            flash[:notice] = t('wrong_parameter')
-           redirect_to new_selector_path and return
+           redirect_to new_selector_path( locale: I18n.locale )  and return
         end
         @period = params[:selector].values[3]
 #        render plain: params[:selector].inspect
