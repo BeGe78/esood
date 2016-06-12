@@ -17,8 +17,9 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
 
     def new
 #retrieve language from path in case of error redirection
-        I18n.locale = "en" if request.path[1..2] = "en"
-        I18n.locale = "fr" if request.path[1..2] = "fr"
+        I18n.locale = "en" if request.path[1..2] == "en"
+        I18n.locale = "fr" if request.path[1..2] == "fr"
+
         @indicator_base = Indicator.accessible_by(current_ability).where(language: I18n.locale).order(:topic , :id1).all
         @country_base = Country.accessible_by(current_ability).accessible_by(current_ability).where(language: I18n.locale).order(:type , :name).all
         @selector = Selector.new
@@ -39,7 +40,10 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
            flash[:notice] = t('wrong_parameter')
            redirect_to new_selector_path( locale: I18n.locale )  and return
         end
-        @period = params[:selector].values[3]
+# format period for WorldBank        
+        @period1 = params[:selector].values[3].to_s
+        @period2 = params[:selector].values[4].to_s
+        @period = @period1 + ":" + @period2
 #        render plain: params[:selector].inspect
         begin
         @results1 = WorldBank::Data.country(@country1).indicator(@indicator).dates(@period).fetch # on peut rajouter .language('fr') mais il faut le mettre avant le fetch mais il y a un bug
@@ -135,6 +139,6 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
 
     private
     def selector_params
-      params.require(:selector).permit(:indicator, :country1, :country2, :period)
+      params.require(:selector).permit(:indicator, :country1, :country2, :year_begin, :year_end)
     end
 end

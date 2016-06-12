@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160605063246) do
+ActiveRecord::Schema.define(version: 20160612151246) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "id1"
@@ -57,9 +57,10 @@ ActiveRecord::Schema.define(version: 20160605063246) do
     t.string   "indicator"
     t.string   "country1"
     t.string   "country2"
-    t.string   "period"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "year_begin"
+    t.integer  "year_end"
   end
 
   create_table "users", force: :cascade do |t|

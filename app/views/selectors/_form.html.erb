@@ -35,9 +35,14 @@
   </p>
  
   <p>
-    <%= f.label t('period') %>
+    <%= f.label t('year_begin') %>
     <span class="has-tooltip" data-toggle="tooltip" data-container="body" data-placement="right" title="<%= t('period_help') %>"><%= image_tag "question_mark.png" %></span><br>
-    <%= f.text_field :period, class: 'form-control' %>
+    <%= f.number_field :year_begin, class: 'form-control', in: 1960..2020 %>
+  </p>
+  <p>
+    <%= f.label t('year_end') %>
+    <span class="has-tooltip" data-toggle="tooltip" data-container="body" data-placement="right" title="<%= t('period_help') %>"><%= image_tag "question_mark.png" %></span><br>
+    <%= f.number_field :year_end, class: 'form-control', in: 1960..2020 %>
   </p>
   <%= f.submit t('display')%>
 <% end %>
