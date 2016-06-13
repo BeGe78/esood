@@ -1,6 +1,8 @@
 <%= render 'form' %>
-<div id="title" style="float: left;  margin-left: 0%; width: 70%; ">
+<div id="title" style="float: left;  margin-left: 0%; width: 80%; ">
 <h2><%= @title %></h2>
+</div>
+<div id="print" style="position: relative; float: left; margin-bottom: -20px;">
 <% if can? :print_chart, @selector %>
 <span id="print_link" onclick="displayPDF()"><%= image_tag "printer.png" %></span>
 <% end %>
@@ -10,12 +12,13 @@
 </div>
 <div id="stats" style="margin-top: 30%;">  
 <td>
-  <span style="font-weight: bold;"><%= @indicator_local.name %></span>
+  <span style="float: left; font-weight: bold;"><%= @indicator_local.name %></span>
   <span class="has-tooltip" data-toggle="tooltip" title="<%= @indicator_local.note %>">
-    <%= image_tag "question_mark.png" %>
+    <%= image_tag "question_mark.png", style: "float: left;" %>
   </span>
 </td>
-<table id="stat_table" border="1">
+<br>
+<table id="stat_table" border="1" style="float: left;">
   <thead>
     <tr>
         <th width="20%"><%= t('country')%></th>

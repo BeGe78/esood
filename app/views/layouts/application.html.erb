@@ -23,7 +23,7 @@
     <div class="container" style=" width: 100%; ">
       <%= yield %>
     </div> 
-    <div class="container">
+    <div class="flash_message">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>">
           <font color="red">
