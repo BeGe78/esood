@@ -70,8 +70,8 @@
   key[0] = gon.country1;
   key[1] = gon.country2;
   for (var i=0; i<gon.data1.length; ++i) { 
-     datachar1[i] = String(gon.data1[i]);
-     datachar2[i] = String(gon.data2[i]);     
+     datachar1[i] = String(parseFloat(gon.data1[i].toFixed(2)));
+     datachar2[i] = String(parseFloat(gon.data2[i].toFixed(2)));     
   }
   datachar = datachar1.concat(datachar2)
   xaxispos = gon.xaxispos;
@@ -87,6 +87,7 @@ var line = new RGraph.Line({
    backgroundGridVlines: false,
    labels: gon.year,
    xaxispos: xaxispos,
+   numxticks: gon.numxticks,
    ylabelsInside: true,
    textSize: 8,
    spline: true, 

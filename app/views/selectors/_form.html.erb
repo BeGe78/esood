@@ -44,7 +44,9 @@
     <span class="has-tooltip" data-toggle="tooltip" data-container="body" data-placement="right" title="<%= t('period_help') %>"><%= image_tag "question_mark.png" %></span><br>
     <%= f.number_field :year_end, class: 'form-control', in: 1960..2020 %>
   </p>
+  <div style="text-align: center;">
   <%= f.submit t('display')%>
+  </div>
 <% end %>
 </div>
 <div class="modal fade" id="indicator_list" tabindex="-1">

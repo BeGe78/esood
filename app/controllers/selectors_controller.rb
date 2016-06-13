@@ -80,6 +80,13 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
           when 10..12 then 1000000
           else 1000000000  
         end
+#   compute the unit        
+         @unit = case l                                 
+          when 1..6 then "unit"
+          when 7..9 then t('thousand')
+          when 10..12 then t('million')
+          else t('billion')  
+        end        
         @scale = 1 if @percent                           # rectify scale for percentage
         v1.collect! {|i| i / @scale}                     # apply the scale
         v2.collect! {|i| i / @scale}
@@ -95,10 +102,15 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
         @country1_local = Country.where(iso2code: @country1, language: I18n.locale).take
         @country2_local = Country.where(iso2code: @country2, language: I18n.locale).take
         @indicator_local = Indicator.where(id1: @indicator, language: I18n.locale).take
-        puts (@country1_local)
+        @title_scale_unit = " "
+        if @scale > 1      #only show scale and unit if > 1 else show nothing
+            then @title_scale_unit =
+                      " - " << t('with_scale') << ": 1/" << number_with_delimiter(@scale, locale: :fr) \
+                   << " - " << t('with_unit') << ": " << @unit
+        end
         @title = t('compare') << ": " << @country1_local.name << "/" << @country2_local.name \
                  << " - " << t('for_indicator') << ": " << @indicator_local.name \
-                 << " - " << t('with_scale') << ": 1/" << number_with_delimiter(@scale, locale: :fr)
+                 << @title_scale_unit
 # send data in js format        
         gon.push({                                       
                   :title => @title,
@@ -106,6 +118,7 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
                   :data1 => v1,
                   :data2 => v2,
                   :year => y, 
+                  :numxticks => y.length - 1,
                   :country1 => @country1_local.name,
                   :country2 => @country2_local.name,
                   :indicator => @indicator_local.name,
@@ -133,7 +146,7 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
            redirect_to new_selector_path and return
         end
  #       render plain: @coeflm1.inspect
- #       puts(@mean1.to_ruby, @mean2.to_ruby, @cor.to_ruby, @coeflm1[1],@coeflm1[0], @coeflm2[1],@coeflm2[0],@coeflm3_1.to_ruby,@coeflm3_2.to_ruby)       
+        puts(@numticks)       
  #       plot = c.eval("plot(year,vect)")
     end
 
