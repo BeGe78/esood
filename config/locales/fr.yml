@@ -89,7 +89,7 @@ fr:
   stripe_card_error: "Votre carte est refusée. Merci de vérifier vos numéros."
   
 #cgu
-  cgu_title: "Conditions générales d'utilisation"
+  cgu_title: "Conditions Générales d'Utilisation"
   
 #subscription comments
   subscription: "Abonnements"
