@@ -30,14 +30,16 @@ fr:
   logout: "Deconnection"
   profile: "Profil"
   register: "Abonnement"
+  modify: "Modification"
   back: "Retour"
   
 #devise registration
   Name: "Nom*"
+  Name1: "Nom"
   Email: "Email"
   Password: "Mot de passe*"
   Password_confirmation: "Confirmation Mot de passe*"
-  current_password: "mot de passe actuel"
+  current_password: "mot de passe actuel*"
   current_password_comment: "(pour confirmer vos changements, entrez votre mot de passe atuel)"
   new_password_comment: "(Ne mettez rien si vous ne voulez pas changer de mot de passe)"
   remember_me: "se souvenir de moi"

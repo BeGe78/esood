@@ -4,12 +4,12 @@
   <%= devise_error_messages! %>
 
   <div class="form-group" style="width: 20%;">
-    <%= f.label t('Name') %>
-    <%= f.text_field :name, class: 'form-control' %>
+    <%= f.label t('Name1') %>
+    <%= f.text_field :name, class: 'form-control', autofocus: true %>
   </div>
   <div class="form-group" style="width: 20%;">
     <%= f.label t('Email') %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, readonly: true, style: "background-color: #FCECC4;" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -17,12 +17,12 @@
   <% end %>
 
   <div class="form-group" style="width: 20%;">
-    <%= f.label t('Password') %> <i style="font-size: 80%;"><%= f.label t('new_password_comment') %></i><br />
+    <%= f.label t('Password1') %> <i style="font-size: 80%;"><%= f.label t('new_password_comment') %></i><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="form-group" style="width: 20%;">
-    <%= f.label t('Password_confirmation') %><br />
+    <%= f.label t('Password_confirmation1') %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
@@ -32,7 +32,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit t('register') %>
+    <%= f.submit t('modify') %>
   </div>
 <% end %>
 
