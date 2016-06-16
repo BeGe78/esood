@@ -45,7 +45,7 @@ Rails.application.configure do
   # config.force_ssl = true
   
   # Google analytics code
-GA.tracker = "UA-78195871-1"
+  GA.tracker = "UA-78195871-1"
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
