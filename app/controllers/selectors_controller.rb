@@ -111,8 +111,10 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
         @title = t('compare') << ": " << @country1_local.name << "/" << @country2_local.name \
                  << " - " << t('for_indicator') << ": " << @indicator_local.name \
                  << @title_scale_unit
-#log event to google analytics
-        ga_event = GoogleAnalytics::Events::TrackEvent.new("selectors","display",@title)
+#set user email for event of google analytics
+        @current_user_email = "no_user"
+        @current_user_email = current_user.email if user_signed_in?
+
 # send data in js format        
         gon.push({                                       
                   :title => @title,

@@ -99,7 +99,13 @@ var line = new RGraph.Line({
    line.Draw();
 </script>
 <script type="text/javascript">                        // printing script
-<%= analytics_track_event "Selectors", "Show", @title %>  // send event to google analytics
+<%= analytics_track_event "Selectors", "Show",
+  @current_user_email + ":" + 
+  @selector.year_begin.to_s + ":" + 
+  @selector.year_end.to_s + ":" +
+  @indicator_local.id1 + ":" +
+  @country1_name + ":" +
+  @country2_name %>  // send event to google analytics
 function displayPDF() {
    var myCanvas = document.getElementById("line");     // get the graph as an image
    var myUrl = myCanvas.toDataURL();
