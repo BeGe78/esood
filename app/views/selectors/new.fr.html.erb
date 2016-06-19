@@ -1,7 +1,7 @@
 <%= render 'form' %>
 <div id="site_summary" style="float: left; width:40%; border: thin solid black; margin-left:1%;">
 <h1>Contenu</h1>
-Ce portail fournit des éléments de comparaison de données économiques entre deux pays ou zones géographiques. Les données sont extraites de la base des Données Ouvertes de la Banque Mondiale. Les informations affichées sont constituées d'un graphique permettant de visualiser ce comparatif et de résultats statistiques (moyennes, corrélations, tendances) permettant de mieux les appréhender et de faire des prédictions. <br>
+Ce portail fournit des éléments de comparaison de données économiques pour des pays ou zones géographiques. Les données sont extraites de la base des Données Ouvertes de la Banque Mondiale. Les informations affichées sont constituées d'un graphique permettant de visualiser ce comparatif et de résultats statistiques (moyennes, corrélations, tendances) permettant de mieux les appréhender et de faire des prédictions. <br>
 <%= image_tag "fr_site.png", style: "width:90%; margin-left: 5%;" %>
 <br><br>
 <% if can? :show_registration, @selector %>
@@ -12,19 +12,21 @@ Les utilisateurs non enregistés ne peuvent voir qu'un nombre limité d'indicate
 </div>
 <div id="indicator_summary" style="float: left; width:40%; border: thin solid black; margin-left:1%;">
 <h1>Utilisation</h1>
-Pour lancer une analyse, il suffit de sélectionner un indicateur, deux pays/zones à comparer, la période puis de cliquer sur le bouton [Affiche].<br>
-<span>Les champs Indicateur et Pays1 disposent d'une aide </span>
+Vous pouvez comparer deux pays/zones pour un indicateur donné (bouton [Pays]) ou deux indicateurs pour un pays/zone donné (bouton [Indicateurs]).<br>
+Pour lancer une analyse, il suffit de sélectionner indicateurs, pays/zones à comparer, la période puis de cliquer sur le bouton [Affiche].<br>
+<span>Les champs Indicateur et Pays disposent d'une aide </span>
 <%= image_tag "question_mark.png" %>
 <span> et d'un affichage de la liste des choix disponibles </span>
 <%= image_tag "view-list.png" %>
 <span>. Ces champs se remplissent automatiquement dès que vous tapez deux caractères. </span>
 <ul>
    <li><span style="font-style:italic;">Indicateur:</span> il s'agit de l'identifiant tel que défini par la banque mondiale. La liste proposée est triée par sujet puis par identifiant</li>
-   <li><span style="font-style:italic;">Pays1,Pays2:</span> il s'agit de pays ou zones tel que défini par la banque mondiale. La liste proposée est triée par type (pays puis zones) et ensuite par ordre alphabétique</li>
+   <li><span style="font-style:italic;">Pays:</span> il s'agit de pays ou zones tel que défini par la banque mondiale. La liste proposée est triée par type (pays puis zones) et ensuite par ordre alphabétique</li>
    <li><span style="font-style:italic;">Année début/année fin:</span> constituées de l'année de départ et de l'année de fin sur 4 chiffres.</li>
 </ul>
 Conseils d'utilisation:<br>
   <li style="margin-left: 15px;">Certains indicateurs économiques sont disponibles en monnaie locale et en dollar. Pour les pays de la zone euro on peut utiliser la monnaie locale sinon il faut utiliser le dollar mais les taux de change impactent les résultats.</li>
+  <li style="margin-left: 15px;">Si vous comparez deux indicateurs pour un pays/zone donné, faites attention que les unités et les échelles peuvent être différentes (ex: pourcentage et milliard d'euros).</li>
   <li style="margin-left: 15px;">Les données de la banque mondiale ne sont pas disponibles pour tous les pays/zones et toutes les périodes. Si des valeurs nulles sont affichées, il est préferable de réduire la période.</li>
   <li style="margin-left: 15px;">
   <span>Le sigle </span>

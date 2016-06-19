@@ -1,8 +1,16 @@
-<h1><%= t('charttitle') %></h1>
-<div id="mainform" style="float: right; width:13%; border: thin solid black; margin-right:2%;">
+<div style="width: 77%;float: left;"><h1><%= t('charttitle') %></h1></div>
+<div style="float: left; width: 8%;"><h4><%= t('compare')%></h4></div>
+<div style="display: inline;"><button type="button" id="b_country" class="btn btn-primary btn-sm active" onclick="countries()">
+              <%= t('countries')%>
+              </button></div>
+<div style="display: inline;"><button type="button" id="b_indicator" class="btn btn-primary btn-sm" onclick="indicators()">
+              <%= t('indicators')%>
+              </button></div>              
+<div id="mainform" style="float: right; width:13%; border: thin solid black; margin-right:2%;margin-top: 8px;">
 <%= form_for @selector, url: selectors_path do |f| %>
-  <p>
-    <%= f.label t('indicator') %>
+  <%= f.hidden_field :form_switch  %>
+  <p id="indicator1">
+    <%= f.label t('indicator1') %>
        <span class="has-tooltip" data-toggle="tooltip" data-container="body" data-placement="right" title="<%= t('indicator_help') %>"><%= image_tag "question_mark.png" %></span>
        <button type="button" class="btn btn-secondary-outline btn-sm" data-toggle="modal" data-target="#indicator_list">
           <%= image_tag "view-list.png" %>
@@ -13,7 +21,23 @@
         id_element: "#real_indicator", value: @indicator, class: 'form-control'  %>
   </p>
   
-  <p>
+    <% if @indicator_switch %>
+       <p id="indicator2">
+    <% else %>
+       <p id="indicator2" hidden>
+    <% end %>    
+    <%= f.label t('indicator2') %>
+       <span class="has-tooltip" data-toggle="tooltip" data-container="body" data-placement="right" title="<%= t('indicator_help') %>"><%= image_tag "question_mark.png" %></span>
+       <button type="button" class="btn btn-secondary-outline btn-sm" data-toggle="modal" data-target="#indicator_list">
+          <%= image_tag "view-list.png" %>
+       </button><br> 
+    <%= f.hidden_field :indicator2, :id => "real_indicator2"%>
+    <%= autocomplete_field_tag 'fake_indicator2', '',
+        autocomplete_indicator_id1_selectors_path, 'data-auto-focus' => true,
+        id_element: "#real_indicator2", value: @indicator2, class: 'form-control'  %>
+  </p>
+  
+  <p  id="country1">
     <%= f.label t('country1') %>
     <span class="has-tooltip" data-toggle="tooltip" data-container="body" data-placement="right" title="<%= t('country_help') %>"><%= image_tag "question_mark.png" %></span>
     <button type="button" class="btn btn-secondary-outline btn-sm" data-toggle="modal" data-target="#country_list">
@@ -25,9 +49,16 @@
         id_element: "#real_country1", value: @country1_name, class: 'form-control'%>
   </p>
   
-  <p>
+    <% if @indicator_switch %>
+       <p id="country2" hidden>
+    <% else %>
+       <p id="country2">
+    <% end %>
     <%= f.label t('country2') %>
-    <span class="has-tooltip" data-toggle="tooltip" data-container="body" data-placement="top" title="<%= t('country_help') %>"><%= image_tag "question_mark.png" %></span><br>
+    <span class="has-tooltip" data-toggle="tooltip" data-container="body" data-placement="top" title="<%= t('country_help') %>"><%= image_tag "question_mark.png" %></span>
+    <button type="button" class="btn btn-secondary-outline btn-sm" data-toggle="modal" data-target="#country_list">
+    <%= image_tag "view-list.png" %>
+    </button><br> 
     <%= f.hidden_field :country2, :id => "real_country2" %>
     <%= autocomplete_field_tag 'fake_country2', '',
         autocomplete_country_name_selectors_path, 'data-auto-focus' => true,
@@ -49,6 +80,7 @@
   </div>
 <% end %>
 </div>
+
 <div class="modal fade" id="indicator_list" tabindex="-1">
    <div class="modal-dialog" role="document">
       <div style="font-size: 11px;" class="modal-content">
@@ -148,3 +180,21 @@
    </div> 
    </div>
 </div>
+<script type="text/javascript">
+function indicators() {
+console.log("indicator2");
+$("#b_indicator").addClass("active");
+$("#b_country").removeClass("active");
+$('#selector_form_switch').val('indicator'); 
+$('p#indicator2').show();
+$('p#country2').hide();
+}
+function countries() {
+console.log("country2");
+$("#b_indicator").removeClass("active");
+$("#b_country").addClass("active");
+$('#selector_form_switch').val('country');
+$('p#indicator2').hide();
+$('p#country2').show();
+}
+</script>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160612151246) do
+ActiveRecord::Schema.define(version: 20160618070813) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "id1"
@@ -57,10 +57,12 @@ ActiveRecord::Schema.define(version: 20160612151246) do
     t.string   "indicator"
     t.string   "country1"
     t.string   "country2"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "year_begin"
     t.integer  "year_end"
+    t.string   "indicator2"
+    t.string   "form_switch"
   end
 
   create_table "users", force: :cascade do |t|

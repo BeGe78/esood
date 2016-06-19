@@ -1,7 +1,7 @@
 <%= render 'form' %>
 <div id="site_summary" style="float: left; width:40%; border: thin solid black; margin-left:1%;">
 <h1>Summary</h1>
-This site provides comparison information of economic data between two countries or areas. Data are extracted from World Bank open data set. The portal displays a chart to visualize the comparison and statistical data (means, correlations, trends) in order to better understand the data and make predictions.<br>
+This site provides comparison information of economic data for countries or geographic areas. Data are extracted from World Bank open data set. The portal displays a chart to visualize the comparison and statistical data (means, correlations, trends) in order to better understand the data and make predictions.<br>
 <%= image_tag "en_site.png", style: "width:90%; margin-left: 5%;" %>
 <br><br>
 <% if can? :show_registration, @selector %>
@@ -11,19 +11,21 @@ Unregistered users have access to a limited list of indicators and countries. If
 </div>
 <div id="indicator_summary" style="float: left; width:40%; border: thin solid black; margin-left:1%;">
 <h1>Usage</h1>
-To start an analysis, you just have to select an indicator, two countries or areas, the period and then click on [Display] button.<br>
-<span>The fields Indicator and Country1 have an help </span>
+You can compare two countries/areas for a given indicator ([Countries] button) or two indicators for a given country/area ([Indicators] button].<br>
+To start an analysis, you just have to select indicators, countries or areas, the periods and then click on [Display] button.<br>
+<span>The fields Indicator and Country have an help </span>
 <%= image_tag "question_mark.png" %>
 <span> and a list of all the possible choices </span>
 <%= image_tag "view-list.png" %>
 <span>. These fields are autocompleted as soon as you enter two caracters. </span>
 <ul>
    <li><span style="font-style:italic;">Indicator:</span> it is the indicator identifier as defined by the World Bank. The proposed list is sorted by topic and then by identifier</li>
-   <li><span style="font-style:italic;">Country1,Country2:</span> it is a country or an area as defined by the World Bank. The proposed list is sorted by type (area then country) and alphabetic order</li>
+   <li><span style="font-style:italic;">Country:</span> it is a country or an area as defined by the World Bank. The proposed list is sorted by type (area then country) and alphabetic order</li>
    <li><span style="font-style:italic;">Year begin/year end</span> start year and end year on 4 digits</li>
 </ul>
 Usage tips:<br>
-  <li style="margin-left: 15px;">Some economical indicators are available in local currency and US dollar. For countries of the the euro area one can use the local currency (ie: euro). In other cases, US dollar should be use and change rates are influencing the results.</li>
+  <li style="margin-left: 15px;">Some economical indicators are available in local currency and US dollar. For countries of the euro area one can use the local currency (ie: euro). In other cases, US dollar should be use and change rates are influencing the results.</li>
+  <li style="margin-left: 15px;">When comparing two indicators for a given country/area, take care that units and scales may be differents (ex: percentage compared to billion dollars).</li>
   <li style="margin-left: 15px;">The World Band data are not always available for all countries/areas and all periods. If null values are displayed, it is better to reduce the period range.</li>
   <li style="margin-left: 15px;">
   <span>The mark </span>
