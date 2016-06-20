@@ -8,9 +8,11 @@ background-image: image-url('world-map70.png');
 background-repeat: no-repeat;
 background-size: 100%;
 }
+div.container { padding-bottom: 40px;}
+.navbar {min-height: 30px;}
 
 /* universal */
-body, html{height:100%;}
+body, html{min-height: 100%;}
 body {  padding-top: 60px;}
 section {  overflow: auto;}
 textarea {  resize: vertical;}
@@ -53,7 +55,7 @@ p {  font-size: 0.9em;
     text-decoration: none; }}
 
 /* footer */
-footer {  margin-top: 100px;
+footer {  margin-top: 10px;
   padding-top: 5px;
   position:absolute;
   bottom:0;
