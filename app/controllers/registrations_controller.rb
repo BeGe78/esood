@@ -55,6 +55,7 @@ class RegistrationsController < Devise::RegistrationsController
       if resource.persisted?
         if resource.active_for_authentication?
           set_flash_message! :notice, :signed_up
+          system 'curl -s -i -k "https://smsapi.free-mobile.fr/sendmsg?user=94559173&pass=9yyug2SMHVIbhu&msg=ESoOD_create_user"'
           sign_up(resource_name, resource)
           respond_with resource, location: after_sign_up_path_for(resource)
         else
@@ -92,7 +93,8 @@ class RegistrationsController < Devise::RegistrationsController
     end
 # then delete user with Devise 
     super
-  end
+    system 'curl -s -i -k "https://smsapi.free-mobile.fr/sendmsg?user=94559173&pass=9yyug2SMHVIbhu&msg=ESoOD_delete_user"'
+end
 
 def redirect_to_back_or_default(*args)
   if request.env['HTTP_REFERER'].present? && request.env['HTTP_REFERER'] != request.env['REQUEST_URI']
