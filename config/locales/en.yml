@@ -64,7 +64,7 @@ en:
   password_blanck_error: "Passwords cannot be blanck. Please check and retry."
   name_blanck_error: "Name cannot be blanck. Please check and retry."
   user_parameter_error: "One of your input is wrong. Please check and retry."
-  usage_condition_prefix: "Subscription and confirmation that you have checked the terms and conditions"
+  usage_condition_prefix: "Confirm that you have checked the following Terms and Conditions"
   usage_condition: "usage conditions"
   are_you_sure: "Are you sure?"
   confirm_title: "Confirm your action"

@@ -62,7 +62,7 @@ fr:
   password_blanck_error: "Les mots de passe ne peuvent être vide. Merci de vérifier et de réessayer."
   name_blanck_error: "Le nom ne peut être vide. Merci de vérifier et de réessayer."
   user_parameter_error: "Une de vos saisies est erronée. Merci de vérifier et de réessayer."
-  usage_condition_prefix: "Abonnement et confirmation que vous avez vérifié les conditions d'utilisation"
+  usage_condition_prefix: "Confirmez que vous avez vérifié les Conditions Générales d'Utilisation"
   usage_condition: "conditions d'utilisation"
   are_you_sure: "Etes vous sûr?"
   confirm_title: "Confirmez votre action"
