@@ -10,4 +10,8 @@ class UserMailer < ApplicationMailer
   def destroy_customer_email
     mail(to: 'bgardin@gmail.com', subject: 'Customer deleted on ESoOD')
   end
+  def invoice_email(email,invoice_pdf)
+    attachments.inline['invoice.pdf'] = File.read(invoice_pdf)  
+    mail(to: email, subject: t('ESoOD_Invoice'))
+  end  
 end

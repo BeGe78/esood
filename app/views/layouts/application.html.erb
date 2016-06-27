@@ -23,16 +23,16 @@
     <div class="container" style=" width: 100%; ">
       <%= yield %>
     </div> 
-    <div class="flash_message">
+    <div class="flash_message" >
       <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>">
+        <div class="alert alert-<%= key %>" style=" position: absolute; top: 40px; left: 3px;">
           <font color="red">
           <%= value %>
           </font>
         </div>
       <% end %>
     </div>
-      <%= render 'layouts/footer' %>
+    <%= render 'layouts/footer' %>
     
 <script type="text/javascript">
 $(document).ready(function() {

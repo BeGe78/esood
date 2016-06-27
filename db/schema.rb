@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160618070813) do
+ActiveRecord::Schema.define(version: 20160627085951) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "id1"
@@ -35,6 +35,50 @@ ActiveRecord::Schema.define(version: 20160618070813) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "visible"
+  end
+
+  create_table "invoicing_ledger_items", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.string   "type"
+    t.datetime "issue_date"
+    t.string   "currency",     limit: 3,                           null: false
+    t.decimal  "total_amount",            precision: 20, scale: 4
+    t.decimal  "tax_amount",              precision: 20, scale: 4
+    t.string   "status",       limit: 20
+    t.string   "identifier",   limit: 50
+    t.string   "description"
+    t.datetime "period_start"
+    t.datetime "period_end"
+    t.string   "uuid",         limit: 40
+    t.datetime "due_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "invoicing_line_items", force: :cascade do |t|
+    t.integer  "ledger_item_id"
+    t.string   "type"
+    t.decimal  "net_amount",                precision: 20, scale: 4
+    t.decimal  "tax_amount",                precision: 20, scale: 4
+    t.string   "description"
+    t.string   "uuid",           limit: 40
+    t.datetime "tax_point"
+    t.decimal  "quantity",                  precision: 20, scale: 4
+    t.integer  "creator_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "invoicing_tax_rates", force: :cascade do |t|
+    t.string   "description"
+    t.decimal  "rate",           precision: 20, scale: 4
+    t.datetime "valid_from",                              null: false
+    t.datetime "valid_until"
+    t.integer  "replaced_by_id"
+    t.boolean  "is_default"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "plans", force: :cascade do |t|
@@ -93,6 +137,8 @@ ActiveRecord::Schema.define(version: 20160618070813) do
     t.string   "exp_month"
     t.string   "exp_year"
     t.integer  "invoice_count"
+    t.string   "company_name"
+    t.string   "language"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

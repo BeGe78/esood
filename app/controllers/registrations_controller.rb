@@ -49,7 +49,7 @@ class RegistrationsController < Devise::RegistrationsController
       end 
       
 # create Devise user    
-      
+      resource.language = I18n.locale.to_s
       resource.save
       yield resource if block_given?
       if resource.persisted?

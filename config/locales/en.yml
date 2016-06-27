@@ -36,6 +36,9 @@ en:
 #devise registration
   Name: "Name*"
   Name1: "Name"
+  company_name: "Company name"
+  company_name_help: "Only if you need invoices sent by mail"
+  new_company_name_help: "Only if you need invoices sent by mail"
   Email: "Email"
   Password: "Password*"
   Password1: "Password"
@@ -104,6 +107,25 @@ en:
   subscription_month_rate: " 30€"
   subscription_year_rate: " 300€"
   
+#invoicing
+  invoice_title: "Invoice receipt from ESoOD"
+  billed_to: "Billed to:"
+  invoice_date: "Invoice Date:"
+  invoice_no: "Invoice No:"
+  invoice_summary: "Invoice Summary"
+  item_no: "Item no."
+  description: "Description"
+  unit_price: "Unit Price"
+  total_price: "Total Price"
+  subtotal: "Subtotal"
+  tax: "Tax"
+  total: "Total"
+  ESoOD_Invoice: "ESoOD Invoice"
+  invoice_mail_1: "Recurring Invoice"
+  invoice_mail_2: "Please find your current ESoOD invoice."
+  invoice_mail_3: "Best regards."
+  invoice_mail_4: "The ESoOD editor"
+  
 #footer  
   about: "About"
   about_comment: "This site is developped only with Open Source software and Open data"
@@ -155,4 +177,9 @@ en:
   number:
      format:
         delimiter: ","
+  time:
+     formats:
+      default: "%d/%m/%Y"
+      short: "%e %b"
+      long: "%e %B %Y"
   

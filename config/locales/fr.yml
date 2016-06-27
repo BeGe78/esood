@@ -36,9 +36,14 @@ fr:
 #devise registration
   Name: "Nom*"
   Name1: "Nom"
+  company_name: "Nom de société"
+  company_name_help: "Seulement pour avoir des factures par mail"
+  new_company_name_help: "Seulement pour avoir des factures par mail"
   Email: "Email"
   Password: "Mot de passe*"
+  Password1: "Mot de passe"
   Password_confirmation: "Confirmation Mot de passe*"
+  Password_confirmation1: "Confirmation Mot de passe"
   current_password: "mot de passe actuel*"
   current_password_comment: "(pour confirmer vos changements, entrez votre mot de passe atuel)"
   new_password_comment: "(Ne mettez rien si vous ne voulez pas changer de mot de passe)"
@@ -102,6 +107,25 @@ fr:
   subscription_month_rate: " 30€"
   subscription_year_rate: " 300€"
   
+#invoicing
+  invoice_title: "Facture de ESoOD"
+  billed_to: "Facturé à:"
+  invoice_date: "Date de facturation:"
+  invoice_no: "N° de facture:"
+  invoice_summary: "Facture détaillée"
+  item_no: "N° "
+  description: "Description"
+  unit_price: "Prix Unité"
+  total_price: "Prix Total"
+  subtotal: "Sous-total"
+  tax: "TVA"
+  total: "Total"
+  ESoOD_Invoice: "Facture ESoOD"
+  invoice_mail_1: "Facturation récurrente"
+  invoice_mail_2: "Veuillez trouver ci-joint la facture de ESoOD."
+  invoice_mail_3: "Cordialement."
+  invoice_mail_4: "L'éditeur de ESoOD"
+  
 #footer  
   about: "A propos"
   about_comment: "Ce site est développé uniquement à base de logiciel Open Source et des données ouvertes."
@@ -153,3 +177,8 @@ fr:
   number:
      format:
         delimiter: " "
+  time:
+     formats:
+      default: "%d/%m/%Y"
+      short: "%e %b"
+      long: "%e %B %Y"

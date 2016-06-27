@@ -43,6 +43,9 @@ gem 'figaro'
 gem 'cancancan'
 gem 'stripe'
 gem 'data-confirm-modal'
+gem 'invoicing'
+gem 'prawn'
+gem 'prawn-table'
 
 
 # Use ActiveModel has_secure_password
