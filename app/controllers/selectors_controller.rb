@@ -99,14 +99,20 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
         else
             @scaleThousand = " ";  @scalePoint = ","
         end    
-#  X axis positioning        
-        v1.min < 0 or v2.min < 0  ? @xaxispos = 'center' : @xaxispos = 'bottom'
+#  X axis positioning
+        @xaxispos = 'bottom'
+        @xaxispos = 'center' if (v1.min < 0 or v2.min < 0)
+
         if @indicator_switch and @xaxispos == 'center' # set min value
             v1.min < 0 ? @min1 = v1.min : @min1 = 0
             v2.min < 0 ? @min2 = v2.min : @min2 = 0 
         else
             @min1 = 0; @min2 = 0
-        end    
+        end
+        puts("xaxis")
+        puts(v1.min)
+        puts(v2.min)
+        puts(@xaxispos)
    
 #title scaffolding - need to take the localized names to bypass language bug in world_bank API
         @indicator_local = Indicator.where(id1: @indicator, language: I18n.locale).take

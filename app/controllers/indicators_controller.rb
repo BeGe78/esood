@@ -6,12 +6,13 @@ class IndicatorsController < ApplicationController
     def create
         #       English 
         @indicator = Indicator.new(indicator_params)
-        @id1 = params[:indicator].values[0]
-        @results = WorldBank::Indicator.find(@id1).language('fr').fetch
+        @id1 = params[:indicator][:id1]
+        @language = params[:indicator][:language]
+        @results = WorldBank::Indicator.find(@id1).language(@language).fetch
         @indicator.id1 = @results.raw.values_at("id")[0]
         @indicator.name = @results.raw.values_at("name")[0]
         @indicator.note = @results.raw.values_at("sourceNote")[0]
-        @indicator.language = "fr"
+        @indicator.language = @language
         @indicator.source = @results.raw.values_at("source")[0].values_at("value")[0]
         @indicator.topic = @results.raw.values_at("topics")[0][0].values_at("value")[0]
         @indicator.save

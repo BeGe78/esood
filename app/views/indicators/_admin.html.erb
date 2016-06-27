@@ -2,6 +2,10 @@
 <div id="mainform" style="float: left; width:14%; border: thin solid black;">
 <%= form_for @indicator do |f| %>
   <p>
+    <%= f.label "language" %><br>
+    <%= f.text_field :language %>
+  </p>
+  <p>
     <%= f.label t('indicator') %><br>
     <%= f.text_field :id1 %>
   </p>
