@@ -24,6 +24,9 @@ class CountriesController < ApplicationController  #reserved to admin. Let creat
     end
     def index
         @country = Country.all    
+    end
+    def show
+        @country = Country.find(params[:id])
     end    
     private
     def country_params
