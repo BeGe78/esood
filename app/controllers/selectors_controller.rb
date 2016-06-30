@@ -18,6 +18,8 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
         @indicator_base = Indicator.accessible_by(current_ability).where(language: I18n.locale).order(:topic , :id1).all
         @country_base = Country.accessible_by(current_ability).where(language: I18n.locale).order(:type , :name).all
         @selector = Selector.new
+        @language = I18n.locale.to_s
+        puts(@language)
     end
     
     def create
@@ -95,10 +97,11 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
         v = [v1,v2_rescaled]                                           
         @percent ? @precision = 2 : @precision = 0
         if I18n.locale == :en                          # set number format for Rgraph
-            @scaleThousand = ",";  @scalePoint = "."
+            @scaleThousand = ",";  @scalePoint = "."; @language = "en"
         else
-            @scaleThousand = " ";  @scalePoint = ","
-        end    
+            @scaleThousand = " ";  @scalePoint = ","; @language = "fr"
+        end 
+        puts(@language)
 #  X axis positioning
         @xaxispos = 'bottom'
         @xaxispos = 'center' if (v1.min < 0 or v2.min < 0)
@@ -149,10 +152,10 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
         end
  
         user_signed_in? ? @current_user_email = current_user.email : @current_user_email = "no_user"  #set email for google analytics
-
+  
 # send data in js format        
         gon.push({                                       
-                  title: @title,
+                  title: @title, language: @language,
                   data: v, data1: v1, data2: v2,
                   year: y, numxticks: y.length - 1,
                   indicator: @indicator_local.name, country1: @country1_local.name,

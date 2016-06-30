@@ -82,7 +82,7 @@
 </div>
 
 <div class="modal fade" id="indicator_list" tabindex="-1">
-   <div class="modal-dialog" role="document">
+<div class="modal-dialog" role="document">
       <div style="font-size: 11px;" class="modal-content">
          <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -90,13 +90,16 @@
             </button>
             <h4 class="modal-title"><%= t('indicator_list')%></h4>
          </div>
-   <div class="modal-body">
-   <table border="1">
-  <tr>
+<div class="modal-body">
+<table id="ind_list" class="table" border="1">
+<thead>
+   <tr>
     <th width="5%">id</th>
     <th width="20%"><%= t('name') %></th>
     <th width="20%"><%= t('topic') %></th>
   </tr>
+</thead>
+<tbody>
 <% for indicator in @indicator_base %>
   <tr>
     <td><%=h indicator.id1 %></td>
@@ -104,6 +107,7 @@
     <td><%=h indicator.topic %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
    </div> 
    </div> 
@@ -111,7 +115,7 @@
 </div>   
    
 <div class="modal fade" id="country_list" tabindex="-1">
-   <div class="modal-dialog" role="document">
+<div class="modal-dialog" role="document">
       <div style="font-size: 11px;" class="modal-content">
          <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -119,18 +123,22 @@
             </button>
             <h4 class="modal-title"><%= t('country_list')%></h4>
          </div>
-   <div class="modal-body">
-   <table border="1">
+<div class="modal-body">
+<table id="cty_list" class="table" border="1">
+<thead>
   <tr>
-    <th width="20%"><%= t('name') %></th>
-    <th width="20%">type</th>
+    <th><%= t('name') %></th>
+    <th>type</th>
   </tr>
+</thead> 
+<tbody>
 <% for country in @country_base %>
   <tr>
     <td><%=h country.name %></td>
     <td><%=h country.type %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
    </div> 
    </div> 
@@ -197,4 +205,37 @@ $('#selector_form_switch').val('country');
 $('p#indicator2').hide();
 $('p#country2').show();
 }
+</script>
+<script type="text/javascript">
+<% if I18n.locale == :en %>
+$(document).ready(function() {
+    console.log('en');
+    $('#ind_list').DataTable({
+    retrieve: true,
+    "pageLength": 10
+    });
+    $('#cty_list').DataTable({
+    retrieve: true,
+    "pageLength": 10
+    });
+} );
+<% else %>
+$(document).ready(function() {
+    console.log('fr');
+    $('#ind_list').DataTable({
+    "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+            },
+    retrieve: true,
+    "pageLength": 10
+    });
+    $('#cty_list').DataTable({
+    "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+            },
+    retrieve: true,
+    "pageLength": 10
+    });
+} );
+<% end %>
 </script>

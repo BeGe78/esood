@@ -1,5 +1,5 @@
 <h1>Listing Countries</h1>
-<table id="cty" class="display" cellspacing="0" width="100%">
+<table id="cty" class="table-condensed" cellspacing="0" width="100%">
   <thead>
   <tr>
     <th>id1</th>
@@ -32,7 +32,7 @@
 $(document).ready(function() {
     $('#cty').DataTable({
     retrieve: true,
-    "pageLength": 25
+    "pageLength": 15
     });
 } );
 </script>
