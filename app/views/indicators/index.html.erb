@@ -1,6 +1,7 @@
 <h1>Listing Indicators</h1>
 
-<table border="1">
+<table id="ind" class="display" cellspacing="0" width="100%">
+<thead>
   <tr>
     <th width="5%">id1</th>
     <th width="20%">name</th>
@@ -9,7 +10,8 @@
     <th width="20%">source</th>
     <th width="20%">topic</th>
   </tr>
-
+</thead>
+<tbody>
 <% for indicator in @indicator %>
   <tr>
     <td><%=h indicator.id1 %></td>
@@ -20,7 +22,12 @@
     <td><%=h indicator.topic %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
-<br />
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#ind').DataTable();
+} );
+</script>
 

@@ -1,16 +1,29 @@
 <h1>Listing Countries</h1>
 
-<p><%= link_to "print PDF", controller: "countries", action: "create", format: "pdf" , method: :post, remote: true %></p>
-
-<table border="1">
+<table id="cty" class="display" cellspacing="0" width="100%">
+  <thead>
   <tr>
     <th width="5%">id1</th>
-    <th width="20%">iso2code</th>
-    <th width="30%">code</th>
-    <th width="5%">name</th>
-    <th width="20%">type</th>
+    <th width="10%">iso2code</th>
+    <th width="10%">code</th>
+    <th width="15%">name</th>
+    <th width="10%">type</th>
+    <th width="10%">language</th>
+    <th width="10%">visible</th>
   </tr>
-
+  </thead>
+  <tfoot>
+  <tr>
+    <th>id1</th>
+    <th>iso2code</th>
+    <th>code</th>
+    <th>name</th>
+    <th>type</th>
+    <th>language</th>
+    <th>visible</th>
+  </tr>
+  </tfoot>
+  <tbody>
 <% for country in @country %>
   <tr>
     <td><%=h country.id1 %></td>
@@ -18,8 +31,16 @@
     <td><%=h country.code %></td>
     <td><%=h country.name %></td>
     <td><%=h country.type %></td>
+    <td><%=h country.language %></td>
+    <td><%=h country.visible %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
-<br />
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#cty').DataTable();
+} );
+</script>
 

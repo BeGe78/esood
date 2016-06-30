@@ -1,21 +1,25 @@
-class CountriesController < ApplicationController
-    require 'world_bank'
+class CountriesController < ApplicationController  #reserved to admin. Let create and list countries
     def new
         @country = Country.new
     end 
     def create
         @country = Country.new(country_params)
         @id1 = params[:country][:id1]
-        @language = params[:indicator][:language]
-        @results = WorldBank::Country.find(@id1).language(@language).fetch
-        @country.id1 = @results.raw.values_at("id")[0]
-        @country.name = @results.raw.values_at("name")[0]
-        @country.iso2code = @results.raw.values_at("iso2Code")[0]
-        @country.code = @results.raw.values_at("id")[0]
+        @language = params[:country][:language]
+        begin            # get worldbank data
+        @results = WorldBank::Country.find(@id1).language(@language).fetch #get WorldBank country by id and language
+        @country.id1 = @results.raw["id"]
+        @country.name = @results.raw["name"]
+        @country.iso2code = @results.raw["iso2Code"]
+        @country.code = @results.raw["id"]
         @country.type = "Pays" if @language == 'fr'
         @country.type = "Country" if @language == 'en'
         @country.language = @language
         @country.save
+        rescue Exception => e
+           flash[:notice] = "Error creating country"
+           redirect_to new_country_path and return
+        end
         render plain: @country.inspect        
     end
     def index
