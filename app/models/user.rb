@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable
   belongs_to :role
-  has_many :invoicing_ledger_item, dependent: :destroy
+  has_many :invoicing_ledger_item
   before_save :assign_role
 
 def assign_role
