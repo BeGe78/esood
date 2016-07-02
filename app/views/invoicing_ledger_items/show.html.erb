@@ -1,11 +1,11 @@
 <p>
   <strong>Sender:</strong>
-  <%= User.exists?(@invoicing_ledger_item.sender_id)    ? User.find(@invoicing_ledger_item.sender_id).email    : "Empty" %>
+  <%= User.exists?(@invoicing_ledger_item.sender_id)    ? User.find(@invoicing_ledger_item.sender_id).email    : @invoicing_ledger_item.sender_id %>
 </p>
 
 <p>
   <strong>Recipient:</strong>
-  <%= User.exists?(@invoicing_ledger_item.recipient_id) ? User.find(@invoicing_ledger_item.recipient_id).email : "Empty" %>
+  <%= User.exists?(@invoicing_ledger_item.recipient_id) ? User.find(@invoicing_ledger_item.recipient_id).email : @invoicing_ledger_item.recipient_id %>
 </p>
 
 <%= link_to 'Back', invoicing_ledger_items_path %>

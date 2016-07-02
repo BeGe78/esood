@@ -7,14 +7,16 @@
     <tr>
       <th>Name</th>
       <th>Email</th>
+      <th>Company</th>
+      <th>Lg</th>
       <th>Plan</th>
-      <th>Invoice count</th>
-      <th>Exp year</th>
-      <th>Exp month</th>      
-      <th>Sign in count</th>
+      <th>Inv. nb</th>
+      <th>Exp y</th>
+      <th>Exp m</th>      
+      <th>Sign in</th>
       <th>Last log in</th>
-      <th>Creation date</th>
-      <th>Confirmed date</th>
+      <th>Creat. date</th>
+      <th>Conf. date</th>
       <th>show</th>
       <th>edit</th>
       <th>destroy</th>
@@ -26,6 +28,8 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
+        <td><%= user.company_name %></td>
+        <td><%= user.language %></td>
         <td><%= user.plan_id %></td>
         <td><%= user.invoice_count %></td>
         <td><%= user.exp_year %></td>
