@@ -28,7 +28,11 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
-        <td><%= user.company_name %></td>
+        <% if !user.company_name.blank? %>
+        <td><%=link_to user.company_name, controller: "invoicing_ledger_items", action: "index", param: user.id%></td>
+        <% else %>
+        <td> </td>
+        <% end %>
         <td><%= user.language %></td>
         <td><%= user.plan_id %></td>
         <td><%= user.invoice_count %></td>

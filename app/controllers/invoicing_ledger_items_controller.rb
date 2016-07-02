@@ -1,20 +1,20 @@
 class InvoicingLedgerItemsController < ApplicationController
   load_and_authorize_resource
 
-  # GET /roles
-  # GET /roles.json
+#Index est appelé dans deux contextes: sans param,  avec un param
   def index
-    @invoicing_ledger_items = InvoicingLedgerItem.all
+      if params[:recipient_id] != nil
+         @invoicing_ledger_items = InvoicingLedgerItem.where(recipient_id:  params[:recipient_id])
+      else
+        @invoicing_ledger_items = InvoicingLedgerItem.all  
+      end
+      
   end
 
   # GET /roles/1
   # GET /roles/1.json
 def show
-  if !@invoicing_ledger_item.recipient_id.present?
-    @associated_mail = "None"
-  else
-    @associated_mail = User.find(@invoicing_ledger_item.recipient_id).email
-  end
+
 end
   def destroy
     @invoicing_ledger_item.destroy
