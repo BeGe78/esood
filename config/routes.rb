@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :countries
     resources :subscriptions
     resources :charges
+    resources :invoicing_ledger_items
     get 'welcome/index'
     scope "(:locale)", locale: /fr|en/ do
     get 'selectors/autocomplete_country_name'

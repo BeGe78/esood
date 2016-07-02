@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Users</h1>
+
+<table id="inv" class="display" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Sender</th>
+      <th>Recipient</th>
+      <th>Invoice total</th>
+      <th>Creation date</th>
+      <th>show</th>
+      <th>destroy</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invoicing_ledger_items.each do |invoice| %>
+      <tr>
+        <td><%= invoice.id %></td>
+        <td><%= User.exists?(invoice.sender_id)    ? User.find(invoice.sender_id).email    : "Empty"  %></td>
+        <td><%= User.exists?(invoice.recipient_id) ? User.find(invoice.recipient_id).email : "Empty"  %></td>
+        <td><%= number_with_precision(invoice.total_amount, precision: 0) %></td>
+        <td><%= invoice.created_at.to_formatted_s(:short) %></td>
+        <td><%= link_to 'Show', invoice %></td>
+         <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#inv').DataTable({
+    retrieve: true,
+    "pageLength": 10
+    });
+} );
+</script>
