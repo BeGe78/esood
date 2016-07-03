@@ -1,9 +1,9 @@
 <div style="width: 76%;float: left;"><h1><%= t('charttitle') %></h1></div>
-<div style="float: left; width: 9%;"><h5><%= t('compare')%></h5></div>
+<div style="float: left; width: 9%; color: blue; text-align:right;"><h5><%= t('compare')%>&nbsp;&nbsp;</h5></div>
 <div style="display: inline;"><button type="button" id="b_country" class="btn btn-primary btn-sm active" onclick="countries()">
               <%= t('countries')%>
               </button></div>
-<div style="display: inline;"><button type="button" id="b_indicator" class="btn btn-primary btn-sm" onclick="indicators()">
+<div style="display: inline;"><button type="button" id="b_indicator" class="btn btn-primary btn-xs" onclick="indicators()">
               <%= t('indicators')%>
               </button></div>              
 <div id="mainform" style="float: right; width:13%; border: thin solid black; margin-right:2%;margin-top: 8px;">
@@ -191,16 +191,20 @@
 <script type="text/javascript">
 function indicators() {
 console.log("indicator2");
-$("#b_indicator").addClass("active");
-$("#b_country").removeClass("active");
+$("#b_indicator").addClass("active btn-sm");
+$("#b_indicator").removeClass("btn-xs");
+$("#b_country").removeClass("active btn-sm");
+$("#b_country").addClass("btn-xs");
 $('#selector_form_switch').val('indicator'); 
 $('p#indicator2').show();
 $('p#country2').hide();
 }
 function countries() {
 console.log("country2");
-$("#b_indicator").removeClass("active");
-$("#b_country").addClass("active");
+$("#b_country").removeClass("btn-xs");
+$("#b_country").addClass("active btn-sm");
+$("#b_indicator").removeClass("active btn-sm");
+$("#b_indicator").addClass("btn-xs");
 $('#selector_form_switch').val('country');
 $('p#indicator2').hide();
 $('p#country2').show();
