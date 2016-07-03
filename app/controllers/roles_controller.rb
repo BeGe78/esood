@@ -8,7 +8,7 @@ class RolesController < ApplicationController
   end
 
 def show
-  if @role.users.length == 0
+  if @role.users.length == 0        #determines the users associated with this role
     @associated_users = "None"
   else
     @associated_users = @role.users.map(&:name).join(", ")
@@ -19,30 +19,24 @@ end
   end
 
   def create
-    respond_to do |format|
       if @role.save
-        format.html { redirect_to @role, notice: 'Role was successfully created.' }
+        redirect_to @role, notice: 'Role was successfully created.'
       else
-        format.html { render :new }
+        render :new
       end
-    end
   end
 
   def update
-    respond_to do |format|
       if @role.update(role_params)
-        format.html { redirect_to @role, notice: 'Role was successfully updated.' }
+        redirect_to @role, notice: 'Role was successfully updated.'
       else
-        format.html { render :edit }
+        render :edit
       end
-    end
   end
 
   def destroy
     @role.destroy
-    respond_to do |format|
-      format.html { redirect_to roles_url, notice: 'Role was successfully destroyed.' }
-    end
+          redirect_to roles_url, notice: 'Role was successfully destroyed.'
   end
 
   private

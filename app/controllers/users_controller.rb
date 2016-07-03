@@ -1,14 +1,12 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
-  # GET /users
-  # GET /users.json
+  def new
+  end
   def index
     @users = User.all
   end
 
-  # GET /users/1
-  # GET /users/1.json
-  def show
+  def show                                                     #format correctly the join date and the last_login date
       @joined_on = @user.created_at.to_formatted_s(:short)
       if @user.current_sign_in_at
         @last_login = @user.current_sign_in_at.to_formatted_s(:short)
@@ -17,55 +15,33 @@ class UsersController < ApplicationController
       end
   end
 
-  # GET /users/new
-  def new
-  end
-
-  # GET /users/1/edit
   def edit
   end
 
-  # POST /users
-  # POST /users.json
-  def create
-      
+  def create      
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+       end
     end
   rescue Stripe::CardError => e
   flash[:error] = e.message
-  redirect_to new_charge_path
+  redirect_to new_user_path
   end
 
-
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+        redirect_to @user, notice: 'User was successfully updated.'
       else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+        redirect_to users_url, notice: 'User was successfully destroyed.'
   end
 
   private
