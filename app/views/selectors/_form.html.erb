@@ -15,7 +15,6 @@
        <button type="button" class="btn btn-secondary-outline btn-sm" data-toggle="modal" data-target="#indicator_list">
           <%= image_tag "view-list.png" %>
        </button><br> 
-    <%= f.hidden_field :indicator, :id => "real_indicator"%>
     <%= autocomplete_field_tag 'fake_indicator', '',
         autocomplete_indicator_id1_selectors_path, 'data-auto-focus' => true,
         id_element: "#real_indicator", value: @indicator, class: 'form-control'  %>
@@ -31,7 +30,6 @@
        <button type="button" class="btn btn-secondary-outline btn-sm" data-toggle="modal" data-target="#indicator_list">
           <%= image_tag "view-list.png" %>
        </button><br> 
-    <%= f.hidden_field :indicator2, :id => "real_indicator2"%>
     <%= autocomplete_field_tag 'fake_indicator2', '',
         autocomplete_indicator_id1_selectors_path, 'data-auto-focus' => true,
         id_element: "#real_indicator2", value: @indicator2, class: 'form-control'  %>
@@ -43,7 +41,6 @@
     <button type="button" class="btn btn-secondary-outline btn-sm" data-toggle="modal" data-target="#country_list">
     <%= image_tag "view-list.png" %>
     </button><br> 
-    <%= f.hidden_field :country1, :id => "real_country1" %>
     <%= autocomplete_field_tag 'fake_country1', '',
         autocomplete_country_name_selectors_path, 'data-auto-focus' => true,
         id_element: "#real_country1", value: @country1_name, class: 'form-control'%>
@@ -59,24 +56,23 @@
     <button type="button" class="btn btn-secondary-outline btn-sm" data-toggle="modal" data-target="#country_list">
     <%= image_tag "view-list.png" %>
     </button><br> 
-    <%= f.hidden_field :country2, :id => "real_country2" %>
     <%= autocomplete_field_tag 'fake_country2', '',
         autocomplete_country_name_selectors_path, 'data-auto-focus' => true,
         id_element: "#real_country2", value: @country2_name, class: 'form-control'%>
   </p>
  
-  <p>
+  <p id="year_begin">
     <%= f.label t('year_begin') %>
     <span class="has-tooltip" data-toggle="tooltip" data-container="body" data-placement="right" title="<%= t('period_help') %>"><%= image_tag "question_mark.png" %></span><br>
     <%= f.number_field :year_begin, class: 'form-control', in: 1960..2020 %>
   </p>
-  <p>
+  <p id="year_end">
     <%= f.label t('year_end') %>
     <span class="has-tooltip" data-toggle="tooltip" data-container="body" data-placement="right" title="<%= t('period_help') %>"><%= image_tag "question_mark.png" %></span><br>
     <%= f.number_field :year_end, class: 'form-control', in: 1960..2020 %>
   </p>
   <div style="text-align: center;">
-  <%= f.submit t('display')%>
+  <%= f.submit t('display'), id: 'selector_submit' %>
   </div>
 <% end %>
 </div>

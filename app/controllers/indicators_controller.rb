@@ -1,5 +1,5 @@
 class IndicatorsController < ApplicationController
-    require 'world_bank'
+    load_and_authorize_resource
     def new
         @indicator = Indicator.new
     end
@@ -23,7 +23,7 @@ class IndicatorsController < ApplicationController
         render plain: @indicator.inspect        
     end
     def index
-        @indicator = Indicator.all
+        @indicator = Indicator.accessible_by(current_ability).where(language: I18n.locale).order(:topic , :id1).all
     end
     def show
         @indicator = Indicator.find(params[:id])

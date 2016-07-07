@@ -1,4 +1,5 @@
 class CountriesController < ApplicationController  #reserved to admin. Let create and list countries
+    load_and_authorize_resource
     def new
         @country = Country.new
     end 
@@ -23,7 +24,7 @@ class CountriesController < ApplicationController  #reserved to admin. Let creat
         render plain: @country.inspect        
     end
     def index
-        @country = Country.all    
+        @country = Country.accessible_by(current_ability).where(language: I18n.locale).order(:type , :name).all
     end
     def show
         @country = Country.find(params[:id])

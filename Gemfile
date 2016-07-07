@@ -59,16 +59,22 @@ gem 'prawn-table'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development, :test do
+group :development do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-end
-
-group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  # Colorize minitest output and show failing tests instantly.
+  gem 'minitest-colorize', git: 'https://github.com/ysbaddaden/minitest-colorize' 
+  # https://github.com/Springest/terminal-notifier-guard
+  gem 'minitest-byebug'
+  gem 'minitest-rails-capybara'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
 end
 

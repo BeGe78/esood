@@ -19,7 +19,6 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
         @country_base = Country.accessible_by(current_ability).where(language: I18n.locale).order(:type , :name).all
         @selector = Selector.new
         @language = I18n.locale.to_s
-        puts(@language)
     end
     
     def create
@@ -28,17 +27,20 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
         @country_base = Country.where(language: I18n.locale).order(:type , :name).all
         @selector = Selector.new(selector_params)
         @indicator = params[:fake_indicator]
-        @indicator[@indicator.length - 3, @indicator.length] == '.ZS' ? @percent = true : @percent = false        
-        @country1 = Country.find(params[:selector][:country1]).iso2code
-        @country1_name = Country.find(params[:selector][:country1]).name
+        @indicator[@indicator.length - 3, @indicator.length] == '.ZS' ? @percent = true : @percent = false  
+        @i1 = Indicator.where(id1: @indicator, language: I18n.locale).take
+        @c1 = Country.where(name: params[:fake_country1], language: I18n.locale).take
+        @country1 = @c1.iso2code
+        @country1_name = @c1.name
 # check if we compare countries or indicators
         params[:selector][:form_switch] == "indicator" ? @indicator_switch = true : @indicator_switch = false
         if @indicator_switch
           @indicator2 = params[:fake_indicator2]
           @indicator2[@indicator2.length - 3, @indicator2.length] == '.ZS' ? @percent2 = true : @percent2 = false
         else
-          @country2 = Country.find(params[:selector][:country2]).iso2code
-          @country2_name = Country.find(params[:selector][:country2]).name
+          @c2 = Country.where(name: params[:fake_country2], language: I18n.locale).take
+          @country2 = @c2.iso2code
+          @country2_name = @c2.name
           @percent2 = @percent
         end  
         rescue ActiveRecord::RecordNotFound => e
@@ -101,7 +103,6 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
         else
             @scaleThousand = " ";  @scalePoint = ","; @language = "fr"
         end 
-        puts(@language)
 #  X axis positioning
         @xaxispos = 'bottom'
         @xaxispos = 'center' if (v1.min < 0 or v2.min < 0)
@@ -112,15 +113,8 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
         else
             @min1 = 0; @min2 = 0
         end
-        puts("xaxis")
-        puts(v1.min)
-        puts(v2.min)
-        puts(@xaxispos)
    
-#title scaffolding - need to take the localized names to bypass language bug in world_bank API
-        @indicator_local = Indicator.where(id1: @indicator, language: I18n.locale).take
-        @country1_local = Country.where(iso2code: @country1, language: I18n.locale).take
-
+#title scaffolding 
         @title_scale_unit = " "
         if @same_scale                         #only show scale on title if same scale
             @percent ? @title_scale_unit = " - " << t('with_percent') 
@@ -138,16 +132,15 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
                        << " - " << t('with_unit') << ": " << @unit2     
         end
         if @indicator_switch
-            @indicator2_local = Indicator.where(id1: @indicator2, language: I18n.locale).take
-            gon.indicator2 = @indicator2_local.name; gon.country2 = ""
-            @title = t('compare') << ": " << @indicator_local.name << " / " << @indicator2_local.name \
-                 << " - " << t('country') << ": " << @country1_local.name  \
+            @i2 = Indicator.where(id1: @indicator2, language: I18n.locale).take
+            gon.indicator2 = @i2.name; gon.country2 = ""
+            @title = t('compare') << ": " << @i1.name << " / " << @i2.name \
+                 << " - " << t('country') << ": " << @c1.name  \
                  << @title_scale_unit
         else
-            @country2_local = Country.where(iso2code: @country2, language: I18n.locale).take
-            gon.indicator2 = ""; gon.country2 = @country2_local.name
-            @title = t('compare') << ": " << @country1_local.name << " / " << @country2_local.name \
-                 << " - " << t('indicator') << ": " << @indicator_local.name \
+            gon.indicator2 = ""; gon.country2 = @c2.name
+            @title = t('compare') << ": " << @c1.name << " / " << @c2.name \
+                 << " - " << t('indicator') << ": " << @i1.name \
                  << @title_scale_unit
         end
  
@@ -158,7 +151,7 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
                   title: @title, language: @language,
                   data: v, data1: v1, data2: v2,
                   year: y, numxticks: y.length - 1,
-                  indicator: @indicator_local.name, country1: @country1_local.name,
+                  indicator: @i1.name, country1: @c1.name,
                   scale: @scale, xaxispos: @xaxispos, ylabels: @ylabels,
                   power_scale_change: @power_scale_change,
                   scaleThousand: @scaleThousand, scalePoint: @scalePoint,

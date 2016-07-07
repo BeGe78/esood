@@ -16,7 +16,7 @@ class Ability
          can :read, Indicator
        else
          can :read, Country, :visible => "Y"
-         can :read, Indicator, :visible => "Y"  
+         can :read, Indicator, :visible => "Y"
        end
        can :print_chart, Selector if (user.admin? or user.customer?)
        can :full_list  , Selector if (user.admin? or user.customer?)

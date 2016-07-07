@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/ysbaddaden/minitest-colorize
+  revision: 81f2dd6aee81c83debc31572608fa89d6d9e1a19
+  specs:
+    minitest-colorize (0.0.6.pre)
+      minitest (>= 5.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -37,6 +44,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.2.8)
+    archive-zip (0.7.0)
+      io-like (~> 0.3.0)
     arel (6.0.3)
     autoprefixer-rails (6.1.2)
       execjs
@@ -50,6 +59,18 @@ GEM
     builder (3.2.2)
     byebug (8.2.1)
     cancancan (1.14.0)
+    capybara (2.7.1)
+      addressable
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
+    childprocess (0.5.9)
+      ffi (~> 1.0, >= 1.0.11)
+    chromedriver-helper (1.0.0)
+      archive-zip (~> 0.7.0)
+      nokogiri (~> 1.6)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -60,6 +81,7 @@ GEM
     concurrent-ruby (1.0.0)
     data-confirm-modal (1.1.1)
       railties (>= 3.0)
+    database_cleaner (1.5.3)
     debug_inspector (0.0.2)
     devise (4.1.1)
       bcrypt (~> 3.0)
@@ -71,12 +93,18 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.6.0)
+    factory_girl (4.7.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.7.0)
+      factory_girl (~> 4.7.0)
+      railties (>= 3.0.0)
     faraday (0.6.1)
       addressable (~> 2.2.4)
       multipart-post (~> 1.1.0)
       rack (>= 1.1.0, < 2)
     faraday_middleware (0.6.5)
       faraday (~> 0.6.0)
+    ffi (1.9.10)
     figaro (1.1.1)
       thor (~> 0.14)
     globalid (0.3.6)
@@ -92,6 +120,7 @@ GEM
     i18n (0.7.0)
     invoicing (1.0.1)
       rails (>= 3.2.13)
+    io-like (0.3.0)
     jbuilder (2.3.2)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -117,6 +146,23 @@ GEM
     mime-types (2.99)
     mini_portile2 (2.0.0)
     minitest (5.8.3)
+    minitest-byebug (0.0.3)
+      byebug
+      minitest (~> 5.0)
+    minitest-capybara (0.8.2)
+      capybara (~> 2.2)
+      minitest (~> 5.0)
+      rake
+    minitest-metadata (0.6.0)
+      minitest (>= 4.7, < 6.0)
+    minitest-rails (2.2.1)
+      minitest (~> 5.7)
+      railties (~> 4.1)
+    minitest-rails-capybara (2.1.2)
+      capybara (~> 2.7)
+      minitest-capybara (~> 0.8)
+      minitest-metadata (~> 0.6)
+      minitest-rails (~> 2.1)
     multi_json (1.11.2)
     multipart-post (1.1.5)
     netrc (0.11.0)
@@ -181,6 +227,7 @@ GEM
     rserve-client (0.3.1)
     rserve-simpler (0.0.6)
       rserve-client (~> 0.3.0)
+    rubyzip (1.2.0)
     sass (3.4.19)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -191,6 +238,10 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    selenium-webdriver (2.53.4)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0)
     spring (1.5.0)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
@@ -226,12 +277,15 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    websocket (1.2.3)
     world_bank (0.9.0)
       faraday (~> 0.6.1)
       faraday_middleware (~> 0.6.3)
       hashie (~> 1.0.0)
       multi_json (~> 1.11.2)
       rash (~> 0.3.0)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
@@ -240,9 +294,12 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   cancancan
+  chromedriver-helper
   coffee-rails (~> 4.1.0)
   data-confirm-modal
+  database_cleaner
   devise
+  factory_girl_rails
   figaro
   gon
   invoicing
@@ -252,6 +309,9 @@ DEPENDENCIES
   jquery-turbolinks
   jquery-ui-rails
   json
+  minitest-byebug
+  minitest-colorize!
+  minitest-rails-capybara
   multi_json (~> 1.11.2)
   passenger
   prawn
@@ -264,6 +324,7 @@ DEPENDENCIES
   rserve-simpler
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  selenium-webdriver
   spring
   sqlite3
   stripe

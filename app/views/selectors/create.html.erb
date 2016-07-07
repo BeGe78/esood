@@ -15,8 +15,8 @@
   <% if @indicator_switch %>
      <span style="float: left; font-weight: bold;"><%= @country1_name %></span>
   <% else%>
-     <span style="float: left; font-weight: bold;"><%= @indicator_local.name %></span>
-     <span class="has-tooltip" data-toggle="tooltip" title="<%= @indicator_local.note %>">
+     <span style="float: left; font-weight: bold;"><%= @i1.name %></span>
+     <span class="has-tooltip" data-toggle="tooltip" title="<%= @i1.note %>">
         <%= image_tag "question_mark.png", style: "float: left;" %>
      </span>
   <% end%>
@@ -55,8 +55,8 @@
     <tr>
       <% if @indicator_switch %>
          <td>
-            <span style="float: left;"><%= @indicator_local.name %></span>
-            <span class="has-tooltip" data-toggle="tooltip" title="<%= @indicator_local.note %>">
+            <span style="float: left;"><%= @i1.name %></span>
+            <span class="has-tooltip" data-toggle="tooltip" title="<%= @i1.note %>">
             <%= image_tag "question_mark.png", style: "float: left;" %>
             </span>
          </td>
@@ -72,8 +72,8 @@
      <tr>
       <% if @indicator_switch %>
          <td>
-            <span style="float: left;"><%= @indicator2_local.name %></span>
-            <span class="has-tooltip" data-toggle="tooltip" title="<%= @indicator_local.note %>">
+            <span style="float: left;"><%= @i2.name %></span>
+            <span class="has-tooltip" data-toggle="tooltip" title="<%= @i2.note %>">
             <%= image_tag "question_mark.png", style: "float: left;" %>
             </span>
          </td>
@@ -178,17 +178,17 @@ var line = new RGraph.Line({
   @current_user_email + ":" + 
   @selector.year_begin.to_s + ":" + 
   @selector.year_end.to_s + ":" +
-  @indicator_local.id1 + ":" +
-  @country1_name + ":" +
-  @indicator2_local.id1 %>  
+  @i1.id1 + ":" +
+  @c1.name + ":" +
+  @i2.id1 %>  
 <% else %>
   <%= analytics_track_event "Selectors", "Country",
   @current_user_email + ":" + 
   @selector.year_begin.to_s + ":" + 
   @selector.year_end.to_s + ":" +
-  @indicator_local.id1 + ":" +
-  @country1_name + ":" +
-  @country2_name %>
+  @i1.id1 + ":" +
+  @c1.name + ":" +
+  @c2.name %>
 <% end %>  
 function displayPDF() {
    var myCanvas = document.getElementById("line");     // get the graph as an image
