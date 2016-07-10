@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Plans</h1>
+
+<table id="pln" class="display" cellspacing="0" width="70%">
+  <thead>
+    <tr>
+      <th>stripe_id</th>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Interval</th>
+      <th>show</th>
+      <th>show</th>
+      <th>destroy</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plans.each do |plan| %>
+      <tr>
+        <td><%= plan.stripe_id %></td>
+        <td><%= plan.name %></td>
+        <td><%= plan.amount %></td>
+        <td><%= plan.interval %></td>
+        <td><%= link_to 'Show', plan %></td>
+        <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
+        <td><%= link_to 'Destroy', plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'New Plan', new_plan_path %>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#pln').DataTable({
+    retrieve: true,
+    "pageLength": 10
+    });
+} );
+</script>

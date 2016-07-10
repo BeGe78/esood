@@ -1,5 +1,4 @@
 class SelectorsController < ApplicationController #insteadof  Admin::BaseController
-    require 'world_bank'       #world bank API
     require 'rserve/simpler'   #R API
     require 'action_view'      #for number_to_human
     include ActionView::Helpers::NumberHelper
@@ -14,7 +13,7 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
     end
 
     def new
-        request.path[1..2] == "en" ? I18n.locale = "en" : I18n.locale = "fr"   #get language from path if redirection error 
+        request.path[1..2] == "en" ? I18n.locale = :en : I18n.locale = :fr   #get language from path if redirection error 
         @indicator_base = Indicator.accessible_by(current_ability).where(language: I18n.locale).order(:topic , :id1).all
         @country_base = Country.accessible_by(current_ability).where(language: I18n.locale).order(:type , :name).all
         @selector = Selector.new

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale  #language (en & fr) initialisation
   before_action :configure_permitted_parameters, if: :devise_controller?  #parameters rights for devise
   
-  require 'world_bank'
+  require 'world_bank'       #world bank API
 
 protected
 def configure_permitted_parameters  #list authorised parameters for devise registration & update
@@ -26,7 +26,7 @@ def default_url_options(options={})
 end
 
 rescue_from CanCan::AccessDenied do |exception|  #error rescue for cancan role control
-  flash[:error] = "Access denied!"
+  flash[:error] = t('access_denied')
   redirect_to root_url
 end
  

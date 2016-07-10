@@ -27,7 +27,7 @@ class SelectorTest < Capybara::Rails::TestCase
 
   test "selector" do
     Capybara.current_driver = :selenium
-
+    
     visit root_path
     assert_selector '#fake_indicator'; puts("ControllerTest::selector assert #fake_indicator")    
     click_button('b_indicator')

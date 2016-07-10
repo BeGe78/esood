@@ -32,6 +32,7 @@ fr:
   register: "Abonnement"
   modify: "Modification"
   back: "Retour"
+  access_denied: "Accès interdit!"
   
 #devise registration
   Name: "Nom*"
