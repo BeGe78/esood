@@ -6,9 +6,12 @@
     <th>name</th>
     <th>note</th>
     <th>language</th>
+    <th>Vis?</th>
     <th>source</th>
     <th>topic</th>
     <th>show</th>
+    <th>edit</th>
+    <th>destroy</th>
   </tr>
 </thead>
 <tbody>
@@ -18,9 +21,12 @@
     <td><%=h indicator.name %></td>
     <td><%=h indicator.note[0..90] %></td>
     <td><%=h indicator.language %></td>
+    <td><%=h indicator.visible %></td>
     <td><%=h indicator.source %></td>
     <td><%=h indicator.topic %></td>
     <td><%= link_to 'Show', indicator %></td>
+    <td><%= link_to 'Edit', edit_indicator_path(indicator) %></td>
+    <td><%= link_to 'Destroy', indicator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </tbody>

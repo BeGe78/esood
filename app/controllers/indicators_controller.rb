@@ -27,10 +27,24 @@ class IndicatorsController < ApplicationController
     end
     def show
         @indicator = Indicator.find(params[:id])
+    end
+    def edit
+    end
+    def update
+      if @indicator.update(indicator_params)
+        redirect_to @indicator, notice: 'Plan was successfully updated.'
+      else
+        render :edit
+      end
+    end
+
+    def destroy
+      @indicator.destroy
+          redirect_to indicators_url, notice: 'Plan was successfully destroyed.'
     end    
     
     private
     def indicator_params
-      params.require(:indicator).permit(:id1)
+      params.require(:indicator).permit(:id1, :name, :language, :topic, :note, :visible)
     end
 end

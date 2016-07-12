@@ -10,8 +10,12 @@ class SelectorTest < Capybara::Rails::TestCase
     DatabaseCleaner.start
     @country = FactoryGirl.create(:france)
     @country = FactoryGirl.create(:allemagne)
+    @country = FactoryGirl.create(:france1)
+    @country = FactoryGirl.create(:germany)
     @indicator = FactoryGirl.create(:indic1)
     @indicator = FactoryGirl.create(:indic2)
+    @indicator = FactoryGirl.create(:indic3)
+    @indicator = FactoryGirl.create(:indic4)
   end
   teardown do
     DatabaseCleaner.clean
@@ -32,6 +36,9 @@ class SelectorTest < Capybara::Rails::TestCase
     assert_selector '#fake_indicator'; puts("ControllerTest::selector assert #fake_indicator")    
     click_button('b_indicator')
     click_button('b_country')
+    click_button('adm_lang')
+    assert_selector 'a#lang_fr'; puts("SelectorTest::lang assert lang menu")
+    click_link('lang_fr')
 
     fill_autocomplete "fake_indicator", with: "NY.GDP.PCAP.CD", select: "NY.GDP.PCAP.CD"
     fill_autocomplete "fake_country1", with: "France", select: "France"

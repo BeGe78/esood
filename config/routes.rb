@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   
   #modification to use the customize registrations controller
   devise_for :users, :controllers => {:registrations => "registrations"}
-  scope "/admin" do
-    resources :users
+  scope "(:locale)", locale: /fr|en/ do
+    scope "/admin" do    
+      resources :users
+    end  
   end
   get 'selectors', to: 'selectors#new', as: :selectorsnew
   get 'en/selectors/new', to: 'selectors#new', as: :enselectorsnew

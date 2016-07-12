@@ -27,8 +27,8 @@
         <%= image_tag "France-Flag-icon.png" %>
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
-           <li><%= link_to t('english'),  enselectorsnew_path( :locale => 'en' ) %></li>
-           <li><%= link_to t('french') ,  frselectorsnew_path( :locale => 'fr' ) %></li>
+           <li><%= link_to t('english'),  enselectorsnew_path( :locale => 'en'), id: "lang_en"  %></li>
+           <li><%= link_to t('french') ,  frselectorsnew_path( :locale => 'fr'), id: "lang_fr"  %></li>
         </ul>
         </div>
         </li>
