@@ -9,6 +9,15 @@ FactoryGirl.define do
   language "fr"
   visible "Y"
  end
+  factory :italie, class: Country do
+  id1 "ITA"
+  iso2code "IT"
+  code "ITA"
+  name "Italie"
+  type "Pays"
+  language "fr"
+  visible "Y"
+ end
  factory :allemagne, class: Country do
   id1 "DEU"
   iso2code "DE"
@@ -26,12 +35,21 @@ FactoryGirl.define do
   language "en"
   visible "Y"
  end
+ factory :italie1, class: Country do
+  id1 "ITA"
+  iso2code "IT"
+  code "ITA"
+  name "Italie"
+  type "Pays"
+  language "en"
+  visible "Y"
+ end 
  factory :germany, class: Country do
   id1 "DEU"
   iso2code "DE"
   code "DEU"
-  name "Germany"
+  name "Allemagne"
   type "Country"
-  language "en"   
+  language "en"
  end
 end  

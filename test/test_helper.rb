@@ -10,6 +10,9 @@ require 'minitest/byebug' if ENV['DEBUG']
 Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
+Capybara.register_driver :selenium_firefox do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :firefox)
+end
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.

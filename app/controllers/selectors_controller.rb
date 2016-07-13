@@ -22,26 +22,37 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
     
     def create
         begin            # find indicators and countries from table
-        @indicator_base = Indicator.where(language: I18n.locale).order(:topic , :id1).all
-        @country_base = Country.where(language: I18n.locale).order(:type , :name).all
+        @indicator_base = Indicator.accessible_by(current_ability).where(language: I18n.locale).order(:topic , :id1).all
+        @country_base = Country.accessible_by(current_ability).where(language: I18n.locale).order(:type , :name).all
         @selector = Selector.new(selector_params)
         @indicator = params[:fake_indicator]
         @indicator[@indicator.length - 3, @indicator.length] == '.ZS' ? @percent = true : @percent = false  
-        @i1 = Indicator.where(id1: @indicator, language: I18n.locale).take
-        @c1 = Country.where(name: params[:fake_country1], language: I18n.locale).take
-        @country1 = @c1.iso2code
-        @country1_name = @c1.name
+        @i1 = Indicator.accessible_by(current_ability).where(id1: @indicator, language: I18n.locale).take
+        @c1 = Country.accessible_by(current_ability).where(name: params[:fake_country1], language: I18n.locale).take
 # check if we compare countries or indicators
         params[:selector][:form_switch] == "indicator" ? @indicator_switch = true : @indicator_switch = false
         if @indicator_switch
           @indicator2 = params[:fake_indicator2]
           @indicator2[@indicator2.length - 3, @indicator2.length] == '.ZS' ? @percent2 = true : @percent2 = false
+          @i2 = Indicator.accessible_by(current_ability).where(id1: @indicator2, language: I18n.locale).take
         else
-          @c2 = Country.where(name: params[:fake_country2], language: I18n.locale).take
-          @country2 = @c2.iso2code
-          @country2_name = @c2.name
+          @c2 = Country.accessible_by(current_ability).where(name: params[:fake_country2], language: I18n.locale).take
           @percent2 = @percent
-        end  
+        end
+        if !@i1.present?    #need to check if the indicator is not hacked
+            @indicator = ""
+        end
+        if !@i2.present?    #need to check if the indicator is not hacked
+            @indicator2 = ""
+        end
+        if @c1.present?     #need to check if the country is not hacked
+            @country1 = @c1.iso2code
+            @country1_name = @c1.name
+        end
+        if @c2.present?     #need to check if the country is not hacked
+            @country2 = @c2.iso2code
+            @country2_name = @c2.name
+        end
         rescue ActiveRecord::RecordNotFound => e
            flash[:notice] = t('wrong_parameter')
            redirect_to new_selector_path( locale: I18n.locale )  and return
@@ -131,7 +142,7 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
                        << " - " << t('with_unit') << ": " << @unit2     
         end
         if @indicator_switch
-            @i2 = Indicator.where(id1: @indicator2, language: I18n.locale).take
+            
             gon.indicator2 = @i2.name; gon.country2 = ""
             @title = t('compare') << ": " << @i1.name << " / " << @i2.name \
                  << " - " << t('country') << ": " << @c1.name  \
