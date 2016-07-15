@@ -56,6 +56,7 @@ class SelectorCustomerTest < Capybara::Rails::TestCase
     assert_selector 'div#chart'; puts("SelectorCustomerTest::chart assert chart OK")
     assert_text "France"; puts("SelectorCustomerTest::countries_modal assert France OK")
     assert_text "Allemagne"; puts("SelectorCustomerTest::countries_modal assert Allemagne OK")
+    assert_selector 'span#print_link'; puts("SelectorCustomerTest::print assert print OK")
 #test selector create
     fill_autocomplete "fake_indicator", with: "NY.GDP.PCAP.CD", select: "NY.GDP.PCAP.CD"
     fill_autocomplete "fake_country1", with: "Allemagne", select: "Allemagne"
@@ -66,8 +67,17 @@ class SelectorCustomerTest < Capybara::Rails::TestCase
     assert_selector 'div#chart'; puts("SelectorCustomerTest::chart assert chart OK")
     assert_text "France"; puts("SelectorCustomerTest::countries_modal assert France OK")
     assert_text "Allemagne"; puts("SelectorCustomerTest::countries_modal assert Allemagne OK") 
-    click_button('adm_user')
-    click_link('logout')
+    assert_selector 'span#print_link'; puts("SelectorCustomerTest::print assert print_link OK")
+    find('#print_link',:visible => true).click
+    within_window(windows.last) do
+        uri = URI.parse(current_url)
+        assert_equal "data:application/pdf", uri.to_s.first(20) 
+        puts("SelectorCustomerTest::print assert print page OK")
+    end
+    within_window(windows.first) do
+        click_button('adm_user')
+        click_link('logout')
+    end    
     end
   end
 

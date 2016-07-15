@@ -44,7 +44,10 @@
 
 <h3><%= t('Cancel_my_account') %></h3>
 
-<p><%= t('Unhappy') %><%= button_to t('Cancel_my_account'), registration_path(resource_name), data: { confirm: t('are_you_sure') }, method: :delete %></p>
+<p><%= t('Unhappy') %>
+<div class="btn btn-danger">
+<%= link_to t('Cancel_my_account'), registration_path(resource_name), data: { confirm: t('are_you_sure') }, method: :delete , :form => { id: "button_cancel" } %>
+</div></p>
 
 <%= link_to t('back'), :back %>
 

@@ -6,15 +6,11 @@ class RegistrationsController < Devise::RegistrationsController
   # POST /resource   Add the Stripe customer creation code
   def create
     build_resource(sign_up_params)
-    puts(params[:stripeEmail])
-    puts(resource.plan_id)
 # initialize empty fields    
     resource.email = params[:stripeEmail]
     resource.stripe_card_token = params[:stripeToken]
     resource.invoice_count = 1   #need to initialize to 1 because customer.created event can arrive after
     resource.valid?
-    puts(resource.errors.messages)
-    puts(resource.errors.messages.length)
 # check if the user models verifications are good
     if resource.errors.messages.length > 0    # there is at least an error
      case resource.errors.keys.first
@@ -31,11 +27,14 @@ class RegistrationsController < Devise::RegistrationsController
     end        
 # check that this email has not yet been created in user table
     elsif User.exists?(email: params[:stripeEmail])
-      redirect_to_back_or_default(alert: t('email_allready_used'))
+       redirect_to_back_or_default(alert: t('email_allready_used'))
     else     
 # create Stripe customer first
       begin  
-      customer= Stripe::Customer.create(
+      if resource.plan_id.length == 0 and Rails.env.test?
+          resource.plan_id = 'month-plan'  #force plan if empty mainly for testing purpose
+      end    
+      customer = Stripe::Customer.create(
       :email => params[:stripeEmail],         
       :source  => params[:stripeToken],
       :plan => resource.plan_id
@@ -45,17 +44,20 @@ class RegistrationsController < Devise::RegistrationsController
           redirect_to new_selector_path and return
       rescue Stripe::StripeError => e
           flash[:notice] = t('stripe_error')
+          puts "oops: #{e.message}"
           redirect_to new_selector_path and return    
       end 
       
-# create Devise user    
+# create Devise user
       resource.language = I18n.locale.to_s
       resource.save
       yield resource if block_given?
       if resource.persisted?
         if resource.active_for_authentication?
           set_flash_message! :notice, :signed_up
-          system 'sms_create_user.sh'
+          if Rails.env.production?
+            system 'sms_create_user.sh'
+          end  
           sign_up(resource_name, resource)
           respond_with resource, location: after_sign_up_path_for(resource)
         else
@@ -91,9 +93,11 @@ class RegistrationsController < Devise::RegistrationsController
           flash[:notice] = t('stripe_error')
           redirect_to edit_user_registration_path and return
     end
-# then delete user with Devise 
+# then delete user with Devise
     super
-    system 'sms_delete_user.sh'
+    if Rails.env.production?
+      system 'sms_delete_user.sh'
+    end  
 end
 
 def redirect_to_back_or_default(*args)

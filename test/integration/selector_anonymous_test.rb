@@ -51,6 +51,7 @@ class SelectorAnonymousTest < Capybara::Rails::TestCase
     assert_selector 'div#chart'; puts("SelectorAnonymousTest::chart assert chart OK")
     assert_text "France"; puts("SelectorAnonymousTest::countries_modal assert France OK")
     assert_no_text "Allemagne"; puts("SelectorAnonymousTest::countries_modal assert Allemagne KO")
+    assert_no_selector 'span#print_link'; puts("SelectorAnonymousTest::print assert print_link KO")
 #test selector create
     fill_autocomplete "fake_indicator", with: "NY.GDP.PCAP.CN", select: "NY.GDP.PCAP.CN"
     fill_autocomplete "fake_country1", with: "Italie", select: "Italie"
@@ -60,7 +61,8 @@ class SelectorAnonymousTest < Capybara::Rails::TestCase
     click_button "selector_submit"
     assert_selector 'div#chart'; puts("SelectorAnonymousTest::chart assert chart OK")
     assert_text "France"; puts("SelectorAnonymousTest::countries_modal assert France OK")
-    assert_no_text "Allemagne"; puts("SelectorAnonymousTest::countries_modal assert Allemagne KO")    
+    assert_no_text "Allemagne"; puts("SelectorAnonymousTest::countries_modal assert Allemagne KO")
+    assert_no_selector 'span#print_link'; puts("SelectorAnonymousTest::print assert print_link KO")    
     end
   end
 
