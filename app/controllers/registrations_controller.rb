@@ -44,7 +44,7 @@ class RegistrationsController < Devise::RegistrationsController
           redirect_to new_selector_path and return
       rescue Stripe::StripeError => e
           flash[:notice] = t('stripe_error')
-          puts "oops: #{e.message}"
+          puts "create error: #{e.message}"
           redirect_to new_selector_path and return    
       end 
       
@@ -74,14 +74,17 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def update
+=begin  #for the moment we cannot change the email
     begin
     cu = Stripe::Customer.retrieve(resource.customer_id)
     cu.email = params[:user][:email]   #we need to update the email in case it has been modified
     cu.save
     rescue Stripe::StripeError => e
           flash[:notice] = t('stripe_error')
+          puts "update error: #{e.message}"
           redirect_to edit_user_registration_path and return
     end
+=end    
     super
   end
   def destroy
