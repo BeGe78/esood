@@ -65,7 +65,7 @@ en:
   yearly_subscription:  "Yearly subscription: 300€"
   email_allready_used: "Email allready used"
   password_confirmation_error: "Passwords do not match. Please check and retry."
-  password_blanck_error: "Passwords cannot be blanck. Please check and retry."
+  password_error: "Password error. Please check and retry."
   name_blanck_error: "Name cannot be blanck. Please check and retry."
   user_parameter_error: "One of your input is wrong. Please check and retry."
   usage_condition_prefix: "Confirm that you have checked the following Terms and Conditions"
