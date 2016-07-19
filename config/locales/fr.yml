@@ -77,7 +77,7 @@ fr:
   
 #email  
   Welcome: "Bienvenu sur ESoOD "
-  confirm_comment: "Vous pouvez confirmer votre compte avec le lien suivant:"
+  confirm_comment: "Vous devez confirmer votre compte avec le lien suivant:"
   confirm_link: "Confirmer mon compte"
   password_change_comment: "Nous vous confirmons que votre mot de passe a été changé."
   password_reset_comment1: "Quelqu'un a demandé un lien pour changer votre mot de passe. Vous pouvez le faire avec le lien ci-dessous."

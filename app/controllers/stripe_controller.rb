@@ -11,7 +11,7 @@ class StripeController < ApplicationController
         # need to update user with customer_id for further retrieval
         user = User.where(email: event.data.object.email).first
         user.update(customer_id: event.data.object.id)
-        UserMailer.new_customer_email.deliver_later
+        UserMailer.new_customer_email(user).deliver_later
       when 'customer.source.created'
         # need to update card expiration date
         user = User.where(email: event.data.object.name).first
@@ -48,7 +48,8 @@ class StripeController < ApplicationController
       when 'charge.failed'
         # need to send email for manual handling
         puts("handle_failure_charge event_object")
-        UserMailer.payment_problem_email.deliver_later
+        user = User.where(email: event.data.object.source.name).first
+        UserMailer.payment_problem_email(user).deliver_later
       when 'customer.deleted'
         # need to send email for manual handling
         puts("handle_customer.deleted event_object")

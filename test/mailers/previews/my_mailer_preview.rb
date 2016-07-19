@@ -10,6 +10,9 @@ class MyMailerPreview < ActionMailer::Preview
   def reset_password_instructions
     MyMailer.reset_password_instructions(User.first, "faketoken", {})
   end
+  def password_change
+    MyMailer.password_change(User.first, {})
+  end
 
   def unlock_instructions
     MyMailer.unlock_instructions(User.first, "faketoken", {})
