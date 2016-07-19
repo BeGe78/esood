@@ -28,7 +28,7 @@ class AdminCustomerTest < Capybara::Rails::TestCase
   test "admin customer nok" do
     for lang in [:en, :fr]  
     I18n.locale = lang
-    visit %Q!#{I18n.locale.to_s}/selectors/new!
+    visit %Q!#{I18n.locale.to_s}/selectors/new!    
     click_button('adm_lang')
     assert_selector 'a#lang_fr'; puts("LoginTest::lang assert lang menu")
     click_link(%Q!lang_#{I18n.locale.to_s}!)
@@ -40,6 +40,7 @@ class AdminCustomerTest < Capybara::Rails::TestCase
     click_button "user_login"
     assert_selector "div.alert", text: I18n.t('devise.sessions.signed_in')
     puts(%Q!AdminCustomerTest::login assert flash "#{I18n.t('devise.sessions.signed_in')}"!)
+    assert_no_selector 'button#admin'; puts("LoginTest::lang assert no admin menu")
     
     for controller in ["countries/new","indicators/new","roles","plans","invoicing_ledger_items","admin/users"]        
       visit %Q!#{I18n.locale.to_s << "/" << controller}!

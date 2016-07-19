@@ -3,6 +3,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'minitest/rails'
 require 'capybara/rails'
+require 'capybara/email'
 require 'capybara/rspec/matchers'
 require 'minitest/rails/capybara'
 require 'factory_girl_rails'
@@ -12,6 +13,10 @@ Capybara.register_driver :selenium do |app|
 end
 Capybara.register_driver :selenium_firefox do |app|
   Capybara::Selenium::Driver.new(app, :browser => :firefox)
+end
+
+class ActionDispatch::IntegrationTest
+  include Capybara::Email::DSL
 end
 
 class ActiveSupport::TestCase

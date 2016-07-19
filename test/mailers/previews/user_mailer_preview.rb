@@ -7,7 +7,7 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.payment_problem_email(User.first)
   end
   def destroy_customer
-    UserMailer.destroy_customer_email
+    UserMailer.destroy_customer_email(User.first.email)
   end
   def invoice_email
     UserMailer.invoice_email(User.first.email, "tmp/test_invoice.pdf")     

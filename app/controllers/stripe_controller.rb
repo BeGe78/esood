@@ -53,7 +53,7 @@ class StripeController < ApplicationController
       when 'customer.deleted'
         # need to send email for manual handling
         puts("handle_customer.deleted event_object")
-        UserMailer.destroy_customer_email.deliver_later  
+        UserMailer.destroy_customer_email(event.data.object.email).deliver_later  
       else     puts("other event type")
     end
         

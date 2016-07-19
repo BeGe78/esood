@@ -3,8 +3,28 @@
     <%= link_to "ESoOD", '#', id: "logo" %>
     <nav>
       <ul style="font-weight: bold;" class="nav navbar-nav navbar-right">
-        <li><%= link_to image_tag('go-home.png', alt: 'home image'), selectorsnew_path %></li>        
+          <li><%= link_to image_tag('go-home.png', alt: 'home image'), selectorsnew_path %></li>
+          <% if can? :show_admin, Selector %>
           <li>
+          <div class="dropdown">
+          <button class="btn btn-link dropdown-toggle" id='admin' type="button" data-toggle="dropdown"  style="height: 40px; margin-top: 5px;">
+            <%= image_tag "admin.png" %>
+            <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+          <li><%= link_to 'Users', users_path, method: :get %></li>
+          <li><%= link_to 'Countries', countries_path, method: :get %></li>
+          <li><%= link_to 'Indicators', indicators_path, method: :get %></li>
+          <li><%= link_to 'Roles', roles_path, method: :get %></li>
+          <li><%= link_to 'Plans', plans_path, method: :get %></li>
+          <li><%= link_to 'Invoices', invoicing_ledger_items_path, method: :get %></li>
+          <li><%= link_to 'My_Mailer', "rails/mailers/my_mailer", method: :get %></li>
+          <li><%= link_to 'User_Mailer', "rails/mailers/user_mailer", method: :get %></li>
+          </ul>
+          </div>
+        </li>
+        <% end %>
+        
+        <li>
           <div class="dropdown">
           <button class="btn btn-link dropdown-toggle" id='adm_user' type="button" data-toggle="dropdown"  style="height: 40px; margin-top: 5px;">
             <%= image_tag "user-info.png" %>

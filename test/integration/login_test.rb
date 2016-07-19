@@ -21,7 +21,9 @@ class LoginTest < Capybara::Rails::TestCase
     for lang in [ :en, :fr]  
     I18n.locale = lang
     visit %Q!#{I18n.locale.to_s}/selectors/new!
+    assert_no_selector 'button#admin'; puts("LoginTest::lang assert no admin menu")
     click_button('adm_lang')
+    assert_selector 'a#lang_fr'; puts("LoginTest::lang assert lang menu")
     assert_selector 'a#lang_fr'; puts("LoginTest::lang assert lang menu")
     click_link(%Q!lang_#{I18n.locale.to_s}!)
     click_button('adm_user') 
