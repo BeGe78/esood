@@ -24,8 +24,7 @@ class StripeController < ApplicationController
     # send invoice if user has filled the company name
         if !user.company_name.nil?
             then
-        #   user = User.find(66)
-          # get language of User and force I18n.locale to get the invoice in right language
+       # get language of User and force I18n.locale to get the invoice in right language
             locale_save = I18n.locale
             I18n.locale = user.language.to_sym
             product = Plan.where(stripe_id: user.plan_id).first
