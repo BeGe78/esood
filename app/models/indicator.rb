@@ -1,7 +1,6 @@
 class Indicator < ActiveRecord::Base
-    validates_presence_of :id1
-    validates :name, uniqueness: true
-    validates_presence_of :language
-    validates_presence_of :topic
-    validates :visible, :inclusion => { :in => ['Y'] }, :allow_nil => true
+    validates :id1, :language, :topic, :name , presence: true
+    validates :id1, uniqueness: {scope: :language}
+    validates :visible, inclusion: {in: ['Y']}, allow_nil: true     #visible is empty or Y  
+    validates :language, inclusion: {in: ['en','fr']}               #language is en or fr
 end
