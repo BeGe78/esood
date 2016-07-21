@@ -1,0 +1,1 @@
+--markup=markdown --tag copyright:"Copyrights" --tag rest_url:"REST URL" --tag path:"Path" --tag render:"Render" --protected --private --dependencies --full
