@@ -105,7 +105,51 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Define values for mails to admin<br> <img
+src="file/doc/diagram/my_mailer_diagram.png"></p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Author:</p>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>Bruno Gardin <a href="mailto:bgardin@gmail.com">bgardin@gmail.com</a></p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Copyrights:</p>
+<ul class="copyright">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>GNU GENERAL PUBLIC LICENSE<br> Version 3, 29 June 2007</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
 
 
 
@@ -123,7 +167,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#destroy_customer_email-instance_method" title="#destroy_customer_email (instance method)">#<strong>destroy_customer_email</strong>(email)  &#x21d2; Object </a>
+      <a href="#destroy_customer_email-instance_method" title="#destroy_customer_email (instance method)">#<strong>destroy_customer_email</strong>(email)  &#x21d2; destroy_customer_email.html.erb </a>
     
 
     
@@ -137,7 +181,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Construct mail for registration suppression.</p>
+</div></span>
   
 </li>
 
@@ -145,7 +191,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#invoice_email-instance_method" title="#invoice_email (instance method)">#<strong>invoice_email</strong>(email, invoice_pdf)  &#x21d2; Object </a>
+      <a href="#invoice_email-instance_method" title="#invoice_email (instance method)">#<strong>invoice_email</strong>(email, invoice_pdf)  &#x21d2; invoice_email.html.erb </a>
     
 
     
@@ -159,7 +205,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Construct mail for invoice mail to end user.</p>
+</div></span>
   
 </li>
 
@@ -167,7 +215,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#new_customer_email-instance_method" title="#new_customer_email (instance method)">#<strong>new_customer_email</strong>(user)  &#x21d2; Object </a>
+      <a href="#new_customer_email-instance_method" title="#new_customer_email (instance method)">#<strong>new_customer_email</strong>(user)  &#x21d2; new_customer_email.html.erb </a>
     
 
     
@@ -181,7 +229,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Construct mail for new registration.</p>
+</div></span>
   
 </li>
 
@@ -189,7 +239,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#payment_problem_email-instance_method" title="#payment_problem_email (instance method)">#<strong>payment_problem_email</strong>(user)  &#x21d2; Object </a>
+      <a href="#payment_problem_email-instance_method" title="#payment_problem_email (instance method)">#<strong>payment_problem_email</strong>(user)  &#x21d2; payment_problem_email.html.erb </a>
     
 
     
@@ -203,7 +253,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Construct mail for payment_problem.</p>
+</div></span>
   
 </li>
 
@@ -227,29 +279,68 @@
       <div class="method_details first">
   <h3 class="signature first" id="destroy_customer_email-instance_method">
   
-    #<strong>destroy_customer_email</strong>(email)  &#x21d2; <tt>Object</tt> 
+    #<strong>destroy_customer_email</strong>(email)  &#x21d2; <tt><span class='object_link'><a href="#destroy_customer_email-instance_method" title="UserMailer#destroy_customer_email (method)">destroy_customer_email</a></span>.html.erb</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Construct mail for registration suppression</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>email</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="#destroy_customer_email-instance_method" title="UserMailer#destroy_customer_email (method)">destroy_customer_email</a></span>.html.erb</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-12
-13
-14
-15
-16
-17
-18
-19</pre>
+25
+26
+27
+28
+29
+30
+31
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/mailers/user_mailer.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'app/mailers/user_mailer.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy_customer_email'>destroy_customer_email</span><span class='lparen'>(</span><span class='id identifier rubyid_email'>email</span><span class='rparen'>)</span>
   <span class='ivar'>@email</span> <span class='op'>=</span> <span class='id identifier rubyid_email'>email</span>  
@@ -257,7 +348,7 @@
     <span class='id identifier rubyid_format'>format</span><span class='period'>.</span><span class='id identifier rubyid_html'>html</span> <span class='lbrace'>{</span>
     <span class='id identifier rubyid_render'>render</span> <span class='label'>locals:</span> <span class='lbrace'>{</span> <span class='label'>email:</span> <span class='ivar'>@email</span> <span class='rbrace'>}</span>
     <span class='rbrace'>}</span>
-<span class='kw'>end</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -267,25 +358,75 @@
       <div class="method_details ">
   <h3 class="signature " id="invoice_email-instance_method">
   
-    #<strong>invoice_email</strong>(email, invoice_pdf)  &#x21d2; <tt>Object</tt> 
+    #<strong>invoice_email</strong>(email, invoice_pdf)  &#x21d2; <tt><span class='object_link'><a href="#invoice_email-instance_method" title="UserMailer#invoice_email (method)">invoice_email</a></span>.html.erb</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Construct mail for invoice mail to end user</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>email</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>invoice_pdf</span>
+      
+      
+        <span class='type'>(<tt>Filename</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="#invoice_email-instance_method" title="UserMailer#invoice_email (method)">invoice_email</a></span>.html.erb</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-20
-21
-22
-23</pre>
+37
+38
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/mailers/user_mailer.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'app/mailers/user_mailer.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_invoice_email'>invoice_email</span><span class='lparen'>(</span><span class='id identifier rubyid_email'>email</span><span class='comma'>,</span><span class='id identifier rubyid_invoice_pdf'>invoice_pdf</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_attachments'>attachments</span><span class='period'>.</span><span class='id identifier rubyid_inline'>inline</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>invoice.pdf</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_invoice_pdf'>invoice_pdf</span><span class='rparen'>)</span>  
@@ -299,25 +440,64 @@
       <div class="method_details ">
   <h3 class="signature " id="new_customer_email-instance_method">
   
-    #<strong>new_customer_email</strong>(user)  &#x21d2; <tt>Object</tt> 
+    #<strong>new_customer_email</strong>(user)  &#x21d2; <tt><span class='object_link'><a href="#new_customer_email-instance_method" title="UserMailer#new_customer_email (method)">new_customer_email</a></span>.html.erb</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Construct mail for new registration</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>user</span>
+      
+      
+        <span class='type'>(<tt>Record</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="#new_customer_email-instance_method" title="UserMailer#new_customer_email (method)">new_customer_email</a></span>.html.erb</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-4
-5
-6
-7</pre>
+11
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/mailers/user_mailer.rb', line 4</span>
+      <pre class="code"><span class="info file"># File 'app/mailers/user_mailer.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new_customer_email'>new_customer_email</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
   <span class='ivar'>@user</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span>  
@@ -331,25 +511,64 @@
       <div class="method_details ">
   <h3 class="signature " id="payment_problem_email-instance_method">
   
-    #<strong>payment_problem_email</strong>(user)  &#x21d2; <tt>Object</tt> 
+    #<strong>payment_problem_email</strong>(user)  &#x21d2; <tt><span class='object_link'><a href="#payment_problem_email-instance_method" title="UserMailer#payment_problem_email (method)">payment_problem_email</a></span>.html.erb</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Construct mail for payment_problem</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>user</span>
+      
+      
+        <span class='type'>(<tt>Record</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="#payment_problem_email-instance_method" title="UserMailer#payment_problem_email (method)">payment_problem_email</a></span>.html.erb</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-8
-9
-10
-11</pre>
+18
+19
+20
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/mailers/user_mailer.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'app/mailers/user_mailer.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_payment_problem_email'>payment_problem_email</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
   <span class='ivar'>@user</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span> 
@@ -365,7 +584,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Jul 21 11:22:14 2016 by
+  Generated on Thu Jul 21 17:43:30 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.2 (ruby-2.3.1).
 </div>

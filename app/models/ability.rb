@@ -1,6 +1,11 @@
+# @author Bruno Gardin <bgardin@gmail.com>
+# @copyright GNU GENERAL PUBLIC LICENSE  
+#   Version 3, 29 June 2007
+# **Ability model** used by cancan gem.  
 class Ability
   include CanCan::Ability
-
+  # Define abilities for the passed in user here
+  # @param user [Record]
   def initialize(user)
     # Define abilities for the passed in user here. For example:
     #

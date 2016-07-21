@@ -1,11 +1,22 @@
 require 'invoicing/ledger_item/pdf_generator'
+# @author Bruno Gardin <bgardin@gmail.com>
+# @copyright GNU GENERAL PUBLIC LICENSE  
+#   Version 3, 29 June 2007  
+# copy of module StripeHelper and modification of the report for prawn gem
 module StripeHelper
+    # Modification of PdfGenerator for customization of the invoice
     class MyInvoiceGenerator < Invoicing::LedgerItem::PdfGenerator
+      # initialize method
+      # @return [Enumerable] @invoice
+      # @param invoice [Enumerable]
       def initialize(invoice)
         @invoice = invoice
       end
+      # attribute reader invoice
       attr_reader :invoice
-
+      # render method
+      # @return [file] invoice in pdf format
+      # @param file [File]
       def render(file)
         Prawn::Document.generate(file) do |pdf|
           render_headers(pdf)
@@ -15,7 +26,9 @@ module StripeHelper
       end
 
       private
-
+      # render_header method
+      # @return [Enumerable] invoice header
+      # @param pdf [Enumerable]
       def render_headers(pdf)
         pdf.table([ [I18n.t('invoice_title') ] ], width: 540, cell_style: {padding: 0}) do
           row(0..10).borders = []
@@ -23,7 +36,9 @@ module StripeHelper
         end
       end
 
-      # Renders details about pdf. Shows company name, invoice date and id
+      # Renders details  pdf. Shows company name, invoice date and id
+      # @return [Enumerable] invoice details
+      # @param pdf [Enumerable]
       def render_details(pdf)
         pdf.move_down 10
         pdf.stroke_horizontal_rule
@@ -55,6 +70,8 @@ module StripeHelper
       # Renders details of invoice in a tabular format. Renders each line item, and
       # unit price, and total amount, along with tax. It also displays summary,
       # ie total amount, and total price along with tax.
+      # @return [Enumerable] invoice details
+      # @param pdf [Enumerable]
       def render_summary(pdf)
         pdf.move_down 25
         pdf.text I18n.t('invoice_summary'), size: 12, style: :bold
@@ -92,7 +109,8 @@ module StripeHelper
         pdf.move_down 25
         pdf.stroke_horizontal_rule
       end
-
+      # determine the recipient name
+      # @return [String] invoice details
       def recipient_name
         invoice.recipient.respond_to?(:name) ? invoice.recipient.name : ''
       end

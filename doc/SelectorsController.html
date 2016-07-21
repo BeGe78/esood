@@ -113,13 +113,50 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>insteadof Admin::BaseController</p>
+<p>In charge of statistics data retrieval, analysis and rendering.<br> Data
+are retrieved from the WorldBank database.<br> Statistics are computed by R
+library through Rserve. Data are send for rendering with gon gem for
+javascript. Chart is rendered with Rgraph. This controller support full
+localization (routes, fields and data).<br> <img
+src="file/doc/diagram/selectors_controller_diagram.png"></p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Author:</p>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>Bruno Gardin <a href="mailto:bgardin@gmail.com">bgardin@gmail.com</a></p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Copyrights:</p>
+<ul class="copyright">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>GNU GENERAL PUBLIC LICENSE<br> Version 3, 29 June 2007</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div>
 
@@ -139,29 +176,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#create-instance_method" title="#create (instance method)">#<strong>create</strong>  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#get_autocomplete_items-instance_method" title="#get_autocomplete_items (instance method)">#<strong>get_autocomplete_items</strong>(parameters)  &#x21d2; Object </a>
+      <a href="#create-instance_method" title="#create (instance method)">#<strong>create</strong>  &#x21d2; create.html.erb </a>
     
 
     
@@ -176,8 +191,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>override la méthode standard pour sélectionner la langue dans les tables
-indicators et countries.</p>
+<p>Fetch data, compute and prepare for rendering.</p>
 </div></span>
   
 </li>
@@ -186,7 +200,7 @@ indicators et countries.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_scale-instance_method" title="#get_scale (instance method)">#<strong>get_scale</strong>(l, percent)  &#x21d2; Object </a>
+      <a href="#get_autocomplete_items-instance_method" title="#get_autocomplete_items (instance method)">#<strong>get_autocomplete_items</strong>(parameters)  &#x21d2; Enumerable </a>
     
 
     
@@ -201,7 +215,7 @@ indicators et countries.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>render plain: @coeflm1.inspect plot = c.eval(“plot(year,vect)”).</p>
+<p>We override the standard method to implement filtering.</p>
 </div></span>
   
 </li>
@@ -210,7 +224,7 @@ indicators et countries.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_unit-instance_method" title="#get_unit (instance method)">#<strong>get_unit</strong>(l)  &#x21d2; Object </a>
+      <a href="#get_scale-instance_method" title="#get_scale (instance method)">#<strong>get_scale</strong>(l, percent)  &#x21d2; Integer </a>
     
 
     
@@ -224,7 +238,9 @@ indicators et countries.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>compute scale for the graph.</p>
+</div></span>
   
 </li>
 
@@ -232,7 +248,7 @@ indicators et countries.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#new-instance_method" title="#new (instance method)">#<strong>new</strong>  &#x21d2; Object </a>
+      <a href="#get_unit-instance_method" title="#get_unit (instance method)">#<strong>get_unit</strong>(l)  &#x21d2; String </a>
     
 
     
@@ -246,7 +262,33 @@ indicators et countries.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Translate to unit in english and french.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#new-instance_method" title="#new (instance method)">#<strong>new</strong>  &#x21d2; new.(en,fr).html.erb </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Asks for indicators and countries for statistics.</p>
+</div></span>
   
 </li>
 
@@ -268,7 +310,9 @@ indicators et countries.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Use callbacks to share common setup or constraints between actions.</p>
+</div></span>
   
 </li>
 
@@ -298,36 +342,64 @@ indicators et countries.</p>
       <div class="method_details first">
   <h3 class="signature first" id="create-instance_method">
   
-    #<strong>create</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>create</strong>  &#x21d2; <tt><span class='object_link'><a href="#create-instance_method" title="SelectorsController#create (method)">create</a></span>.html.erb</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Fetch data, compute and prepare for rendering. This is not a restful
+create. The user can loop on create to change its statistics.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="#create-instance_method" title="SelectorsController#create (method)">create</a></span>.html.erb</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the create web page</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">REST URL:</p>
+<ul class="rest_url">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>POST (/:locale)/selectors(.:format)</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
 41
 42
 43
@@ -480,10 +552,28 @@ indicators et countries.</p>
 190
 191
 192
-193</pre>
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
     <span class='kw'>begin</span>            <span class='comment'># find indicators and countries from table
@@ -664,7 +754,7 @@ indicators et countries.</p>
       <div class="method_details ">
   <h3 class="signature " id="get_autocomplete_items-instance_method">
   
-    #<strong>get_autocomplete_items</strong>(parameters)  &#x21d2; <tt>Object</tt> 
+    #<strong>get_autocomplete_items</strong>(parameters)  &#x21d2; <tt>Enumerable</tt> 
   
 
   
@@ -673,14 +763,47 @@ indicators et countries.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>override la méthode standard pour sélectionner la langue dans les tables
-indicators et countries</p>
+<p>We override the standard method to implement filtering.<br> indicator and
+country input field are autocompleted and filtered by ability and language</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>parameters</span>
+      
+      
+        <span class='type'>(<tt>Enumerable</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Enumerable</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>filtered list</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -688,15 +811,15 @@ indicators et countries</p>
       <pre class="lines">
 
 
-8
-9
-10
-11
-12
-13</pre>
+21
+22
+23
+24
+25
+26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 21</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_autocomplete_items'>get_autocomplete_items</span><span class='lparen'>(</span><span class='id identifier rubyid_parameters'>parameters</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_items'>items</span> <span class='op'>=</span> <span class='id identifier rubyid_active_record_get_autocomplete_items'>active_record_get_autocomplete_items</span><span class='lparen'>(</span><span class='id identifier rubyid_parameters'>parameters</span><span class='rparen'>)</span>        
@@ -712,7 +835,7 @@ indicators et countries</p>
       <div class="method_details ">
   <h3 class="signature " id="get_scale-instance_method">
   
-    #<strong>get_scale</strong>(l, percent)  &#x21d2; <tt>Object</tt> 
+    #<strong>get_scale</strong>(l, percent)  &#x21d2; <tt>Integer</tt> 
   
 
   
@@ -721,13 +844,67 @@ indicators et countries</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>render plain: @coeflm1.inspect  plot = c.eval(“plot(year,vect)”)</p>
+<p>compute scale for the graph</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>l</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>length of the largest absolute numeric values</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>percent</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>check if it is a percentage</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>scale</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -735,19 +912,19 @@ indicators et countries</p>
       <pre class="lines">
 
 
-194
-195
-196
-197
-198
-199
-200
-201
-202
-203</pre>
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 194</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 216</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_scale'>get_scale</span> <span class='lparen'>(</span><span class='id identifier rubyid_l'>l</span><span class='comma'>,</span> <span class='id identifier rubyid_percent'>percent</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_scale'>scale</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_l'>l</span>                                 
@@ -767,29 +944,78 @@ indicators et countries</p>
       <div class="method_details ">
   <h3 class="signature " id="get_unit-instance_method">
   
-    #<strong>get_unit</strong>(l)  &#x21d2; <tt>Object</tt> 
+    #<strong>get_unit</strong>(l)  &#x21d2; <tt>String</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Translate to unit in english and french</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>l</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>length of the largest absolute numeric values</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>unit (ex: thousand, million)</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-204
-205
-206
-207
-208
-209
-210
-211</pre>
+229
+230
+231
+232
+233
+234
+235
+236</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 204</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 229</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_unit'>get_unit</span> <span class='lparen'>(</span><span class='id identifier rubyid_l'>l</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_unit'>unit</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_l'>l</span>                                 
@@ -807,32 +1033,91 @@ indicators et countries</p>
       <div class="method_details ">
   <h3 class="signature " id="new-instance_method">
   
-    #<strong>new</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>new</strong>  &#x21d2; <tt><span class='object_link'><a href="#new-instance_method" title="SelectorsController#new (method)">new</a></span>.(en,fr).html.erb</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Asks for indicators and countries for statistics</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="#new-instance_method" title="SelectorsController#new (method)">new</a></span>.(en,fr).html.erb</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the new web page</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">REST URL:</p>
+<ul class="rest_url">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>GET(/:locale)/selectors/new(.:format)</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Path:</p>
+<ul class="path">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>selectorsnew</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-15
-16
-17
-18
-19
-20
-21</pre>
+31
+32
+33
+34
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span>
-    <span class='comment'>#request.path[1..2] == &quot;en&quot; ? I18n.locale = :en : I18n.locale = :fr   #get language from path if redirection error 
-</span>    <span class='ivar'>@indicator_base</span> <span class='op'>=</span> <span class='const'>Indicator</span><span class='period'>.</span><span class='id identifier rubyid_accessible_by'>accessible_by</span><span class='lparen'>(</span><span class='id identifier rubyid_current_ability'>current_ability</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>language:</span> <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_locale'>locale</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='symbol'>:topic</span> <span class='comma'>,</span> <span class='symbol'>:id1</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
+    <span class='ivar'>@indicator_base</span> <span class='op'>=</span> <span class='const'>Indicator</span><span class='period'>.</span><span class='id identifier rubyid_accessible_by'>accessible_by</span><span class='lparen'>(</span><span class='id identifier rubyid_current_ability'>current_ability</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>language:</span> <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_locale'>locale</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='symbol'>:topic</span> <span class='comma'>,</span> <span class='symbol'>:id1</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
     <span class='ivar'>@country_base</span> <span class='op'>=</span> <span class='const'>Country</span><span class='period'>.</span><span class='id identifier rubyid_accessible_by'>accessible_by</span><span class='lparen'>(</span><span class='id identifier rubyid_current_ability'>current_ability</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>language:</span> <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_locale'>locale</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='symbol'>:type</span> <span class='comma'>,</span> <span class='symbol'>:name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
     <span class='ivar'>@selector</span> <span class='op'>=</span> <span class='const'>Selector</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
     <span class='ivar'>@language</span> <span class='op'>=</span> <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_locale'>locale</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
@@ -851,18 +1136,31 @@ indicators et countries</p>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Use callbacks to share common setup or constraints between actions. Never
+trust parameters from the scary internet, only allow the white list
+through.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-214
-215
-216</pre>
+241
+242
+243</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 214</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 241</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_selector_params'>selector_params</span>
   <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_require'>require</span><span class='lparen'>(</span><span class='symbol'>:selector</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_permit'>permit</span><span class='lparen'>(</span><span class='symbol'>:form_switch</span><span class='comma'>,</span> <span class='symbol'>:indicator</span><span class='comma'>,</span><span class='symbol'>:indicator2</span><span class='comma'>,</span> <span class='symbol'>:country1</span><span class='comma'>,</span> <span class='symbol'>:country2</span><span class='comma'>,</span> <span class='symbol'>:year_begin</span><span class='comma'>,</span> <span class='symbol'>:year_end</span><span class='rparen'>)</span>
@@ -877,7 +1175,7 @@ indicators et countries</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Jul 21 11:22:16 2016 by
+  Generated on Thu Jul 21 17:43:34 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.2 (ruby-2.3.1).
 </div>

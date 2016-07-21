@@ -1,6 +1,16 @@
+# @author Bruno Gardin <bgardin@gmail.com>
+# @copyright GNU GENERAL PUBLIC LICENSE
+#   Version 3, 29 June 2007
+# Handles Asynchronous Events coming from stripe and feed the user table, produce invoice if requested, 
+# send email to admin mailbox and send SMS to admin mobile phone.
+#![Class Diagram](file/doc/diagram/stripe_controller_diagram.png)
 class StripeController < ApplicationController
   protect_from_forgery except: :webhook
-  
+  # Activated from stripe services.  
+  # Analyse the event type and react accordingly.  
+  # @return [User.update, invoices, mail, SMS] 
+  # @rest_url POST /stripe/webhook(.:format) 
+  # @path stripe_webhook
   def webhook
     begin  
     # Retrieving the event from the Stripe API guarantees its authenticity  

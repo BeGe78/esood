@@ -1,9 +1,23 @@
-# app/controllers/registrations_controller.rb
+# @author Bruno Gardin <bgardin@gmail.com>
+# @copyright GNU GENERAL PUBLIC LICENSE
+#   Version 3, 29 June 2007
+# Handles **Devise/Stripe Registrations*.It basically adapts the methods of devise when needed mainly for stripe integration.  
+#![Class Diagram](file/doc/diagram/registrations_controller_diagram.png)
 class RegistrationsController < Devise::RegistrationsController
+  # call super devise methods
+  # @return [devise/registrations/new.html.erb] 
+  # @rest_url GET /users/sign_up(.:format)
+  # @path new_user_registration 
   def new
     super
   end
-  # POST /resource   Add the Stripe customer creation code
+  # To create a new registration, we check that it is valid for User model and no email duplicated,  
+  # then we create the stripe records first and if OK we create the user.  
+  # All the errors are rescued with flash message.
+  # @return [records] if successfull
+  # @return [error] if unsuccessfull
+  # @rest_url POST /users(.:format)
+  # @path user_registration
   def create
     build_resource(sign_up_params)
 # initialize empty fields    
@@ -61,19 +75,12 @@ class RegistrationsController < Devise::RegistrationsController
       end
     end  
   end
-
+  # Code copied from devise and modified to get flash error messages 
+  # All the errors are rescued with flash message.
+  # @return [home_screen] if successfull
+  # @return [error] if unsuccessfull
+  # @rest_url PATCH  /users(.:format)
   def update
-=begin  #for the moment we cannot change the email
-    begin
-    cu = Stripe::Customer.retrieve(resource.customer_id)
-    cu.email = params[:user][:email]   #we need to update the email in case it has been modified
-    cu.save
-    rescue Stripe::StripeError => e
-          flash[:notice] = t('stripe_error')
-          puts "update error: #{e.message}"
-          redirect_to edit_user_registration_path and return
-    end
-=end    
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
 
@@ -96,6 +103,11 @@ class RegistrationsController < Devise::RegistrationsController
      end
     end
   end
+  # To delete a  registration, we delete the stripe records first and then the user.  
+  # All the errors are rescued with flash message.
+  # @return [home_screen] if successfull
+  # @return [error] if unsuccessfull
+  # @rest_url DELETE /users(.:format)
   def destroy
 # first delete Stripe customer
     begin
@@ -111,7 +123,8 @@ class RegistrationsController < Devise::RegistrationsController
       system 'sms_delete_user.sh'
     end  
 end
-
+# redirect to previous page and if not present to home
+# @return [url] if unsuccessfull
 def redirect_to_back_or_default(*args)
   if request.env['HTTP_REFERER'].present? && request.env['HTTP_REFERER'] != request.env['REQUEST_URI']
     redirect_to :back, *args
@@ -119,6 +132,8 @@ def redirect_to_back_or_default(*args)
     redirect_to root_url, *args
   end
 end
+# Prepare the error flash message
+# @return [url] with a flash message
 def user_model_flash_errors
      case resource.errors.keys.first
       when :password_confirmation

@@ -1,25 +1,43 @@
+# @author Bruno Gardin <bgardin@gmail.com>
+# @copyright GNU GENERAL PUBLIC LICENSE  
+#   Version 3, 29 June 2007
+# In charge of statistics data retrieval, analysis and rendering.  
+# Data are retrieved from the WorldBank database.  
+# Statistics are computed by R library through Rserve. 
+# Data are send for rendering with gon gem for javascript.
+# Chart is rendered with Rgraph.
+# This controller support full localization (routes, fields and data).  
+#![Class Diagram](file/doc/diagram/selectors_controller_diagram.png)
 class SelectorsController < ApplicationController #insteadof  Admin::BaseController
     require 'rserve/simpler'   #R API
     require 'action_view'      #for number_to_human
     include ActionView::Helpers::NumberHelper
     autocomplete :indicator, :id1, full:  true
     autocomplete :country, :name,  full:  true
-# override la méthode standard pour sélectionner la langue dans les tables indicators et countries   
+    # We override the standard method to implement filtering.  
+    # indicator and country input field are autocompleted and filtered by ability and language
+    # @param parameters [Enumerable]
+    # @return [Enumerable] filtered list  
     def get_autocomplete_items(parameters)
         items = active_record_get_autocomplete_items(parameters)        
         if (parameters[:model] == Indicator or parameters[:model] == Country)
             items = items.accessible_by(current_ability).where(:language => I18n.locale)
         end    
     end
-
+    # Asks for indicators and countries for statistics
+    # @return [new.(en,fr).html.erb] the new web page
+    # @rest_url GET(/:locale)/selectors/new(.:format)
+    # @path selectorsnew
     def new
-        #request.path[1..2] == "en" ? I18n.locale = :en : I18n.locale = :fr   #get language from path if redirection error 
         @indicator_base = Indicator.accessible_by(current_ability).where(language: I18n.locale).order(:topic , :id1).all
         @country_base = Country.accessible_by(current_ability).where(language: I18n.locale).order(:type , :name).all
         @selector = Selector.new
         @language = I18n.locale.to_s
     end
-    
+    # Fetch data, compute and prepare for rendering. This is not a restful create.
+    # The user can loop on create to change its statistics.  
+    # @return [create.html.erb] the create web page
+    # @rest_url POST (/:locale)/selectors(.:format)
     def create
         begin            # find indicators and countries from table
         @indicator_base = Indicator.accessible_by(current_ability).where(language: I18n.locale).order(:topic , :id1).all
@@ -191,6 +209,10 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
  #       render plain: @coeflm1.inspect
  #       plot = c.eval("plot(year,vect)")
     end
+    # compute scale for the graph
+    # @return [Integer] scale
+    # @param l [Integer] length of the largest absolute numeric values
+    # @param percent [Boolean] check if it is a percentage
     def get_scale (l, percent)
         scale = case l                                 
             when 1..6 then 1
@@ -201,6 +223,9 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
         scale = 1 if percent     # rectify scale for percentage
         return scale
     end
+    # Translate to unit in english and french
+    # @return [String] unit (ex: thousand, million)
+    # @param l [Integer] length of the largest absolute numeric values
     def get_unit (l)
         unit = case l                                 
             when 1..6 then "unit"
@@ -211,6 +236,8 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
     end
 
     private
+    # Use callbacks to share common setup or constraints between actions.
+    # Never trust parameters from the scary internet, only allow the white list through.
     def selector_params
       params.require(:selector).permit(:form_switch, :indicator,:indicator2, :country1, :country2, :year_begin, :year_end)
     end

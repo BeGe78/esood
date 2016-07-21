@@ -103,7 +103,53 @@
   
 </div>
 
-<div id="subclasses">
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Top application controller<br> Prevent CSRF attacks by raising an
+exception.<br> Set language.<br> Configure permitted parameters for devise
+gem. Require WorldBank for the others.<br> <img
+src="file/doc/diagram/application_controller_diagram.png"></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Author:</p>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>Bruno Gardin <a href="mailto:bgardin@gmail.com">bgardin@gmail.com</a></p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Copyrights:</p>
+<ul class="copyright">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><div id="subclasses">
   <h2>Direct Known Subclasses</h2>
   <p class="children"><span class='object_link'><a href="CountriesController.html" title="CountriesController (class)">CountriesController</a></span>, <span class='object_link'><a href="IndicatorsController.html" title="IndicatorsController (class)">IndicatorsController</a></span>, <span class='object_link'><a href="InvoicingLedgerItemsController.html" title="InvoicingLedgerItemsController (class)">InvoicingLedgerItemsController</a></span>, <span class='object_link'><a href="PlansController.html" title="PlansController (class)">PlansController</a></span>, <span class='object_link'><a href="RolesController.html" title="RolesController (class)">RolesController</a></span>, <span class='object_link'><a href="SelectorsController.html" title="SelectorsController (class)">SelectorsController</a></span>, <span class='object_link'><a href="StripeController.html" title="StripeController (class)">StripeController</a></span>, <span class='object_link'><a href="UsersController.html" title="UsersController (class)">UsersController</a></span></p>
 </div>
@@ -140,7 +186,8 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>list authorised parameters for devise registration &amp; update.</p>
+<p>Configure permitted parameters for devise gem registration and account
+update.</p>
 </div></span>
   
 </li>
@@ -149,7 +196,7 @@
         <li class="protected ">
   <span class="summary_signature">
     
-      <a href="#default_url_options-instance_method" title="#default_url_options (instance method)">#<strong>default_url_options</strong>(options = {})  &#x21d2; Object </a>
+      <a href="#default_url_options-instance_method" title="#default_url_options (instance method)">#<strong>default_url_options</strong>(options = {})  &#x21d2; I18n.locale </a>
     
 
     
@@ -163,7 +210,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Set default url with language.</p>
+</div></span>
   
 </li>
 
@@ -171,7 +220,7 @@
         <li class="private ">
   <span class="summary_signature">
     
-      <a href="#extract_locale_from_accept_language_header-instance_method" title="#extract_locale_from_accept_language_header (instance method)">#<strong>extract_locale_from_accept_language_header</strong>  &#x21d2; Object </a>
+      <a href="#extract_locale_from_accept_language_header-instance_method" title="#extract_locale_from_accept_language_header (instance method)">#<strong>extract_locale_from_accept_language_header</strong>  &#x21d2; language </a>
     
 
     
@@ -185,7 +234,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>get language from browser.</p>
+</div></span>
   
 </li>
 
@@ -193,7 +244,7 @@
         <li class="protected ">
   <span class="summary_signature">
     
-      <a href="#set_locale-instance_method" title="#set_locale (instance method)">#<strong>set_locale</strong>  &#x21d2; Object </a>
+      <a href="#set_locale-instance_method" title="#set_locale (instance method)">#<strong>set_locale</strong>  &#x21d2; I18n.locale </a>
     
 
     
@@ -207,7 +258,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Set language from params or default.</p>
+</div></span>
   
 </li>
 
@@ -234,7 +287,8 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>list authorised parameters for devise registration &amp; update</p>
+<p>Configure permitted parameters for devise gem registration and account
+update</p>
 
 
   </div>
@@ -248,17 +302,17 @@
       <pre class="lines">
 
 
-11
-12
-13
-14
-15
-16
-17
-18</pre>
+18
+19
+20
+21
+22
+23
+24
+25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/application_controller.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/application_controller.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_configure_permitted_parameters'>configure_permitted_parameters</span>  <span class='comment'>#list authorised parameters for devise registration &amp; update
 </span>  <span class='id identifier rubyid_devise_parameter_sanitizer'>devise_parameter_sanitizer</span><span class='period'>.</span><span class='id identifier rubyid_permit'>permit</span><span class='lparen'>(</span><span class='symbol'>:sign_up</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_u'>u</span><span class='op'>|</span>
@@ -276,24 +330,53 @@
       <div class="method_details ">
   <h3 class="signature " id="default_url_options-instance_method">
   
-    #<strong>default_url_options</strong>(options = {})  &#x21d2; <tt>Object</tt>  <span class="extras">(protected)</span>
+    #<strong>default_url_options</strong>(options = {})  &#x21d2; <tt>I18n.locale</tt>  <span class="extras">(protected)</span>
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Set default url with language</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>I18n.locale</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>which could be :en or :fr</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-24
-25
-26</pre>
+33
+34
+35</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/application_controller.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/application_controller.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_default_url_options'>default_url_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='lbrace'>{</span> <span class='symbol'>:locale</span> <span class='op'>=&gt;</span> <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_locale'>locale</span> <span class='op'>==</span> <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_default_locale'>default_locale</span> <span class='op'>?</span> <span class='kw'>nil</span> <span class='op'>:</span> <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_locale'>locale</span>  <span class='rbrace'>}</span>
@@ -306,24 +389,53 @@
       <div class="method_details ">
   <h3 class="signature " id="extract_locale_from_accept_language_header-instance_method">
   
-    #<strong>extract_locale_from_accept_language_header</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+    #<strong>extract_locale_from_accept_language_header</strong>  &#x21d2; <tt>language</tt>  <span class="extras">(private)</span>
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>get language from browser</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>language</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>which could be :en or :fr</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-34
-35
-36</pre>
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/application_controller.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/application_controller.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_extract_locale_from_accept_language_header'>extract_locale_from_accept_language_header</span>
   <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_env'>env</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>HTTP_ACCEPT_LANGUAGE</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^[a-z]{2}</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span>
@@ -336,24 +448,53 @@
       <div class="method_details ">
   <h3 class="signature " id="set_locale-instance_method">
   
-    #<strong>set_locale</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(protected)</span>
+    #<strong>set_locale</strong>  &#x21d2; <tt>I18n.locale</tt>  <span class="extras">(protected)</span>
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Set language from params or default</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>I18n.locale</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>which could be :en or :fr</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-20
-21
-22</pre>
+28
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/application_controller.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/application_controller.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_locale'>set_locale</span>
   <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_locale'>locale</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:locale</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_default_locale'>default_locale</span>
@@ -368,7 +509,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Jul 21 11:22:16 2016 by
+  Generated on Thu Jul 21 17:43:35 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.2 (ruby-2.3.1).
 </div>

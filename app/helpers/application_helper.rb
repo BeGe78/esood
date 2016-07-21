@@ -1,2 +1,3 @@
+# empty
 module ApplicationHelper
 end
