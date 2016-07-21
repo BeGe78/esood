@@ -4,7 +4,7 @@
 # Handles **Country model** as defined by for the WorldBank database.  
 # Only writable by users with *admin* role. Readable by anyone but with limitation (visible=Y) for not logged users.  
 # This controller support full localization (routes, fields and data).  
-#![Class Diagram](file/doc/diagram/countries_controller_diagram.png)
+#![Class Diagram](diagram/countries_controller_diagram.png)
 class CountriesController < ApplicationController  #reserved to admin. Let create and list countries
   load_and_authorize_resource
   # Asks for new country (country code and language)
