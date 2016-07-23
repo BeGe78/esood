@@ -3,7 +3,8 @@
 **ESoOD** is a Ruby on Rails application providing statistical graph and analysis relative to the World Bank Open Data set.  
 The site supports two languages: *en* and *fr*.  
 It is licensed with a GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007.  
-Sources are hosted on [github](https://github.com/BeGe78/esood).
+Sources are hosted on [github](https://github.com/BeGe78/esood).  
+The documentation is accessible on the [server site itself](https://bege.hd.free.fr/docs/).  
 ## Infrastructure
 The project is developed on Linux FEDORA 24 64 bit and runs in production on Linux FEDORA 24 32 bit with a mysql databse.  
 Gems list can be found in Gemfile.  
