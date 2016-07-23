@@ -4,7 +4,7 @@
 # Handles **Role model** used by devise and cancancan gems.  
 # Only accessible to users with *admin* role.
 # The routes of this controller support localization but the web pages are not translated as it is used only by admin. 
-#![Class Diagram](file/doc/diagram/roles_controller_diagram.png)
+#![Class Diagram](diagram/roles_controller_diagram.png)
 class RolesController < ApplicationController
   load_and_authorize_resource
   # Asks for new role

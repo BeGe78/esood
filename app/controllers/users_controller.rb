@@ -4,7 +4,7 @@
 # Handles **User model** which is central for user management due to links with devise and stripe.     
 # Only visible by users with *admin* role.  
 # This controller support localization for routes.  
-#![Class Diagram](file/doc/diagram/users_controller_diagram.png)
+#![Class Diagram](diagram/users_controller_diagram.png)
 class UsersController < ApplicationController
   load_and_authorize_resource
   # Asks for new user. Normally, users are not created this way.  

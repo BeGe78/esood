@@ -283,7 +283,7 @@ DEPENDENCIES
   cancancan
   capybara-email
   chromedriver-helper
-  coffee-rails (~> 4.1.0)
+  coffee-rails
   data-confirm-modal
   database_cleaner
   devise
@@ -299,24 +299,24 @@ DEPENDENCIES
   json
   minitest-colorize!
   minitest-rails-capybara
-  multi_json (~> 1.11.2)
+  multi_json
   passenger
   prawn
   prawn-table
   rabl
   rabl-rails
-  rails (= 4.2.5)
+  rails
   rails-jquery-autocomplete
   rserve-client
   rserve-simpler
-  sass-rails (~> 5.0)
+  sass-rails
   selenium-webdriver
   spring
   sqlite3
   stripe
   turbolinks
   ua-google-analytics-rails
-  uglifier (>= 1.3.0)
+  uglifier
   world_bank
   yard
 

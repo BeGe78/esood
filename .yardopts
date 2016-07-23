@@ -1,1 +1,14 @@
---markup=markdown --tag copyright:"Copyrights" --tag rest_url:"REST URL" --tag path:"Path" --tag render:"Render" --protected --private --dependencies --full
+--markup=markdown 
+--tag copyright:"Copyrights" 
+--tag rest_url:"REST URL" 
+--tag path:"Path" 
+--protected 
+--private 
+--dependencies 
+--full
+-
+README.md
+LICENSE
+Gemfile
+Passengerfile.json.md
+nginx.md

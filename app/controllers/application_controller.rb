@@ -6,7 +6,7 @@
 # Set language.  
 # Configure permitted parameters for devise gem.
 # Require WorldBank for the others.  
-#![Class Diagram](file/doc/diagram/application_controller_diagram.png)
+#![Class Diagram](diagram/application_controller_diagram.png)
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception  
   before_action :set_locale  #language (en & fr) initialisation

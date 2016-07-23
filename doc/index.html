@@ -60,38 +60,80 @@
       <iframe id="search_frame" src="class_list.html"></iframe>
 
       <div id="content"><div id='filecontents'>
-<h2 id="label-README">README</h2>
+<h1 id="label-ESoOD+Economical+Statistics+on+Open+Data">ESoOD Economical Statistics on Open Data</h1>
 
-<p>This README would normally document whatever steps are necessary to get the
-application up and running.</p>
+<h2 id="label-Preamble">Preamble</h2>
 
-<p>Things you may want to cover:</p>
-<ul><li>
-<p>Ruby version</p>
-</li><li>
-<p>System dependencies</p>
-</li><li>
-<p>Configuration</p>
-</li><li>
-<p>Database creation</p>
-</li><li>
-<p>Database initialization</p>
-</li><li>
-<p>How to run the test suite</p>
-</li><li>
-<p>Services (job queues, cache servers, search engines, etc.)</p>
-</li><li>
-<p>Deployment instructions</p>
-</li><li>
-<p>…</p>
-</li></ul>
+<p><strong>ESoOD</strong> is a Ruby on Rails application providing statistical
+graph and analysis relative to the World Bank Open Data set.<br> The site
+supports two languages: <em>en</em> and <em>fr</em>.<br> It is licensed
+with a GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007.<br> Sources are
+hosted on <a href="https://github.com/BeGe78/esood">github</a>.</p>
 
-<p>Please feel free to use a different markup language if you do not plan to
-run <code>rake doc:app</code>.</p>
+<h2 id="label-Infrastructure">Infrastructure</h2>
+
+<p>The project is developed on Linux FEDORA 24 64 bit and runs in production
+on Linux FEDORA 24 32 bit with a mysql databse.<br> Gems list can be found
+in Gemfile.<br> <strong>ESoOD</strong> is developed with:<br> - Ruby
+2.2.1<br> - Rails 4.2.5</p>
+
+<h2 id="label-Dependencies">Dependencies</h2>
+
+<p>A Stripe account is needed for the billing/invoice process.<br> Google
+analytics is used to get the web site statistics and you need a
+GA.tracker.<br> You need to set your own SSL certificates if you want to
+use HTTPS.<br> R libraries need to be installed independently.<br> You need
+to modify the Terms &amp; Conditions to adapt to your own case. The files
+are located at:<br>
+<em>YOUR_DIRECTORY/app/views/devise/registrations/_cgu1.en.html.erb</em>
+for english version<br>
+<em>YOUR_DIRECTORY/app/views/devise/registrations/_cgu1.fr.html.erb</em>
+for the french version</p>
+
+<h2 id="label-Configuration">Configuration</h2>
+
+<p>Development, test and production rails configuration files must be adapted
+to your case mainly for mail and googe analytics.<br> If you need to add a
+language, all the language files are under <em>config/locales</em>.<br>
+Stripe account parameters should be adapted to link the stripe webhooks to
+your site. The path is: <em>YOURSITE/stripe/webhook</em>.</p>
+
+<h2 id="label-Database+initialisation">Database initialisation</h2>
+
+<p>Some tables need to be fed. You can find example data under
+<em>YOURSITE/test/factories</em>.<br> First you need to create an admin
+role and at least one user with this role. Then you can login with this
+user and feed the other tables. You have to initialize the following
+tables:<br> - role<br> - user<br> - plan<br> - country<br> - indicator</p>
+
+<h2 id="label-Tests+and+documentation">Tests and documentation</h2>
+
+<p>To test and generate the documentation just run the following commands.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_bundle'>bundle</span> <span class='id identifier rubyid_exec'>exec</span> <span class='id identifier rubyid_rake'>rake</span> <span class='id identifier rubyid_test'>test</span>  
+<span class='id identifier rubyid_yard'>yard</span> <span class='id identifier rubyid_doc'>doc</span>
+</code></pre>
+
+<p>It happens that some funtional tests fail (typically login and logon tests)
+due to time out purpose. If you run them several time, they shoud pass
+successfully.</p>
+
+<h2 id="label-Deployment">Deployment</h2>
+
+<p>To deployment for production, I use PhusionPassenger standalone on a nginx
+server and I follow this <a
+href="https://www.phusionpassenger.com/library/walkthroughs/deploy/ruby/ownserver/standalone/oss/deploy_app_main.html">tutorial</a>
+.<br> As examples, I have copied extracts of my <em>Passenger</em> and
+<em>nginx</em> configuration files.</p>
+
+<h2 id="label-Contact">Contact</h2>
+
+<p>You can contact me by <a href="mailto:bgardin@gmail.com">mail</a>.</p>
+<hr>
 </div></div>
 
       <div id="footer">
-  Generated on Thu Jul 21 18:26:43 2016 by
+  Generated on Sat Jul 23 08:49:25 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.2 (ruby-2.3.1).
 </div>

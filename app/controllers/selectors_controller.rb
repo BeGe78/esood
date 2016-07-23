@@ -7,7 +7,7 @@
 # Data are send for rendering with gon gem for javascript.
 # Chart is rendered with Rgraph.
 # This controller support full localization (routes, fields and data).  
-#![Class Diagram](file/doc/diagram/selectors_controller_diagram.png)
+#![Class Diagram](diagram/selectors_controller_diagram.png)
 class SelectorsController < ApplicationController #insteadof  Admin::BaseController
     require 'rserve/simpler'   #R API
     require 'action_view'      #for number_to_human

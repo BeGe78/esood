@@ -4,7 +4,7 @@
 # Handles **InvoicingLedgerItem model** as used by stripe and invoicing gems.  
 # Only accessible by users with *admin* role. 
 # This controller support full localization (routes, fields and data).  
-#![Class Diagram](file/doc/diagram/invoicing_ledger_items_controller_diagram.png)
+#![Class Diagram](diagram/invoicing_ledger_items_controller_diagram.png)
 class InvoicingLedgerItemsController < ApplicationController
   load_and_authorize_resource
   # Displays invoicing_ledger_items list with bootstrap table sortable format.  

@@ -2,7 +2,7 @@
 # @copyright GNU GENERAL PUBLIC LICENSE  
 #   Version 3, 29 June 2007
 # Define values for mails to admin  
-#![Class Diagram](file/doc/diagram/my_mailer_diagram.png)
+#![Class Diagram](diagram/my_mailer_diagram.png)
 class UserMailer < ApplicationMailer
     default from: 'bgardin@gmail.com'
   # Construct mail for new registration

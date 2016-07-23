@@ -4,7 +4,7 @@
 # Handles **Plan model** used by stripe for recurring billing.  
 # Only accessible to users with *admin* role.
 # The routes of this controller support localization but the web pages are not translated as it is used only by admin. 
-#![Class Diagram](file/doc/diagram/plans_controller_diagram.png)
+#![Class Diagram](diagram/plans_controller_diagram.png)
 class PlansController < ApplicationController
   load_and_authorize_resource
   # Asks for new plan

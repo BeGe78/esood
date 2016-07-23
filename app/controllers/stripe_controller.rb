@@ -3,7 +3,7 @@
 #   Version 3, 29 June 2007
 # Handles Asynchronous Events coming from stripe and feed the user table, produce invoice if requested, 
 # send email to admin mailbox and send SMS to admin mobile phone.
-#![Class Diagram](file/doc/diagram/stripe_controller_diagram.png)
+#![Class Diagram](diagram/stripe_controller_diagram.png)
 class StripeController < ApplicationController
   protect_from_forgery except: :webhook
   # Activated from stripe services.  
