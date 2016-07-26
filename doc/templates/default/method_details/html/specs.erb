@@ -1,0 +1,9 @@
+<% if object[:specifications] %>
+<div class="tags">
+  <ul class="specs">
+    <% for spec in object[:specifications] %>
+      <li><%= spec[:assert] %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>

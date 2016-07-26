@@ -2,7 +2,10 @@ require 'test_helper'
 require "database_cleaner"
 #require "mail"
 DatabaseCleaner.strategy = :truncation
-
+# @author Bruno Gardin <bgardin@gmail.com>
+# @copyright GNU GENERAL PUBLIC LICENSE
+#   Version 3, 29 June 2007
+# Integration tests for the {MyMailer mailing to customers}.  
 class MyMailerTest < Capybara::Rails::TestCase
   include FactoryGirl::Syntax::Methods
   include Capybara::Email::DSL
@@ -20,17 +23,20 @@ class MyMailerTest < Capybara::Rails::TestCase
   teardown do
     DatabaseCleaner.clean
   end
-test "my mailer ok" do
+#mailer tests with language :en and :fr  
+test "my_mailer_ok" do
   for lang in [:en, :fr] 
    for renew in ["confirmation","password", "unlock"]  
     I18n.locale = lang
     visit %Q!#{I18n.locale.to_s}/selectors/new!
     click_button('adm_lang')
-    assert_selector 'a#lang_fr'; puts("MyMailerTest::my_mailer assert lang menu")
+    assert_selector 'a#lang_fr', "MyMailerTest::my_mailer assert lang menu"
+    puts("MyMailerTest::my_mailer assert lang menu")
     click_link(%Q!lang_#{I18n.locale.to_s}!)
 #go to login screen   
     click_button('adm_user') 
-    assert_selector 'a#login'; puts("MyMailerTest::my_mailer assert login menu")
+    assert_selector 'a#login', "MyMailerTest::my_mailer assert login menu"
+    puts("MyMailerTest::my_mailer assert login menu")
     click_link('login')
     case renew
     when "confirmation"    
@@ -58,7 +64,7 @@ test "my mailer ok" do
       assert_selector "div.alert", text: I18n.t('devise.unlocks.send_instructions')
       puts(%Q!MyMailerTest::my_mailer assert flash "#{I18n.t('devise.unlocks.send_instructions')}"!)
     end  
-    assert_selector 'a#login', visible: false; puts("MyMailerTest::my_mailer assert login menu")
+    assert_selector 'a#login', visible: false; puts("MyMailerTest::my_mailer assert login menu")    
     open_email(%Q!test_#{I18n.locale.to_s}@gmail.com!)
     current_email.find('p', text: I18n.t('Welcome'))
     puts("MyMailerTest::my_mailer assert mail text")

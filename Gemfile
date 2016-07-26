@@ -49,6 +49,7 @@ gem 'prawn'
 gem 'prawn-table'  
 ## for documentation
 gem 'yard'
+####gem 'yard-rails-plugin', :git => 'https://github.com/ogeidix/yard-rails-plugin.git'
 ## for testing  
 group :test do  
 ### Spring speeds up development by keeping your application running in the background.   

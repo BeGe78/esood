@@ -14,20 +14,17 @@ end
 Capybara.register_driver :selenium_firefox do |app|
   Capybara::Selenium::Driver.new(app, :browser => :firefox)
 end
-
+#class ActionDispatch includes Capybara::Email::DSL
 class ActionDispatch::IntegrationTest
   include Capybara::Email::DSL
 end
-
+#class ActiveSupport
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-=begin    
-  fixtures :roles
-  fixtures :users
-  fixtures :countries
-=end
 end
-
+#class ActionController includes FactoryGirl, Devise and DatabaseCleaner helpers
 class ActionController::TestCase
+  include FactoryGirl::Syntax::Methods  
   include Devise::TestHelpers
+  require "database_cleaner"
+  DatabaseCleaner.strategy = :truncation
 end

@@ -1,8 +1,10 @@
-module Test
 require 'test_helper'
 require "database_cleaner"
 DatabaseCleaner.strategy = :truncation
-
+# @author Bruno Gardin <bgardin@gmail.com>
+# @copyright GNU GENERAL PUBLIC LICENSE
+#   Version 3, 29 June 2007
+# Integration tests for access control for an anonymous user
 class AdminAnonymousTest < Capybara::Rails::TestCase
   include FactoryGirl::Syntax::Methods
   self.use_transactional_fixtures = false
@@ -24,14 +26,14 @@ class AdminAnonymousTest < Capybara::Rails::TestCase
   teardown do
     DatabaseCleaner.clean
   end  
-
-  test "admin anonymous nok" do
+#Unsuccessful tests due to access control with language :en and :fr
+  test "admin_anonymous_nok" do
     for lang in [:en, :fr]  
     I18n.locale = lang
     visit %Q!#{I18n.locale.to_s}/selectors/new!
-    assert_no_selector 'button#admin'; puts("LoginTest::lang assert no admin menu")
+    assert_no_selector 'button#admin'; puts("AdminAnonymousTest::lang assert no admin menu")    
     click_button('adm_lang')
-    assert_selector 'a#lang_fr'; puts("LoginTest::lang assert lang menu")
+    assert_selector 'a#lang_fr'; puts("AdminAnonymousTest::lang assert lang menu")    
     click_link(%Q!lang_#{I18n.locale.to_s}!)
    
     for controller in ["countries/new","indicators/new","roles","plans","invoicing_ledger_items","admin/users"]        
@@ -41,16 +43,11 @@ class AdminAnonymousTest < Capybara::Rails::TestCase
     end
    
       visit %Q!#{I18n.locale.to_s << "/countries"}!
-      assert_text "FRA" 
-      puts("AdminAnonymousTest::admin_anonymous_countries_ok assert flash FRA")
-      assert_no_text "DEU" 
-      puts("AdminAnonymousTest::admin_anonymous_countries_nok assert flash DEU")
+      assert_text "FRA"; puts("AdminAnonymousTest::admin_anonymous_countries_ok assert flash FRA")
+      assert_no_text "DEU"; puts("AdminAnonymousTest::admin_anonymous_countries_nok assert flash DEU")
       visit %Q!#{I18n.locale.to_s << "/indicators"}!
-      assert_text "NY.GDP.PCAP.CN" 
-      puts("AdminAnonymousTest::admin_anonymous_indicators_ok assert flash NY.GDP.PCAP.CN")
-      assert_no_text "NY.GDP.PCAP.CD" 
-      puts("AdminAnonymousTest::admin_anonymous_indicators_nok assert flash NY.GDP.PCAP.CD")
+      assert_text "NY.GDP.PCAP.CN"; puts("AdminAnonymousTest::admin_anonymous_indicators_ok assert flash NY.GDP.PCAP.CN")
+      assert_no_text "NY.GDP.PCAP.CD"; puts("AdminAnonymousTest::admin_anonymous_indicators_nok assert flash NY.GDP.PCAP.CD")
     end
   end
-end
 end

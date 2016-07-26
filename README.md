@@ -3,7 +3,7 @@
 **ESoOD** is a Ruby on Rails application providing statistical graph and analysis relative to the World Bank Open Data set.  
 The site supports two languages: *en* and *fr*.  
 It is licensed with a GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007.  
-Sources are hosted on [github](https://github.com/BeGe78/esood).  
+Sources are hosted on [github](https://github.com/BeGe78/esood) .  
 The documentation is accessible on the [server site itself](https://bege.hd.free.fr/docs/).  
 ## Infrastructure
 The project is developed on Linux FEDORA 24 64 bit and runs in production on Linux FEDORA 24 32 bit with a mysql databse.  
@@ -42,7 +42,7 @@ To test and generate the documentation just run the following commands.
     bundle exec rake test  
     yard doc
     
-It happens that some funtional tests fail (typically login and logon tests) due to time out purpose. If you run them several time, they shoud pass successfully.  
+It happens that some integration tests may fail (typically login and logon tests) due to time out reason. If you run them several time, they shoud pass successfully.  
 ## Deployment
 To deployment for production, I use PhusionPassenger standalone on a nginx server and I follow this [tutorial](https://www.phusionpassenger.com/library/walkthroughs/deploy/ruby/ownserver/standalone/oss/deploy_app_main.html) .  
 As examples, I have copied extracts of my *Passenger* and *nginx* configuration files.  

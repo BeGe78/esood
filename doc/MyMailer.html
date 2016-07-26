@@ -111,7 +111,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Default values for devise mailer<br> <img
+<p>Default values for devise mailer<br> <span class='object_link'><a href="MyMailerTest.html" title="MyMailerTest (class)">Corresponding tests:</a></span><br> <span class='object_link'><a href="MyMailerPreview.html" title="MyMailerPreview (class)">Corresponding mails preview:</a></span><br> <img
 src="diagram/my_mailer_diagram.png"></p>
 
 
@@ -300,16 +300,16 @@ src="diagram/my_mailer_diagram.png"></p>
       <pre class="lines">
 
 
-11
-12
 13
 14
 15
 16
-17</pre>
+17
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/mailers/my_mailer.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'app/mailers/my_mailer.rb', line 13</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_confirmation_instructions'>confirmation_instructions</span><span class='lparen'>(</span><span class='id identifier rubyid_record'>record</span><span class='comma'>,</span> <span class='id identifier rubyid_token'>token</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_headers'>headers</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Custom-header</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Bar</span><span class='tstring_end'>&quot;</span></span>
@@ -349,13 +349,13 @@ src="diagram/my_mailer_diagram.png"></p>
       <pre class="lines">
 
 
-20
-21
 22
-23</pre>
+23
+24
+25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/mailers/my_mailer.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'app/mailers/my_mailer.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reset_password_instructions'>reset_password_instructions</span><span class='lparen'>(</span><span class='id identifier rubyid_record'>record</span><span class='comma'>,</span> <span class='id identifier rubyid_token'>token</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_set_organization_of'>set_organization_of</span> <span class='id identifier rubyid_record'>record</span>
@@ -392,12 +392,12 @@ src="diagram/my_mailer_diagram.png"></p>
       <pre class="lines">
 
 
-33
-34
-35</pre>
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/mailers/my_mailer.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'app/mailers/my_mailer.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_organization_of'>set_organization_of</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
   <span class='ivar'>@organization</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_organization'>organization</span> <span class='kw'>rescue</span> <span class='kw'>nil</span>
@@ -433,13 +433,13 @@ src="diagram/my_mailer_diagram.png"></p>
       <pre class="lines">
 
 
-26
-27
 28
-29</pre>
+29
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/mailers/my_mailer.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'app/mailers/my_mailer.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unlock_instructions'>unlock_instructions</span><span class='lparen'>(</span><span class='id identifier rubyid_record'>record</span><span class='comma'>,</span> <span class='id identifier rubyid_token'>token</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_set_organization_of'>set_organization_of</span> <span class='id identifier rubyid_record'>record</span>
@@ -455,7 +455,7 @@ src="diagram/my_mailer_diagram.png"></p>
 </div>
 
       <div id="footer">
-  Generated on Sat Jul 23 08:49:30 2016 by
+  Generated on Tue Jul 26 09:29:44 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.2 (ruby-2.3.1).
 </div>

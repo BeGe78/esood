@@ -47,8 +47,7 @@ class StripeController < ApplicationController
             t = Time.now.strftime "%Y-%m-%d_%H_%M_%S"            #generate file name
             f = user.id.to_s + "_" + t + ".pdf"
             pdf_file = pdf_creator.render Rails.root.join("./public/",f)
-            #UserMailer.invoice_email(user.email, Rails.root.join("./public/",f).to_s).deliver_later
-            UserMailer.invoice_email("bgardin@gmail.com", Rails.root.join("./public/",f).to_s).deliver_later
+            UserMailer.invoice_email("bgardin@gmail.com", Rails.root.join("./tmp/invoice_pdf",f).to_s).deliver_later
             I18n.locale = locale_save
         end
       when 'invoice.payment_failed'

@@ -1,9 +1,10 @@
 # @author Bruno Gardin <bgardin@gmail.com>
 # @copyright GNU GENERAL PUBLIC LICENSE
 #   Version 3, 29 June 2007
-# Handles **Role model** used by devise and cancancan gems.  
+# Handles the {Role **Role model**} used by devise and cancancan gems.  
 # Only accessible to users with *admin* role.
-# The routes of this controller support localization but the web pages are not translated as it is used only by admin. 
+# The routes of this controller support localization but the web pages are not translated as it is used only by admin.  
+# {RolesControllerTest Corresponding tests:}   
 #![Class Diagram](diagram/roles_controller_diagram.png)
 class RolesController < ApplicationController
   load_and_authorize_resource

@@ -117,7 +117,7 @@
 are retrieved from the WorldBank database.<br> Statistics are computed by R
 library through Rserve. Data are send for rendering with gon gem for
 javascript. Chart is rendered with Rgraph. This controller support full
-localization (routes, fields and data).<br> <img
+localization (routes, fields and data).<br> <span class='object_link'><a href="SelectorCustomerTest.html" title="SelectorCustomerTest (class)">Corresponding integration tests for users:</a></span><br> <span class='object_link'><a href="SelectorAnonymousTest.html" title="SelectorAnonymousTest (class)">Corresponding integration tests for anonymous:</a></span><br> <img
 src="diagram/selectors_controller_diagram.png"></p>
 
 
@@ -200,7 +200,7 @@ src="diagram/selectors_controller_diagram.png"></p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_autocomplete_items-instance_method" title="#get_autocomplete_items (instance method)">#<strong>get_autocomplete_items</strong>(parameters)  &#x21d2; Enumerable </a>
+      <a href="#get_autocomplete_items-instance_method" title="#get_autocomplete_items (instance method)">#<strong>get_autocomplete_items</strong>(parameters)  &#x21d2; Hash </a>
     
 
     
@@ -400,8 +400,6 @@ create. The user can loop on create to change its statistics.</p>
       <pre class="lines">
 
 
-41
-42
 43
 44
 45
@@ -570,10 +568,12 @@ create. The user can loop on create to change its statistics.</p>
 208
 209
 210
-211</pre>
+211
+212
+213</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
     <span class='kw'>begin</span>            <span class='comment'># find indicators and countries from table
@@ -754,7 +754,7 @@ create. The user can loop on create to change its statistics.</p>
       <div class="method_details ">
   <h3 class="signature " id="get_autocomplete_items-instance_method">
   
-    #<strong>get_autocomplete_items</strong>(parameters)  &#x21d2; <tt>Enumerable</tt> 
+    #<strong>get_autocomplete_items</strong>(parameters)  &#x21d2; <tt>Hash</tt> 
   
 
   
@@ -778,7 +778,7 @@ country input field are autocompleted and filtered by ability and language</p>
         <span class='name'>parameters</span>
       
       
-        <span class='type'>(<tt>Enumerable</tt>)</span>
+        <span class='type'>(<tt>Hash</tt>)</span>
       
       
       
@@ -792,7 +792,7 @@ country input field are autocompleted and filtered by ability and language</p>
     <li>
       
       
-        <span class='type'>(<tt>Enumerable</tt>)</span>
+        <span class='type'>(<tt>Hash</tt>)</span>
       
       
       
@@ -811,15 +811,15 @@ country input field are autocompleted and filtered by ability and language</p>
       <pre class="lines">
 
 
-21
-22
 23
 24
 25
-26</pre>
+26
+27
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_autocomplete_items'>get_autocomplete_items</span><span class='lparen'>(</span><span class='id identifier rubyid_parameters'>parameters</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_items'>items</span> <span class='op'>=</span> <span class='id identifier rubyid_active_record_get_autocomplete_items'>active_record_get_autocomplete_items</span><span class='lparen'>(</span><span class='id identifier rubyid_parameters'>parameters</span><span class='rparen'>)</span>        
@@ -912,8 +912,6 @@ country input field are autocompleted and filtered by ability and language</p>
       <pre class="lines">
 
 
-216
-217
 218
 219
 220
@@ -921,10 +919,12 @@ country input field are autocompleted and filtered by ability and language</p>
 222
 223
 224
-225</pre>
+225
+226
+227</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 216</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 218</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_scale'>get_scale</span> <span class='lparen'>(</span><span class='id identifier rubyid_l'>l</span><span class='comma'>,</span> <span class='id identifier rubyid_percent'>percent</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_scale'>scale</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_l'>l</span>                                 
@@ -1005,17 +1005,17 @@ country input field are autocompleted and filtered by ability and language</p>
       <pre class="lines">
 
 
-229
-230
 231
 232
 233
 234
 235
-236</pre>
+236
+237
+238</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 229</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 231</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_unit'>get_unit</span> <span class='lparen'>(</span><span class='id identifier rubyid_l'>l</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_unit'>unit</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_l'>l</span>                                 
@@ -1106,15 +1106,15 @@ country input field are autocompleted and filtered by ability and language</p>
       <pre class="lines">
 
 
-31
-32
 33
 34
 35
-36</pre>
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span>
     <span class='ivar'>@indicator_base</span> <span class='op'>=</span> <span class='const'>Indicator</span><span class='period'>.</span><span class='id identifier rubyid_accessible_by'>accessible_by</span><span class='lparen'>(</span><span class='id identifier rubyid_current_ability'>current_ability</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>language:</span> <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_locale'>locale</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='symbol'>:topic</span> <span class='comma'>,</span> <span class='symbol'>:id1</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
@@ -1155,12 +1155,12 @@ through.</p>
       <pre class="lines">
 
 
-241
-242
-243</pre>
+243
+244
+245</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 241</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/selectors_controller.rb', line 243</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_selector_params'>selector_params</span>
   <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_require'>require</span><span class='lparen'>(</span><span class='symbol'>:selector</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_permit'>permit</span><span class='lparen'>(</span><span class='symbol'>:form_switch</span><span class='comma'>,</span> <span class='symbol'>:indicator</span><span class='comma'>,</span><span class='symbol'>:indicator2</span><span class='comma'>,</span> <span class='symbol'>:country1</span><span class='comma'>,</span> <span class='symbol'>:country2</span><span class='comma'>,</span> <span class='symbol'>:year_begin</span><span class='comma'>,</span> <span class='symbol'>:year_end</span><span class='rparen'>)</span>
@@ -1175,7 +1175,7 @@ through.</p>
 </div>
 
       <div id="footer">
-  Generated on Sat Jul 23 08:49:34 2016 by
+  Generated on Tue Jul 26 09:29:48 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.2 (ruby-2.3.1).
 </div>

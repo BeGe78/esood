@@ -1,7 +1,10 @@
 require 'test_helper'
 require "database_cleaner"
 DatabaseCleaner.strategy = :truncation
-
+# @author Bruno Gardin <bgardin@gmail.com>
+# @copyright GNU GENERAL PUBLIC LICENSE  
+#   Version 3, 29 June 2007
+# Tests the {Indicator **Indicator model**}  
 class IndicatorTest < ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
   self.use_transactional_fixtures = false
@@ -12,7 +15,8 @@ class IndicatorTest < ActiveSupport::TestCase
   teardown do
     DatabaseCleaner.clean
   end
-  test "Indicator" do
+# Test **Indicator model** behaviour for the different fields.  
+  test "indicator" do
    for field in ["duplicate", "id1", "topic", "name", "language", "language-it", "visible", "OK", "OK-duplicate"] 
     c = Indicator.new                 #initialize with france country
     c.id1 = "ANY.INDIC"

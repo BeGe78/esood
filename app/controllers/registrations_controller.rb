@@ -2,6 +2,7 @@
 # @copyright GNU GENERAL PUBLIC LICENSE
 #   Version 3, 29 June 2007
 # Handles **Devise/Stripe Registrations*.It basically adapts the methods of devise when needed mainly for stripe integration.  
+# {LogonTest Corresponding integration tests}   
 #![Class Diagram](diagram/registrations_controller_diagram.png)
 class RegistrationsController < Devise::RegistrationsController
   # call super devise methods

@@ -1,7 +1,10 @@
 require 'test_helper'
 require "database_cleaner"
 DatabaseCleaner.strategy = :truncation
-
+# @author Bruno Gardin <bgardin@gmail.com>
+# @copyright GNU GENERAL PUBLIC LICENSE
+#   Version 3, 29 June 2007
+# Integration tests for login and logout
 class LoginTest < Capybara::Rails::TestCase
   include FactoryGirl::Syntax::Methods
   self.use_transactional_fixtures = false
@@ -16,8 +19,8 @@ class LoginTest < Capybara::Rails::TestCase
   teardown do
     DatabaseCleaner.clean
   end
-  
-  test "login and logout" do
+#Successful tests  with language :en and :fr    
+  test "login_and_logout" do
     for lang in [ :en, :fr]  
     I18n.locale = lang
     visit %Q!#{I18n.locale.to_s}/selectors/new!
@@ -47,8 +50,8 @@ class LoginTest < Capybara::Rails::TestCase
     assert_selector 'a#login', visible: false; puts("LoginTest::login_and_logout assert login menu")
     end
   end
-
-  test "login fail" do
+#Unsuccessful tests due to wrong parameters with language :en and :fr
+  test "login_fail" do
     for lang in [:en, :fr]  
     I18n.locale = lang
     visit %Q!#{I18n.locale.to_s}/selectors/new!
@@ -67,7 +70,5 @@ class LoginTest < Capybara::Rails::TestCase
     puts(%Q!LoginTest::login_and_logout assert flash "#{I18n.t('devise.failure.invalid').last(9)}"!)
     assert_selector 'a#login', visible: false; puts("LoginTest::login_fail assert login menu")
     end
-  end
-  
-  
+  end  
 end

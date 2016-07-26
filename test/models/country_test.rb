@@ -1,7 +1,10 @@
 require 'test_helper'
 require "database_cleaner"
 DatabaseCleaner.strategy = :truncation
-
+# @author Bruno Gardin <bgardin@gmail.com>
+# @copyright GNU GENERAL PUBLIC LICENSE  
+#   Version 3, 29 June 2007
+# Tests the {Country **Country model**}
 class CountryTest < ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
   self.use_transactional_fixtures = false
@@ -12,7 +15,8 @@ class CountryTest < ActiveSupport::TestCase
   teardown do
     DatabaseCleaner.clean
   end
-  test "Country" do
+# Test **Role model** behaviour for the different fields.  
+  test "country" do
    for field in ["duplicate", "id1", "iso2code", "code", "name", "language", "language-it", "type", "visible", "OK", "OK-duplicate"] 
     c = Country.new                 #initialize with france country
     c.id1 = @france.id1

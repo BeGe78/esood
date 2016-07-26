@@ -1,9 +1,10 @@
 # @author Bruno Gardin <bgardin@gmail.com>
 # @copyright GNU GENERAL PUBLIC LICENSE  
 #   Version 3, 29 June 2007
-# Handles **Plan model** used by stripe for recurring billing.  
+# Handles the {Plan **Plan model**} used by stripe for recurring billing.  
 # Only accessible to users with *admin* role.
 # The routes of this controller support localization but the web pages are not translated as it is used only by admin. 
+# {PlansControllerTest Corresponding tests:}   
 #![Class Diagram](diagram/plans_controller_diagram.png)
 class PlansController < ApplicationController
   load_and_authorize_resource

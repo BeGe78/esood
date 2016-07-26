@@ -6,9 +6,14 @@
 --private 
 --dependencies 
 --full
+lib/**/*.rb
+app/**/*.rb
+test/**/*.rb
+--load yard-test-handler.rb
 -
 README.md
 LICENSE
 Gemfile
 Passengerfile.json.md
 nginx.md
+yard-test-handler.rb

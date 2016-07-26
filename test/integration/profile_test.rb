@@ -1,11 +1,13 @@
 require 'test_helper'
 require "database_cleaner"
 DatabaseCleaner.strategy = :truncation
-
+# @author Bruno Gardin <bgardin@gmail.com>
+# @copyright GNU GENERAL PUBLIC LICENSE
+#   Version 3, 29 June 2007
+# Integration tests for profile modification
 class ProfileTest < Capybara::Rails::TestCase
   include FactoryGirl::Syntax::Methods
   self.use_transactional_fixtures = false
-
   setup do
     DatabaseCleaner.start
     Capybara.current_driver = :selenium     
@@ -46,8 +48,8 @@ class ProfileTest < Capybara::Rails::TestCase
   teardown do
     DatabaseCleaner.clean
   end
-  
-  test "profile ok" do
+#Successful tests  with language :en and :fr    
+  test "profile_ok" do
   for lang in [ :en, :fr]  #need to loop on lang first to reset the password correctly
   I18n.locale = lang
   click_button('adm_lang')
@@ -77,11 +79,10 @@ class ProfileTest < Capybara::Rails::TestCase
     assert_selector "div.alert", text: I18n.t('devise.registrations.updated')
     puts(%Q!LoginTest::profile_#{change}_ok flash "#{I18n.t('devise.registrations.updated')}"!)
    end    
-  end   
-
-  end
-
-  test "profile ko" do
+  end 
+ end
+#Unsuccessful tests due to wrong parameters with language :en and :fr
+  test "profile_ko" do
    for error in ["name", "password_length", "password_confirmation", "current_password"]   
     for lang in [ :en, :fr]  
     I18n.locale = lang
@@ -123,7 +124,5 @@ class ProfileTest < Capybara::Rails::TestCase
     end  
     end
    end
-  end
-  
-  
+  end  
 end

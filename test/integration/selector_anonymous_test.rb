@@ -1,8 +1,10 @@
-module Test
 require 'test_helper'
 require "database_cleaner"
 DatabaseCleaner.strategy = :truncation
-
+# @author Bruno Gardin <bgardin@gmail.com>
+# @copyright GNU GENERAL PUBLIC LICENSE
+#   Version 3, 29 June 2007
+# Integration tests for statistics handling for an anonymous user by {SelectorsController **SelectorsController**}  
 class SelectorAnonymousTest < Capybara::Rails::TestCase
   include FactoryGirl::Syntax::Methods
   self.use_transactional_fixtures = false
@@ -25,7 +27,8 @@ class SelectorAnonymousTest < Capybara::Rails::TestCase
   end
   teardown do
     DatabaseCleaner.clean
-  end  
+  end
+#special function to select fields in an autocomplete list  
   def fill_autocomplete(field, options = {})
     fill_in field, with: options[:with]
     page.execute_script %Q{ $('##{field}').trigger('focus') }
@@ -34,8 +37,8 @@ class SelectorAnonymousTest < Capybara::Rails::TestCase
     page.has_selector?('ul.ui-autocomplete li.ui-menu-item a')
     page.execute_script %Q{ $('#{selector}').trigger('mouseenter').click() }
   end
-
-  test "selector anonymous ok" do
+#Successful tests due to access control with language :en and :fr
+  test "selector_anonymous_ok" do
     for lang in [:en, :fr]  
     I18n.locale = lang
     visit %Q!#{I18n.locale.to_s}/selectors/new!
@@ -65,8 +68,8 @@ class SelectorAnonymousTest < Capybara::Rails::TestCase
     assert_no_selector 'span#print_link'; puts("SelectorAnonymousTest::print assert print_link KO")    
     end
   end
-
-  test "selector anonymous wrong indicators" do
+#Unsuccessful tests due to access control with language :en and :fr
+  test "selector_anonymous_wrong_indicators" do
    for page_from in ["new", "create"]   
    for indic in ["country1", "country2", "indicator1", "indicator2"]     
     for lang in [:en, :fr]  
@@ -107,7 +110,5 @@ class SelectorAnonymousTest < Capybara::Rails::TestCase
     end
    end
    end
-  end
- 
-end
+  end 
 end

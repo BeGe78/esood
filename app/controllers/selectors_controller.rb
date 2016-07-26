@@ -7,6 +7,8 @@
 # Data are send for rendering with gon gem for javascript.
 # Chart is rendered with Rgraph.
 # This controller support full localization (routes, fields and data).  
+# {SelectorCustomerTest Corresponding integration tests for users:}   
+# {SelectorAnonymousTest Corresponding integration tests for anonymous:}   
 #![Class Diagram](diagram/selectors_controller_diagram.png)
 class SelectorsController < ApplicationController #insteadof  Admin::BaseController
     require 'rserve/simpler'   #R API
@@ -16,8 +18,8 @@ class SelectorsController < ApplicationController #insteadof  Admin::BaseControl
     autocomplete :country, :name,  full:  true
     # We override the standard method to implement filtering.  
     # indicator and country input field are autocompleted and filtered by ability and language
-    # @param parameters [Enumerable]
-    # @return [Enumerable] filtered list  
+    # @param parameters [Hash]
+    # @return [Hash] filtered list  
     def get_autocomplete_items(parameters)
         items = active_record_get_autocomplete_items(parameters)        
         if (parameters[:model] == Indicator or parameters[:model] == Country)

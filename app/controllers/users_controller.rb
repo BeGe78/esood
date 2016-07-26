@@ -1,9 +1,10 @@
 # @author Bruno Gardin <bgardin@gmail.com>
 # @copyright GNU GENERAL PUBLIC LICENSE
 #   Version 3, 29 June 2007
-# Handles **User model** which is central for user management due to links with devise and stripe.     
+# Handles the {User **User model**} which is central for user management due to links with devise and stripe.     
 # Only visible by users with *admin* role.  
 # This controller support localization for routes.  
+# {UsersControllerTest Corresponding tests:}   
 #![Class Diagram](diagram/users_controller_diagram.png)
 class UsersController < ApplicationController
   load_and_authorize_resource
@@ -77,6 +78,6 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :description)
+      params.require(:user).permit(:name, :email, :role_id, :plan_id, :password, :password_confirmation)
     end
 end

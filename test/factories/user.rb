@@ -3,7 +3,8 @@ FactoryGirl.define do
   factory :user do
     name 'user'
     email 'test@gmail.com'
-    password '12345678'    
+    password '12345678'
+    password_confirmation '12345678'
   end
   factory :user1, class: User do
     name 'user1'
@@ -19,5 +20,10 @@ FactoryGirl.define do
     name 'user_fr'
     email 'test_fr@gmail.com'
     password '12345678'    
-  end  
+  end 
+    factory :admin1, class: User do
+    name 'admin11@gmail.com'
+    password '12345678'
+    password_confirmation '12345678'    
+  end
 end  

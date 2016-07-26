@@ -108,11 +108,10 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Handles <strong>Plan model</strong> used by stripe for recurring
+<p>Handles the <span class='object_link'><a href="Plan.html" title="Plan (class)"><strong>Plan model</strong></a></span> used by stripe for recurring
 billing.<br> Only accessible to users with <em>admin</em> role. The routes
 of this controller support localization but the web pages are not
-translated as it is used only by admin. <img
-src="diagram/plans_controller_diagram.png"></p>
+translated as it is used only by admin. <span class='object_link'><a href="PlansControllerTest.html" title="PlansControllerTest (class)">Corresponding tests:</a></span><br> <img src="diagram/plans_controller_diagram.png"></p>
 
 
   </div>
@@ -454,16 +453,16 @@ src="diagram/plans_controller_diagram.png"></p>
       <pre class="lines">
 
 
-39
 40
 41
 42
 43
 44
-45</pre>
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
     <span class='kw'>if</span> <span class='ivar'>@plan</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
@@ -537,13 +536,13 @@ src="diagram/plans_controller_diagram.png"></p>
       <pre class="lines">
 
 
-60
 61
 62
-63</pre>
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span>
   <span class='ivar'>@plan</span><span class='period'>.</span><span class='id identifier rubyid_destroy'>destroy</span>
@@ -630,11 +629,11 @@ src="diagram/plans_controller_diagram.png"></p>
       <pre class="lines">
 
 
-33
-34</pre>
+34
+35</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_edit'>edit</span>
 <span class='kw'>end</span></pre>
@@ -719,12 +718,12 @@ src="diagram/plans_controller_diagram.png"></p>
       <pre class="lines">
 
 
-20
 21
-22</pre>
+22
+23</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 21</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
   <span class='ivar'>@plans</span> <span class='op'>=</span> <span class='const'>Plan</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
@@ -810,11 +809,11 @@ src="diagram/plans_controller_diagram.png"></p>
       <pre class="lines">
 
 
-14
-15</pre>
+15
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span>    
 <span class='kw'>end</span></pre>
@@ -851,12 +850,12 @@ through.</p>
       <pre class="lines">
 
 
-68
 69
-70</pre>
+70
+71</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_plan_params'>plan_params</span>
   <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_require'>require</span><span class='lparen'>(</span><span class='symbol'>:plan</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_permit'>permit</span><span class='lparen'>(</span><span class='symbol'>:stripe_id</span><span class='comma'>,</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='symbol'>:amount</span><span class='comma'>,</span> <span class='symbol'>:interval</span><span class='rparen'>)</span>
@@ -942,11 +941,11 @@ through.</p>
       <pre class="lines">
 
 
-27
-28</pre>
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
 <span class='kw'>end</span></pre>
@@ -1029,16 +1028,16 @@ through.</p>
       <pre class="lines">
 
 
-50
 51
 52
 53
 54
 55
-56</pre>
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='kw'>if</span> <span class='ivar'>@plan</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='id identifier rubyid_plan_params'>plan_params</span><span class='rparen'>)</span>
@@ -1057,7 +1056,7 @@ through.</p>
 </div>
 
       <div id="footer">
-  Generated on Sat Jul 23 08:49:32 2016 by
+  Generated on Tue Jul 26 09:29:46 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.2 (ruby-2.3.1).
 </div>

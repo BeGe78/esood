@@ -7,8 +7,8 @@ module StripeHelper
     # Modification of PdfGenerator for customization of the invoice
     class MyInvoiceGenerator < Invoicing::LedgerItem::PdfGenerator
       # initialize method
-      # @return [Enumerable] @invoice
-      # @param invoice [Enumerable]
+      # @return [InvoicingLedgerItem] @invoice
+      # @param invoice [InvoicingLedgerItem]
       def initialize(invoice)
         @invoice = invoice
       end
@@ -27,8 +27,8 @@ module StripeHelper
 
       private
       # render_header method
-      # @return [Enumerable] invoice header
-      # @param pdf [Enumerable]
+      # @return [Hash] invoice header
+      # @param pdf [Hash]
       def render_headers(pdf)
         pdf.table([ [I18n.t('invoice_title') ] ], width: 540, cell_style: {padding: 0}) do
           row(0..10).borders = []
@@ -37,8 +37,8 @@ module StripeHelper
       end
 
       # Renders details  pdf. Shows company name, invoice date and id
-      # @return [Enumerable] invoice details
-      # @param pdf [Enumerable]
+      # @return [Hash] invoice details
+      # @param pdf [Hash]
       def render_details(pdf)
         pdf.move_down 10
         pdf.stroke_horizontal_rule
@@ -70,8 +70,8 @@ module StripeHelper
       # Renders details of invoice in a tabular format. Renders each line item, and
       # unit price, and total amount, along with tax. It also displays summary,
       # ie total amount, and total price along with tax.
-      # @return [Enumerable] invoice details
-      # @param pdf [Enumerable]
+      # @return [Hash] invoice details
+      # @param pdf [Hash]
       def render_summary(pdf)
         pdf.move_down 25
         pdf.text I18n.t('invoice_summary'), size: 12, style: :bold

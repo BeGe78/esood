@@ -342,8 +342,7 @@ accordingly.</p>
 71
 72
 73
-74
-75</pre>
+74</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/controllers/stripe_controller.rb', line 14</span>
@@ -384,8 +383,7 @@ accordingly.</p>
           <span class='id identifier rubyid_t'>t</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_strftime'>strftime</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%Y-%m-%d_%H_%M_%S</span><span class='tstring_end'>&quot;</span></span>            <span class='comment'>#generate file name
 </span>          <span class='id identifier rubyid_f'>f</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>_</span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_t'>t</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.pdf</span><span class='tstring_end'>&quot;</span></span>
           <span class='id identifier rubyid_pdf_file'>pdf_file</span> <span class='op'>=</span> <span class='id identifier rubyid_pdf_creator'>pdf_creator</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_root'>root</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./public/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='id identifier rubyid_f'>f</span><span class='rparen'>)</span>
-          <span class='comment'>#UserMailer.invoice_email(user.email, Rails.root.join(&quot;./public/&quot;,f).to_s).deliver_later
-</span>          <span class='const'>UserMailer</span><span class='period'>.</span><span class='id identifier rubyid_invoice_email'>invoice_email</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>bgardin@gmail.com</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_root'>root</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./public/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='id identifier rubyid_f'>f</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_deliver_later'>deliver_later</span>
+          <span class='const'>UserMailer</span><span class='period'>.</span><span class='id identifier rubyid_invoice_email'>invoice_email</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>bgardin@gmail.com</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_root'>root</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>./tmp/invoice_pdf</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='id identifier rubyid_f'>f</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_deliver_later'>deliver_later</span>
           <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_locale'>locale</span> <span class='op'>=</span> <span class='id identifier rubyid_locale_save'>locale_save</span>
       <span class='kw'>end</span>
     <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>invoice.payment_failed</span><span class='tstring_end'>&#39;</span></span>
@@ -420,7 +418,7 @@ accordingly.</p>
 </div>
 
       <div id="footer">
-  Generated on Sat Jul 23 08:49:33 2016 by
+  Generated on Tue Jul 26 09:29:47 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.2 (ruby-2.3.1).
 </div>

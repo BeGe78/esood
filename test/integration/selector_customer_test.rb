@@ -1,8 +1,10 @@
-module Test
 require 'test_helper'
 require "database_cleaner"
 DatabaseCleaner.strategy = :truncation
-
+# @author Bruno Gardin <bgardin@gmail.com>
+# @copyright GNU GENERAL PUBLIC LICENSE
+#   Version 3, 29 June 2007
+# Integration tests for statistics handling for a connected user by {SelectorsController **SelectorsController**} 
 class SelectorCustomerTest < Capybara::Rails::TestCase
   include FactoryGirl::Syntax::Methods
   self.use_transactional_fixtures = false
@@ -25,7 +27,8 @@ class SelectorCustomerTest < Capybara::Rails::TestCase
   end
   teardown do
     DatabaseCleaner.clean
-  end  
+  end
+#special function to select fields in an autocomplete list  
   def fill_autocomplete(field, options = {})
     fill_in field, with: options[:with]
     page.execute_script %Q{ $('##{field}').trigger('focus') }
@@ -34,8 +37,8 @@ class SelectorCustomerTest < Capybara::Rails::TestCase
     page.has_selector?('ul.ui-autocomplete li.ui-menu-item a')
     page.execute_script %Q{ $('#{selector}').trigger('mouseenter').click() }
   end
-
-  test "selector customer ok" do
+#Successful tests due to access control with language :en and :fr
+  test "selector_customer_ok" do
     for lang in [:en, :fr]  
     I18n.locale = lang
     visit %Q!#{I18n.locale.to_s}/selectors/new!
@@ -80,8 +83,8 @@ class SelectorCustomerTest < Capybara::Rails::TestCase
     end    
     end
   end
-
-  test "selector customer wrong indicators" do
+#Unsuccessful tests due to wrong parameters with language :en and :fr
+  test "selector_customer_wrong_indicators" do
    for page_from in ["new", "create"]   
    for indic in ["country1", "country2", "indicator1", "indicator2"]     
     for lang in [:en, :fr]  
@@ -131,5 +134,4 @@ class SelectorCustomerTest < Capybara::Rails::TestCase
    end
   end
  
-end
 end

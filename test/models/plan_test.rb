@@ -1,7 +1,10 @@
 require 'test_helper'
 require "database_cleaner"
 DatabaseCleaner.strategy = :truncation
-
+# @author Bruno Gardin <bgardin@gmail.com>
+# @copyright GNU GENERAL PUBLIC LICENSE  
+#   Version 3, 29 June 2007
+# Tests the {Plan **Plan model**}
 class PlanTest < ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
   self.use_transactional_fixtures = false
@@ -12,7 +15,8 @@ class PlanTest < ActiveSupport::TestCase
   teardown do
     DatabaseCleaner.clean
   end
-  test "Plan" do
+# Test **Plan model** behaviour for the different fields.  
+  test "plan" do
    for field in ["duplicate", "stripe_id", "name", "amount", "interval", "OK"] 
     c = Plan.new                 #initialize with france country
     c.stripe_id = "any period"

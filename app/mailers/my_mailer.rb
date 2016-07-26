@@ -2,6 +2,8 @@
 # @copyright GNU GENERAL PUBLIC LICENSE  
 #   Version 3, 29 June 2007
 # Default values for devise mailer  
+# {MyMailerTest Corresponding tests:}   
+# {MyMailerPreview Corresponding mails preview:}   
 #![Class Diagram](diagram/my_mailer_diagram.png)
 class MyMailer < Devise::Mailer   
   helper :application # gives access to all helpers defined within `application_helper`.
