@@ -10,23 +10,23 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
-       guest = User.new
-       guest.role = Role.new
-       guest.role.name = "Regular"
-       user ||= guest # Guest user
-       if user.admin?
-        can :manage, :all
-       elsif user.customer?
-         can :read, Country
-         can :read, Indicator
-       else
-         can :read, Country, :visible => "Y"
-         can :read, Indicator, :visible => "Y"
-       end
-       can :print_chart, Selector if (user.admin? or user.customer?)
-       can :full_list  , Selector if (user.admin? or user.customer?)
-       can :show_registration  , Selector unless user.customer?
-       can :show_admin , :all if user.admin?
+    guest = User.new
+    guest.role = Role.new
+    guest.role.name = 'Regular'
+    user ||= guest # Guest user
+    if user.admin?
+      can :manage, :all
+    elsif user.customer?
+      can :read, Country
+      can :read, Indicator
+    else
+      can :read, Country, visible: 'Y'
+      can :read, Indicator, visible: 'Y'
+    end
+    can :print_chart, Selector if user.admin? || user.customer?
+    can :full_list, Selector if user.admin? || user.customer?
+    can :show_registration, Selector unless user.customer?
+    can :show_admin, :all if user.admin?
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.

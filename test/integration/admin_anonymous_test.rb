@@ -46,7 +46,7 @@ class AdminAnonymousTest < Capybara::Rails::TestCase
       assert_text "FRA"; puts("AdminAnonymousTest::admin_anonymous_countries_ok assert flash FRA")
       assert_no_text "DEU"; puts("AdminAnonymousTest::admin_anonymous_countries_nok assert flash DEU")
       visit %Q!#{I18n.locale.to_s << "/indicators"}!
-      assert_text "NY.GDP.PCAP.CN"; puts("AdminAnonymousTest::admin_anonymous_indicators_ok assert flash NY.GDP.PCAP.CN")
+      assert_text "NE.RSB.GNFS.ZS"; puts("AdminAnonymousTest::admin_anonymous_indicators_ok assert flash NE.RSB.GNFS.ZS")
       assert_no_text "NY.GDP.PCAP.CD"; puts("AdminAnonymousTest::admin_anonymous_indicators_nok assert flash NY.GDP.PCAP.CD")
     end
   end

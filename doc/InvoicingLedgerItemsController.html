@@ -184,7 +184,8 @@ src="diagram/invoicing_ledger_items_controller_diagram.png"></p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Delete the invoicing_ledger_item from the database.</p>
+<p>Delete the invoicing_ledger_item from the database
+<span class='object_link'><a href="InvoicingLedgerItemsControllerTest.html" title="InvoicingLedgerItemsControllerTest (class)">Corresponding tests:</a></span>.</p>
 </div></span>
   
 </li>
@@ -193,7 +194,7 @@ src="diagram/invoicing_ledger_items_controller_diagram.png"></p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#index-instance_method" title="#index (instance method)">#<strong>index</strong>  &#x21d2; Object </a>
+      <a href="#index-instance_method" title="#index (instance method)">#<strong>index</strong>  &#x21d2; index.html.erb </a>
     
 
     
@@ -208,7 +209,7 @@ src="diagram/invoicing_ledger_items_controller_diagram.png"></p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Index est appelé dans deux contextes: sans param, avec un param.</p>
+<p>Displays invoicing_ledger_items list with bootstrap table sortable format.</p>
 </div></span>
   
 </li>
@@ -275,7 +276,7 @@ src="diagram/invoicing_ledger_items_controller_diagram.png"></p>
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="ApplicationController.html#configure_permitted_parameters-instance_method" title="ApplicationController#configure_permitted_parameters (method)">#configure_permitted_parameters</a></span>, <span class='object_link'><a href="ApplicationController.html#default_url_options-instance_method" title="ApplicationController#default_url_options (method)">#default_url_options</a></span>, <span class='object_link'><a href="ApplicationController.html#extract_locale_from_accept_language_header-instance_method" title="ApplicationController#extract_locale_from_accept_language_header (method)">#extract_locale_from_accept_language_header</a></span>, <span class='object_link'><a href="ApplicationController.html#set_locale-instance_method" title="ApplicationController#set_locale (method)">#set_locale</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="ApplicationController.html#configure_permitted_parameters-instance_method" title="ApplicationController#configure_permitted_parameters (method)">#configure_permitted_parameters</a></span>, <span class='object_link'><a href="ApplicationController.html#default_url_options-instance_method" title="ApplicationController#default_url_options (method)">#default_url_options</a></span>, <span class='object_link'><a href="ApplicationController.html#set_locale-instance_method" title="ApplicationController#set_locale (method)">#set_locale</a></span></p>
 
   
 
@@ -295,7 +296,8 @@ src="diagram/invoicing_ledger_items_controller_diagram.png"></p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Delete the invoicing_ledger_item from the database</p>
+<p>Delete the invoicing_ledger_item from the database
+<span class='object_link'><a href="InvoicingLedgerItemsControllerTest.html" title="InvoicingLedgerItemsControllerTest (class)">Corresponding tests:</a></span></p>
 
 
   </div>
@@ -343,15 +345,15 @@ src="diagram/invoicing_ledger_items_controller_diagram.png"></p>
       <pre class="lines">
 
 
+31
 32
 33
 34
 35
-36
-37</pre>
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/invoicing_ledger_items_controller.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/invoicing_ledger_items_controller.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span>
   <span class='ivar'>@invoicing_ledger_item</span><span class='period'>.</span><span class='id identifier rubyid_destroy'>destroy</span>
@@ -367,7 +369,7 @@ src="diagram/invoicing_ledger_items_controller_diagram.png"></p>
       <div class="method_details ">
   <h3 class="signature " id="index-instance_method">
   
-    #<strong>index</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>index</strong>  &#x21d2; <tt><span class='object_link'><a href="#index-instance_method" title="InvoicingLedgerItemsController#index (method)">index</a></span>.html.erb</tt> 
   
 
   
@@ -376,13 +378,65 @@ src="diagram/invoicing_ledger_items_controller_diagram.png"></p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Index est appelé dans deux contextes: sans param, avec un param</p>
+<p>Displays invoicing_ledger_items list with bootstrap table sortable
+format.<br> It is called with or without <em>recipient_id</em> param Index
+is called in two context: without param, with one param</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="#index-instance_method" title="InvoicingLedgerItemsController#index (method)">index</a></span>.html.erb</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the index web page</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">REST URL:</p>
+<ul class="rest_url">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>GET(/:locale)/invoicing_ledger_items(.:format)</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Path:</p>
+<ul class="path">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'>
+<p>invoicing_ledger_items_list</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -392,21 +446,13 @@ src="diagram/invoicing_ledger_items_controller_diagram.png"></p>
 
 16
 17
-18
-19
-20
-21
-22</pre>
+18</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/controllers/invoicing_ledger_items_controller.rb', line 16</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:recipient_id</span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='kw'>nil</span>
-    <span class='ivar'>@invoicing_ledger_items</span> <span class='op'>=</span> <span class='const'>InvoicingLedgerItem</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>recipient_id:</span>  <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:recipient_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-  <span class='kw'>else</span>
-    <span class='ivar'>@invoicing_ledger_items</span> <span class='op'>=</span> <span class='const'>InvoicingLedgerItem</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>  
-  <span class='kw'>end</span>      
+  <span class='ivar'>@invoicing_ledger_items</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:recipient_id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>?</span> <span class='const'>InvoicingLedgerItem</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span> <span class='op'>:</span> <span class='const'>InvoicingLedgerItem</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>recipient_id:</span>  <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:recipient_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -441,12 +487,12 @@ through.</p>
       <pre class="lines">
 
 
-41
 42
-43</pre>
+43
+44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/invoicing_ledger_items_controller.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/invoicing_ledger_items_controller.rb', line 42</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_invoicing_ledger_item_params'>invoicing_ledger_item_params</span>
   <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_require'>require</span><span class='lparen'>(</span><span class='symbol'>:invoicing_ledger_item</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_permit'>permit</span><span class='lparen'>(</span><span class='symbol'>:sender_id</span><span class='comma'>,</span> <span class='symbol'>:recipient_id</span><span class='rparen'>)</span>
@@ -532,11 +578,11 @@ through.</p>
       <pre class="lines">
 
 
-27
-28</pre>
+24
+25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/invoicing_ledger_items_controller.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/invoicing_ledger_items_controller.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
 <span class='kw'>end</span></pre>
@@ -550,7 +596,7 @@ through.</p>
 </div>
 
       <div id="footer">
-  Generated on Tue Jul 26 09:29:50 2016 by
+  Generated on Mon Aug  1 10:01:02 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.2 (ruby-2.3.1).
 </div>

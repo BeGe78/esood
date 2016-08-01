@@ -179,7 +179,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>test that create is accepted for non admin user.</p>
+<p>test that create is accepted for admin user.</p>
 </div></span>
   
 </li>
@@ -227,7 +227,31 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>test that new is accepted for non admin user.</p>
+<p>test that new is accepted for admin user.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#should_not_create-instance_method" title="#should_not_create (instance method)">#<strong>should_not_create</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>test that create is not OK with wrong parameters for admin user.</p>
 </div></span>
   
 </li>
@@ -279,7 +303,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>test that create is accepted for non admin user</p>
+<p>test that create is accepted for admin user</p>
 
 
   </div>
@@ -293,25 +317,29 @@
       <pre class="lines">
 
 
-35
-36
 37
 38
 39
 40
 41
-42</pre>
+42
+43
+44
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'test/controllers/countries_controller_test.rb', line 35</span>
+      <pre class="code"><span class="info file"># File 'test/controllers/countries_controller_test.rb', line 37</span>
 
-<span class='id identifier rubyid_test'>test</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>should_create</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_assert_difference'>assert_difference</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Country.count</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CountriesControllerTest::shoud_create assert Country.count +1</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_post'>post</span> <span class='symbol'>:create</span><span class='comma'>,</span> <span class='label'>country:</span> <span class='lbrace'>{</span><span class='label'>id1:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>USA</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>iso2code:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>US</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>language:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>fr</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Pays</span><span class='tstring_end'>&quot;</span></span><span class='rbrace'>}</span>
+<span class='id identifier rubyid_test'>test</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>should_create</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_sign_out'>sign_out</span> <span class='ivar'>@user1</span>
+  <span class='id identifier rubyid_sign_in'>sign_in</span> <span class='ivar'>@user</span>
+  <span class='id identifier rubyid_assert_difference'>assert_difference</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Country.count</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>CountriesControllerTest::shoud_create assert Country.count +1</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_post'>post</span> <span class='symbol'>:create</span><span class='comma'>,</span> <span class='label'>country:</span> <span class='lbrace'>{</span> <span class='label'>id1:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>USA</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>iso2code:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>US</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>language:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>fr</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Pays</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span>
   <span class='kw'>end</span>
-  <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CountriesControllerTest::shoud_create assert Country.count +1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_assert_response'>assert_response</span> <span class='symbol'>:success</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CountriesControllerTest::shoud_create assert success</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CountriesControllerTest::shoud_create assert success</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>CountriesControllerTest::shoud_create assert Country.count +1</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_assert_response'>assert_response</span> <span class='symbol'>:success</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>CountriesControllerTest::shoud_create assert success</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>CountriesControllerTest::shoud_create assert success</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -355,12 +383,12 @@
     <td>
       <pre class="code"><span class="info file"># File 'test/controllers/countries_controller_test.rb', line 21</span>
 
-<span class='id identifier rubyid_test'>test</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>should_get_index</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>do</span>
+<span class='id identifier rubyid_test'>test</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>should_get_index</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
   <span class='id identifier rubyid_get'>get</span> <span class='symbol'>:index</span>
-  <span class='id identifier rubyid_assert_response'>assert_response</span> <span class='symbol'>:success</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CountriesControllerTest::shoud_get_index assert success</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CountriesControllerTest::shoud_get_index assert success</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_assert_not_nil'>assert_not_nil</span> <span class='id identifier rubyid_assigns'>assigns</span><span class='lparen'>(</span><span class='symbol'>:countries</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CountriesControllerTest::shoud_get_index assert not_nil</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CountriesControllerTest::shoud_get_index assert not_nil</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_assert_response'>assert_response</span> <span class='symbol'>:success</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>CountriesControllerTest::shoud_get_index assert success</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>CountriesControllerTest::shoud_get_index assert success</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_assert_not_nil'>assert_not_nil</span> <span class='id identifier rubyid_assigns'>assigns</span><span class='lparen'>(</span><span class='symbol'>:countries</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>CountriesControllerTest::shoud_get_index assert not_nil</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>CountriesControllerTest::shoud_get_index assert not_nil</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -379,7 +407,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>test that new is accepted for non admin user</p>
+<p>test that new is accepted for admin user</p>
 
 
   </div>
@@ -397,15 +425,70 @@
 30
 31
 32
-33</pre>
+33
+34
+35</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'test/controllers/countries_controller_test.rb', line 29</span>
 
-<span class='id identifier rubyid_test'>test</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>should_get_new</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>do</span>
+<span class='id identifier rubyid_test'>test</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>should_get_new</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_sign_out'>sign_out</span> <span class='ivar'>@user1</span>
+  <span class='id identifier rubyid_sign_in'>sign_in</span> <span class='ivar'>@user</span>  
   <span class='id identifier rubyid_get'>get</span> <span class='symbol'>:new</span>
-  <span class='id identifier rubyid_assert_response'>assert_response</span> <span class='symbol'>:success</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CountriesControllerTest::shoud_get_new assert success</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CountriesControllerTest::shoud_get_new assert success</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_assert_response'>assert_response</span> <span class='symbol'>:success</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>CountriesControllerTest::shoud_get_new assert success</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>CountriesControllerTest::shoud_get_new assert success</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="should_not_create-instance_method">
+  
+    #<strong>should_not_create</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>test that create is not OK with wrong parameters for admin user</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50
+51
+52
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'test/controllers/countries_controller_test.rb', line 48</span>
+
+<span class='id identifier rubyid_test'>test</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>should_not_create</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_sign_out'>sign_out</span> <span class='ivar'>@user1</span>
+  <span class='id identifier rubyid_sign_in'>sign_in</span> <span class='ivar'>@user</span>
+  <span class='id identifier rubyid_assert'>assert</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>div.alert</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>text:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Error creating country</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_post'>post</span> <span class='symbol'>:create</span><span class='comma'>,</span> <span class='label'>country:</span> <span class='lbrace'>{</span> <span class='label'>id1:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ZZZ</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>iso2code:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>US</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>language:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>fr</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>type:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Pays</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>CountriesControllerTest::shoud_not_create assert flash Error creating country</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -438,19 +521,19 @@
       <pre class="lines">
 
 
-44
-45
-46
-47
-48</pre>
+57
+58
+59
+60
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'test/controllers/countries_controller_test.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'test/controllers/countries_controller_test.rb', line 57</span>
 
-<span class='id identifier rubyid_test'>test</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>should_show</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>do</span>
+<span class='id identifier rubyid_test'>test</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>should_show</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
   <span class='id identifier rubyid_get'>get</span> <span class='symbol'>:show</span><span class='comma'>,</span> <span class='label'>id:</span> <span class='ivar'>@country</span>
-  <span class='id identifier rubyid_assert_response'>assert_response</span> <span class='symbol'>:success</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CountriesControllerTest::shoud_show assert success</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>CountriesControllerTest::shoud_show assert success</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_assert_response'>assert_response</span> <span class='symbol'>:success</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>CountriesControllerTest::shoud_show assert success</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>CountriesControllerTest::shoud_show assert success</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -462,7 +545,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Jul 26 09:29:54 2016 by
+  Generated on Mon Aug  1 10:01:06 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.2 (ruby-2.3.1).
 </div>

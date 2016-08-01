@@ -13,17 +13,19 @@ class User < ActiveRecord::Base
   belongs_to :role
   has_many :invoicing_ledger_item
   before_save :assign_role
-# Role assignment: force *Customer* if nil
-# @return [role] 
-def assign_role
-  self.role = Role.find_by name: "Customer" if self.role.nil?
-end
-# check if role is admin
-def admin?
-  self.role.name == "Admin"
-end
-# check if role is customer
-def customer?
-  self.role.name == "Customer"
-end
+  # Role assignment: force *Customer* if nil
+  # @return [role] 
+  def assign_role
+    self.role = Role.find_by name: 'Customer' if self.role.nil?
+  end
+  
+  # check if role is admin
+  def admin?
+    self.role.name == 'Admin'
+  end
+  
+  # check if role is customer
+  def customer?
+    self.role.name == 'Customer'
+  end
 end

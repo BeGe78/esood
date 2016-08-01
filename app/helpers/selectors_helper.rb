@@ -6,11 +6,11 @@ module SelectorsHelper
   # @param page_title [String]
   # @return [String] Title  
   def full_title(page_title = '')
-    base_title = "ESoOD"
+    base_title = 'ESoOD'
     if page_title.empty?
       base_title
     else
-      page_title + " | " + base_title
+      page_title + ' | ' + base_title
     end
   end
 end

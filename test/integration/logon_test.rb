@@ -29,8 +29,7 @@ class LogonTest < Capybara::Rails::TestCase
     assert_selector 'a#lang_fr'; puts("LogonTest::lang assert lang menu")
     click_link(%Q!lang_#{I18n.locale.to_s}!)
     click_button('adm_user') 
-    assert_selector 'a#register', "LogonTest::logon_ok assert logon menu"
-    puts("LogonTest::logon_ok assert logon menu")
+    assert_selector 'a#register'; puts("LogonTest::logon_ok assert logon menu")    
     click_link('register')
 
     fill_in "user_name", with: 'Test1'
@@ -52,10 +51,8 @@ class LogonTest < Capybara::Rails::TestCase
       find('input#cc-csc.control').set "123"
       find('button#submitButton').click
     end
-
     sleep(10)
     assert_selector "div.alert", text: I18n.t('devise.registrations.signed_up')
-    
     click_button('adm_user') 
     assert_selector 'a#profile'; puts("LogonTest::logon_ok assert logoff menu")
     click_link('profile')
@@ -63,10 +60,13 @@ class LogonTest < Capybara::Rails::TestCase
     sleep(3)
     find('button.btn.commit').click
     sleep(2)
-    puts("LogonTest::logon_ok assert logon menu")
+    puts('LogonTest::logon_ok assert logon1 menu')
     click_button('adm_user')
+    puts("adm")
     click_link('logout')
+    puts("logout")
     assert_selector "div.alert", text: I18n.t('devise.sessions.signed_out')
+    puts("logout2")
     puts(%Q!LoginTest::logon_ok flash "#{I18n.t('devise.sessions.signed_out')}"!)   
     end
   end
@@ -103,7 +103,7 @@ class LogonTest < Capybara::Rails::TestCase
     assert_selector('div#stripe_button', visible: true)
     puts("LogonTest::logon_ko assert stripe button visible")
     page.execute_script "window.scrollBy(0,10000)"
-    find('button.stripe-button-el',visible:  true,match: :first).click
+    find('button.stripe-button-el',visible: true,match: :first).click
     sleep(5)
     find('iframe.stripe_checkout_app', visible:  true)
     within_frame(page.find('iframe.stripe_checkout_app', visible:  true)) do
@@ -119,9 +119,9 @@ class LogonTest < Capybara::Rails::TestCase
     end
     sleep(10)
     case error
-    when "card_number"    
+    when "card_number"
       assert_selector "div.alert", text: I18n.t('stripe_card_error')
-      puts(%Q!LoginTest::logon_ko flash "#{I18n.t('stripe_card_error')}"!)
+       puts(%Q!LoginTest::logon_ko flash "#{I18n.t('stripe_card_error')}"!)
     when "name"    
       assert_selector "div.alert", text: I18n.t('name_blanck_error')
       puts(%Q!LoginTest::logon_ko flash "#{I18n.t('name_blanck_error')}"!)  

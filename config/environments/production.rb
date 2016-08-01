@@ -43,9 +43,8 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
-  
   # Google analytics code
-  GA.tracker = ENV["GA_TRACKER"]
+  GA.tracker = ENV['GA_TRACKER']
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -66,30 +65,30 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
-config.action_mailer.default_url_options = { host: 'bege.hd.free.fr', port: 80 }
-config.action_mailer.raise_delivery_errors = true
-config.action_mailer.perform_deliveries = true
-config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'bege.hd.free.fr', port: 80 }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
 
-config.action_mailer.file_settings = {
-    location: "/root/Documents/perso/"
-    }
+  config.action_mailer.file_settings = {
+    location: '/root/Documents/perso/'
+  }
 
-config.action_mailer.smtp_settings = {
-address: "smtp.gmail.com",
-port: 587,
-domain: ENV["GMAIL_DOMAIN"],
-user_name: ENV["GMAIL_USER"],
-password: ENV["GMAIL_PASSWORD"],
-:authentication=>"login",
-:enable_starttls_auto=>true,
-:openssl_verify_mode=>nil,
-:ssl=>nil,
-:tls=>nil  
-}  
-config.action_mailer.sendmail_settings = {
-    arguments: "-i -v"
-}  
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: ENV['GMAIL_DOMAIN'],
+    user_name: ENV['GMAIL_USER'],
+    password: ENV['GMAIL_PASSWORD'],
+    authentication: 'login',
+    enable_starttls_auto: true,
+    openssl_verify_mode: nil,
+    ssl: nil,
+    tls: nil
+  }
+  config.action_mailer.sendmail_settings = {
+    arguments: '-i -v'
+  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

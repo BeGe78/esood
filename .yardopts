@@ -17,3 +17,4 @@ Gemfile
 Passengerfile.json.md
 nginx.md
 yard-test-handler.rb
+coverage/index.html

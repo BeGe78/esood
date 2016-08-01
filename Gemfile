@@ -49,7 +49,10 @@ gem 'prawn'
 gem 'prawn-table'  
 ## for documentation
 gem 'yard'
-####gem 'yard-rails-plugin', :git => 'https://github.com/ogeidix/yard-rails-plugin.git'
+## for code quality
+group :development do 
+  gem 'rubocop', require: false  
+end  
 ## for testing  
 group :test do  
 ### Spring speeds up development by keeping your application running in the background.   
@@ -62,6 +65,6 @@ group :test do
   gem 'selenium-webdriver'  
   gem 'chromedriver-helper'  
   gem 'database_cleaner'  
-  gem 'factory_girl_rails'  
+  gem 'factory_girl_rails'
+  gem 'simplecov' 
 end  
-

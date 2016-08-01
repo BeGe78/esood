@@ -7,8 +7,8 @@
 # Visible is empty or Y  
 # {IndicatorTest Corresponding tests:} 
 class Indicator < ActiveRecord::Base
-    validates :id1, :language, :topic, :name , presence: true
-    validates :id1, uniqueness: {scope: :language}
-    validates :visible, inclusion: {in: ['Y']}, allow_nil: true
-    validates :language, inclusion: {in: ['en','fr']}
+  validates :id1, :language, :topic, :name, presence: true
+  validates :id1, uniqueness: { scope: :language }
+  validates :visible, inclusion: { in: ['Y'] }, allow_nil: true
+  validates :language, inclusion: { in: %w(en fr) }
 end

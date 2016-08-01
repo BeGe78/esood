@@ -2,20 +2,23 @@
 # Preview all emails at http://localhost:3000/rails/mailers/my_mailer  
 # {MyMailer Corresponding mailer:}   
 class MyMailerPreview < ActionMailer::Preview
-# confirmation intructions mail preview
+  # confirmation intructions mail preview
   def confirmation_instructions
-    MyMailer.confirmation_instructions(User.first, "faketoken", {})
+    MyMailer.confirmation_instructions(User.first, 'faketoken', {})
   end
-# reset password intructions mail preview
+  
+  # reset password intructions mail preview
   def reset_password_instructions
-    MyMailer.reset_password_instructions(User.first, "faketoken", {})
+    MyMailer.reset_password_instructions(User.first, 'faketoken', {})
   end
-# change password intructions mail preview  
+  
+  # change password intructions mail preview  
   def password_change
     MyMailer.password_change(User.first, {})
   end
-# unlock intructions mail preview
+  
+  # unlock intructions mail preview
   def unlock_instructions
-    MyMailer.unlock_instructions(User.first, "faketoken", {})
+    MyMailer.unlock_instructions(User.first, 'faketoken', {})
   end
 end

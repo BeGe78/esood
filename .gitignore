@@ -6,6 +6,9 @@
 
 # Ignore bundler config.
 /.bundle
+#Ignore rubocop configure
+/.rubocop.yml
+/.rubocop_todo.yml
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -21,3 +24,6 @@
 
 # Ignore secret files
 /config/secrets.yml
+
+# Ignore coverage files
+/coverage/*

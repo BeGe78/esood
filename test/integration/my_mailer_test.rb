@@ -30,13 +30,11 @@ test "my_mailer_ok" do
     I18n.locale = lang
     visit %Q!#{I18n.locale.to_s}/selectors/new!
     click_button('adm_lang')
-    assert_selector 'a#lang_fr', "MyMailerTest::my_mailer assert lang menu"
-    puts("MyMailerTest::my_mailer assert lang menu")
+    assert_selector 'a#lang_fr'; puts("MyMailerTest::my_mailer assert lang menu")    
     click_link(%Q!lang_#{I18n.locale.to_s}!)
 #go to login screen   
     click_button('adm_user') 
-    assert_selector 'a#login', "MyMailerTest::my_mailer assert login menu"
-    puts("MyMailerTest::my_mailer assert login menu")
+    assert_selector 'a#login'; puts("MyMailerTest::my_mailer assert login menu")    
     click_link('login')
     case renew
     when "confirmation"    

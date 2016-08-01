@@ -12,38 +12,51 @@ class CountriesControllerTest < ActionController::TestCase
     @user = FactoryGirl.create(:user, role_id: @role.id)
     @user1 = FactoryGirl.create(:user1, role_id: @role1.id)
     @country = FactoryGirl.create(:france)
-    sign_in @user
+    sign_in @user1
   end
   teardown do
     DatabaseCleaner.clean
   end
-# test that index is accepted for non admin user
-  test "should_get_index" do
+  # test that index is accepted for non admin user
+  test 'should_get_index' do
     get :index
-    assert_response :success, "CountriesControllerTest::shoud_get_index assert success"
-    puts("CountriesControllerTest::shoud_get_index assert success")
-    assert_not_nil assigns(:countries), "CountriesControllerTest::shoud_get_index assert not_nil"
-    puts("CountriesControllerTest::shoud_get_index assert not_nil")
+    assert_response :success, 'CountriesControllerTest::shoud_get_index assert success'
+    puts('CountriesControllerTest::shoud_get_index assert success')
+    assert_not_nil assigns(:countries), 'CountriesControllerTest::shoud_get_index assert not_nil'
+    puts('CountriesControllerTest::shoud_get_index assert not_nil')
   end
-# test that new is accepted for non admin user  
-  test "should_get_new" do
+  # test that new is accepted for admin user  
+  test 'should_get_new' do
+    sign_out @user1
+    sign_in @user  
     get :new
-    assert_response :success, "CountriesControllerTest::shoud_get_new assert success"
-    puts("CountriesControllerTest::shoud_get_new assert success")
+    assert_response :success, 'CountriesControllerTest::shoud_get_new assert success'
+    puts('CountriesControllerTest::shoud_get_new assert success')
   end
-# test that create is accepted for non admin user
-  test "should_create" do
-    assert_difference 'Country.count', 1, "CountriesControllerTest::shoud_create assert Country.count +1" do
-      post :create, country: {id1: "USA", iso2code: "US", language: "fr", type: "Pays"}
+  # test that create is accepted for admin user
+  test 'should_create' do
+    sign_out @user1
+    sign_in @user
+    assert_difference 'Country.count', 1, 'CountriesControllerTest::shoud_create assert Country.count +1' do
+      post :create, country: { id1: 'USA', iso2code: 'US', language: 'fr', type: 'Pays' }
     end
-    puts("CountriesControllerTest::shoud_create assert Country.count +1")
-    assert_response :success, "CountriesControllerTest::shoud_create assert success"
-    puts("CountriesControllerTest::shoud_create assert success")
+    puts('CountriesControllerTest::shoud_create assert Country.count +1')
+    assert_response :success, 'CountriesControllerTest::shoud_create assert success'
+    puts('CountriesControllerTest::shoud_create assert success')
   end
-# test that show is accepted for non admin user  
-  test "should_show" do
+  # test that create is not OK with wrong parameters for admin user
+  test 'should_not_create' do
+    sign_out @user1
+    sign_in @user
+    assert 'div.alert', text: 'Error creating country' do
+      post :create, country: { id1: 'ZZZ', iso2code: 'US', language: 'fr', type: 'Pays' }
+    end
+    puts('CountriesControllerTest::shoud_not_create assert flash Error creating country')
+  end  
+  # test that show is accepted for non admin user  
+  test 'should_show' do
     get :show, id: @country
-    assert_response :success, "CountriesControllerTest::shoud_show assert success"
-    puts("CountriesControllerTest::shoud_show assert success")
+    assert_response :success, 'CountriesControllerTest::shoud_show assert success'
+    puts('CountriesControllerTest::shoud_show assert success')
   end
 end

@@ -302,7 +302,7 @@ by ability and language.</p>
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="ApplicationController.html#configure_permitted_parameters-instance_method" title="ApplicationController#configure_permitted_parameters (method)">#configure_permitted_parameters</a></span>, <span class='object_link'><a href="ApplicationController.html#default_url_options-instance_method" title="ApplicationController#default_url_options (method)">#default_url_options</a></span>, <span class='object_link'><a href="ApplicationController.html#extract_locale_from_accept_language_header-instance_method" title="ApplicationController#extract_locale_from_accept_language_header (method)">#extract_locale_from_accept_language_header</a></span>, <span class='object_link'><a href="ApplicationController.html#set_locale-instance_method" title="ApplicationController#set_locale (method)">#set_locale</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="ApplicationController.html#configure_permitted_parameters-instance_method" title="ApplicationController#configure_permitted_parameters (method)">#configure_permitted_parameters</a></span>, <span class='object_link'><a href="ApplicationController.html#default_url_options-instance_method" title="ApplicationController#default_url_options (method)">#default_url_options</a></span>, <span class='object_link'><a href="ApplicationController.html#set_locale-instance_method" title="ApplicationController#set_locale (method)">#set_locale</a></span></p>
 
   
 
@@ -338,12 +338,12 @@ through.</p>
       <pre class="lines">
 
 
-60
-61
-62</pre>
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/countries_controller.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/countries_controller.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_country_params'>country_params</span>
   <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_require'>require</span><span class='lparen'>(</span><span class='symbol'>:country</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_permit'>permit</span><span class='lparen'>(</span><span class='symbol'>:id1</span><span class='rparen'>)</span>
@@ -428,7 +428,6 @@ Error messages are rescued to flash notices.</p>
       <pre class="lines">
 
 
-22
 23
 24
 25
@@ -450,27 +449,26 @@ Error messages are rescued to flash notices.</p>
 41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/countries_controller.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/countries_controller.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
   <span class='ivar'>@country</span> <span class='op'>=</span> <span class='const'>Country</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_country_params'>country_params</span><span class='rparen'>)</span>
   <span class='ivar'>@id1</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:country</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:id1</span><span class='rbracket'>]</span>
   <span class='ivar'>@language</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:country</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:language</span><span class='rbracket'>]</span>
-  <span class='kw'>begin</span>            <span class='comment'># get worldbank data
-</span>  <span class='ivar'>@results</span> <span class='op'>=</span> <span class='const'>WorldBank</span><span class='op'>::</span><span class='const'>Country</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='ivar'>@id1</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_language'>language</span><span class='lparen'>(</span><span class='ivar'>@language</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span> <span class='comment'>#get WorldBank country by id and language
-</span>  <span class='ivar'>@country</span><span class='period'>.</span><span class='id identifier rubyid_id1'>id1</span> <span class='op'>=</span> <span class='ivar'>@results</span><span class='period'>.</span><span class='id identifier rubyid_raw'>raw</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
-  <span class='ivar'>@country</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='ivar'>@results</span><span class='period'>.</span><span class='id identifier rubyid_raw'>raw</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>name</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
-  <span class='ivar'>@country</span><span class='period'>.</span><span class='id identifier rubyid_iso2code'>iso2code</span> <span class='op'>=</span> <span class='ivar'>@results</span><span class='period'>.</span><span class='id identifier rubyid_raw'>raw</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>iso2Code</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
-  <span class='ivar'>@country</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span> <span class='op'>=</span> <span class='ivar'>@results</span><span class='period'>.</span><span class='id identifier rubyid_raw'>raw</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
-  <span class='ivar'>@country</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Pays</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@language</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>fr</span><span class='tstring_end'>&#39;</span></span>
-  <span class='ivar'>@country</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Country</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='ivar'>@language</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>en</span><span class='tstring_end'>&#39;</span></span>
+  <span class='ivar'>@results</span> <span class='op'>=</span> <span class='const'>WorldBank</span><span class='op'>::</span><span class='const'>Country</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='ivar'>@id1</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_language'>language</span><span class='lparen'>(</span><span class='ivar'>@language</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span> <span class='comment'># get WorldBank country by id and language
+</span>  <span class='ivar'>@country</span><span class='period'>.</span><span class='id identifier rubyid_id1'>id1</span> <span class='op'>=</span> <span class='ivar'>@results</span><span class='period'>.</span><span class='id identifier rubyid_raw'>raw</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+  <span class='ivar'>@country</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='ivar'>@results</span><span class='period'>.</span><span class='id identifier rubyid_raw'>raw</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+  <span class='ivar'>@country</span><span class='period'>.</span><span class='id identifier rubyid_iso2code'>iso2code</span> <span class='op'>=</span> <span class='ivar'>@results</span><span class='period'>.</span><span class='id identifier rubyid_raw'>raw</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>iso2Code</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+  <span class='ivar'>@country</span><span class='period'>.</span><span class='id identifier rubyid_code'>code</span> <span class='op'>=</span> <span class='ivar'>@results</span><span class='period'>.</span><span class='id identifier rubyid_raw'>raw</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+  <span class='ivar'>@country</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Pays</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='ivar'>@language</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>fr</span><span class='tstring_end'>&#39;</span></span>
+  <span class='ivar'>@country</span><span class='period'>.</span><span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Country</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='ivar'>@language</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>en</span><span class='tstring_end'>&#39;</span></span>
   <span class='ivar'>@country</span><span class='period'>.</span><span class='id identifier rubyid_language'>language</span> <span class='op'>=</span> <span class='ivar'>@language</span>
   <span class='ivar'>@country</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
-  <span class='kw'>rescue</span> <span class='const'>Exception</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
-  <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:notice</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Error creating country</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_new_country_path'>new_country_path</span> <span class='kw'>and</span> <span class='kw'>return</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_render'>render</span> <span class='label'>plain:</span> <span class='ivar'>@country</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span>        
+  <span class='id identifier rubyid_render'>render</span> <span class='label'>plain:</span> <span class='ivar'>@country</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span>
+<span class='kw'>rescue</span> <span class='const'>StandardError</span>
+  <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:notice</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Error creating country</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_new_country_path'>new_country_path</span>
+  <span class='kw'>return</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -554,15 +552,15 @@ by ability and language. List is filtered by language and by ability</p>
       <pre class="lines">
 
 
-47
 48
-49</pre>
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/countries_controller.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/countries_controller.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
-  <span class='ivar'>@country</span> <span class='op'>=</span> <span class='const'>Country</span><span class='period'>.</span><span class='id identifier rubyid_accessible_by'>accessible_by</span><span class='lparen'>(</span><span class='id identifier rubyid_current_ability'>current_ability</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>language:</span> <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_locale'>locale</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='symbol'>:type</span> <span class='comma'>,</span> <span class='symbol'>:name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
+  <span class='ivar'>@country</span> <span class='op'>=</span> <span class='const'>Country</span><span class='period'>.</span><span class='id identifier rubyid_accessible_by'>accessible_by</span><span class='lparen'>(</span><span class='id identifier rubyid_current_ability'>current_ability</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>language:</span> <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_locale'>locale</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='symbol'>:type</span><span class='comma'>,</span> <span class='symbol'>:name</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -652,7 +650,7 @@ by ability and language. List is filtered by language and by ability</p>
     <td>
       <pre class="code"><span class="info file"># File 'app/controllers/countries_controller.rb', line 15</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span> 
   <span class='ivar'>@country</span> <span class='op'>=</span> <span class='const'>Country</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -736,12 +734,12 @@ by ability and language. List is filtered by language and by ability</p>
       <pre class="lines">
 
 
-54
-55
-56</pre>
+56
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/countries_controller.rb', line 54</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/countries_controller.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
   <span class='ivar'>@country</span> <span class='op'>=</span> <span class='const'>Country</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -756,7 +754,7 @@ by ability and language. List is filtered by language and by ability</p>
 </div>
 
       <div id="footer">
-  Generated on Tue Jul 26 09:29:48 2016 by
+  Generated on Mon Aug  1 10:00:59 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.2 (ruby-2.3.1).
 </div>

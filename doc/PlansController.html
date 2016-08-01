@@ -371,7 +371,7 @@ translated as it is used only by admin. <span class='object_link'><a href="Plans
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="ApplicationController.html#configure_permitted_parameters-instance_method" title="ApplicationController#configure_permitted_parameters (method)">#configure_permitted_parameters</a></span>, <span class='object_link'><a href="ApplicationController.html#default_url_options-instance_method" title="ApplicationController#default_url_options (method)">#default_url_options</a></span>, <span class='object_link'><a href="ApplicationController.html#extract_locale_from_accept_language_header-instance_method" title="ApplicationController#extract_locale_from_accept_language_header (method)">#extract_locale_from_accept_language_header</a></span>, <span class='object_link'><a href="ApplicationController.html#set_locale-instance_method" title="ApplicationController#set_locale (method)">#set_locale</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="ApplicationController.html#configure_permitted_parameters-instance_method" title="ApplicationController#configure_permitted_parameters (method)">#configure_permitted_parameters</a></span>, <span class='object_link'><a href="ApplicationController.html#default_url_options-instance_method" title="ApplicationController#default_url_options (method)">#default_url_options</a></span>, <span class='object_link'><a href="ApplicationController.html#set_locale-instance_method" title="ApplicationController#set_locale (method)">#set_locale</a></span></p>
 
   
 
@@ -453,23 +453,23 @@ translated as it is used only by admin. <span class='object_link'><a href="Plans
       <pre class="lines">
 
 
-40
-41
-42
-43
 44
 45
-46</pre>
+46
+47
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
-    <span class='kw'>if</span> <span class='ivar'>@plan</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
-      <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='ivar'>@plan</span><span class='comma'>,</span> <span class='label'>notice:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Plan was successfully created.</span><span class='tstring_end'>&#39;</span></span>
-    <span class='kw'>else</span>
-      <span class='id identifier rubyid_render'>render</span> <span class='symbol'>:new</span>
-    <span class='kw'>end</span>
+  <span class='kw'>if</span> <span class='ivar'>@plan</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+    <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='ivar'>@plan</span><span class='comma'>,</span> <span class='label'>notice:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Plan was successfully created.</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_render'>render</span> <span class='symbol'>:new</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -536,17 +536,17 @@ translated as it is used only by admin. <span class='object_link'><a href="Plans
       <pre class="lines">
 
 
-61
-62
-63
-64</pre>
+67
+68
+69
+70</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 67</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span>
   <span class='ivar'>@plan</span><span class='period'>.</span><span class='id identifier rubyid_destroy'>destroy</span>
-        <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_plans_url'>plans_url</span><span class='comma'>,</span> <span class='label'>notice:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Plan was successfully destroyed.</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_plans_url'>plans_url</span><span class='comma'>,</span> <span class='label'>notice:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Plan was successfully destroyed.</span><span class='tstring_end'>&#39;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -629,11 +629,11 @@ translated as it is used only by admin. <span class='object_link'><a href="Plans
       <pre class="lines">
 
 
-34
-35</pre>
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_edit'>edit</span>
 <span class='kw'>end</span></pre>
@@ -718,12 +718,12 @@ translated as it is used only by admin. <span class='object_link'><a href="Plans
       <pre class="lines">
 
 
-21
 22
-23</pre>
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
   <span class='ivar'>@plans</span> <span class='op'>=</span> <span class='const'>Plan</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
@@ -850,12 +850,12 @@ through.</p>
       <pre class="lines">
 
 
-69
-70
-71</pre>
+76
+77
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 69</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 76</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_plan_params'>plan_params</span>
   <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_require'>require</span><span class='lparen'>(</span><span class='symbol'>:plan</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_permit'>permit</span><span class='lparen'>(</span><span class='symbol'>:stripe_id</span><span class='comma'>,</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='symbol'>:amount</span><span class='comma'>,</span> <span class='symbol'>:interval</span><span class='rparen'>)</span>
@@ -941,11 +941,11 @@ through.</p>
       <pre class="lines">
 
 
-28
-29</pre>
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 30</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
 <span class='kw'>end</span></pre>
@@ -1028,16 +1028,16 @@ through.</p>
       <pre class="lines">
 
 
-51
-52
-53
-54
-55
 56
-57</pre>
+57
+58
+59
+60
+61
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/plans_controller.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='kw'>if</span> <span class='ivar'>@plan</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='id identifier rubyid_plan_params'>plan_params</span><span class='rparen'>)</span>
@@ -1056,7 +1056,7 @@ through.</p>
 </div>
 
       <div id="footer">
-  Generated on Tue Jul 26 09:29:46 2016 by
+  Generated on Mon Aug  1 10:00:57 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.2 (ruby-2.3.1).
 </div>
