@@ -88,9 +88,9 @@
   </tbody>
 </table>
 </div>
-<script type="text/javascript">                 // Rgraph script
+<script type="text/javascript"> // Rgraph script
   var key = [];
-  var datachar = [];                            //convert data in String for the chart tooltips
+  var datachar = []; //convert data in String for the chart tooltips
   var datachar1 = [];
   var datachar2 = [];
   <% if @indicator_switch %>
@@ -106,73 +106,70 @@
   }
   datachar = datachar1.concat(datachar2)
   xaxispos = gon.xaxispos;
-//  alert(datachar)
 var line = new RGraph.Line({
- id: 'line', 
- data: gon.data,
- options: {
-   colors: ['rgb(255,0,0)', 'rgb(0,0,255)', 'rgb(0,100,0)'],
-   linewidth: 3,
-   key: key,
-   keyInteractive: true,
-   backgroundGridVlines: false,
-   labels: gon.year,
-   xaxispos: gon.xaxispos,
-   numxticks: gon.numxticks,
-   ylabels: gon.ylabels,
-   scaleThousand: gon.scaleThousand,
-   scalePoint: gon.scalePoint,    
-   ylabelsInside: true,
-   gutterLeft: 150,
-   textSize: 8,
-   spline: true, 
-   tooltipsCoordsPage: true,
-   keyPosition: 'gutter',
-   tooltips: datachar
-//   tooltips.event: 'onmousemove',
-   }
+id: 'line', 
+data: gon.data,
+options: {
+  colors: ['rgb(255,0,0)', 'rgb(0,0,255)', 'rgb(0,100,0)'],
+  linewidth: 3,
+  key: key,
+  keyInteractive: true,
+  backgroundGridVlines: false,
+  labels: gon.year,
+  xaxispos: gon.xaxispos,
+  numxticks: gon.numxticks,
+  ylabels: gon.ylabels,
+  scaleThousand: gon.scaleThousand,
+  scalePoint: gon.scalePoint,    
+  ylabelsInside: true,
+  gutterLeft: 150,
+  textSize: 8,
+  spline: true, 
+  tooltipsCoordsPage: true,
+  keyPosition: 'gutter',
+  tooltips: datachar
+  }
 }).draw();   
-//   line.Draw();
-   <% if @same_scale %>
-   <% else %>
-   var yaxis = new RGraph.Drawing.YAxis({
-        id: 'line',
-        x: line.gutterLeft,
-        options: {
-            max: line.scale2.max,
-            <% if @xaxispos == 'center' %>
-               min: - (line.scale2.max),
-            <% end %>   
-            title: gon.title_first_axis,
-            scaleThousand: gon.scaleThousand,
-            scalePoint: gon.scalePoint,
-            titleColor: ['red'],
-            textSize: 8,
-            colors: ['red']
-        }
-    }).draw();
-    <% end %>
-<% if @same_scale %>
-   <% else %>
-   var yaxis = new RGraph.Drawing.YAxis({
-        id: 'line',
-        x: line.gutterLeft* (2/3),
-        options: {
-            max: line.scale2.max / gon.power_scale_change,
-            <% if @xaxispos == 'center' %>
-               min: - (line.scale2.max / gon.power_scale_change),
-            <% end %>   
-            title: gon.title_second_axis,
-            scaleThousand: gon.scaleThousand,
-            scalePoint: gon.scalePoint,
-            titleColor: ['blue'],
-            textSize: 8,
-            colors: ['blue']
-        }
-    }).draw();
-    <% end %>
+  <% if @same_scale %>
+  <% else %>
+  var yaxis = new RGraph.Drawing.YAxis({
+    id: 'line',
+    x: line.gutterLeft,
+    options: {
+    max: line.scale2.max,
+    <% if @xaxispos == 'center' %>
+         min: - (line.scale2.max),
+    <% end %>   
+    title: gon.title_first_axis,
+    scaleThousand: gon.scaleThousand,
+    scalePoint: gon.scalePoint,
+    titleColor: ['red'],
+    textSize: 8,
+    colors: ['red']
+    }
+  }).draw();
+  <% end %>
+  <% if @same_scale %>
+  <% else %>
+  var yaxis = new RGraph.Drawing.YAxis({
+    id: 'line',
+    x: line.gutterLeft* (2/3),
+    options: {
+      max: line.scale2.max / gon.power_scale_change,
+      <% if @xaxispos == 'center' %>
+           min: - (line.scale2.max / gon.power_scale_change),
+      <% end %>   
+      title: gon.title_second_axis,
+      scaleThousand: gon.scaleThousand,
+      scalePoint: gon.scalePoint,
+      titleColor: ['blue'],
+      textSize: 8,
+      colors: ['blue']
+    }
+  }).draw();
+  <% end %>
 </script>
-<script type="text/javascript">                        // send event to google analytics
+<script type="text/javascript">  // send event to google analytics
 <% if @indicator_switch %>                          
   <%= analytics_track_event "Selectors", "Indicator",
   @current_user_email + ":" + 
@@ -191,25 +188,25 @@ var line = new RGraph.Line({
   @c2.name %>
 <% end %>  
 function displayPDF() {
-   var myCanvas = document.getElementById("line");     // get the graph as an image
-   var myUrl = myCanvas.toDataURL();
-   var key = [];
-   key[0] = gon.country1;
-   key[1] = gon.country2;
-   var title = gon.title;
-   var indicator = gon.indicator;
-   var doc = new jsPDF('landscape','pt', 'A4');
-   doc.setFontSize(12);
-   doc.setFontType("bold");
-   doc.text(60, 40, title);
-   doc.addImage(myUrl, 'PNG', 30, 40, 750, 300);
-   <% if @indicator_switch %>
-      doc.text(60, 420, gon.country1);
-   <% else %>
-      doc.text(60, 420, indicator);
-   <% end %>   
-   var res = doc.autoTableHtmlToJson(document.getElementById("stat_table"));
-   doc.autoTable(res.columns, res.rows, {
+  var myCanvas = document.getElementById("line"); // get the graph as an image
+  var myUrl = myCanvas.toDataURL();
+  var key = [];
+  key[0] = gon.country1;
+  key[1] = gon.country2;
+  var title = gon.title;
+  var indicator = gon.indicator;
+  var doc = new jsPDF('landscape','pt', 'A4');
+  doc.setFontSize(12);
+  doc.setFontType("bold");
+  doc.text(60, 40, title);
+  doc.addImage(myUrl, 'PNG', 30, 40, 750, 300);
+  <% if @indicator_switch %>
+       doc.text(60, 420, gon.country1);
+  <% else %>
+       doc.text(60, 420, indicator);
+  <% end %>   
+  var res = doc.autoTableHtmlToJson(document.getElementById("stat_table"));
+  doc.autoTable(res.columns, res.rows, {
     theme: 'grid',
     headerStyles: {fillColor: 128},
     startY: 440,
@@ -221,10 +218,10 @@ function displayPDF() {
       rowHeight: 20,
       columnWidth: 'wrap'
     },
-   });
-   doc.setFontSize(8);
-   doc.text(60, 570, "Source: Economic Statistics on Open Date - Bruno Gardin")
-   doc.output('dataurlnewwindow');
-}   
+  });
+  doc.setFontSize(8);
+  doc.text(60, 570, "Source: Economic Statistics on Open Date - Bruno Gardin")
+  doc.output('dataurlnewwindow');
+}
 </script>
 

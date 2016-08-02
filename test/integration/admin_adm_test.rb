@@ -1,5 +1,5 @@
 require 'test_helper'
-require "database_cleaner"
+require 'database_cleaner'
 DatabaseCleaner.strategy = :truncation
 # @author Bruno Gardin <bgardin@gmail.com>
 # @copyright GNU GENERAL PUBLIC LICENSE
@@ -26,39 +26,48 @@ class AdminAdmTest < Capybara::Rails::TestCase
   teardown do
     DatabaseCleaner.clean
   end  
-#Unsuccessful tests due to access control with language :en and :fr
-  test "admin_adm_nok" do
-    for lang in [:en, :fr]  
-    I18n.locale = lang
-    visit %Q!#{I18n.locale.to_s}/selectors/new!    
-    click_button('adm_lang')
-    assert_selector 'a#lang_fr'; puts("AdminAdmTest::lang assert lang menu")    
-    click_link(%Q!lang_#{I18n.locale.to_s}!)
-    click_button('adm_user')
-    assert_selector 'a#login'; puts("AdminAdmTest::login assert login menu")    
-    click_link('login')
-    fill_in "user_email", with: 'test@gmail.com'
-    fill_in "user_password", with: '12345678'
-    click_button "user_login"
-    assert_selector "div.alert", text: I18n.t('devise.sessions.signed_in')
-    puts(%Q!AdminAdmTest::login assert flash "#{I18n.t('devise.sessions.signed_in')}"!)
-    assert_selector 'button#admin'; puts("AdminAdmTest::lang assert admin menu")    
+  # Unsuccessful tests due to access control with language :en and :fr
+  test 'admin_adm_nok' do
+    [:en, :fr].each do |lang| 
+      I18n.locale = lang
+      visit %(#{I18n.locale}/selectors/new)    
+      click_button('adm_lang')
+      assert_selector 'a#lang_fr'
+      puts('AdminAdmTest::lang assert lang menu')    
+      click_link(%(lang_#{I18n.locale}))
+      click_button('adm_user')
+      assert_selector 'a#login'
+      puts('AdminAdmTest::login assert login menu')    
+      click_link('login')
+      fill_in 'user_email', with: 'test@gmail.com'
+      fill_in 'user_password', with: '12345678'
+      click_button 'user_login'
+      assert_selector 'div.alert', text: I18n.t('devise.sessions.signed_in')
+      puts(%(AdminAdmTest::login assert flash '#{I18n.t('devise.sessions.signed_in')}'))
+      assert_selector 'button#admin'
+      puts('AdminAdmTest::lang assert admin menu')
     
-      visit %Q!#{I18n.locale.to_s << "/admin/users"}!
-      assert_text "gmail"; puts("AdminAdmTest::admin_adm_roles_ok assert flash users")
-      visit %Q!#{I18n.locale.to_s << "/roles"}!
-      assert_text "Admin"; puts("AdminAdmTest::admin_adm_roles_ok assert flash roles")
+      visit I18n.locale.to_s << '/admin/users'
+      assert_text 'gmail'
+      puts('AdminAdmTest::admin_adm_roles_ok assert flash users')
+      visit I18n.locale.to_s << '/roles'
+      assert_text 'Admin'
+      puts('AdminAdmTest::admin_adm_roles_ok assert flash roles')
 
-      visit %Q!#{I18n.locale.to_s << "/countries"}!
-      assert_text "FRA"; puts("AdminAdmTest::admin_adm_countries_ok assert flash FRA")
-      assert_text "DEU"; puts("AdminAdmTest::admin_adm_countries_ok assert flash DEU")
-      visit %Q!#{I18n.locale.to_s << "/indicators"}!
-      assert_text "NE.RSB.GNFS.ZS"; puts("AdminAdmTest::admin_adm_countries_ok assert flash NE.RSB.GNFS.ZS")
-     click_button('adm_user')
-    assert_selector 'a#logout'; puts("AdminAdmTest::logout assert logout menu")    
-    click_link('logout')
-    assert_selector "div.alert", text: I18n.t('devise.sessions.signed_out')
-    puts(%Q!AdminAdmTest::logout assert flash "#{I18n.t('devise.sessions.signed_out')}"!)    
+      visit I18n.locale.to_s << '/countries'
+      assert_text 'FRA'
+      puts('AdminAdmTest::admin_adm_countries_ok assert flash FRA')
+      assert_text 'DEU'
+      puts('AdminAdmTest::admin_adm_countries_ok assert flash DEU')
+      visit I18n.locale.to_s << '/indicators'
+      assert_text 'NE.RSB.GNFS.ZS'
+      puts('AdminAdmTest::admin_adm_countries_ok assert flash NE.RSB.GNFS.ZS')
+      click_button('adm_user')
+      assert_selector 'a#logout'
+      puts('AdminAdmTest::logout assert logout menu')    
+      click_link('logout')
+      assert_selector 'div.alert', text: I18n.t('devise.sessions.signed_out')
+      puts(%(AdminAdmTest::logout assert flash '#{I18n.t('devise.sessions.signed_out')}'))    
     end
   end
 end

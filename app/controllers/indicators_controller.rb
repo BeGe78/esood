@@ -1,10 +1,10 @@
 # @author Bruno Gardin <bgardin@gmail.com>
-# @copyright GNU GENERAL PUBLIC LICENSE  
+# @copyright GNU GENERAL PUBLIC LICENSE
 #   Version 3, 29 June 2007
-# Handles the {Indicator **Indicator model**} as defined by for the WorldBank database.  
+# Handles the {Indicator **Indicator model**} as defined by for the WorldBank database.
 # Only writable by users with *admin* role. Readable by anyone but with limitation (visible=Y) for not logged users.  
-# This controller support full localization (routes, fields and data).  
-# {IndicatorsControllerTest Corresponding tests:}   
+# This controller support full localization (routes, fields and data).
+# {IndicatorsControllerTest Corresponding tests:}
 # ![Class Diagram](diagram/indicators_controller_diagram.png)
 class IndicatorsController < ApplicationController
   load_and_authorize_resource

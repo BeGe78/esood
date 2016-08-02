@@ -9,12 +9,11 @@
 lib/**/*.rb
 app/**/*.rb
 test/**/*.rb
---load yard-test-handler.rb
+--load yard_test_handler.rb
 -
 README.md
 LICENSE
 Gemfile
 Passengerfile.json.md
 nginx.md
-yard-test-handler.rb
-coverage/index.html
+yard_test_handler.rb

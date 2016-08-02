@@ -43,6 +43,15 @@ class IndicatorsControllerTest < ActionController::TestCase
     puts('IndicatorsControllerTest::shoud_create assert Indicator.count +1')
     assert_response :success, 'IndicatorsControllerTest::shoud_create assert success'
     puts('IndicatorsControllerTest::shoud_create assert success')
+  end    
+  # Test the rescue of Create Indicator
+  test 'rescue_create' do
+    sign_out @user1
+    sign_in @user
+    post :create, indicator: { id1: @indicator.id }
+    assert_response :redirect, 'IndicatorsControllerTest::rescue_create assert redirect'
+    assert_redirected_to new_indicator_path
+    puts('IndicatorsControllerTest::rescue_create assert redirect')
   end
   # test that create is not OK with wrong parameters for admin user  
   test 'should_not_create' do

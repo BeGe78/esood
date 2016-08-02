@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
 
   # Set default url with language
   # @return [I18n.locale] which could be :en or :fr
-  def default_url_options(options = {})
+  def default_url_options
     { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale }
   end
 

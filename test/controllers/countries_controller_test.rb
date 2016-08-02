@@ -44,6 +44,15 @@ class CountriesControllerTest < ActionController::TestCase
     assert_response :success, 'CountriesControllerTest::shoud_create assert success'
     puts('CountriesControllerTest::shoud_create assert success')
   end
+  # Test the rescue of Create Indicator
+  test 'rescue_create' do
+    sign_out @user1
+    sign_in @user
+    post :create, country: { id1: @country.id }
+    assert_response :redirect, 'CountriesControllerTest::rescue_create assert redirect'
+    assert_redirected_to new_country_path
+    puts('CountriesControllerTest::rescue_create assert redirect')
+  end
   # test that create is not OK with wrong parameters for admin user
   test 'should_not_create' do
     sign_out @user1

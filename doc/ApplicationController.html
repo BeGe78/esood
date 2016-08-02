@@ -196,7 +196,7 @@ update.</p>
         <li class="protected ">
   <span class="summary_signature">
     
-      <a href="#default_url_options-instance_method" title="#default_url_options (instance method)">#<strong>default_url_options</strong>(options = {})  &#x21d2; I18n.locale </a>
+      <a href="#default_url_options-instance_method" title="#default_url_options (instance method)">#<strong>default_url_options</strong>  &#x21d2; I18n.locale </a>
     
 
     
@@ -306,7 +306,7 @@ update</p>
       <div class="method_details ">
   <h3 class="signature " id="default_url_options-instance_method">
   
-    #<strong>default_url_options</strong>(options = {})  &#x21d2; <tt>I18n.locale</tt>  <span class="extras">(protected)</span>
+    #<strong>default_url_options</strong>  &#x21d2; <tt>I18n.locale</tt>  <span class="extras">(protected)</span>
   
 
   
@@ -354,7 +354,7 @@ update</p>
     <td>
       <pre class="code"><span class="info file"># File 'app/controllers/application_controller.rb', line 36</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_default_url_options'>default_url_options</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_default_url_options'>default_url_options</span>
   <span class='lbrace'>{</span> <span class='label'>locale:</span> <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_locale'>locale</span> <span class='op'>==</span> <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_default_locale'>default_locale</span> <span class='op'>?</span> <span class='kw'>nil</span> <span class='op'>:</span> <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_locale'>locale</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -426,7 +426,7 @@ update</p>
 </div>
 
       <div id="footer">
-  Generated on Mon Aug  1 10:01:00 2016 by
+  Generated on Tue Aug  2 14:51:20 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.2 (ruby-2.3.1).
 </div>

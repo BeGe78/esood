@@ -471,12 +471,12 @@
       <pre class="lines">
 
 
+121
 122
-123
-124</pre>
+123</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/stripe_helper.rb', line 122</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/stripe_helper.rb', line 121</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_recipient_name'>recipient_name</span>
   <span class='id identifier rubyid_invoice'>invoice</span><span class='period'>.</span><span class='id identifier rubyid_recipient'>recipient</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:name</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_invoice'>invoice</span><span class='period'>.</span><span class='id identifier rubyid_recipient'>recipient</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
@@ -654,8 +654,7 @@
 68
 69
 70
-71
-72</pre>
+71</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/helpers/stripe_helper.rb', line 44</span>
@@ -667,15 +666,14 @@
   
   <span class='id identifier rubyid_company_name'>company_name</span> <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_invoice'>invoice</span><span class='period'>.</span><span class='id identifier rubyid_sender_id'>sender_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_company_name'>company_name</span>
   <span class='id identifier rubyid_billing_details'>billing_details</span> <span class='op'>=</span>
-  <span class='id identifier rubyid_pdf'>pdf</span><span class='period'>.</span><span class='id identifier rubyid_make_table'>make_table</span><span class='lparen'>(</span>
-    <span class='lbracket'>[</span><span class='lbracket'>[</span><span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>billed_to</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_company_name'>company_name</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='comma'>,</span>
-    <span class='label'>column_widths:</span> <span class='lbracket'>[</span><span class='int'>55</span><span class='comma'>,</span> <span class='int'>300</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>cell_style:</span> <span class='lbrace'>{</span> <span class='label'>padding:</span> <span class='int'>0</span> <span class='rbrace'>}</span>
-  <span class='rparen'>)</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_row'>row</span><span class='lparen'>(</span><span class='int'>0</span><span class='op'>..</span><span class='int'>10</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_style'>style</span><span class='lparen'>(</span><span class='label'>size:</span> <span class='int'>9</span><span class='comma'>,</span> <span class='label'>borders:</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_row'>row</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_column'>column</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_style'>style</span><span class='lparen'>(</span><span class='label'>font_style:</span> <span class='symbol'>:bold</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_cells'>cells</span><span class='period'>.</span><span class='id identifier rubyid_columns'>columns</span><span class='lparen'>(</span><span class='int'>0</span><span class='op'>..</span><span class='int'>1</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_align'>align</span> <span class='op'>=</span> <span class='symbol'>:left</span>
-  <span class='kw'>end</span>
-
+    <span class='id identifier rubyid_pdf'>pdf</span><span class='period'>.</span><span class='id identifier rubyid_make_table'>make_table</span><span class='lparen'>(</span>
+      <span class='lbracket'>[</span><span class='lbracket'>[</span><span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>billed_to</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_company_name'>company_name</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='comma'>,</span>
+      <span class='label'>column_widths:</span> <span class='lbracket'>[</span><span class='int'>55</span><span class='comma'>,</span> <span class='int'>300</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>cell_style:</span> <span class='lbrace'>{</span> <span class='label'>padding:</span> <span class='int'>0</span> <span class='rbrace'>}</span>
+    <span class='rparen'>)</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_row'>row</span><span class='lparen'>(</span><span class='int'>0</span><span class='op'>..</span><span class='int'>10</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_style'>style</span><span class='lparen'>(</span><span class='label'>size:</span> <span class='int'>9</span><span class='comma'>,</span> <span class='label'>borders:</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_row'>row</span><span class='lparen'>(</span><span class='int'>0</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_column'>column</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_style'>style</span><span class='lparen'>(</span><span class='label'>font_style:</span> <span class='symbol'>:bold</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_cells'>cells</span><span class='period'>.</span><span class='id identifier rubyid_columns'>columns</span><span class='lparen'>(</span><span class='int'>0</span><span class='op'>..</span><span class='int'>1</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_align'>align</span> <span class='op'>=</span> <span class='symbol'>:left</span>
+    <span class='kw'>end</span>
   <span class='id identifier rubyid_invoice_date'>invoice_date</span> <span class='op'>=</span> <span class='const'>I18n</span><span class='period'>.</span><span class='id identifier rubyid_l'>l</span><span class='lparen'>(</span><span class='id identifier rubyid_invoice'>invoice</span><span class='period'>.</span><span class='id identifier rubyid_created_at'>created_at</span><span class='comma'>,</span> <span class='label'>format:</span> <span class='symbol'>:default</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_invoice_id'>invoice_id</span>   <span class='op'>=</span> <span class='id identifier rubyid_invoice'>invoice</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_invoice_details'>invoice_details</span> <span class='op'>=</span>
@@ -835,6 +833,7 @@ total amount, and total price along with tax.</p>
       <pre class="lines">
 
 
+78
 79
 80
 81
@@ -873,11 +872,10 @@ total amount, and total price along with tax.</p>
 114
 115
 116
-117
-118</pre>
+117</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/helpers/stripe_helper.rb', line 79</span>
+      <pre class="code"><span class="info file"># File 'app/helpers/stripe_helper.rb', line 78</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_render_summary'>render_summary</span><span class='lparen'>(</span><span class='id identifier rubyid_pdf'>pdf</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_pdf'>pdf</span><span class='period'>.</span><span class='id identifier rubyid_move_down'>move_down</span> <span class='int'>25</span>
@@ -929,7 +927,7 @@ total amount, and total price along with tax.</p>
 </div>
 
       <div id="footer">
-  Generated on Mon Aug  1 10:00:56 2016 by
+  Generated on Tue Aug  2 14:51:15 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.2 (ruby-2.3.1).
 </div>

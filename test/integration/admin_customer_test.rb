@@ -1,5 +1,5 @@
 require 'test_helper'
-require "database_cleaner"
+require 'database_cleaner'
 DatabaseCleaner.strategy = :truncation
 # @author Bruno Gardin <bgardin@gmail.com>
 # @copyright GNU GENERAL PUBLIC LICENSE
@@ -26,40 +26,45 @@ class AdminCustomerTest < Capybara::Rails::TestCase
   teardown do
     DatabaseCleaner.clean
   end  
-#Unsuccessful tests due to access control with language :en and :fr
-  test "admin_customer_nok" do
-    for lang in [:en, :fr]  
-    I18n.locale = lang
-    visit %Q!#{I18n.locale.to_s}/selectors/new!    
-    click_button('adm_lang')
-    assert_selector 'a#lang_fr', "LoginTest::lang assert lang menu"
-    puts("LoginTest::lang assert lang menu")
-    click_link(%Q!lang_#{I18n.locale.to_s}!)
-    click_button('adm_user')
-    assert_selector 'a#login'; puts("AdminCustomerTest::login assert login menu")    
-    click_link('login')
-    fill_in "user_email", with: 'test@gmail.com'
-    fill_in "user_password", with: '12345678'
-    click_button "user_login"
-    assert_selector "div.alert", text: I18n.t('devise.sessions.signed_in')
-    puts(%Q!AdminCustomerTest::login assert flash "#{I18n.t('devise.sessions.signed_in')}"!)
-    assert_no_selector 'button#admin'; puts("LoginTest::lang assert no admin menu")    
-    
-    for controller in ["countries/new","indicators/new","roles","plans","invoicing_ledger_items","admin/users"]        
-      visit %Q!#{I18n.locale.to_s << "/" << controller}!
-      assert_selector "div.alert", text: I18n.t('access_denied')
-      puts("AdminCustomerTest::admin_customer_" << %Q!#{controller}! << "_nok assert flash" << %Q!#{I18n.t('access_denied')}!)
-    end
-      visit %Q!#{I18n.locale.to_s << "/countries"}!
-      assert_text "FRA";  puts("AdminCustomerTest::admin_customer_countries_ok assert FRA")      
-      visit %Q!#{I18n.locale.to_s << "/indicators"}!
-      assert_text "NE.RSB.GNFS.ZS"; puts("AdminCustomerTest::admin_customer_countries_ok assert flash NE.RSB.GNFS.ZS")      
-    
-    click_button('adm_user')
-    assert_selector 'a#logout'; puts("AdminCustomerTest::logout assert logout menu")    
-    click_link('logout')
-    assert_selector "div.alert", text: I18n.t('devise.sessions.signed_out')
-    puts(%Q!AdminCustomerTest::logout assert flash "#{I18n.t('devise.sessions.signed_out')}"!)    
+  # Unsuccessful tests due to access control with language :en and :fr
+  test 'admin_customer_nok' do
+    [:en, :fr].each do |lang|  
+      I18n.locale = lang
+      visit %(#{I18n.locale}/selectors/new)  
+      click_button('adm_lang')
+      assert_selector 'a#lang_fr', 'LoginTest::lang assert lang menu'
+      puts('LoginTest::lang assert lang menu')
+      click_link(%(lang_#{I18n.locale}))
+      click_button('adm_user')
+      assert_selector 'a#login'
+      puts('AdminCustomerTest::login assert login menu')    
+      click_link('login')
+      fill_in 'user_email', with: 'test@gmail.com'
+      fill_in 'user_password', with: '12345678'
+      click_button 'user_login'
+      assert_selector 'div.alert', text: I18n.t('devise.sessions.signed_in')
+      puts(%(AdminCustomerTest::login assert flash '#{I18n.t('devise.sessions.signed_in')}'))
+      assert_no_selector 'button#admin'
+      puts('LoginTest::lang assert no admin menu')    
+      
+      %w(countries/new indicators/new roles plans invoicing_ledger_items admin/users).each do |controller|        
+        visit I18n.locale.to_s << '/' << controller
+        assert_selector 'div.alert', text: I18n.t('access_denied')
+        puts('AdminCustomerTest::admin_customer_' << controller << '_nok assert flash' << I18n.t('access_denied'))
+      end
+      visit I18n.locale.to_s << '/countries'
+      assert_text 'FRA'
+      puts('AdminCustomerTest::admin_customer_countries_ok assert FRA')      
+      visit I18n.locale.to_s << '/indicators'
+      assert_text 'NE.RSB.GNFS.ZS'
+      puts('AdminCustomerTest::admin_customer_countries_ok assert flash NE.RSB.GNFS.ZS')      
+      
+      click_button('adm_user')
+      assert_selector 'a#logout'
+      puts('AdminCustomerTest::logout assert logout menu')    
+      click_link('logout')
+      assert_selector 'div.alert', text: I18n.t('devise.sessions.signed_out')
+      puts(%(AdminCustomerTest::logout assert flash '#{I18n.t('devise.sessions.signed_out')}'))    
     end
   end
 end

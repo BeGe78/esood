@@ -22,9 +22,8 @@ class SelectorsController < ApplicationController
   # @return [Hash] filtered list  
   def get_autocomplete_items(parameters)
     items = active_record_get_autocomplete_items(parameters)        
-    if parameters[:model] == Indicator || parameters[:model] == Country
-      items = items.accessible_by(current_ability).where(language: I18n.locale)
-    end    
+    items = items.accessible_by(current_ability).where(language: I18n.locale) if
+      parameters[:model] == Indicator || parameters[:model] == Country
   end
   
   # Asks for indicators and countries for statistics
@@ -39,7 +38,7 @@ class SelectorsController < ApplicationController
   end
   
   # Fetch data, compute and prepare for rendering. This is not a restful create.
-  # The user can loop on create to change its statistics.  
+  # The user can loop on create to change its statistics.
   # @return [create.html.erb] the create web page
   # @rest_url POST (/:locale)/selectors(.:format)
   def create
@@ -61,12 +60,8 @@ class SelectorsController < ApplicationController
         @c2 = Country.accessible_by(current_ability).where(name: params[:fake_country2], language: I18n.locale).take
         @percent2 = @percent
       end
-      unless @i1.present? # need to check if the indicator is not hacked
-        @indicator = ''
-      end
-      unless @i2.present? # need to check if the indicator is not hacked
-        @indicator2 = ''
-      end
+      @indicator = '' unless @i1.present? # need to check if the indicator is not hacked
+      @indicator2 = '' unless @i2.present? # need to check if the indicator is not hacked
       if @c1.present? # need to check if the country is not hacked
         @country1 = @c1.iso2code
         @country1_name = @c1.name
@@ -85,7 +80,7 @@ class SelectorsController < ApplicationController
       @period = params[:selector][:year_begin].to_s + ':' + params[:selector][:year_end].to_s # format period for WorldBank    
       @results1 = WorldBank::Data.country(@country1).indicator(@indicator).dates(@period).fetch # bug .language('fr') 
       @results2 = @indicator_switch ? WorldBank::Data.country(@country1).indicator(@indicator2).dates(@period).fetch
-                                    : WorldBank::Data.country(@country2).indicator(@indicator).dates(@period).fetch        
+                                    : WorldBank::Data.country(@country2).indicator(@indicator).dates(@period).fetch       
     rescue StandardError
       flash[:notice] = t('wrong_worldbank_fetch')
       redirect_to new_selector_path
@@ -96,7 +91,7 @@ class SelectorsController < ApplicationController
     v2 = []
     y = []
     y_to_i = []        
-    for d in 0..(@results1.size - 1) # percentage handling f for percentage else integer          
+    (0..(@results1.size - 1)).each do |d| # percentage handling f for percentage else integer          
       v1[d] = @results1[(@results1.size - 1) - d].value.to_f if @percent 
       v2[d] = @results2[(@results1.size - 1) - d].value.to_f if @percent2 || (!@indicator_switch && @percent)
       v1[d] = @results1[(@results1.size - 1) - d].value.to_i unless @percent
@@ -108,7 +103,7 @@ class SelectorsController < ApplicationController
     l  = [v1.max.to_s.length, v1.max.to_s.length].max # l contains the length of the biggest integer
     l2 = [v2.max.to_s.length, v2.max.to_s.length].max
   
-    @scale = get_scale(l, @percent) # compute the dividing scale for first serie                            
+    @scale = get_scale(l, @percent) # compute the dividing scale for first serie                           
     @unit = get_unit(l) # compute the unit 
     if @indicator_switch && l != l2
       @scale2 = get_scale(l2, @percent2)
@@ -129,13 +124,13 @@ class SelectorsController < ApplicationController
       v2.collect! { |i| i / @scale2 }
       @ylabels = false
     end    
-    v = [v1, v2]
+    # v = [v1, v2]
     # rescale v2 to display correct graph value
     l1b = @percent ? 2 : [v1.max.to_s.length, v1.max.to_s.length].max # l contains the length of the biggest integer or 2 for percentage
     l2b = @percent2 ? 2 : [v2.max.to_s.length, v2.max.to_s.length].max
     @power_scale_change = @indicator_switch ? (10**(l1b - l2b)).to_f : 1
-    l1b = [v1.max.to_s.length, v1.max.to_s.length].max # l contains the length of the biggest integer
-    l2b = [v2.max.to_s.length, v2.max.to_s.length].max
+    # l1b = [v1.max.to_s.length, v1.max.to_s.length].max # l contains the length of the biggest integer
+    # l2b = [v2.max.to_s.length, v2.max.to_s.length].max
     v2_rescaled = v2.collect { |i| (i * @power_scale_change).to_i }
     v = [v1, v2_rescaled]                                           
     @precision = @percent ? 2 : 0
@@ -163,8 +158,7 @@ class SelectorsController < ApplicationController
     # title scaffolding 
     @title_scale_unit = ' '
     if @same_scale # only show scale on title if same scale
-      @percent ? @title_scale_unit = ' - ' << t('with_percent') 
-               : @title_scale_unit =
+      @title_scale_unit = @percent ? ' - ' << t('with_percent') :
                    ' - ' << t('with_scale') << ': 1/' << number_with_delimiter(@scale, locale: I18n.locale) \
                    << ' - ' << t('with_unit') << ': ' << @unit
     else                     
@@ -243,12 +237,12 @@ class SelectorsController < ApplicationController
   # @return [String] unit (ex: thousand, million)
   # @param l [Integer] length of the largest absolute numeric values
   def get_unit(l)
-    unit = case l                                 
-           when 1..6 then 'unit'
-           when 7..9 then t('thousand')
-           when 10..12 then t('million')
-           else t('billion')  
-           end
+    case l                                 
+    when 1..6 then 'unit'
+    when 7..9 then t('thousand')
+    when 10..12 then t('million')
+    else t('billion')  
+    end
   end
 
   private

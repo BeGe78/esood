@@ -215,30 +215,6 @@ src="diagram/my_mailer_diagram.png"></p>
 </li>
 
       
-        <li class="private ">
-  <span class="summary_signature">
-    
-      <a href="#set_organization_of-instance_method" title="#set_organization_of (instance method)">#<strong>set_organization_of</strong>(user)  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  <span class="note title private">private</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Sets organization of the user if available.</p>
-</div></span>
-  
-</li>
-
-      
         <li class="public ">
   <span class="summary_signature">
     
@@ -349,56 +325,13 @@ src="diagram/my_mailer_diagram.png"></p>
 
 21
 22
-23
-24</pre>
+23</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/mailers/my_mailer.rb', line 21</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reset_password_instructions'>reset_password_instructions</span><span class='lparen'>(</span><span class='id identifier rubyid_record'>record</span><span class='comma'>,</span> <span class='id identifier rubyid_token'>token</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_set_organization_of'>set_organization_of</span> <span class='id identifier rubyid_record'>record</span>
   <span class='kw'>super</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="set_organization_of-instance_method">
-  
-    #<strong>set_organization_of</strong>(user)  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Sets organization of the user if available</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-35
-36
-37</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/mailers/my_mailer.rb', line 35</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_set_organization_of'>set_organization_of</span><span class='lparen'>(</span><span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
-  <span class='ivar'>@organization</span> <span class='op'>=</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_organization'>organization</span> <span class='kw'>rescue</span> <span class='kw'>nil</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -431,16 +364,14 @@ src="diagram/my_mailer_diagram.png"></p>
       <pre class="lines">
 
 
+26
 27
-28
-29
-30</pre>
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/mailers/my_mailer.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'app/mailers/my_mailer.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_unlock_instructions'>unlock_instructions</span><span class='lparen'>(</span><span class='id identifier rubyid_record'>record</span><span class='comma'>,</span> <span class='id identifier rubyid_token'>token</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_set_organization_of'>set_organization_of</span> <span class='id identifier rubyid_record'>record</span>
   <span class='kw'>super</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -453,7 +384,7 @@ src="diagram/my_mailer_diagram.png"></p>
 </div>
 
       <div id="footer">
-  Generated on Mon Aug  1 10:00:55 2016 by
+  Generated on Tue Aug  2 14:51:14 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.2 (ruby-2.3.1).
 </div>

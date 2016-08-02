@@ -48,15 +48,14 @@ module StripeHelper
       
       company_name = User.find(invoice.sender_id).company_name
       billing_details =
-      pdf.make_table(
-        [[I18n.t('billed_to'), company_name]],
-        column_widths: [55, 300], cell_style: { padding: 0 }
-      ) do
-        row(0..10).style(size: 9, borders: [])
-        row(0).column(1).style(font_style: :bold)
-        cells.columns(0..1).align = :left
-      end
-
+        pdf.make_table(
+          [[I18n.t('billed_to'), company_name]],
+          column_widths: [55, 300], cell_style: { padding: 0 }
+        ) do
+          row(0..10).style(size: 9, borders: [])
+          row(0).column(1).style(font_style: :bold)
+          cells.columns(0..1).align = :left
+        end
       invoice_date = I18n.l(invoice.created_at, format: :default)
       invoice_id   = invoice.id.to_s
       invoice_details =

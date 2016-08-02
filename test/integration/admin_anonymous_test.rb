@@ -1,5 +1,5 @@
 require 'test_helper'
-require "database_cleaner"
+require 'database_cleaner'
 DatabaseCleaner.strategy = :truncation
 # @author Bruno Gardin <bgardin@gmail.com>
 # @copyright GNU GENERAL PUBLIC LICENSE
@@ -26,28 +26,33 @@ class AdminAnonymousTest < Capybara::Rails::TestCase
   teardown do
     DatabaseCleaner.clean
   end  
-#Unsuccessful tests due to access control with language :en and :fr
-  test "admin_anonymous_nok" do
-    for lang in [:en, :fr]  
-    I18n.locale = lang
-    visit %Q!#{I18n.locale.to_s}/selectors/new!
-    assert_no_selector 'button#admin'; puts("AdminAnonymousTest::lang assert no admin menu")    
-    click_button('adm_lang')
-    assert_selector 'a#lang_fr'; puts("AdminAnonymousTest::lang assert lang menu")    
-    click_link(%Q!lang_#{I18n.locale.to_s}!)
+  # Unsuccessful tests due to access control with language :en and :fr
+  test 'admin_anonymous_nok' do
+    [:en, :fr].each do |lang|  
+      I18n.locale = lang
+      visit %(#{I18n.locale}/selectors/new)
+      assert_no_selector 'button#admin'
+      puts('AdminAnonymousTest::lang assert no admin menu')    
+      click_button('adm_lang')
+      assert_selector 'a#lang_fr'
+      puts('AdminAnonymousTest::lang assert lang menu')    
+      click_link(%(lang_#{I18n.locale}))
    
-    for controller in ["countries/new","indicators/new","roles","plans","invoicing_ledger_items","admin/users"]        
-      visit %Q!#{I18n.locale.to_s << "/" << controller}!
-      assert_selector "div.alert", text: I18n.t('access_denied')
-      puts("AdminAnonymousTest::admin_anonymous_" << %Q!#{controller}! << "_nok assert flash" << %Q!#{I18n.t('access_denied')}!)
-    end
-   
-      visit %Q!#{I18n.locale.to_s << "/countries"}!
-      assert_text "FRA"; puts("AdminAnonymousTest::admin_anonymous_countries_ok assert flash FRA")
-      assert_no_text "DEU"; puts("AdminAnonymousTest::admin_anonymous_countries_nok assert flash DEU")
-      visit %Q!#{I18n.locale.to_s << "/indicators"}!
-      assert_text "NE.RSB.GNFS.ZS"; puts("AdminAnonymousTest::admin_anonymous_indicators_ok assert flash NE.RSB.GNFS.ZS")
-      assert_no_text "NY.GDP.PCAP.CD"; puts("AdminAnonymousTest::admin_anonymous_indicators_nok assert flash NY.GDP.PCAP.CD")
+      %w(countries/new indicators/new roles plans invoicing_ledger_items admin/users).each do |controller|        
+        visit I18n.locale.to_s << '/' << controller
+        assert_selector 'div.alert', text: I18n.t('access_denied')
+        puts('AdminAnonymousTest::admin_anonymous_' << controller << '_nok assert flash' << I18n.t('access_denied'))
+      end   
+      visit I18n.locale.to_s << '/countries'
+      assert_text 'FRA'
+      puts('AdminAnonymousTest::admin_anonymous_countries_ok assert flash FRA')
+      assert_no_text 'DEU'
+      puts('AdminAnonymousTest::admin_anonymous_countries_nok assert flash DEU')
+      visit I18n.locale.to_s << '/indicators'
+      assert_text 'NE.RSB.GNFS.ZS'
+      puts('AdminAnonymousTest::admin_anonymous_indicators_ok assert flash NE.RSB.GNFS.ZS')
+      assert_no_text 'NY.GDP.PCAP.CD'
+      puts('AdminAnonymousTest::admin_anonymous_indicators_nok assert flash NY.GDP.PCAP.CD')
     end
   end
 end

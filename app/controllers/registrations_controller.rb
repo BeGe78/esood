@@ -28,55 +28,53 @@ class RegistrationsController < Devise::RegistrationsController
     resource.invoice_count = 1 # need to initialize to 1 because customer.created event can arrive after
     resource.valid?
     # check if the user models verifications are good
-    if resource.errors.messages.length > 0 # there is at least an error
+    if !resource.errors.messages.empty? # there is at least an error
       user_model_flash_errors
       # check that this email has not yet been created in user table
     elsif User.exists?(email: params[:stripeEmail])
       redirect_to_back_or_default(alert: t('email_allready_used'))
-      else
-        # create Stripe customer first
-        begin  
-          if resource.plan_id.length == 0 && Rails.env.test?
-            resource.plan_id = 'month-plan' # force plan if empty mainly for testing purpose
-          end    
-          customer = Stripe::Customer.create(
-            email: params[:stripeEmail],         
-            source: params[:stripeToken],
-            plan: resource.plan_id
-          )
-        rescue Stripe::CardError
-          flash[:notice] = t('stripe_card_error')
-          redirect_to new_selector_path
-          return
-        rescue Stripe::StripeError
-          flash[:notice] = t('stripe_error')
-          puts "create error: #{e.message}"
-          redirect_to new_selector_path
-          return    
-        end 
+    else
+      # create Stripe customer first
+      begin  
+        if resource.plan_id.length.zero? && Rails.env.test?
+          resource.plan_id = 'month-plan' # force plan if empty mainly for testing purpose
+        end    
+        Stripe::Customer.create(
+          email: params[:stripeEmail],         
+          source: params[:stripeToken],
+          plan: resource.plan_id
+        )
+      rescue Stripe::CardError
+        flash[:notice] = t('stripe_card_error')
+        redirect_to new_selector_path
+        return
+      rescue Stripe::StripeError
+        flash[:notice] = t('stripe_error')
+        puts "create error: #{e.message}"
+        redirect_to new_selector_path
+        return    
+      end 
       
-        # create Devise user
-        resource.language = I18n.locale.to_s
-        resource.save
-        yield resource if block_given?
-        if resource.persisted?
-          if resource.active_for_authentication?
-            set_flash_message! :notice, :signed_up
-            if Rails.env.production?
-              system 'sms_create_user.sh'
-            end  
-            sign_up(resource_name, resource)
-            respond_with resource, location: after_sign_up_path_for(resource)
-          else
-            set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
-            expire_data_after_sign_in!
-            respond_with resource, location: after_inactive_sign_up_path_for(resource)
-          end
+      # create Devise user
+      resource.language = I18n.locale.to_s
+      resource.save
+      yield resource if block_given?
+      if resource.persisted?
+        if resource.active_for_authentication?
+          set_flash_message! :notice, :signed_up
+          system 'sms_create_user.sh' if Rails.env.production?
+          sign_up(resource_name, resource)
+          respond_with resource, location: after_sign_up_path_for(resource)
         else
-          clean_up_passwords resource
-          set_minimum_password_length
-          respond_with resource
+          set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+          expire_data_after_sign_in!
+          respond_with resource, location: after_inactive_sign_up_path_for(resource)
         end
+      else
+        clean_up_passwords resource
+        set_minimum_password_length
+        respond_with resource
+      end
     end  
   end
   
@@ -88,24 +86,21 @@ class RegistrationsController < Devise::RegistrationsController
   def update
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
-
     resource_updated = update_resource(resource, account_update_params)
     yield resource if block_given?
     if resource_updated
       if is_flashing_format?
-        flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ?
-          :update_needs_confirmation : :updated
+        flash_key = 
+          update_needs_confirmation?(resource, prev_unconfirmed_email) ? :update_needs_confirmation : :updated
         set_flash_message :notice, flash_key
       end
       sign_in resource_name, resource, bypass: true
       respond_with resource, location: after_update_path_for(resource)
+    elsif !resource.errors.messages.empty? # there is at least an error
+      user_model_flash_errors
     else
-      if resource.errors.messages.length > 0 # there is at least an error
-        user_model_flash_errors
-      else
-        clean_up_passwords resource
-        respond_with resource
-      end
+      clean_up_passwords resource
+      respond_with resource
     end
   end
   
@@ -126,9 +121,7 @@ class RegistrationsController < Devise::RegistrationsController
     end
     # then delete user with Devise
     super
-    if Rails.env.production?
-      system 'sms_delete_user.sh'
-    end  
+    system 'sms_delete_user.sh' if Rails.env.production?
   end
 
   # redirect to previous page and if not present to home

@@ -12,9 +12,11 @@ class IndicatorTest < ActiveSupport::TestCase
     DatabaseCleaner.start
     @indic = FactoryGirl.create(:indic1)
   end
+  
   teardown do
     DatabaseCleaner.clean
   end
+  
   # Test **Indicator model** behaviour for the different fields.  
   test 'indicator' do
     ['duplicate', 'id1', 'topic', 'name', 'language', 'language-it', 'visible', 'OK', 'OK-duplicate'].each do |field|
