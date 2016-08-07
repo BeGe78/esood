@@ -47,7 +47,7 @@ class SelectorsController < ApplicationController
       @country_base = Country.accessible_by(current_ability).where(language: I18n.locale).order(:type, :name).all
       @selector = Selector.new(selector_params)
       @indicator = params[:fake_indicator]
-      @percent = @indicator[@indicator.length - 3, @indicator.length] == '.ZS' ? true : false  
+      @percent = @indicator[@indicator.length - 3, @indicator.length] == '.ZS' ? true : false
       @i1 = Indicator.accessible_by(current_ability).where(id1: @indicator, language: I18n.locale).take
       @c1 = Country.accessible_by(current_ability).where(name: params[:fake_country1], language: I18n.locale).take
       # check if we compare countries or indicators
@@ -103,9 +103,10 @@ class SelectorsController < ApplicationController
     l  = [v1.max.to_s.length, v1.max.to_s.length].max # l contains the length of the biggest integer
     l2 = [v2.max.to_s.length, v2.max.to_s.length].max
   
-    @scale = get_scale(l, @percent) # compute the dividing scale for first serie                           
-    @unit = get_unit(l) # compute the unit 
-    if @indicator_switch && l != l2
+    @scale = get_scale(l, @percent) # compute the dividing scale for first serie
+    puts('scale:', @scale)
+    @unit = get_unit(l) # compute the unit
+    if @indicator_switch && l != l2 && !(@percent && @percent2)
       @scale2 = get_scale(l2, @percent2)
       @unit2 = get_unit(l2)
       @same_scale = false
