@@ -1,6 +1,10 @@
 <%= render 'form' %>
 <div id="title" style="float: left;  margin-left: 0%; width:80%; ">
-<h2><%= @title %></h2>
+  <% if @title.size < 160 %>
+    <h2><%= @title %></h2>
+  <% else %>
+    <h2 style="font-size: 1em;"><%= @title %></h2>
+  <% end %>  
 </div>
 <div id="print" style="position: relative; float: left; margin-bottom: -20px;">
 <% if can? :print_chart, @selector %>
@@ -124,6 +128,7 @@ options: {
   ylabelsInside: true,
   gutterLeft: 150,
   textSize: 8,
+  keyTextSize: 7,
   spline: true, 
   tooltipsCoordsPage: true,
   keyPosition: 'gutter',
@@ -193,12 +198,16 @@ function displayPDF() {
   var key = [];
   key[0] = gon.country1;
   key[1] = gon.country2;
-  var title = gon.title;
+  var title = gon.title;  
   var indicator = gon.indicator;
   var doc = new jsPDF('landscape','pt', 'A4');
   doc.setFontSize(12);
   doc.setFontType("bold");
-  doc.text(60, 40, title);
+  // split the title line when its too long and center it
+  var nbline = parseInt((doc.getStringUnitWidth(title) * doc.internal.getFontSize()) / doc.internal.pageSize.width, 10) + 1;
+  var splitTitle = doc.splitTextToSize(title, ((doc.getStringUnitWidth(title) * doc.internal.getFontSize()) + 100) / nbline);
+  xOffset = (doc.internal.pageSize.width / 2) - ((doc.getStringUnitWidth(title) * doc.internal.getFontSize() / nbline) / 2);
+  doc.text(splitTitle, xOffset, 20);
   doc.addImage(myUrl, 'PNG', 30, 40, 750, 300);
   <% if @indicator_switch %>
        doc.text(60, 420, gon.country1);
@@ -208,10 +217,11 @@ function displayPDF() {
   var res = doc.autoTableHtmlToJson(document.getElementById("stat_table"));
   doc.autoTable(res.columns, res.rows, {
     theme: 'grid',
-    headerStyles: {fillColor: 128},
+    headerStyles: { fillColor: 128 },
     startY: 440,
     tableWidth: 800 ,
     columnWidth: 'auto',
+
     styles: {
       overflow: 'linebreak',
       fontSize: 12,

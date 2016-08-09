@@ -104,7 +104,6 @@ class SelectorsController < ApplicationController
     l2 = [v2.max.to_s.length, v2.max.to_s.length].max
   
     @scale = get_scale(l, @percent) # compute the dividing scale for first serie
-    puts('scale:', @scale)
     @unit = get_unit(l) # compute the unit
     if @indicator_switch && l != l2 && !(@percent && @percent2)
       @scale2 = get_scale(l2, @percent2)
@@ -182,7 +181,8 @@ class SelectorsController < ApplicationController
       @title = t('compare') << ': ' << @c1.name << ' / ' << @c2.name \
            << ' - ' << t('indicator') << ': ' << @i1.name \
            << @title_scale_unit
-    end 
+    end
+    puts('title length:', @title.size)
     @current_user_email = user_signed_in? ? current_user.email : 'no_user' # set email for google analytics  
     # send data in js format        
     gon.push(                                       
