@@ -75,11 +75,12 @@
      </tr>
      <tr>
       <% if @indicator_switch %>
-         <td>
-            <span style="float: left;"><%= @i2.name %></span>
+         <td>            
+            <div style="display: inline-block;">
+            <%= @i2.name %>
             <span class="has-tooltip" data-toggle="tooltip" title="<%= @i2.note %>">
-            <%= image_tag "question_mark.png", style: "float: left;" %>
-            </span>
+            <%= image_tag "question_mark.png" %></span>
+            </div>
          </td>
       <% else %>   
          <td><%= @country2_name %></td>
