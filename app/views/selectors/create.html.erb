@@ -59,10 +59,11 @@
     <tr>
       <% if @indicator_switch %>
          <td>
-            <span style="float: left;"><%= @i1.name %></span>
+            <div style="display: inline-block;">
+            <%= @i1.name %>
             <span class="has-tooltip" data-toggle="tooltip" title="<%= @i1.note %>">
-            <%= image_tag "question_mark.png", style: "float: left;" %>
-            </span>
+            <%= image_tag "question_mark.png" %></span>
+            </div>
          </td>
       <% else %>   
          <td><%= @country1_name %></td>
@@ -219,16 +220,26 @@ function displayPDF() {
   doc.autoTable(res.columns, res.rows, {
     theme: 'grid',
     headerStyles: { fillColor: 128 },
-    startY: 440,
-    tableWidth: 800 ,
+    startY: 400,
+    tableWidth: 600 ,
     columnWidth: 'auto',
-
+    margin: {left: 50},
     styles: {
       overflow: 'linebreak',
       fontSize: 12,
       rowHeight: 20,
+      margin: {right: 50},
       columnWidth: 'wrap'
     },
+    <% if @language == 'fr' %>
+      columnStyles: {
+        0: { columnWidth: 350 }
+      }
+    <% else %>
+      columnStyles: {
+        0: { columnWidth: 450 }
+      }
+    <% end %>  
   });
   doc.setFontSize(8);
   doc.text(60, 570, "Source: Economic Statistics on Open Date - Bruno Gardin")
