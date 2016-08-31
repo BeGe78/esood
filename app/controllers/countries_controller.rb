@@ -8,6 +8,7 @@
 # ![Class Diagram](diagram/countries_controller_diagram.png)
 class CountriesController < ApplicationController # reserved to admin. Let create and list countries
   load_and_authorize_resource
+  respond_to :html, :xml, :json
   # Asks for new country (country code and language)
   # @return [new.html.erb] the new web page
   # @rest_url GET(/:locale)/countries/new(.:format)
@@ -47,6 +48,7 @@ class CountriesController < ApplicationController # reserved to admin. Let creat
   # @path countries
   def index
     @country = Country.accessible_by(current_ability).where(language: I18n.locale).order(:type, :name).all
+    respond_with @country
   end
   
   # Displays the country 
