@@ -11,8 +11,9 @@
 # {SelectorAnonymousTest Corresponding integration tests for anonymous:}   
 #  ![Class Diagram](diagram/selectors_controller_diagram.png)
 class SelectorsController < ApplicationController
+  
   require 'rserve/simpler' # R API
-  require 'action_view' # for number_to_human
+  require 'action_view' # for number_to_human  
   include ActionView::Helpers::NumberHelper
   autocomplete :indicator, :id1, full:  true
   autocomplete :country, :name,  full:  true
@@ -51,7 +52,11 @@ class SelectorsController < ApplicationController
       @i1 = Indicator.accessible_by(current_ability).where(id1: @indicator, language: I18n.locale).take
       @c1 = Country.accessible_by(current_ability).where(name: params[:fake_country1], language: I18n.locale).take
       # check if we compare countries or indicators
-      @indicator_switch = params[:selector][:form_switch] == 'indicator' ? true : false
+      if params[:selector].present? # API
+        @indicator_switch = params[:selector][:form_switch] == 'indicator' ? true : false
+      else
+        @indicator_switch = params[:form_switch] == 'indicator' ? true : false
+      end  
       if @indicator_switch
         @indicator2 = params[:fake_indicator2]
         @percent2 = @indicator2[@indicator2.length - 3, @indicator2.length] == '.ZS' ? true : false
@@ -77,7 +82,11 @@ class SelectorsController < ApplicationController
     end
 
     begin # get worldbank data
-      @period = params[:selector][:year_begin].to_s + ':' + params[:selector][:year_end].to_s # format period for WorldBank    
+      if params[:selector].present? # API
+        @period = params[:selector][:year_begin].to_s + ':' + params[:selector][:year_end].to_s # format period for WorldBank
+      else
+        @period = params[:year_begin].to_s + ':' + params[:year_end].to_s
+      end
       @results1 = WorldBank::Data.country(@country1).indicator(@indicator).dates(@period).fetch # bug .language('fr') 
       @results2 = @indicator_switch ? WorldBank::Data.country(@country1).indicator(@indicator2).dates(@period).fetch
                                     : WorldBank::Data.country(@country2).indicator(@indicator).dates(@period).fetch       
@@ -124,7 +133,6 @@ class SelectorsController < ApplicationController
       v2.collect! { |i| i / @scale2 }
       @ylabels = false
     end    
-    # v = [v1, v2]
     # rescale v2 to display correct graph value
     l1b = @percent ? 2 : [v1.max.to_s.length, v1.max.to_s.length].max # l contains the length of the biggest integer or 2 for percentage
     l2b = @percent2 ? 2 : [v2.max.to_s.length, v2.max.to_s.length].max
@@ -146,7 +154,7 @@ class SelectorsController < ApplicationController
     # X axis positioning
     @xaxispos = 'bottom'
     @xaxispos = 'center' if v1.min < 0 || v2.min < 0
-
+=begin
     if @indicator_switch && @xaxispos == 'center' # set min value
       @min1 = v1.min < 0 ? v1.min : 0
       @min2 = v2.min < 0 ? v2.min : 0 
@@ -154,7 +162,7 @@ class SelectorsController < ApplicationController
       @min1 = 0
       @min2 = 0
     end
-   
+=end   
     # title scaffolding 
     @title_scale_unit = ' '
     if @same_scale # only show scale on title if same scale
@@ -193,10 +201,14 @@ class SelectorsController < ApplicationController
       scale: @scale, xaxispos: @xaxispos, ylabels: @ylabels,
       power_scale_change: @power_scale_change,
       scale_thousand: @scale_thousand, scale_point: @scale_point,
-      title_first_axis: @title_first_axis, title_second_axis: @title_second_axis,
-      min1: @min1, min2: @min2
+      title_first_axis: @title_first_axis, title_second_axis: @title_second_axis
     )
-      
+    # API prepare data series for android
+    @s1 = []
+    (0..(y.size - 1)).each do |i|
+      @s1 << Hash[[[:x, y[i]],[:y, v1[i]],[:z, v2_rescaled[i]]]]
+    end
+    
     # __________Statistics______________
     begin
       c = Rserve::Connection.new

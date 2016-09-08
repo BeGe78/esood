@@ -6,6 +6,8 @@ gem 'rails'
 gem "passenger"
 ## Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+## Use active model serializer
+gem 'active_model_serializers'
 ## Use sass bootstrap for stylesheets
 gem 'sass-rails'  
 gem 'bootstrap-sass'  
@@ -22,7 +24,6 @@ gem 'jquery-datatables-rails'
 gem 'turbolinks'  
 gem 'jquery-turbolinks'
 ## Build JSON APIs with ease.
-gem 'jbuilder'
 gem 'multi_json'  
 gem 'json'  
 gem 'rabl'
@@ -39,7 +40,7 @@ gem 'rails-jquery-autocomplete'
 ## for google analytics
 gem 'ua-google-analytics-rails'
 ## for user authentification and authorisation
-gem 'devise'  
+gem 'devise'
 gem 'figaro'  
 gem 'cancancan'  
 ## billing and invoicing

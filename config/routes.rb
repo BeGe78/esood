@@ -30,6 +30,19 @@ Rails.application.routes.draw do
     get :autocomplete_indicator_id1, on:  :collection
     get :autocomplete_country_name, on:  :collection
   end
+  #api
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [:index, :create, :show, :update, :destroy]
+      resources :countries, only: [:new, :index, :create, :show, :update, :destroy]
+      resources :indicators, only: [:new, :index, :create, :show, :update, :destroy]
+      resources :selectors, only: [:new, :create]
+      devise_scope :user do
+        post 'sessions' => 'sessions#create', :as => 'login'
+        delete 'sessions' => 'sessions#destroy', :as => 'logout'
+      end
+    end
+  end
 
   root 'selectors#new'
 end

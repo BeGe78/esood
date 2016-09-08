@@ -4,8 +4,7 @@
 # **User model** used by devise gem.  
 # Include default devise modules + :confirmable, :lockable  
 # User must have a role. They may have invoicing_ledger_item.  
-class User < ActiveRecord::Base
-  
+class User < ActiveRecord::Base  
   validates_presence_of :name  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
@@ -13,6 +12,7 @@ class User < ActiveRecord::Base
   belongs_to :role
   has_many :invoicing_ledger_item
   before_save :assign_role
+  before_save :ensure_authentication_token
   # Role assignment: force *Customer* if nil
   # @return [role] 
   def assign_role
@@ -27,5 +27,20 @@ class User < ActiveRecord::Base
   # check if role is customer
   def customer?
     self.role.name == 'Customer'
+  end
+  
+  def ensure_authentication_token
+    if authentication_token.blank?
+      self.authentication_token = generate_authentication_token
+    end
+  end
+
+  private
+  
+  def generate_authentication_token
+    loop do
+      token = Devise.friendly_token
+      break token unless User.where(authentication_token: token).first
+    end
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160627085951) do
+ActiveRecord::Schema.define(version: 20160905122949) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "id1"
@@ -101,12 +101,17 @@ ActiveRecord::Schema.define(version: 20160627085951) do
     t.string   "indicator"
     t.string   "country1"
     t.string   "country2"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "year_begin"
     t.integer  "year_end"
     t.string   "indicator2"
     t.string   "form_switch"
+    t.string   "format"
+    t.string   "fake_indicator"
+    t.string   "fake_indicator2"
+    t.string   "fake_country1"
+    t.string   "fake_country2"
   end
 
   create_table "users", force: :cascade do |t|
@@ -139,6 +144,7 @@ ActiveRecord::Schema.define(version: 20160627085951) do
     t.integer  "invoice_count"
     t.string   "company_name"
     t.string   "language"
+    t.string   "authentication_token"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

@@ -5,7 +5,8 @@
 # Prevent CSRF attacks by raising an exception.  
 # Set language.  
 # Configure permitted parameters for devise gem.
-# Require WorldBank for the others.  
+# Require WorldBank for the others. 
+# Authenticate users with token for android application 
 # ![Class Diagram](diagram/application_controller_diagram.png)
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception  
@@ -41,5 +42,22 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do # error rescue for cancan role control
     flash[:error] = t('access_denied')
     redirect_to root_url
+  end
+  
+  # For this example, we are simply using token authentication
+  # via parameters. However, anyone could use Rails's token
+  # authentication features to get the token from a header.
+  def authenticate_user_from_token!
+    user_email = params[:email].presence
+    puts("user_email: ", user_email)
+    user       = user_email && User.find_by_email(user_email)
+    puts("user: ", user)
+    # Notice how we use Devise.secure_compare to compare the token
+    # in the database with the token given in the params, mitigating
+    # timing attacks.
+    if user && Devise.secure_compare(user.authentication_token, params[:auth_token])
+      puts("sign_in")  
+      sign_in user, store: false
+    end
   end
 end
