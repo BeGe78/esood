@@ -137,8 +137,6 @@ class SelectorsController < ApplicationController
     l1b = @percent ? 2 : [v1.max.to_s.length, v1.max.to_s.length].max # l contains the length of the biggest integer or 2 for percentage
     l2b = @percent2 ? 2 : [v2.max.to_s.length, v2.max.to_s.length].max
     @power_scale_change = @indicator_switch ? (10**(l1b - l2b)).to_f : 1
-    # l1b = [v1.max.to_s.length, v1.max.to_s.length].max # l contains the length of the biggest integer
-    # l2b = [v2.max.to_s.length, v2.max.to_s.length].max
     v2_rescaled = v2.collect { |i| (i * @power_scale_change).to_i }
     v = [v1, v2_rescaled]                                           
     @precision = @percent ? 2 : 0
@@ -154,15 +152,7 @@ class SelectorsController < ApplicationController
     # X axis positioning
     @xaxispos = 'bottom'
     @xaxispos = 'center' if v1.min < 0 || v2.min < 0
-=begin
-    if @indicator_switch && @xaxispos == 'center' # set min value
-      @min1 = v1.min < 0 ? v1.min : 0
-      @min2 = v2.min < 0 ? v2.min : 0 
-    else
-      @min1 = 0
-      @min2 = 0
-    end
-=end   
+
     # title scaffolding 
     @title_scale_unit = ' '
     if @same_scale # only show scale on title if same scale
@@ -190,7 +180,7 @@ class SelectorsController < ApplicationController
            << ' - ' << t('indicator') << ': ' << @i1.name \
            << @title_scale_unit
     end
-    puts('title length:', @title.size)
+    
     @current_user_email = user_signed_in? ? current_user.email : 'no_user' # set email for google analytics  
     # send data in js format        
     gon.push(                                       
@@ -208,6 +198,16 @@ class SelectorsController < ApplicationController
     (0..(y.size - 1)).each do |i|
       @s1 << Hash[[[:x, y[i]],[:y, v1[i]],[:z, v2_rescaled[i]]]]
     end
+    @highvalue = [v1.max, v2_rescaled.max].max
+    @lowvalue = [v1.min, v2_rescaled.min].min
+    @nbticks = ((@highvalue/1000) - (@lowvalue/1000)) + 3
+    if @nbticks < 8
+      @nbticks = (@nbticks * 2) - 1
+    end
+    @highvalue = ((@highvalue/1000) + 1) * 1000
+    @lowvalue = ((@lowvalue/1000) - 1) * 1000
+     
+    puts("highvalue:  ",@highvalue , " lowvalue: ", @lowvalue)
     
     # __________Statistics______________
     begin
