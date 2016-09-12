@@ -99,24 +99,20 @@ class SelectorsController < ApplicationController
     v1 = []
     v2 = []
     y = []
-    y_to_i = []        
-    (0..(@results1.size - 1)).each do |d| # percentage handling f for percentage else integer          
-      v1[d] = @results1[(@results1.size - 1) - d].value.to_f if @percent 
-      v2[d] = @results2[(@results1.size - 1) - d].value.to_f if @percent2 || (!@indicator_switch && @percent)
-      v1[d] = @results1[(@results1.size - 1) - d].value.to_i unless @percent
-      v2[d] = @results2[(@results1.size - 1) - d].value.to_i if !@percent2 || (!@indicator_switch && !@percent)
-      y[d] = @results1[(@results1.size - 1) - d].date
-      y_to_i[d] = y[d].to_i # R needs integers for correct calculus
+    (0..(@results1.size - 1)).each do |d| # percentage handling f for percentage else integer
+      v1[d] = @results1[(@results1.size - 1) - d].value.to_f
+      v2[d] = @results2[(@results1.size - 1) - d].value.to_f
+      y[d] = (@results1[(@results1.size - 1) - d].date).to_i
     end
       
-    l  = [v1.max.to_s.length, v1.max.to_s.length].max # l contains the length of the biggest integer
-    l2 = [v2.max.to_s.length, v2.max.to_s.length].max
+    l  = [v1.max.floor.to_s.length, v1.max.floor.to_s.length].max # l contains the length of the biggest integer
+    l2 = [v2.max.floor.to_s.length, v2.max.floor.to_s.length].max
   
     @scale = get_scale(l, @percent) # compute the dividing scale for first serie
-    @unit = get_unit(l) # compute the unit
+    @unit = get_unit(l, @percent) # compute the unit
     if @indicator_switch && l != l2 && !(@percent && @percent2)
       @scale2 = get_scale(l2, @percent2)
-      @unit2 = get_unit(l2)
+      @unit2 = get_unit(l2, @percent2)
       @same_scale = false
       @scale_change = @scale.to_s.length - @scale2.to_s.length
     else
@@ -125,21 +121,21 @@ class SelectorsController < ApplicationController
       @power_scale_change = 1
     end    
       
-    v1.collect! { |i| i / @scale } # apply the scale
+    v1.collect! { |i| (i / @scale).round(2) } # apply the scale
     if @same_scale
-      v2.collect! { |i| i / @scale }
+      v2.collect! { |i| (i / @scale).round(2) }
       @ylabels = true
     else
-      v2.collect! { |i| i / @scale2 }
+      v2.collect! { |i| (i / @scale2).round(2) }
       @ylabels = false
     end    
     # rescale v2 to display correct graph value
-    l1b = @percent ? 2 : [v1.max.to_s.length, v1.max.to_s.length].max # l contains the length of the biggest integer or 2 for percentage
-    l2b = @percent2 ? 2 : [v2.max.to_s.length, v2.max.to_s.length].max
+    l1b = @percent ? 2 : [v1.max.floor.to_s.length, v1.max.floor.to_s.length].max # l contains the length of the biggest integer or 2 for percentage
+    l2b = @percent2 ? 2 : [v2.max.floor.to_s.length, v2.max.floor.to_s.length].max
     @power_scale_change = @indicator_switch ? (10**(l1b - l2b)).to_f : 1
-    v2_rescaled = v2.collect { |i| (i * @power_scale_change).to_i }
+    v2_rescaled = v2.collect { |i| (i * @power_scale_change).round(2) }
     v = [v1, v2_rescaled]                                           
-    @precision = @percent ? 2 : 0
+    @precision = 2
     if I18n.locale == :en # set number format for Rgraph
       @scale_thousand = ','
       @scale_point = '.'
@@ -196,23 +192,43 @@ class SelectorsController < ApplicationController
     # API prepare data series for android
     @s1 = []
     (0..(y.size - 1)).each do |i|
-      @s1 << Hash[[[:x, y[i]],[:y, v1[i]],[:z, v2_rescaled[i]]]]
+      @s1 << Hash[[[:x, y[i]],[:y, v1[i]],[:z, v2[i]]]]
+    end
+    if @indicator_switch
+      @legend1 = @i1.name
+      @legend2 = @i2.name
+    else
+      @legend1 = @c1.name
+      @legend2 = @c2.name
     end
     @highvalue = [v1.max, v2_rescaled.max].max
     @lowvalue = [v1.min, v2_rescaled.min].min
-    @nbticks = ((@highvalue/1000) - (@lowvalue/1000)) + 3
-    if @nbticks < 8
+    nbdigit = [@highvalue.floor.to_s.length, @lowvalue.floor.to_s.length].max
+    power = 10**(nbdigit - 1)
+    @highvalue = ((((@highvalue * 1.05) / power).to_i + 1) * power).round(2)
+    @lowvalue = (((@lowvalue * 0.95) / power).to_i) * power
+    @lowvalue = ((@highvalue / 2) > @lowvalue) ? 0 : @lowvalue
+    @nbticks = ((@highvalue/power) - (@lowvalue/power)) + 1
+    if @nbticks < 8 # increase nbticks if too small      
       @nbticks = (@nbticks * 2) - 1
     end
-    @highvalue = ((@highvalue/1000) + 1) * 1000
-    @lowvalue = ((@lowvalue/1000) - 1) * 1000
+    ratio = (@nbticks / 16).to_i + 1 
+    @nbticks = (@nbticks / ratio).to_i
+    if !@same_scale
+      nbdigit2 = [v2.max.floor.to_s.length, v2.min.floor.to_s.length].max
+      power2 = 10**(nbdigit2 - nbdigit)
+      @highvalue2 = @highvalue*power2
+      @lowvalue2 = @lowvalue*power2
+    end
      
-    puts("highvalue:  ",@highvalue , " lowvalue: ", @lowvalue)
+    puts("samescale:  ", @same_scale, "unit2", @unit2,  "scale: ", @scale, "scale2: ", @scale2,
+         "power:", power, "power2:", power2, "l:", l, "l2:", l2,
+         "  highvalue:  ",@highvalue , " lowvalue: ", @lowvalue)
     
     # __________Statistics______________
     begin
       c = Rserve::Connection.new
-      c.assign('year', y_to_i)
+      c.assign('year', y)
       c.assign('vect1', v1)        
       c.assign('vect2', v2)
       @mean1 = c.eval('mean(vect1)')
@@ -231,6 +247,37 @@ class SelectorsController < ApplicationController
     end
   end
   
+  # compute scale for the graph
+  # @return [Integer] scale
+  # @param l [Integer] length of the largest absolute numeric values
+  # @param percent [Boolean] check if it is a percentage
+  def get_scale(l, percent)
+    scale = case l                                 
+            when 1..3 then 1
+            when 4..6 then 1000
+            when 7..9 then 1_000_000
+            when 10..12 then 1_000_000_000
+            else 1_000_000_000_000  
+            end
+    scale = 1 if percent # rectify scale for percentage
+    return scale
+  end
+  
+  # Translate to unit in english and french
+  # @return [String] unit (ex: thousand, million)
+  # @param l [Integer] length of the largest absolute numeric values
+  def get_unit(l, percent)
+    unit = case l                                 
+           when 1..3 then 'unit'
+           when 4..6 then t('thousand')
+           when 7..9 then t('million')
+           when 10..12 then t('billion')
+           else t('trillion')  
+           end
+    unit = 'percent' if percent # rectify scale for percentage
+    return unit
+  end
+=begin  
   # compute scale for the graph
   # @return [Integer] scale
   # @param l [Integer] length of the largest absolute numeric values
@@ -257,6 +304,7 @@ class SelectorsController < ApplicationController
     else t('billion')  
     end
   end
+=end
 
   private
   

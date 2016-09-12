@@ -153,6 +153,7 @@ en:
   thousand: "thousand"
   million: "million"
   billion: "billion"
+  trillion: "trillion"
   site_summary: "Site summary in english"
   indicator_summary: "Indicators summary in english"
   mean: "Mean"

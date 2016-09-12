@@ -5,7 +5,10 @@ class Api::V1::SelectorsController < SelectorsController
   def create
     super
     puts("s1", @s1)
-    render json: { data: @s1, title: @title, highvalue: @highvalue, lowvalue: @lowvalue, nbticks: @nbticks, unit: @unit }, each_serializer: Api::V1::SelectorSerializer
+    render json: { data: @s1, title: @title, legend1: @legend1, legend2: @legend2,
+                   highvalue: @highvalue, lowvalue: @lowvalue, highvalue2: @highvalue2, lowvalue2: @lowvalue2, 
+                   same_scale: @same_scale, nbticks: @nbticks,unit: @unit, unit2: @unit2
+                 }, each_serializer: Api::V1::SelectorSerializer
   end
   def selector_params
     params.permit(:form_switch, :year_begin, :year_end, :format,

@@ -153,6 +153,7 @@ fr:
   thousand: "millier"
   million: "million"
   billion: "milliard"
+  trillion: "billion"
   site_summary: "Sommaire du site en Français"
   indicator_summary: "Sommaire des indicateurs en Français"
   mean: "Moyenne"
