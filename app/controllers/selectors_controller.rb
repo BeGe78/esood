@@ -202,12 +202,16 @@ class SelectorsController < ApplicationController
       @legend2 = @c2.name
     end
     @highvalue = [v1.max, v2_rescaled.max].max
+    puts("highvalue1", @highvalue)
     @lowvalue = [v1.min, v2_rescaled.min].min
-    nbdigit = [@highvalue.floor.to_s.length, @lowvalue.floor.to_s.length].max
+    puts("lowvalue1", @lowvalue)
+    nbdigit = [@highvalue.abs.floor.to_s.length, @lowvalue.abs.floor.to_s.length].max
     power = 10**(nbdigit - 1)
     @highvalue = ((((@highvalue * 1.05) / power).to_i + 1) * power).round(2)
-    @lowvalue = (((@lowvalue * 0.95) / power).to_i) * power
-    @lowvalue = ((@highvalue / 2) > @lowvalue) ? 0 : @lowvalue
+    puts("highvalue2", @highvalue)
+    @lowvalue = (((@lowvalue * 0.95).floor / power).to_i) * power
+    puts("lowvalue2", @lowvalue)
+    @lowvalue = ((@highvalue / 2) > @lowvalue) && (@lowvalue > 0) ? 0 : @lowvalue
     @nbticks = ((@highvalue/power) - (@lowvalue/power)) + 1
     if @nbticks < 8 # increase nbticks if too small      
       @nbticks = (@nbticks * 2) - 1
@@ -215,10 +219,10 @@ class SelectorsController < ApplicationController
     ratio = (@nbticks / 16).to_i + 1 
     @nbticks = (@nbticks / ratio).to_i
     if !@same_scale
-      nbdigit2 = [v2.max.floor.to_s.length, v2.min.floor.to_s.length].max
+      nbdigit2 = [v2.max.abs.floor.to_s.length, v2.min.abs.floor.to_s.length].max
       power2 = 10**(nbdigit2 - nbdigit)
       @highvalue2 = @highvalue*power2
-      @lowvalue2 = @lowvalue*power2
+      @lowvalue2 = (@lowvalue*power2).to_i
     end
      
     puts("samescale:  ", @same_scale, "unit2", @unit2,  "scale: ", @scale, "scale2: ", @scale2,
@@ -277,34 +281,6 @@ class SelectorsController < ApplicationController
     unit = 'percent' if percent # rectify scale for percentage
     return unit
   end
-=begin  
-  # compute scale for the graph
-  # @return [Integer] scale
-  # @param l [Integer] length of the largest absolute numeric values
-  # @param percent [Boolean] check if it is a percentage
-  def get_scale(l, percent)
-    scale = case l                                 
-            when 1..6 then 1
-            when 7..9 then 1000
-            when 10..12 then 1_000_000
-            else 1_000_000_000  
-            end
-    scale = 1 if percent # rectify scale for percentage
-    return scale
-  end
-  
-  # Translate to unit in english and french
-  # @return [String] unit (ex: thousand, million)
-  # @param l [Integer] length of the largest absolute numeric values
-  def get_unit(l)
-    case l                                 
-    when 1..6 then 'unit'
-    when 7..9 then t('thousand')
-    when 10..12 then t('million')
-    else t('billion')  
-    end
-  end
-=end
 
   private
   
