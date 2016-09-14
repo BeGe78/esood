@@ -218,15 +218,19 @@ class SelectorsController < ApplicationController
     end
     ratio = (@nbticks / 16).to_i + 1 
     @nbticks = (@nbticks / ratio).to_i
+    
+    nbdigit2 = nbdigit
     if !@same_scale
       nbdigit2 = [v2.max.abs.floor.to_s.length, v2.min.abs.floor.to_s.length].max
       power2 = 10**(nbdigit2 - nbdigit)
       @highvalue2 = @highvalue*power2
       @lowvalue2 = (@lowvalue*power2).to_i
     end
+    @label_format = nbdigit > 1 ? '%.0f' : '%.2f'
+    @label_format2 = nbdigit2 > 1 ? '%.0f' : '%.2f'
      
     puts("samescale:  ", @same_scale, "unit2", @unit2,  "scale: ", @scale, "scale2: ", @scale2,
-         "power:", power, "power2:", power2, "l:", l, "l2:", l2,
+         "nbdigit", nbdigit, "nbdigit2", nbdigit2,
          "  highvalue:  ",@highvalue , " lowvalue: ", @lowvalue)
     
     # __________Statistics______________

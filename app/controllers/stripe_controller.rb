@@ -44,7 +44,7 @@ class StripeController < ApplicationController
         Prawn::Font::AFM.hide_m17n_warning = true
         t = Time.now.strftime '%Y-%m-%d_%H_%M_%S' # generate file name
         f = user.id.to_s + '_' + t + '.pdf'
-        pdf_creator.render Rails.root.join('./public/', f)
+        pdf_creator.render Rails.root.join('./tmp/invoice_pdf', f)
         UserMailer.invoice_email('bgardin@gmail.com', Rails.root.join('./tmp/invoice_pdf', f).to_s).deliver_later
         I18n.locale = locale_save
       end
