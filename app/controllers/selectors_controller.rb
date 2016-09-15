@@ -231,7 +231,8 @@ class SelectorsController < ApplicationController
      
     puts("samescale:  ", @same_scale, "unit2", @unit2,  "scale: ", @scale, "scale2: ", @scale2,
          "nbdigit", nbdigit, "nbdigit2", nbdigit2,
-         "  highvalue:  ",@highvalue , " lowvalue: ", @lowvalue)
+         "  highvalue:  ",@highvalue , " lowvalue: ", @lowvalue,
+         "label_format", @label_format, "label_format2", @label_format2,)
     
     # __________Statistics______________
     begin

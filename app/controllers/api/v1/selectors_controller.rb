@@ -3,6 +3,7 @@ class Api::V1::SelectorsController < SelectorsController
   protect_from_forgery except: :create # API    
   respond_to :json  
   def create
+    I18n.locale = params[:language][0..1].to_sym
     super
     puts("s1", @s1)
     render json: { data: @s1, title: @title, same_scale: @same_scale, nbticks: @nbticks,
