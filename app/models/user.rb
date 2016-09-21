@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   def customer?
     self.role.name == 'Customer'
   end
-  
+  # check the authentication_token
   def ensure_authentication_token
     if authentication_token.blank?
       self.authentication_token = generate_authentication_token
@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   end
 
   private
-  
+  # generate the authentication_token
   def generate_authentication_token
     loop do
       token = Devise.friendly_token
