@@ -4,7 +4,7 @@
 [![GitHub](http://img.shields.io/badge/github-ESoOD-yellow.svg)](https://github.com/BeGe78/esood)
 [![Documentation](http://img.shields.io/badge/docs-yard-green.svg)](https://bege.hd.free.fr/docs/)
 [![Release](http://img.shields.io/badge/releases-ESoOD-orange.svg)](http://github.com/BeGe78/esood/releases)
-[![License](http://img.shields.io/badge/license-GNU-red.svg)](https://bege.hd.free.fr/docs/file/LICENSE)
+[![License](http://img.shields.io/badge/license-GNU-red.svg)](https://bege.hd.free.fr/docs/file.LICENSE.html)
 
 ## Preamble
 **ESoOD** is a Ruby on Rails application providing statistical graph and analysis relative to the World Bank Open Data set.  
@@ -55,7 +55,7 @@ To generate the documentation with yard just run:
 
 The options of yard are included in the *.yardopts* file. Note that the controllers, the models and the tests are documented. The controllers documents include the UML class graph.
 ## Deployment
-To deployment for production, I use PhusionPassenger standalone on a nginx server and I follow this [tutorial](https://www.phusionpassenger.com/library/walkthroughs/deploy/ruby/ownserver/standalone/oss/deploy_app_main.html) .  
+To deploy for production, I use PhusionPassenger standalone on a nginx server and I follow this [tutorial](https://www.phusionpassenger.com/library/walkthroughs/deploy/ruby/ownserver/standalone/oss/deploy_app_main.html) .  
 As examples, I have copied extracts of my *Passenger* and *nginx* configuration files.  
 ## Contact
 You can contact me by [mail](mailto:bgardin@gmail.com).  
