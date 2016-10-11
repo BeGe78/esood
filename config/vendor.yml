@@ -1,0 +1,2 @@
+# Vendored files and directories are excluded from language
+- app/assets/javascripts/RGraph*.js
