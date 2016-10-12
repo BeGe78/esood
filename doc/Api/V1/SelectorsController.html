@@ -106,7 +106,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>API for the selectors controller for create action.</p>
+<p>API for the <strong>SelectorsController</strong> create action.</p>
 
 
   </div>
@@ -290,7 +290,16 @@
 22
 23
 24
-25</pre>
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/controllers/api/v1/selectors_controller.rb', line 14</span>
@@ -304,7 +313,16 @@
                  <span class='label'>highvalue:</span> <span class='ivar'>@highvalue</span><span class='comma'>,</span> <span class='label'>lowvalue:</span> <span class='ivar'>@lowvalue</span><span class='comma'>,</span>
                  <span class='label'>highvalue2:</span> <span class='ivar'>@highvalue2</span><span class='comma'>,</span> <span class='label'>lowvalue2:</span> <span class='ivar'>@lowvalue2</span><span class='comma'>,</span> 
                  <span class='label'>unit:</span> <span class='ivar'>@unit</span><span class='comma'>,</span> <span class='label'>unit2:</span> <span class='ivar'>@unit2</span><span class='comma'>,</span>
-                 <span class='label'>label_format:</span> <span class='ivar'>@label_format</span><span class='comma'>,</span> <span class='label'>label_format2:</span> <span class='ivar'>@label_format2</span>
+                 <span class='label'>label_format:</span> <span class='ivar'>@label_format</span><span class='comma'>,</span> <span class='label'>label_format2:</span> <span class='ivar'>@label_format2</span><span class='comma'>,</span>
+                 <span class='label'>mean1:</span> <span class='id identifier rubyid_number_with_precision'>number_with_precision</span><span class='lparen'>(</span><span class='ivar'>@mean1</span><span class='period'>.</span><span class='id identifier rubyid_to_ruby'>to_ruby</span><span class='comma'>,</span> <span class='label'>precision:</span> <span class='ivar'>@precision</span><span class='rparen'>)</span><span class='comma'>,</span>
+                 <span class='label'>mean2:</span> <span class='id identifier rubyid_number_with_precision'>number_with_precision</span><span class='lparen'>(</span><span class='ivar'>@mean2</span><span class='period'>.</span><span class='id identifier rubyid_to_ruby'>to_ruby</span><span class='comma'>,</span> <span class='label'>precision:</span> <span class='ivar'>@precision</span><span class='rparen'>)</span><span class='comma'>,</span>
+                 <span class='label'>coeflm1:</span> <span class='id identifier rubyid_number_with_precision'>number_with_precision</span><span class='lparen'>(</span><span class='ivar'>@coeflm1</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>precision:</span> <span class='ivar'>@precision</span><span class='rparen'>)</span><span class='comma'>,</span>
+                 <span class='label'>coeflm2:</span> <span class='id identifier rubyid_number_with_precision'>number_with_precision</span><span class='lparen'>(</span><span class='ivar'>@coeflm2</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>precision:</span> <span class='ivar'>@precision</span><span class='rparen'>)</span><span class='comma'>,</span>
+                 <span class='label'>coeflm3_1:</span> <span class='id identifier rubyid_number_with_precision'>number_with_precision</span><span class='lparen'>(</span><span class='ivar'>@coeflm3_1</span><span class='period'>.</span><span class='id identifier rubyid_to_ruby'>to_ruby</span><span class='comma'>,</span> <span class='label'>precision:</span> <span class='ivar'>@precision</span><span class='rparen'>)</span><span class='comma'>,</span>
+                 <span class='label'>coeflm3_2:</span> <span class='id identifier rubyid_number_with_precision'>number_with_precision</span><span class='lparen'>(</span><span class='ivar'>@coeflm3_2</span><span class='period'>.</span><span class='id identifier rubyid_to_ruby'>to_ruby</span><span class='comma'>,</span> <span class='label'>precision:</span> <span class='ivar'>@precision</span><span class='rparen'>)</span><span class='comma'>,</span>
+                 <span class='label'>meanrate1:</span> <span class='id identifier rubyid_number_to_percentage'>number_to_percentage</span><span class='lparen'>(</span><span class='ivar'>@meanrate1</span><span class='comma'>,</span> <span class='label'>precision:</span> <span class='ivar'>@precision</span><span class='rparen'>)</span><span class='comma'>,</span>
+                 <span class='label'>meanrate2:</span> <span class='id identifier rubyid_number_to_percentage'>number_to_percentage</span><span class='lparen'>(</span><span class='ivar'>@meanrate2</span><span class='comma'>,</span> <span class='label'>precision:</span> <span class='ivar'>@precision</span><span class='rparen'>)</span><span class='comma'>,</span>
+                 <span class='label'>cor:</span> <span class='id identifier rubyid_number_with_precision'>number_with_precision</span><span class='lparen'>(</span><span class='ivar'>@cor</span><span class='period'>.</span><span class='id identifier rubyid_to_ruby'>to_ruby</span><span class='comma'>,</span> <span class='label'>precision:</span> <span class='ivar'>@precision</span><span class='rparen'>)</span>
                <span class='rbrace'>}</span><span class='comma'>,</span> <span class='label'>each_serializer:</span> <span class='const'>Api</span><span class='op'>::</span><span class='const'>V1</span><span class='op'>::</span><span class='const'>SelectorSerializer</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -338,14 +356,14 @@
       <pre class="lines">
 
 
-27
-28
-29
-30
-31</pre>
+36
+37
+38
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/selectors_controller.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/selectors_controller.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_selector_params'>selector_params</span>
   <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_permit'>permit</span><span class='lparen'>(</span><span class='symbol'>:form_switch</span><span class='comma'>,</span> <span class='symbol'>:year_begin</span><span class='comma'>,</span> <span class='symbol'>:year_end</span><span class='comma'>,</span> <span class='symbol'>:format</span><span class='comma'>,</span>
@@ -362,7 +380,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Sep 19 08:38:42 2016 by
+  Generated on Wed Oct 12 10:25:57 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.2 (ruby-2.3.1).
 </div>

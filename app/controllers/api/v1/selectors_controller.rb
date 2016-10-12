@@ -1,7 +1,7 @@
 # @author Bruno Gardin <bgardin@gmail.com>
 # @copyright GNU GENERAL PUBLIC LICENSE  
 #   Version 3, 29 June 2007
-# API for the selectors controller for create action.
+# API for the **SelectorsController** create action.
 
 class Api::V1::SelectorsController < SelectorsController
     
