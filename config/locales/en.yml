@@ -61,8 +61,8 @@ en:
   Change_my_passord: "Change my password"
   Unlock_my_account: "Unlock my account"
   Unhappy: "Unhappy?"
-  monthly_subscription: "Monthly subscription: 30€"
-  yearly_subscription:  "Yearly subscription: 300€"
+  monthly_subscription: "Monthly subscription: 40€"
+  yearly_subscription:  "Yearly subscription: 400€"
   email_allready_used: "Email allready used"
   password_confirmation_error: "Passwords do not match. Please check and retry."
   password_error: "Password error. Please check and retry."
@@ -105,8 +105,8 @@ en:
   condition_comment2: "Please fill the form, verify the terms and conditions and click to access to the subscription buttons."
   subscription_month: "Monthly subscription:"
   subscription_year: "Yearly  subscription:"
-  subscription_month_rate: " 30€"
-  subscription_year_rate: " 300€"
+  subscription_month_rate: " 40€"
+  subscription_year_rate: " 400€"
   
 #invoicing
   invoice_title: "Invoice receipt from ESoOD"

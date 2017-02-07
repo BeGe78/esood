@@ -60,7 +60,7 @@
   data-label="<%= t('monthly_subscription') %>"
   data-currency = "eur"
   data-locale ="<%= I18n.locale%>"
-  data-amount= "3000"
+  data-amount= "4000"
   data-allow-remember-me="false">
 </script>
 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -73,7 +73,7 @@
   data-label="<%= t('yearly_subscription') %>"
   data-currency = "eur"
   data-locale ="<%= I18n.locale%>"
-  data-amount="30000"
+  data-amount="40000"
   data-allow-remember-me="false">
 </script>
 </div>
@@ -99,11 +99,11 @@
     setTimeout(function() {
       $('.stripe-button-el:first').click(function() {
       console.log( "month_plan" );
-      $('#user_plan_id').val("month-plan");
+      $('#user_plan_id').val("month_plan");
       });
       $('.stripe-button-el:last').click(function() {
       console.log( "year_plan" );
-      $('#user_plan_id').val("day-plan");
+      $('#user_plan_id').val("year_plan");
       });
     }, 3000);
     $('#new_user').css({

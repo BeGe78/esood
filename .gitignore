@@ -6,6 +6,8 @@
 
 # Ignore bundler config.
 /.bundle
+# Ignore htaccess.
+/.htaccess
 #Ignore rubocop configure
 /.rubocop.yml
 /.rubocop_todo.yml

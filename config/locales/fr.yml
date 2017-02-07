@@ -61,8 +61,8 @@ fr:
   Change_my_passord: "Changer mon mot de passe"
   Unlock_my_account: "Débloquer mon compte"
   Unhappy: "Pas satisfait?"
-  monthly_subscription: "Abonnement mensuel: 30€"
-  yearly_subscription:  "Abonnement annuel: 300€"
+  monthly_subscription: "Abonnement mensuel: 40€"
+  yearly_subscription:  "Abonnement annuel: 400€"
   email_allready_used: "Email déjà utilisée"
   password_confirmation_error: "Les mots de passe ne concordent pas. Merci de vérifier et de réessayer."
   password_error: "Erreur de mot de passe. Merci de vérifier et de réessayer."
@@ -105,8 +105,8 @@ fr:
   condition_comment2: "Remplissez la grille, vérifier les conditions d'utilisation et cliquez pour accéder aux boutons d'abonnement."
   subscription_month: "Abonnement mensuel:"
   subscription_year: "Abonnement annuel:"
-  subscription_month_rate: " 30€"
-  subscription_year_rate: " 300€"
+  subscription_month_rate: " 40€"
+  subscription_year_rate: " 400€"
   
 #invoicing
   invoice_title: "Facture de ESoOD"
