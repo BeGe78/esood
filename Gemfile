@@ -20,6 +20,8 @@ gem 'coffee-rails'
 gem 'jquery-rails'  
 gem 'jquery-ui-rails'  
 gem 'jquery-datatables-rails'
+## upgrade loofah following a github security warning
+gem 'loofah', '~> 2.2.1'
 ## Turbolinks makes following links in your web application faster
 gem 'turbolinks'  
 gem 'jquery-turbolinks'
