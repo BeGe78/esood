@@ -6,11 +6,11 @@ DatabaseCleaner.strategy = :truncation
 #   Version 3, 29 June 2007
 # Tests the {Indicator **Indicator model**}  
 class IndicatorTest < ActiveSupport::TestCase
-  include FactoryGirl::Syntax::Methods
+  include FactoryBot::Syntax::Methods
   self.use_transactional_fixtures = false
   setup do
     DatabaseCleaner.start
-    @indic = FactoryGirl.create(:indic1)
+    @indic = FactoryBot.create(:indic1)
   end
   
   teardown do

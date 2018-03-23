@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :invoice1, class: InvoicingLedgerItem do
     sender_id 1
     recipient_id 2

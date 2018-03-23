@@ -6,7 +6,7 @@
 <title>
   Class: ApplicationController
   
-    &mdash; Documentation by YARD 0.9.2
+    &mdash; Documentation by YARD 0.9.12
   
 </title>
 
@@ -28,7 +28,7 @@
   </head>
   <body>
     <div class="nav_wrap">
-      <iframe id="nav" src="class_list.html"></iframe>
+      <iframe id="nav" src="class_list.html?1"></iframe>
       <div id="resizer"></div>
     </div>
 
@@ -58,8 +58,6 @@
 </div>
         <div class="clear"></div>
       </div>
-
-      <iframe id="search_frame" src="class_list.html"></iframe>
 
       <div id="content"><h1>Class: ApplicationController
   
@@ -171,7 +169,7 @@ android application <img src="diagram/application_controller_diagram.png"></p>
         <li class="protected ">
   <span class="summary_signature">
     
-      <a href="#authenticate_user_from_token%21-instance_method" title="#authenticate_user_from_token! (instance method)">#<strong>authenticate_user_from_token!</strong>  &#x21d2; Object </a>
+      <a href="#authenticate_user_from_token!-instance_method" title="#authenticate_user_from_token! (instance method)">#<strong>authenticate_user_from_token!</strong>  &#x21d2; Object </a>
     
 
     
@@ -323,7 +321,7 @@ the token from a header.</p>
 <span class='kw'>def</span> <span class='id identifier rubyid_authenticate_user_from_token!'>authenticate_user_from_token!</span>
   <span class='id identifier rubyid_user_email'>user_email</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:email</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_presence'>presence</span>
   <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>user_email: </span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user_email'>user_email</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_user'>user</span>       <span class='op'>=</span> <span class='id identifier rubyid_user_email'>user_email</span> <span class='op'>&amp;&amp;</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_find_by_email'>find_by_email</span><span class='lparen'>(</span><span class='id identifier rubyid_user_email'>user_email</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_user'>user</span>       <span class='op'>=</span> <span class='id identifier rubyid_user_email'>user_email</span> <span class='op'>&amp;&amp;</span> <span class='const'><span class='object_link'><a href="User.html" title="User (class)">User</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find_by_email'>find_by_email</span><span class='lparen'>(</span><span class='id identifier rubyid_user_email'>user_email</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>user: </span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
   <span class='comment'># Notice how we use Devise.secure_compare to compare the token
 </span>  <span class='comment'># in the database with the token given in the params, mitigating
@@ -513,9 +511,9 @@ update</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Oct 12 10:25:55 2016 by
+  Generated on Thu Dec 21 14:24:14 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.2 (ruby-2.3.1).
+  0.9.12 (ruby-2.4.1).
 </div>
 
     </div>

@@ -7,11 +7,11 @@ class IndicatorsControllerTest < ActionController::TestCase
   self.use_transactional_fixtures = false
   setup do
     DatabaseCleaner.start
-    @role = FactoryGirl.create(:admin)
-    @role1 = FactoryGirl.create(:customer)
-    @user = FactoryGirl.create(:user, role_id: @role.id)
-    @user1 = FactoryGirl.create(:user1, role_id: @role1.id)
-    @indicator = FactoryGirl.create(:indic1)
+    @role = FactoryBot.create(:admin)
+    @role1 = FactoryBot.create(:customer)
+    @user = FactoryBot.create(:user, role_id: @role.id)
+    @user1 = FactoryBot.create(:user1, role_id: @role1.id)
+    @indicator = FactoryBot.create(:indic1)
     sign_in @user1
   end
   teardown do

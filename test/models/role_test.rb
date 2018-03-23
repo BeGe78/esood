@@ -6,11 +6,11 @@ DatabaseCleaner.strategy = :truncation
 #   Version 3, 29 June 2007
 # Tests the {Role **Role model**}
 class RoleTest < ActiveSupport::TestCase
-  include FactoryGirl::Syntax::Methods
+  include FactoryBot::Syntax::Methods
   self.use_transactional_fixtures = false
   setup do
     DatabaseCleaner.start
-    @role = FactoryGirl.create(:customer)
+    @role = FactoryBot.create(:customer)
   end
   teardown do
     DatabaseCleaner.clean

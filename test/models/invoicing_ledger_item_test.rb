@@ -6,11 +6,11 @@ DatabaseCleaner.strategy = :truncation
 #   Version 3, 29 June 2007
 # Tests the {InvoicingLedgerItem **InvoicingLedgerItem model**}  
 class InvoicingLedgerItemTest < ActiveSupport::TestCase
-  include FactoryGirl::Syntax::Methods
+  include FactoryBot::Syntax::Methods
   self.use_transactional_fixtures = false
   setup do
     DatabaseCleaner.start
-    @invoice1 = FactoryGirl.create(:invoice1)
+    @invoice1 = FactoryBot.create(:invoice1)
   end
   teardown do
     DatabaseCleaner.clean

@@ -6,7 +6,7 @@
 <title>
   Class: RegistrationsController
   
-    &mdash; Documentation by YARD 0.9.2
+    &mdash; Documentation by YARD 0.9.12
   
 </title>
 
@@ -28,7 +28,7 @@
   </head>
   <body>
     <div class="nav_wrap">
-      <iframe id="nav" src="class_list.html"></iframe>
+      <iframe id="nav" src="class_list.html?1"></iframe>
       <div id="resizer"></div>
     </div>
 
@@ -58,8 +58,6 @@
 </div>
         <div class="clear"></div>
       </div>
-
-      <iframe id="search_frame" src="class_list.html"></iframe>
 
       <div id="content"><h1>Class: RegistrationsController
   
@@ -485,7 +483,7 @@ we create the user.<br> All the errors are rescued with flash message.</p>
 </span>  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_messages'>messages</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='comment'># there is at least an error
 </span>    <span class='id identifier rubyid_user_model_flash_errors'>user_model_flash_errors</span>
     <span class='comment'># check that this email has not yet been created in user table
-</span>  <span class='kw'>elsif</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='label'>email:</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:stripeEmail</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+</span>  <span class='kw'>elsif</span> <span class='const'><span class='object_link'><a href="User.html" title="User (class)">User</a></span></span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='label'>email:</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:stripeEmail</span><span class='rbracket'>]</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_redirect_to_back_or_default'>redirect_to_back_or_default</span><span class='lparen'>(</span><span class='label'>alert:</span> <span class='id identifier rubyid_t'>t</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>email_allready_used</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='kw'>else</span>
     <span class='comment'># create Stripe customer first
@@ -1028,9 +1026,9 @@ errors are rescued with flash message.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Oct 12 10:25:56 2016 by
+  Generated on Thu Dec 21 14:24:14 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.2 (ruby-2.3.1).
+  0.9.12 (ruby-2.4.1).
 </div>
 
     </div>

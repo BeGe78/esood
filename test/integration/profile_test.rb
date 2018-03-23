@@ -6,14 +6,14 @@ DatabaseCleaner.strategy = :truncation
 #   Version 3, 29 June 2007
 # Integration tests for profile modification
 class ProfileTest < Capybara::Rails::TestCase
-  include FactoryGirl::Syntax::Methods
+  include FactoryBot::Syntax::Methods
   self.use_transactional_fixtures = false
   setup do
     DatabaseCleaner.start
     Capybara.current_driver = :selenium     
-    @role = FactoryGirl.create(:admin)
-    @role1 = FactoryGirl.create(:customer)
-    @user = FactoryGirl.create(:user, role_id: @role1.id)
+    @role = FactoryBot.create(:admin)
+    @role1 = FactoryBot.create(:customer)
+    @user = FactoryBot.create(:user, role_id: @role1.id)
     I18n.locale = :en
     visit %(#{I18n.locale}/selectors/new)
     click_button('adm_lang')

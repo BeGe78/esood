@@ -7,10 +7,10 @@ class PlansControllerTest < ActionController::TestCase
   self.use_transactional_fixtures = false
   setup do
     DatabaseCleaner.start
-    @role = FactoryGirl.create(:admin)
-    @role1 = FactoryGirl.create(:customer)
-    @user = FactoryGirl.create(:user, role_id: @role.id)
-    @plan = FactoryGirl.create(:plan1)
+    @role = FactoryBot.create(:admin)
+    @role1 = FactoryBot.create(:customer)
+    @user = FactoryBot.create(:user, role_id: @role.id)
+    @plan = FactoryBot.create(:plan1)
     sign_in @user
   end
   teardown do
@@ -19,7 +19,7 @@ class PlansControllerTest < ActionController::TestCase
 
   # test that index is refused for non admin user
   test 'should_not_get_index' do
-    @user1 = FactoryGirl.create(:user1, role_id: @role1.id)
+    @user1 = FactoryBot.create(:user1, role_id: @role1.id)
     sign_out @user
     sign_in @user1
     get :index

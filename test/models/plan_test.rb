@@ -6,11 +6,11 @@ DatabaseCleaner.strategy = :truncation
 #   Version 3, 29 June 2007
 # Tests the {Plan **Plan model**}
 class PlanTest < ActiveSupport::TestCase
-  include FactoryGirl::Syntax::Methods
+  include FactoryBot::Syntax::Methods
   self.use_transactional_fixtures = false
   setup do
     DatabaseCleaner.start
-    @plan = FactoryGirl.create(:plan1)
+    @plan = FactoryBot.create(:plan1)
   end
   teardown do
     DatabaseCleaner.clean

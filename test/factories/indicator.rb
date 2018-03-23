@@ -1,5 +1,5 @@
 # This will guess the User class
-FactoryGirl.define do
+FactoryBot.define do
   factory :indic1, class: Indicator do
     id1 'NE.RSB.GNFS.ZS'
     name 'NE.RSB.GNFS.ZS fr'

@@ -21,12 +21,12 @@ require 'capybara/rails'
 require 'capybara/email'
 require 'capybara/rspec/matchers'
 require 'minitest/rails/capybara'
-require 'factory_girl_rails'
+require 'factory_bot_rails'
 require 'minitest/byebug' if ENV['DEBUG']
-Capybara.register_driver :selenium do |app|
+Capybara.register_driver :selenium_chrome do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome)
 end
-Capybara.register_driver :selenium_firefox do |app|
+Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app, browser: :firefox)
 end
 # class ActionDispatch includes Capybara::Email::DSL
@@ -36,16 +36,16 @@ end
 # class ActiveSupport
 class ActiveSupport::TestCase
 end
-# class ActionController includes FactoryGirl, Devise and DatabaseCleaner helpers
+# class ActionController includes FactoryBot, Devise and DatabaseCleaner helpers
 class ActionController::TestCase
-  include FactoryGirl::Syntax::Methods  
-  include Devise::TestHelpers
+  include FactoryBot::Syntax::Methods  
+  include Devise::Test::ControllerHelpers
   require 'database_cleaner'
   DatabaseCleaner.strategy = :truncation
 end
-# class ActionMailer includes FactoryGirl, Devise and DatabaseCleaner helpers
+# class ActionMailer includes FactoryBot, Devise and DatabaseCleaner helpers
 class ActionMailer::TestCase
-  include FactoryGirl::Syntax::Methods  
+  include FactoryBot::Syntax::Methods  
   require 'database_cleaner'
   DatabaseCleaner.strategy = :truncation
 end

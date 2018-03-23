@@ -1,5 +1,5 @@
 # This will guess the User class
-FactoryGirl.define do
+FactoryBot.define do
   factory :france, class: Country do
     id1 'FRA'
     iso2code 'FR'

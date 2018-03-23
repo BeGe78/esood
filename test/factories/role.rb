@@ -1,5 +1,5 @@
 # This will guess the User class
-FactoryGirl.define do
+FactoryBot.define do
   factory :admin, class: Role do
     name 'Admin'
     description 'Administration'

@@ -6,7 +6,7 @@
 <title>
   Class: Ability
   
-    &mdash; Documentation by YARD 0.9.2
+    &mdash; Documentation by YARD 0.9.12
   
 </title>
 
@@ -28,7 +28,7 @@
   </head>
   <body>
     <div class="nav_wrap">
-      <iframe id="nav" src="class_list.html"></iframe>
+      <iframe id="nav" src="class_list.html?1"></iframe>
       <div id="resizer"></div>
     </div>
 
@@ -58,8 +58,6 @@
 </div>
         <div class="clear"></div>
       </div>
-
-      <iframe id="search_frame" src="class_list.html"></iframe>
 
       <div id="content"><h1>Class: Ability
   
@@ -286,22 +284,22 @@
   <span class='comment'># Define abilities for the passed in user here. For example:
 </span>  <span class='comment'>#
 </span>  <span class='comment'>#   user ||= User.new # guest user (not logged in)
-</span>  <span class='id identifier rubyid_guest'>guest</span> <span class='op'>=</span> <span class='const'>User</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
-  <span class='id identifier rubyid_guest'>guest</span><span class='period'>.</span><span class='id identifier rubyid_role'>role</span> <span class='op'>=</span> <span class='const'>Role</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+</span>  <span class='id identifier rubyid_guest'>guest</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="User.html" title="User (class)">User</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_guest'>guest</span><span class='period'>.</span><span class='id identifier rubyid_role'>role</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Role.html" title="Role (class)">Role</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
   <span class='id identifier rubyid_guest'>guest</span><span class='period'>.</span><span class='id identifier rubyid_role'>role</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Regular</span><span class='tstring_end'>&#39;</span></span>
   <span class='id identifier rubyid_user'>user</span> <span class='op'>||=</span> <span class='id identifier rubyid_guest'>guest</span> <span class='comment'># Guest user
 </span>  <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_admin?'>admin?</span>
     <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:manage</span><span class='comma'>,</span> <span class='symbol'>:all</span>
   <span class='kw'>elsif</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_customer?'>customer?</span>
-    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Country</span>
-    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Indicator</span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Country.html" title="Country (class)">Country</a></span></span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Indicator.html" title="Indicator (class)">Indicator</a></span></span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Country</span><span class='comma'>,</span> <span class='label'>visible:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Y</span><span class='tstring_end'>&#39;</span></span>
-    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'>Indicator</span><span class='comma'>,</span> <span class='label'>visible:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Y</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Country.html" title="Country (class)">Country</a></span></span><span class='comma'>,</span> <span class='label'>visible:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Y</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:read</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Indicator.html" title="Indicator (class)">Indicator</a></span></span><span class='comma'>,</span> <span class='label'>visible:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Y</span><span class='tstring_end'>&#39;</span></span>
   <span class='kw'>end</span>
-  <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:print_chart</span><span class='comma'>,</span> <span class='const'>Selector</span> <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_admin?'>admin?</span> <span class='op'>||</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_customer?'>customer?</span>
-  <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:full_list</span><span class='comma'>,</span> <span class='const'>Selector</span> <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_admin?'>admin?</span> <span class='op'>||</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_customer?'>customer?</span>
-  <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:show_registration</span><span class='comma'>,</span> <span class='const'>Selector</span> <span class='kw'>unless</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_customer?'>customer?</span>
+  <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:print_chart</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Selector.html" title="Selector (class)">Selector</a></span></span> <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_admin?'>admin?</span> <span class='op'>||</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_customer?'>customer?</span>
+  <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:full_list</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Selector.html" title="Selector (class)">Selector</a></span></span> <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_admin?'>admin?</span> <span class='op'>||</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_customer?'>customer?</span>
+  <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:show_registration</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Selector.html" title="Selector (class)">Selector</a></span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_customer?'>customer?</span>
   <span class='id identifier rubyid_can'>can</span> <span class='symbol'>:show_admin</span><span class='comma'>,</span> <span class='symbol'>:all</span> <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_admin?'>admin?</span>
   <span class='comment'>#
 </span>  <span class='comment'># The first argument to `can` is the action you are giving the user
@@ -333,9 +331,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct 12 10:25:49 2016 by
+  Generated on Thu Dec 21 14:24:11 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.2 (ruby-2.3.1).
+  0.9.12 (ruby-2.4.1).
 </div>
 
     </div>

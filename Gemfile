@@ -25,7 +25,7 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 ## Build JSON APIs with ease.
 gem 'multi_json'  
-gem 'json'  
+gem 'json', '~> 2.1.0' 
 gem 'rabl'
 gem 'rabl-rails'  
 ## rserve is used to access R statistical features
@@ -40,6 +40,7 @@ gem 'rails-jquery-autocomplete'
 ## for google analytics
 gem 'ua-google-analytics-rails'
 ## for user authentification and authorisation
+gem 'bcrypt', platforms: :ruby
 gem 'devise'
 gem 'figaro'  
 gem 'cancancan'  
@@ -49,7 +50,7 @@ gem 'invoicing'
 gem 'prawn'  
 gem 'prawn-table'  
 ## for documentation
-gem 'yard'
+gem 'yard', '~> 0.9.11'
 ## for code quality
 group :development do 
   gem 'rubocop', require: false  
@@ -60,12 +61,12 @@ group :test do
   gem 'spring'  
 ### Colorize minitest output and show failing tests instantly.  
   gem 'minitest-colorize', git: 'https://github.com/ysbaddaden/minitest-colorize'  
-### minitest capybara factorygirl are used for testing  
+### minitest capybara factorybot are used for testing  
   gem 'minitest-rails-capybara'  
   gem 'capybara-email'  
   gem 'selenium-webdriver'  
   gem 'chromedriver-helper'  
   gem 'database_cleaner'  
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'simplecov' 
 end  

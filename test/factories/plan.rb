@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :plan1, class: Plan do
     stripe_id 'month-plan'
     name 'Monthly subscription'

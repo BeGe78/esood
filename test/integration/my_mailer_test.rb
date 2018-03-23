@@ -6,7 +6,7 @@ DatabaseCleaner.strategy = :truncation
 #   Version 3, 29 June 2007
 # Integration tests for the {MyMailer mailing to customers}.  
 class MyMailerTest < Capybara::Rails::TestCase
-  include FactoryGirl::Syntax::Methods
+  include FactoryBot::Syntax::Methods
   include Capybara::Email::DSL
   self.use_transactional_fixtures = false 
   setup do
@@ -14,10 +14,10 @@ class MyMailerTest < Capybara::Rails::TestCase
     Capybara.current_driver = :selenium
     Capybara.server_port = 38_225
     clear_emails
-    @role = FactoryGirl.create(:admin)
-    @role1 = FactoryGirl.create(:customer)
-    @user = FactoryGirl.create(:user_en, role_id: @role1.id)
-    @user = FactoryGirl.create(:user_fr, role_id: @role1.id) 
+    @role = FactoryBot.create(:admin)
+    @role1 = FactoryBot.create(:customer)
+    @user = FactoryBot.create(:user_en, role_id: @role1.id)
+    @user = FactoryBot.create(:user_fr, role_id: @role1.id) 
   end
   teardown do
     DatabaseCleaner.clean

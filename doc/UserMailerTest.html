@@ -6,7 +6,7 @@
 <title>
   Class: UserMailerTest
   
-    &mdash; Documentation by YARD 0.9.2
+    &mdash; Documentation by YARD 0.9.12
   
 </title>
 
@@ -28,7 +28,7 @@
   </head>
   <body>
     <div class="nav_wrap">
-      <iframe id="nav" src="class_list.html"></iframe>
+      <iframe id="nav" src="class_list.html?1"></iframe>
       <div id="resizer"></div>
     </div>
 
@@ -58,8 +58,6 @@
 </div>
         <div class="clear"></div>
       </div>
-
-      <iframe id="search_frame" src="class_list.html"></iframe>
 
       <div id="content"><h1>Class: UserMailerTest
   
@@ -303,7 +301,7 @@
       <pre class="code"><span class="info file"># File 'test/mailers/user_mailer_test.rb', line 30</span>
 
 <span class='id identifier rubyid_test'>test</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>destroy_customer_email</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_email'>email</span> <span class='op'>=</span> <span class='const'>UserMailer</span><span class='period'>.</span><span class='id identifier rubyid_destroy_customer_email'>destroy_customer_email</span><span class='lparen'>(</span><span class='ivar'>@user</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_email'>email</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="UserMailer.html" title="UserMailer (class)">UserMailer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_destroy_customer_email'><span class='object_link'><a href="UserMailer.html#destroy_customer_email-instance_method" title="UserMailer#destroy_customer_email (method)">destroy_customer_email</a></span></span><span class='lparen'>(</span><span class='ivar'>@user</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_assert_equal'>assert_equal</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Customer deleted on ESoOD</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>subject</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>UserMailerTest::OK Customer deleted on ESoOD</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -348,7 +346,7 @@
       <pre class="code"><span class="info file"># File 'test/mailers/user_mailer_test.rb', line 36</span>
 
 <span class='id identifier rubyid_test'>test</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>invoice_email</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_email'>email</span> <span class='op'>=</span> <span class='const'>UserMailer</span><span class='period'>.</span><span class='id identifier rubyid_invoice_email'>invoice_email</span><span class='lparen'>(</span><span class='ivar'>@user</span><span class='comma'>,</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_root'>root</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>tmp</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>test_invoice.pdf</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_email'>email</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="UserMailer.html" title="UserMailer (class)">UserMailer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_invoice_email'><span class='object_link'><a href="UserMailer.html#invoice_email-instance_method" title="UserMailer#invoice_email (method)">invoice_email</a></span></span><span class='lparen'>(</span><span class='ivar'>@user</span><span class='comma'>,</span> <span class='const'>Rails</span><span class='period'>.</span><span class='id identifier rubyid_root'>root</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>tmp</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>test_invoice.pdf</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_assert_equal'>assert_equal</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bgardin@gmail.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>from</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>UserMailerTest::OK ESoOD Invoice</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -393,7 +391,7 @@
       <pre class="code"><span class="info file"># File 'test/mailers/user_mailer_test.rb', line 18</span>
 
 <span class='id identifier rubyid_test'>test</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>new_customer_email</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_email'>email</span> <span class='op'>=</span> <span class='const'>UserMailer</span><span class='period'>.</span><span class='id identifier rubyid_new_customer_email'>new_customer_email</span><span class='lparen'>(</span><span class='ivar'>@user</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_email'>email</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="UserMailer.html" title="UserMailer (class)">UserMailer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new_customer_email'><span class='object_link'><a href="UserMailer.html#new_customer_email-instance_method" title="UserMailer#new_customer_email (method)">new_customer_email</a></span></span><span class='lparen'>(</span><span class='ivar'>@user</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_assert_equal'>assert_equal</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>New customer on ESoOD</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>subject</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>UserMailerTest::OK New customer on ESoOD</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -438,7 +436,7 @@
       <pre class="code"><span class="info file"># File 'test/mailers/user_mailer_test.rb', line 24</span>
 
 <span class='id identifier rubyid_test'>test</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>payment_problem_email</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_email'>email</span> <span class='op'>=</span> <span class='const'>UserMailer</span><span class='period'>.</span><span class='id identifier rubyid_payment_problem_email'>payment_problem_email</span><span class='lparen'>(</span><span class='ivar'>@user</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_email'>email</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="UserMailer.html" title="UserMailer (class)">UserMailer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_payment_problem_email'><span class='object_link'><a href="UserMailer.html#payment_problem_email-instance_method" title="UserMailer#payment_problem_email (method)">payment_problem_email</a></span></span><span class='lparen'>(</span><span class='ivar'>@user</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_assert_equal'>assert_equal</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Payment problem on ESoOD</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_email'>email</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>subject</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>UserMailerTest::OK Payment problem on ESoOD</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -452,9 +450,9 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Oct 12 10:25:59 2016 by
+  Generated on Thu Dec 21 14:24:16 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.2 (ruby-2.3.1).
+  0.9.12 (ruby-2.4.1).
 </div>
 
     </div>

@@ -6,22 +6,22 @@ DatabaseCleaner.strategy = :truncation
 #   Version 3, 29 June 2007
 # Integration tests for access control for an anonymous user
 class AdminAnonymousTest < Capybara::Rails::TestCase
-  include FactoryGirl::Syntax::Methods
+  include FactoryBot::Syntax::Methods
   self.use_transactional_fixtures = false
   setup do
     DatabaseCleaner.start
     Capybara.current_driver = :selenium
-    @role = FactoryGirl.create(:admin)
-    @role1 = FactoryGirl.create(:customer)
-    @user = FactoryGirl.create(:user, role_id: @role1.id)
-    @country = FactoryGirl.create(:france)
-    @country = FactoryGirl.create(:allemagne)
-    @country = FactoryGirl.create(:france1)
-    @country = FactoryGirl.create(:germany)
-    @indicator = FactoryGirl.create(:indic1)
-    @indicator = FactoryGirl.create(:indic2)
-    @indicator = FactoryGirl.create(:indic3)
-    @indicator = FactoryGirl.create(:indic4)
+    @role = FactoryBot.create(:admin)
+    @role1 = FactoryBot.create(:customer)
+    @user = FactoryBot.create(:user, role_id: @role1.id)
+    @country = FactoryBot.create(:france)
+    @country = FactoryBot.create(:allemagne)
+    @country = FactoryBot.create(:france1)
+    @country = FactoryBot.create(:germany)
+    @indicator = FactoryBot.create(:indic1)
+    @indicator = FactoryBot.create(:indic2)
+    @indicator = FactoryBot.create(:indic3)
+    @indicator = FactoryBot.create(:indic4)
   end
   teardown do
     DatabaseCleaner.clean

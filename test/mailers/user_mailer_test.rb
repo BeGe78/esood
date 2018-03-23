@@ -7,8 +7,8 @@ class UserMailerTest < ActionMailer::TestCase
   self.use_transactional_fixtures = false
   setup do
     DatabaseCleaner.start
-    @role = FactoryGirl.create(:admin)
-    @user = FactoryGirl.create(:user, role_id: @role.id)
+    @role = FactoryBot.create(:admin)
+    @user = FactoryBot.create(:user, role_id: @role.id)
   end
   teardown do
     DatabaseCleaner.clean
