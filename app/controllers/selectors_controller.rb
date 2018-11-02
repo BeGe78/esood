@@ -237,6 +237,7 @@ class SelectorsController < ApplicationController
     # __________Statistics______________
     begin
       c = Rserve::Connection.new
+      puts("y: ",y,"  v1: ",v1,"  v2: ",v2)
       c.assign('year', y)
       c.assign('vect1', v1)        
       c.assign('vect2', v2)
