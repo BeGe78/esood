@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ## Bundle edge Rails
 gem 'rails'
 gem 'rails-html-sanitizer', '~> 1.0.4'
-gem 'rack', '~> 1.6.11'
+gem 'rack'      #, '~> 1.6.11'
 ## Use passenger as a deployment tool
 gem "passenger"
 ## Use sqlite3 as the database for Active Record
@@ -34,7 +34,7 @@ gem 'activejob', '~> 4.2.11'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 ## Build JSON APIs with ease.
-gem 'multi_json', '~> 1.13.1'
+gem 'multi_json'           #, '~> 1.13.1'
 gem 'json', '~> 2.1.0'
 gem 'rabl'
 gem 'rabl-rails'
@@ -42,7 +42,7 @@ gem 'rabl-rails'
 gem 'rserve-client'
 gem 'rserve-simpler'
 ## WorlBank database API
-#gem 'world_bank'
+gem 'world_bank'
 ## to pass rails variables to javascript
 gem 'gon'
 ## for field autocompletion

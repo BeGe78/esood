@@ -47,8 +47,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.5.2)
-      public_suffix (>= 2.0.2, < 4.0)
+    addressable (2.2.8)
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (6.0.4)
@@ -86,7 +85,6 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.3)
-    connection_pool (2.2.2)
     crass (1.0.4)
     data-confirm-modal (1.6.2)
       railties (>= 3.0)
@@ -105,8 +103,12 @@ GEM
     factory_bot_rails (4.11.1)
       factory_bot (~> 4.11.1)
       railties (>= 3.0.0)
-    faraday (0.15.4)
-      multipart-post (>= 1.2, < 3)
+    faraday (0.6.1)
+      addressable (~> 2.2.4)
+      multipart-post (~> 1.1.0)
+      rack (>= 1.1.0, < 2)
+    faraday_middleware (0.6.5)
+      faraday (~> 0.6.0)
     ffi (1.9.25)
     figaro (1.1.1)
       thor (~> 0.14)
@@ -116,6 +118,7 @@ GEM
       actionpack (>= 3.0)
       multi_json
       request_store (>= 1.0)
+    hashie (1.0.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     invoicing (1.0.1)
@@ -161,9 +164,7 @@ GEM
       minitest-metadata (~> 0.6)
       minitest-rails (~> 2.1)
     multi_json (1.13.1)
-    multipart-post (2.0.0)
-    net-http-persistent (3.0.0)
-      connection_pool (~> 2.2)
+    multipart-post (1.1.5)
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
@@ -180,7 +181,6 @@ GEM
       ttfunk (~> 1.5)
     prawn-table (0.2.2)
       prawn (>= 1.3.0, < 3.0.0)
-    public_suffix (3.0.3)
     rabl (0.14.0)
       activesupport (>= 2.3.14)
     rabl-rails (0.5.4)
@@ -218,6 +218,8 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rainbow (3.0.0)
     rake (12.3.2)
+    rash (0.3.0)
+      hashie (~> 1.0.0)
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
@@ -268,9 +270,8 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.3.13)
-    stripe (4.2.0)
-      faraday (~> 0.13)
-      net-http-persistent (~> 3.0)
+    stripe (2.2.0)
+      faraday (~> 0)
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
@@ -286,6 +287,12 @@ GEM
     unicode-display_width (1.4.0)
     warden (1.2.7)
       rack (>= 1.0)
+    world_bank (0.9.0)
+      faraday (~> 0.6.1)
+      faraday_middleware (~> 0.6.3)
+      hashie (~> 1.0.0)
+      multi_json (~> 1.11)
+      rash (~> 0.3.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.16)
@@ -318,13 +325,13 @@ DEPENDENCIES
   loofah (~> 2.2.3)
   minitest-colorize!
   minitest-rails-capybara
-  multi_json (~> 1.13.1)
+  multi_json
   passenger
   prawn
   prawn-table
   rabl
   rabl-rails
-  rack (~> 1.6.11)
+  rack
   rails
   rails-html-sanitizer (~> 1.0.4)
   rails-jquery-autocomplete
@@ -342,6 +349,7 @@ DEPENDENCIES
   turbolinks
   ua-google-analytics-rails
   uglifier
+  world_bank
   yard (~> 0.9.11)
 
 BUNDLED WITH
