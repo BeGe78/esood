@@ -34,7 +34,7 @@ gem 'activejob', '~> 4.2.11'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 ## Build JSON APIs with ease.
-gem 'multi_json'
+gem 'multi_json', '~> 1.13.1'
 gem 'json', '~> 2.1.0'
 gem 'rabl'
 gem 'rabl-rails'
