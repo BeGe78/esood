@@ -42,7 +42,7 @@ gem 'rabl-rails'
 gem 'rserve-client'
 gem 'rserve-simpler'
 ## WorlBank database API
-gem 'world_bank'
+#gem 'world_bank'
 ## to pass rails variables to javascript
 gem 'gon'
 ## for field autocompletion
