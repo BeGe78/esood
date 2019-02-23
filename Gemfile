@@ -12,7 +12,7 @@ gem 'sqlite3'
 gem 'active_model_serializers'
 ## Use sass bootstrap for stylesheets
 gem 'sass-rails'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'data-confirm-modal'
 ## Use Uglifier as compressor for JavaScript assets
 gem 'uglifier'
