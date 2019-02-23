@@ -7,7 +7,7 @@ gem 'rack'      #, '~> 1.6.11'
 ## Use passenger as a deployment tool
 gem "passenger"
 ## Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3.0'  ##use >= 1.3 and < 1.4. because version 1.4.0 has problems
 ## Use active model serializer
 gem 'active_model_serializers'
 ## Use sass bootstrap for stylesheets
