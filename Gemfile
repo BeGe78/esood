@@ -60,7 +60,7 @@ gem 'invoicing'
 gem 'prawn'
 gem 'prawn-table'
 ## for documentation
-gem 'yard', '~> 0.9.11'
+gem 'yard', '~> 0.9.20'
 ## for code quality
 group :development do
   gem 'rubocop', require: false

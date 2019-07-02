@@ -4,7 +4,7 @@
     <h2><%= @title %></h2>
   <% else %>
     <h2 style="font-size: 1em;"><%= @title %></h2>
-  <% end %>  
+  <% end %>
 </div>
 <div id="print" style="position: relative; float: left; margin-bottom: -20px;">
 <% if can? :print_chart, @selector %>
@@ -14,7 +14,7 @@
 <div id="chart" style="float: left;  margin-left: 0%; margin-top: -26px; width: 84%; height: 380px; border: thin solid black;">
 <canvas  width="850" height="350" id="line" style=" margin-left: 20px; margin-top: 23px; cursor: default;" class="animated rotateIn"></canvas>
 </div>
-<div id="stats" style="margin-top: 30%;">  
+<div id="stats" style="margin-top: 30%;">
 <td>
   <% if @indicator_switch %>
      <span style="float: left; font-weight: bold;"><%= @country1_name %></span>
@@ -33,17 +33,17 @@
            <th width="20%"><%= t('indicator')%></th>
         <% else %>
 	   <th width="20%"><%= t('country')%></th>
-	<% end %>   
+	<% end %>
 	<th width="10%"><%= t('mean')%></th>
         <th width="8%">
           <span><%= t('coeflm1')%></span>
           <span class="has-tooltip" data-toggle="tooltip" data-container="body" data-placement="top" title="<%= t('slope_help') %>">
-          <%= image_tag "question_mark.png" %></span>          
+          <%= image_tag "question_mark.png" %></span>
         </th>
 	<th width="8%">
 	  <span><%= t('coeflm3')%></span>
 	  <span class="has-tooltip" data-toggle="tooltip" data-container="body" data-placement="top" title="<%= t('determination_help') %>">
-	  <%= image_tag "question_mark.png" %></span>           
+	  <%= image_tag "question_mark.png" %></span>
         </th>
 	<th width="8%">
 	  <span><%= t('meanrate')%></span>
@@ -65,10 +65,10 @@
             <%= image_tag "question_mark.png" %></span>
             </div>
          </td>
-      <% else %>   
+      <% else %>
          <td><%= @country1_name %></td>
       <% end %>
-      <td><%= number_with_delimiter(number_with_precision(@mean1.to_ruby, precision: @precision)) %></td>	
+      <td><%= number_with_delimiter(number_with_precision(@mean1.to_ruby, precision: @precision)) %></td>
       <td><%= number_with_delimiter(number_with_precision(@coeflm1[1], precision: @precision)) %></td>
       <td><%= number_with_precision(@coeflm3_1.to_ruby, precision: 2) %></td>
       <td><%= number_to_percentage(@meanrate1, precision: 2) %></td>
@@ -76,17 +76,17 @@
      </tr>
      <tr>
       <% if @indicator_switch %>
-         <td>            
+         <td>
             <div style="display: inline-block;">
             <%= @i2.name %>
             <span class="has-tooltip" data-toggle="tooltip" title="<%= @i2.note %>">
             <%= image_tag "question_mark.png" %></span>
             </div>
          </td>
-      <% else %>   
+      <% else %>
          <td><%= @country2_name %></td>
       <% end %>
-      <td><%= number_with_delimiter(number_with_precision(@mean2.to_ruby, precision: @precision)) %></td>	
+      <td><%= number_with_delimiter(number_with_precision(@mean2.to_ruby, precision: @precision)) %></td>
       <td><%= number_with_delimiter(number_with_precision(@coeflm2[1], precision: @precision)) %></td>
       <td><%= number_with_precision(@coeflm3_2.to_ruby, precision: 2) %></td>
       <td><%= number_to_percentage(@meanrate2, precision: 2) %></td>
@@ -106,14 +106,14 @@
      key[0] = gon.country1;
      key[1] = gon.country2;
   <% end %>
-  for (var i=0; i<gon.data1.length; ++i) { 
+  for (var i=0; i<gon.data1.length; ++i) {
      datachar1[i] = String(parseFloat(gon.data1[i].toFixed(2)));
-     datachar2[i] = String(parseFloat(gon.data2[i].toFixed(2)));     
+     datachar2[i] = String(parseFloat(gon.data2[i].toFixed(2)));
   }
   datachar = datachar1.concat(datachar2)
   xaxispos = gon.xaxispos;
 var line = new RGraph.Line({
-id: 'line', 
+id: 'line',
 data: gon.data,
 options: {
   colors: ['rgb(255,0,0)', 'rgb(0,0,255)', 'rgb(0,100,0)'],
@@ -126,17 +126,17 @@ options: {
   numxticks: gon.numxticks,
   ylabels: gon.ylabels,
   scaleThousand: gon.scaleThousand,
-  scalePoint: gon.scalePoint,    
+  scalePoint: gon.scalePoint,
   ylabelsInside: true,
   gutterLeft: 150,
   textSize: 8,
   keyTextSize: 7,
-  spline: true, 
+  spline: true,
   tooltipsCoordsPage: true,
   keyPosition: 'gutter',
   tooltips: datachar
   }
-}).draw();   
+}).draw();
   <% if @same_scale %>
   <% else %>
   var yaxis = new RGraph.Drawing.YAxis({
@@ -146,7 +146,7 @@ options: {
     max: line.scale2.max,
     <% if @xaxispos == 'center' %>
          min: - (line.scale2.max),
-    <% end %>   
+    <% end %>
     title: gon.title_first_axis,
     scaleThousand: gon.scaleThousand,
     scalePoint: gon.scalePoint,
@@ -165,7 +165,7 @@ options: {
       max: line.scale2.max / gon.power_scale_change,
       <% if @xaxispos == 'center' %>
            min: - (line.scale2.max / gon.power_scale_change),
-      <% end %>   
+      <% end %>
       title: gon.title_second_axis,
       scaleThousand: gon.scaleThousand,
       scalePoint: gon.scalePoint,
@@ -177,30 +177,30 @@ options: {
   <% end %>
 </script>
 <script type="text/javascript">  // send event to google analytics
-<% if @indicator_switch %>                          
+<% if @indicator_switch %>
   <%= analytics_track_event "Selectors", "Indicator",
-  @current_user_email + ":" + 
-  @selector.year_begin.to_s + ":" + 
+  @current_user_email + ":" +
+  @selector.year_begin.to_s + ":" +
   @selector.year_end.to_s + ":" +
   @i1.id1 + ":" +
   @c1.name + ":" +
-  @i2.id1 %>  
+  @i2.id1 %>
 <% else %>
   <%= analytics_track_event "Selectors", "Country",
-  @current_user_email + ":" + 
-  @selector.year_begin.to_s + ":" + 
+  @current_user_email + ":" +
+  @selector.year_begin.to_s + ":" +
   @selector.year_end.to_s + ":" +
   @i1.id1 + ":" +
   @c1.name + ":" +
   @c2.name %>
-<% end %>  
+<% end %>
 function displayPDF() {
   var myCanvas = document.getElementById("line"); // get the graph as an image
   var myUrl = myCanvas.toDataURL();
   var key = [];
   key[0] = gon.country1;
   key[1] = gon.country2;
-  var title = gon.title;  
+  var title = gon.title;
   var indicator = gon.indicator;
   var doc = new jsPDF('landscape','pt', 'A4');
   doc.setFontSize(12);
@@ -215,7 +215,7 @@ function displayPDF() {
        doc.text(60, 420, gon.country1);
   <% else %>
        doc.text(60, 420, indicator);
-  <% end %>   
+  <% end %>
   var res = doc.autoTableHtmlToJson(document.getElementById("stat_table"));
   doc.autoTable(res.columns, res.rows, {
     theme: 'grid',
@@ -239,11 +239,10 @@ function displayPDF() {
       columnStyles: {
         0: { columnWidth: 450 }
       }
-    <% end %>  
+    <% end %>
   });
   doc.setFontSize(8);
   doc.text(60, 570, "Source: Economic Statistics on Open Date - Bruno Gardin")
   doc.output('dataurlnewwindow');
 }
 </script>
-
