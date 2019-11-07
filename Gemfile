@@ -23,7 +23,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-datatables-rails'
 ## upgrade loofah following a github security warning
-gem 'loofah', '~> 2.2.3'
+gem 'loofah', '~> 2.3.1'
 ## upgrade sprockets, ffi, rubyzip following a github security warning
 gem 'ffi', '~> 1.9.24'
 gem 'rubyzip', '~> 1.2.2'
