@@ -26,7 +26,7 @@ gem 'jquery-datatables-rails'
 gem 'loofah', '~> 2.2.3'
 ## upgrade sprockets, ffi, rubyzip following a github security warning
 gem 'ffi', '~> 1.9.24'
-gem 'rubyzip', '~> 1.2.2'
+gem 'rubyzip', '~> 1.3.0'
 gem 'sprockets', '~> 3.7.2'
 ## upgrade activejob following a github security warning
 gem 'activejob', '~> 4.2.11'
