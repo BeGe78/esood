@@ -44,6 +44,9 @@ gem 'rserve-client'
 gem 'rserve-simpler'
 ## use rest-client instead of world_bank gem which is broken
 gem 'rest-client'
+gem "websocket-extensions", ">= 0.1.5"
+
+
 ## WorlBank database API
 #gem 'world_bank', git: 'https://github.com/codeforamerica/world_bank_ruby'
 #gem 'world_bank', path: '/usr/share/gems/bundler/gems/world_bank_ruby-df43a80c876e'
