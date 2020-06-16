@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception  
   before_action :set_locale # language (en & fr) initialisation
   before_action :configure_permitted_parameters, if: :devise_controller? # parameters rights for devise  
-  require 'world_bank' # world bank API
+  #require 'world_bank' # world bank API
 
   protected
   

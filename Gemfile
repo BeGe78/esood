@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 ## Bundle edge Rails
-gem 'rails'
+gem 'rails' 
 gem 'rails-html-sanitizer', '~> 1.0.4'
-gem 'rack'      #, '~> 1.6.11'
+gem 'rack' 
 ## Use passenger as a deployment tool
 gem "passenger"
 ## Use sqlite3 as the database for Active Record
@@ -23,26 +23,31 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-datatables-rails'
 ## upgrade loofah following a github security warning
-gem 'loofah', '~> 2.2.3'
+gem 'loofah'
 ## upgrade sprockets, ffi, rubyzip following a github security warning
-gem 'ffi', '~> 1.9.24'
-gem 'rubyzip', '~> 1.2.2'
+gem 'ffi' #, '~> 1.9.24'
+gem 'rubyzip'
 gem 'sprockets', '~> 3.7.2'
 ## upgrade activejob following a github security warning
-gem 'activejob', '~> 4.2.11'
+gem 'activejob' 
+
 ## Turbolinks makes following links in your web application faster
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 ## Build JSON APIs with ease.
-gem 'multi_json'           #, '~> 1.13.1'
+gem 'multi_json' #, '~> 1.3.6'          #, '~> 1.13.1'
 gem 'json', '~> 2.1.0'
 gem 'rabl'
 gem 'rabl-rails'
 ## rserve is used to access R statistical features
 gem 'rserve-client'
 gem 'rserve-simpler'
+## use rest-client instead of world_bank gem which is broken
+gem 'rest-client'
 ## WorlBank database API
-gem 'world_bank', git: 'https://github.com/codeforamerica/world_bank_ruby'
+#gem 'world_bank', git: 'https://github.com/codeforamerica/world_bank_ruby'
+#gem 'world_bank', path: '/usr/share/gems/bundler/gems/world_bank_ruby-df43a80c876e'
+
 ## to pass rails variables to javascript
 gem 'gon'
 ## for field autocompletion

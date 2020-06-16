@@ -87,22 +87,36 @@ class SelectorsController < ApplicationController
       else
         @period = params[:year_begin].to_s + ':' + params[:year_end].to_s
       end
-      @results1 = WorldBank::Data.country(@country1).indicator(@indicator).dates(@period).fetch # bug .language('fr') 
-      @results2 = @indicator_switch ? WorldBank::Data.country(@country1).indicator(@indicator2).dates(@period).fetch
-                                    : WorldBank::Data.country(@country2).indicator(@indicator).dates(@period).fetch       
+      #@results1 = WorldBank::Data.country(@country1).indicator(@indicator).dates(@period).fetch # bug .language('fr')  #url http://api.worldbank.org/v2/country/fra/indicator/SP.POP.TOTL?date=2000:2001
+      require 'rest-client'
+      wb_url = 'http://api.worldbank.org/v2/country/' + @country1 + '/indicator/' + @indicator + '?date=' + @period + '&format=json'
+      puts("1: ", wb_url)
+      e1 = RestClient.get(wb_url).body
+      if @indicator_switch
+        wb_url = 'http://api.worldbank.org/v2/country/' + @country1 + '/indicator/' + @indicator2 + '?date=' + @period + '&format=json'
+        puts("2 ", wb_url)
+        e2 = RestClient.get(wb_url).body        
+      else
+        wb_url = 'http://api.worldbank.org/v2/country/' + @country2 + '/indicator/' + @indicator + '?date=' + @period + '&format=json'
+        puts("3 ", wb_url)
+        e2 = RestClient.get(wb_url).body        
+      end
+             
     rescue StandardError
+      puts('rescue: ')  #, @results1.status)
       flash[:notice] = t('wrong_worldbank_fetch')
       redirect_to new_selector_path
       return
     end
-      
+    @results1 = JSON.parse(e1)[1]
+    @results2 = JSON.parse(e2)[1]
     v1 = []
     v2 = []
     y = []
     (0..(@results1.size - 1)).each do |d| # percentage handling f for percentage else integer
-      v1[d] = @results1[(@results1.size - 1) - d].value.to_f
-      v2[d] = @results2[(@results1.size - 1) - d].value.to_f
-      y[d] = (@results1[(@results1.size - 1) - d].date).to_i
+      v1[d] = @results1[(@results1.size - 1) - d].values_at("value")[0].to_f
+      v2[d] = @results2[(@results1.size - 1) - d].values_at("value")[0].to_f
+      y[d] =  @results1[(@results1.size - 1) - d].values_at("date")[0].to_i
     end
       
     l  = [v1.max.floor.to_s.length, v1.max.floor.to_s.length].max # l contains the length of the biggest integer
