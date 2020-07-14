@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rails' 
 gem 'rails-html-sanitizer', '~> 1.0.4'
 gem 'rack' 
+gem 'etc', ">=1.1.0"
 ## Use passenger as a deployment tool
 gem "passenger"
 ## Use sqlite3 as the database for Active Record

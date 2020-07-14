@@ -329,6 +329,7 @@ DEPENDENCIES
   data-confirm-modal
   database_cleaner
   devise
+  etc (>= 1.1.0)
   factory_bot_rails
   ffi
   figaro
