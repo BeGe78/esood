@@ -37,7 +37,7 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 ## Build JSON APIs with ease.
 gem 'multi_json' #, '~> 1.3.6'          #, '~> 1.13.1'
-gem 'json', '~> 2.1.0'
+gem 'json', '~> 2.3.0'
 gem 'rabl'
 gem 'rabl-rails'
 ## rserve is used to access R statistical features
