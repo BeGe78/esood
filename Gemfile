@@ -71,7 +71,7 @@ gem 'prawn-table'
 ## for documentation
 gem 'yard', '~> 0.9.20'
 ## updae nokogiri for security reason
-gem 'nokogiri', '~> 1.10.4'
+gem 'nokogiri', '~> 1.11.4'
 ## for code quality
 group :development do
   gem 'rubocop', require: false
