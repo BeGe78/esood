@@ -1,0 +1,165 @@
+= rserve-simpler
+
+rserve-simpler is a simple interface on top of
+{rserve-client}[https://github.com/clbustos/Rserve-Ruby-client], a fantastic
+gem that lets a user communicate with R in a straighforward, efficient way.
+
+{rserve-client}[https://github.com/clbustos/Rserve-Ruby-client] is doing all
+the heavy lifting and should be consulted for background.
+
+== Synposis
+
+    require 'rserve/simpler'
+    r = Rserve::Simpler.new
+
+    # or can initialize a connection held in the 'R' constant:
+    require 'rserve/simpler/R'
+    R.do_something_fantastic ...  # ** not a real method
+
+=== converse, convert, command
+
+These commands specify ways of talking to your Rserve connection.  They differ
+chiefly in the type of output you'll receive back from R.  
+
+    # converse: casts the result with 'to_ruby'
+    r.converse "mean(c(1,2,3))"  # -> 2.0
+
+    # convert: returns the raw Rserve::REXP result (like eval)
+    rexp = r.convert "mean(c(1,2,3))"  # -> #<Rserve::REXP::Double:0x00000002296498 @payload=[2.0], @attr=nil>
+    rexp.as_doubles   # -> [2.0]
+    rexp.to_ruby      # -> 2.0
+
+    # command: tell R what to do and only expect boolean reply
+    r.command "z <- mean(c(1,2,3))"  # -> true
+    # all variables are persistent in the session and can be retrieved later
+    r.converse "z"  # -> 2.0
+
+converse/convert/command let you name variables in a hash as a shortcut to
+'assign'.  [These examples use Ruby 1.9 hash syntax, but they should work on
+1.8 if the hashes are keyed old-style {:key => val}]
+    
+    r.converse(a: [1,2,3], b: [4,5,6]) { "cor(a,b)" } # -> 1.0
+    # another form doing the same thing
+    r.converse("cor(a,b)", a: [1,2,3], b: [4,5,6])
+
+==== prompt-like syntax '>>'
+
+'>>' is an alias for converse, so you can write code like this:
+
+    r >> "mean(c(1,2,3))"  # -> 2.0
+    # note: use '.>>' (and parentheses at times) to get proper behavior with multiple args or blocks
+    r.>> "cor(a,b)", a: [1,2,3], b: [1,2,3]
+
+=== simple DataFrame
+
+Data frames are a prominent object in R.  Simpler provides a simple ruby DataFrame object.
+
+==== Hash based
+
+Column names are derived from the data hash's keys.  Ruby 1.9 hashes keep track
+of insertion order.  Use an OrderedHash (gem install orderedhash) for ruby
+1.8, or set colnames.
+     
+    hash = {
+      var1: [1,2,3,4], 
+      fac1: [3,4,5,6], 
+      res1: [4,5,6,7]
+    }
+    # convert with hash.to_dataframe or Rserve::DataFrame.new(hash)
+    r.command( df: hash.to_dataframe ) do 
+      %Q{ 
+        pdf("out.pdf")
+        plot(df)
+        dev.off()
+      }
+    end
+
+==== with an array of Structs
+
+The equivalent data frame as above can be generated with an array of Struct objects.
+
+    DataRow = Struct.new(:var1, :fac1, :res1)
+    structs = [
+      DataRow.new(1,3,4),
+      DataRow.new(2,4,5),
+      DataRow.new(3,5,6),
+      DataRow.new(4,6,7)
+    ]
+    datafr = Rserve::DataFrame.from_structs(structs)
+    reply = r.converse("summary(df)", df: datafr).each_cons(6).to_a
+    datafr.colnames.zip(reply) {|name,data| puts [name].+(data).join("\n ") }
+
+    ## outputs -> :
+    var1
+     Min.   :1.00  
+     1st Qu.:1.75  
+     Median :2.50  
+     Mean   :2.50  
+     3rd Qu.:3.25  
+     Max.   :4.00  
+    fac1
+     Min.   :3.00  
+     1st Qu.:3.75  
+     ...
+
+=== Notes on plotting
+
+Rserve is great for graphical output.  Here are some pointers when getting started with plotting:
+
+==== plot to screen
+
+Plots to x11() are persistent until the script or session ends.
+
+Inside an irb session:
+
+    irb>>  r >> "plot(c(1,2,3), c(3,4,5))"
+    # if you resize a window (at least on Ubuntu) you may need to re-issue the call
+    irb>>  r >> "plot(c(1,2,3), c(3,4,5))"
+    # return a list of currently used devices (device 2 is the only one being used)
+    # to_ruby returns an array of 1 value as a number
+    irb>>  r >> "dev.list()"
+    => 2
+    # shut off graphics device 2
+    # [??] sometimes this generates windows 3 & 4, not sure what is happening
+    irb>> r >> "dev.off(2)"
+    # shut off all graphics
+    irb>> r >> "graphics.off()"  
+
+In a script, your plot will appear until the script exits.  This usually means
+you'll miss the display of your plot.  Two ways to deal with this:
+
+===== sleep
+
+    r >> "plot(c(1,2,3), c(4,5,6))"
+    sleep(7)  # pause for 7 seconds
+
+===== r.pause
+
+    r >> "plot(c(1,2,3), c(4,5,6))"
+    r.pause  # pauses things until a key is pressed in terminal
+
+==== plot to file
+
+Files are written below the workdir specified when the Rserve connection was
+made (see {Rserve configuration}[http://www.rforge.net/Rserve/doc.html#conf]
+for background) and this is "/tmp/Rserve" on my system.
+
+    r.>> "pdf('output.pdf')", "plot(c(1,2,3),c(4,5,6))", "dev.off()"
+    # outputs file /tmp/Rserv/conn156/output.pdf
+    # note the connection number dir!
+    # (I haven't figured out how to predict this number)
+
+=== support for NArray
+
+NArray vectors work as input to converse, convert, and command.
+
+== TODO
+
+* simple option to use pwd as default directory
+* quiet the startup of Rserve by default
+* wrap graphic output commands
+
+== Copyright
+
+see LICENSE.txt
+

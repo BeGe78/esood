@@ -1,0 +1,10 @@
+
+module my-pcscd 1.0;
+
+require {
+	type pcscd_t;
+	class cap_userns sys_ptrace;
+}
+
+#============= pcscd_t ==============
+allow pcscd_t self:cap_userns sys_ptrace;

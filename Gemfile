@@ -1,14 +1,15 @@
 source 'https://rubygems.org'
 
 ## Bundle edge Rails
-gem 'rails' 
-gem 'rails-html-sanitizer', '~> 1.0.4'
+gem 'rails' , '~> 6.1.4'
+gem 'rails-html-sanitizer', '~> 1.2.0'
 gem 'rack' 
 gem 'etc', ">=1.1.0"
 ## Use passenger as a deployment tool
 gem "passenger"
 ## Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.3.0'  ##use >= 1.3 and < 1.4. because version 1.4.0 has problems
+#gem 'sqlite3', '~> 1.3.0'  ##use >= 1.3 and < 1.4. because version 1.4.0 has problems
+gem 'sqlite3', '1.4.2', platforms: [:mingw, :mswin, :x64_mingw, :ruby] #cannot load sqlite3_native
 ## Use active model serializer
 gem 'active_model_serializers'
 ## Use sass bootstrap for stylesheets
@@ -37,7 +38,7 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 ## Build JSON APIs with ease.
 gem 'multi_json' #, '~> 1.3.6'          #, '~> 1.13.1'
-gem 'json', '~> 2.1.0'
+gem 'json', '~> 2.5.1'
 gem 'rabl'
 gem 'rabl-rails'
 ## rserve is used to access R statistical features
@@ -71,7 +72,7 @@ gem 'prawn-table'
 ## for documentation
 gem 'yard', '~> 0.9.20'
 ## updae nokogiri for security reason
-gem 'nokogiri', '~> 1.10.4'
+gem 'nokogiri', '~> 1.11.4'
 ## for code quality
 group :development do
   gem 'rubocop', require: false
@@ -81,6 +82,7 @@ group :test do
 ### Spring speeds up development by keeping your application running in the background.
   gem 'spring'
 ### Colorize minitest output and show failing tests instantly.
+  gem 'minitest', '~> 5.14.4'
   gem 'minitest-colorize', git: 'https://github.com/ysbaddaden/minitest-colorize'
 ### minitest capybara factorybot are used for testing
   gem 'minitest-rails-capybara'
@@ -91,3 +93,5 @@ group :test do
   gem 'factory_bot_rails'
   gem 'simplecov'
 end
+
+gem "webrick", "~> 1.7"

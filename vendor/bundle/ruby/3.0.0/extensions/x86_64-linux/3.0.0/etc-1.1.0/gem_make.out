@@ -1,0 +1,38 @@
+current directory: /home/workspace/rr/vendor/bundle/ruby/3.0.0/gems/etc-1.1.0/ext/etc
+/usr/bin/ruby -I /usr/share/rubygems -r ./siteconf20210720-27181-tosyf5.rb extconf.rb
+checking for sys/utsname.h... yes
+checking for getpwnam() in -lsun... no
+checking for uname((struct utsname *)NULL) in sys/utsname.h... yes
+checking for getlogin()... yes
+checking for getpwent()... yes
+checking for getgrent()... yes
+checking for sysconf()... yes
+checking for confstr()... yes
+checking for fpathconf()... yes
+checking for struct passwd.pw_gecos in pwd.h... yes
+checking for struct passwd.pw_change in pwd.h... no
+checking for struct passwd.pw_quota in pwd.h... no
+checking for struct passwd.pw_age in pwd.h... no
+checking for struct passwd.pw_class in pwd.h... no
+checking for struct passwd.pw_comment in pwd.h... no
+checking for struct passwd.pw_expire in pwd.h... no
+checking for struct passwd.pw_passwd in pwd.h... yes
+checking for struct group.gr_passwd in grp.h... yes
+creating Makefile
+
+current directory: /home/workspace/rr/vendor/bundle/ruby/3.0.0/gems/etc-1.1.0/ext/etc
+make DESTDIR\= clean
+rm -f 
+rm -f etc.so  *.o  *.bak mkmf.log .*.time
+
+current directory: /home/workspace/rr/vendor/bundle/ruby/3.0.0/gems/etc-1.1.0/ext/etc
+make DESTDIR\=
+gcc -I. -I/usr/include -I/usr/include/ruby/backward -I/usr/include -I. -DHAVE_SYS_UTSNAME_H -DHAVE_UNAME -DHAVE_GETLOGIN -DHAVE_GETPWENT -DHAVE_GETGRENT -DSYSCONFDIR=\"/etc\" -DHAVE_SYSCONF -DHAVE_CONFSTR -DHAVE_FPATHCONF -DHAVE_STRUCT_PASSWD_PW_GECOS -DHAVE_ST_PW_GECOS -DHAVE_STRUCT_PASSWD_PW_PASSWD -DHAVE_ST_PW_PASSWD -DHAVE_STRUCT_GROUP_GR_PASSWD -DHAVE_ST_GR_PASSWD    -fPIC -O2  -fexceptions -g -grecord-gcc-switches -pipe -Wall -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -specs=/usr/lib/rpm/redhat/redhat-hardened-cc1 -fstack-protector-strong -specs=/usr/lib/rpm/redhat/redhat-annobin-cc1  -mtune=generic -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fPIC -m64 -o etc.o -c etc.c
+rm -f etc.so
+gcc -shared -o etc.so etc.o -L. -L/usr/lib64 -L. -Wl,-z,relro -Wl,--as-needed  -Wl,-z,now -specs=/usr/lib/rpm/redhat/redhat-hardened-ld -fstack-protector-strong -rdynamic -Wl,-export-dynamic -Wl,-z,relro -Wl,--as-needed  -Wl,-z,now -specs=/usr/lib/rpm/redhat/redhat-hardened-ld   -m64  -lruby  -lm   -lc
+
+current directory: /home/workspace/rr/vendor/bundle/ruby/3.0.0/gems/etc-1.1.0/ext/etc
+make DESTDIR\= install
+/usr/bin/mkdir -p . ./.gem.20210720-27181-je7q95
+exit > .sitearchdir.time
+/usr/bin/install -c -m 0755 etc.so ./.gem.20210720-27181-je7q95

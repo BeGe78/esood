@@ -1,0 +1,142 @@
+=== 0.3.4 / 2017-08-27
+
+* Updated rserve_talk_spec to latest rspec
+* Deleted Gemfile.lock (545ch4 idea). Starting process to deprecate ruby 1.9
+* Corrected deprecation of Fixnum : https://github.com/545ch4/Rserve-Ruby-client/commit/ab27f5ccd95ed58dd325a0e073649f6b9b1b0727
+* Removes unsafe require from gemspec : https://github.com/apptopia/Rserve-Ruby-client/commit/506b06d6c27e3d2a5302a8c2ffd17436ce4d36ad 
+=== 0.3.3 / 2017-07-06
+
+* Added support for crypt and plaintext authentication 
+
+=== 0.3.2 / 2017-05-17
+
+* Updated Gemfile
+* Fixed bug 26: Error handling NA values on integer matrix
+
+=== 0.3.1 / 2013-07-26
+
+* 2D Names functionality for Arrays and Matrices
+* A bug that occurs when R returns a named array consisting of only 1
+* Added code to handle Infinity values from double
+* Added functionality to recognize 2D named objects
+* Added specs for infinite? method
+* Added support for cases when only one dimension of names is specified
+* Bugfix: undefined method 'new' for #<Rserve::Protocol::REXPFactory
+* Fix for raw expressions transfer error.Padding to size divisible by 4 was not being done.
+* Fixed bug for named numerics
+* Fixed failing specs, split new functionality between With2DNames (applied to Array and Matrix) and With2DSizes (only applied to Array)
+* Fixed named_2d? not returning booleans
+* Fixed starting of Rserve when running on JRuby
+* Fixed starting of server inside Rserve::Connection when running on JRuby
+* Incorrect Handling of infinite values
+* Make row_by_name and column_by_name return named arrays
+* No method exception when converting a "named Float" to ruby
+* Raw expression transfer to rserve error.
+* eval Exception is not caused by voidEval
+
+
+=== 0.3.0 / 2011-12-26
+
+* Added some extra documentation
+* Double#to_double return nils for NA values 
+* Make Rserve exceptions subclass StandardError instead of exception, so they can be rescued by `rescue` blocks. [Jamison Dance]  
+* Funtions raises an exception when using REXP#to_ruby. We can't work with them, yet, but at least we can see what they have  
+* New options on Rserve::Connection - :cmd_init : Command to init Rserve - :proc_rserve_ok: Proc to test if Rserve is running (see source code). Thanks to John Prince for the idea.  
+* String now accepts \xFF as NA value (Rserve-0.6.2)  
+* Updated for rspec 2.0 [John Prince]
+  
+=== 0.2.5 / 2010-07-06
+* Fixed warning: NA values on Double and shadowed variables on blocks
+
+=== 0.2.4 / 2010-07-06
+* Bug fixes: double vector with NaN crash to_ruby. Data frame with string row_names crash to_rubyC
+
+=== 0.2.3 / 2010-07-02
+* Bug fix: assignation of double vector with NA doesn't work right
+
+=== 0.2.2 / 2010-06-24
+* ¿Bug? fix: a R matrix with a 0 dims raise an error [clbustos]
+* Bug fix on rexpfactory: typo on creation of S4
+* Updated Spec: session doesn't tested on windows
+* Updated README.txt
+
+=== 0.2.1 / 2010-06-18
+* Added suport to assign ruby std lib Matrix. Bug fix on retrieving matrix
+* Fixed whitespace problem on README.txt
+
+=== 0.2.0 / 2010-06-15
+* Session implemented. 
+* Retrieve auth information from server first responde. TODO: Implement authentification
+* Rserve::Protocol get_int and get_long uses pack. Spec for test compatibility for old method 
+* Added benchmark, comparing Rserve with RinRuby and RsRuby
+* Windows Support:
+ * On windows, any new connection closes the previous. Rserve on Windows can't process parallel connections
+ * All Specification works on Windows
+
+=== 0.1.9 / 2010-06-04
+* Documentation:
+ * Added commentaries on examples/regression.txt
+ * Examples.txt on main directory renamed to Introduction.txt
+ * Added examples extracted from RinRuby documentation, adapted to rserve-client. Modified Connection#assign to allow ruby objects
+ * Modified lowless example, omiting use of Rserve::REXP::Wrapper
+* Bug fixes:
+  * WithNames#put changes names, not values. 
+  * Negative integer conversion works on i686 and x86_64 
+* New features
+  * Added WithNames[]= method for key assign. 
+  * Correct handling of data.frames with to_ruby : row.names returned as a array of (1..x) value if [NA,-x] returned from Rserve
+  * REXP#to_ruby returns object extended with WithAttributes and WithNames when applicable
+  * REXP could process nested arrays properly
+
+
+=== 0.1.8 / 2010-06-01
+
+* Bug fix: attributes for generic vectors (data.frames) stored correctly. A Double vector without attribute dim raises an error on #to_ruby
+* Almost complete REXP#to_ruby according to http://wiki.github.com/clbustos/Rserve-Ruby-client/to_ruby-worflow
+* Updated examples
+
+
+=== 0.1.7 / 2010-05-28
+
+* Reimplement Rlist as an Array with module WithNames included
+* Added modules WithAttributes and WithNames
+* Added examples of use
+
+
+
+=== 0.1.6 / 2010-05-27
+* Assign complete for all commons REXPs
+* Added Connection#shutdown
+* Added arch dependent  for Double NA
+* Bug fix: list with booleans and NA raise an error
+* Added support for all types of REXP. 
+* REXP::Wrapper provides a method to convert ruby types to R types. 
+* Added spec for Rlist and REXP::Wrapper
+* Added generic to_ruby method. Ex.: Rlist#to_ruby returns an array
+* README.txt updated
+
+
+=== 0.1.5 / 2010-05-24
+* Bug fix: Incorrect NA for Logical, String and Double Vector
+* Factors implemented
+* Correct Manifest.txt
+
+=== 0.1.3 / 2010-05-24
+* Better README.txt
+* Implemented options hash on Connection.new
+* Better implementation of errors on connection
+* REXP::Double#as_strings returns values as floats, not Rationals
+* Bug fix on REXP#as_double_matrix. 
+* Added REXP#as_matrix, which return a standard library matrix from a R matrix
+* New spec: REXP
+
+=== 0.1.2 / 2010-05-21
+* List names works now
+
+=== 0.1.1 / 2010-05-21
+
+YANKED
+
+=== 0.1.0 / 2010-05-21
+
+* First operational version. Can void_eval and eval on vectors. List needs more work

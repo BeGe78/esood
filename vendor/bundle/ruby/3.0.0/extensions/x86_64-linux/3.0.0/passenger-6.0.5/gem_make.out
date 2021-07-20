@@ -1,0 +1,22 @@
+current directory: /home/workspace/rr/vendor/bundle/ruby/3.0.0/gems/passenger-6.0.5/src/helper-scripts/download_binaries
+/usr/bin/ruby -I /usr/share/rubygems -r ./siteconf20210720-27181-m6sy3g.rb extconf.rb
+Attempting to download https://github.com/phusion/passenger/releases/download/release-6.0.5/rubyext-ruby-3.0.1-x86_64-linux.tar.gz into /home/workspace/rr/vendor/bundle/ruby/3.0.0/gems/passenger-6.0.5/download_cache
+*** Could not download https://github.com/phusion/passenger/releases/download/release-6.0.5/rubyext-ruby-3.0.1-x86_64-linux.tar.gz: The requested URL returned error: 404
+Attempting to download https://oss-binaries.phusionpassenger.com/binaries/passenger/by_release/6.0.5/rubyext-ruby-3.0.1-x86_64-linux.tar.gz into /home/workspace/rr/vendor/bundle/ruby/3.0.0/gems/passenger-6.0.5/download_cache
+*** Could not download https://oss-binaries.phusionpassenger.com/binaries/passenger/by_release/6.0.5/rubyext-ruby-3.0.1-x86_64-linux.tar.gz: The requested URL returned error: 404
+Attempting to download https://s3.amazonaws.com/phusion-passenger/binaries/passenger/by_release/6.0.5/rubyext-ruby-3.0.1-x86_64-linux.tar.gz into /home/workspace/rr/vendor/bundle/ruby/3.0.0/gems/passenger-6.0.5/download_cache
+*** Could not download https://s3.amazonaws.com/phusion-passenger/binaries/passenger/by_release/6.0.5/rubyext-ruby-3.0.1-x86_64-linux.tar.gz: The requested URL returned error: 403
+Attempting to download https://github.com/phusion/passenger/releases/download/release-6.0.5/nginx-1.18.0-x86_64-linux.tar.gz into /home/workspace/rr/vendor/bundle/ruby/3.0.0/gems/passenger-6.0.5/download_cache
+Attempting to download https://github.com/phusion/passenger/releases/download/release-6.0.5/agent-x86_64-linux.tar.gz into /home/workspace/rr/vendor/bundle/ruby/3.0.0/gems/passenger-6.0.5/download_cache
+
+current directory: /home/workspace/rr/vendor/bundle/ruby/3.0.0/gems/passenger-6.0.5/src/helper-scripts/download_binaries
+make DESTDIR\= clean
+true
+
+current directory: /home/workspace/rr/vendor/bundle/ruby/3.0.0/gems/passenger-6.0.5/src/helper-scripts/download_binaries
+make DESTDIR\=
+true
+
+current directory: /home/workspace/rr/vendor/bundle/ruby/3.0.0/gems/passenger-6.0.5/src/helper-scripts/download_binaries
+make DESTDIR\= install
+true
