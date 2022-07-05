@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ## Bundle edge Rails
 gem 'rails' , '~> 6.1.4'
-gem 'rails-html-sanitizer', '~> 1.2.0'
+gem 'rails-html-sanitizer', '~> 1.4.3'
 gem 'rack' 
 gem 'etc', ">=1.1.0"
 ## Use passenger as a deployment tool
