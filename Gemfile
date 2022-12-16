@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ## Bundle edge Rails
 gem 'rails' , '~> 6.1.4'
-gem 'rails-html-sanitizer', '~> 1.2.0'
+gem 'rails-html-sanitizer'
 gem 'rack' 
 gem 'etc', ">=1.1.0"
 ## Use passenger as a deployment tool
@@ -47,6 +47,7 @@ gem 'rserve-simpler'
 ## use rest-client instead of world_bank gem which is broken
 gem 'rest-client'
 gem "websocket-extensions", ">= 0.1.5"
+gem 'net-smtp'
 
 
 ## WorlBank database API
